@@ -1,1 +1,5 @@
 /bin/
+.metadata
+.plugins
+.mylyn
+.log
