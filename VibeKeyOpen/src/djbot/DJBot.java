@@ -11,7 +11,7 @@ import core_objects_abstract.Song;
  * preference handlers.
  * 
  * @author Rose Reatherford
- * @date Created: 12/17/2014; Last Updated: 12/17/2014
+ * @date Created: 12/17/2014; Last Updated: 12/31/2014
  */
 public class DJBot {
 	/** Constants **/
@@ -19,9 +19,9 @@ public class DJBot {
 	
 	/** Handlers **/
 	// The list of preference handlers.
-	private List<Preference> preferenceBehaviors;
+	private List<BotPlugin> independentPlugins;
 	// The list of events that override other behavior.
-	private List<OverrideEventBehavior> overrideEventBehaviors;
+	private List<DependentBotPlugin> dependentPlugins;
 	
 	/** Song Planning **/
 	// The queue of song ids that DJ Bot will play.
@@ -30,8 +30,8 @@ public class DJBot {
 	private HashMap<String, String> mediaTerms;
 	
 	public DJBot() {
-		this.preferenceBehaviors = new ArrayList<Preference>();
-		this.overrideEventBehaviors = new ArrayList<OverrideEventBehavior>();
+		this.independentPlugins = new ArrayList<BotPlugin>();
+		this.dependentPlugins = new ArrayList<DependentBotPlugin>();
 	}
 	
 	public String wake() {
@@ -43,18 +43,6 @@ public class DJBot {
 	public void addSongs() {
 		while (songList.size() < MIN_SIZE) {
 			
-		}
-	}
-	
-	private void considerPreferences(List<String> queries) {
-		for (Preference preference : preferenceBehaviors) {
-			preference.addQuery(queries);
-		}
-	}
-	
-	private void addBehavior() {
-		for (OverrideEventBehavior behavior : overrideEventBehaviors) {
-			behavior.modifyBehavior(this);
 		}
 	}
 }

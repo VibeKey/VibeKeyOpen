@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="11.5.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>0</x>
+      <y>290</y>
+      <w>340</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>ThemeManager
+--
+private ??? styles
+private List&lt;ThemeItem&gt; themeItems
+--
+public boolean registerThemeObj(???)
+public boolean registerStyle(???)
+public ??? getStyle(???)
+--
+public moveThemeItemUp(String themeItemId)
+public moveThemeItemDown(String themeItemId)
+public moveThemeItemToBack(String themeItemId)
+public moveThemeItemToFront(String themeItemId)
+--
+private void drawItems()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>400</x>
+      <y>290</y>
+      <w>400</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>ThemeItem
+--
+private ThemeManager parentTheme
+--
+public addThemeManagerParent(ThemeManager parent)
+--
+public boolean drawSelf()
+public ??? findStyle(???)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>870</x>
+      <y>290</y>
+      <w>400</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>/ThemeObject/
+--
+protected String id
+protected ThemeObject parentItem
+protected List&lt;ThemeObject&gt; children
+--
+public String getId()
+--
+public boolean addChild(ThemeObject obj)
+public boolean removeChild(ThemeOBject obj)
+--
+public boolean draw()
+public boolean moveObjUp(String themeObjId)
+public boolean moveObjDown(String themeObjId)
+public boolean moveObjToBack(String themeObjId)
+public moveObjToFront(String themeObjId)
+protected ??? findStyle(???)
+/public ??? findStyle(???)/
+--
+/protected boolean drawSelf()/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>770</x>
+      <y>270</y>
+      <w>120</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>100;30;30;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>310</x>
+      <y>270</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>90;30;30;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>310</x>
+      <y>290</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>30;30;90;30</additional_attributes>
+  </element>
+</diagram>
