@@ -3,3 +3,5 @@
 .plugins
 .mylyn
 .log
+.classpath
+.project
