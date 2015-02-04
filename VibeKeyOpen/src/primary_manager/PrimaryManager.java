@@ -10,8 +10,12 @@ import java.util.List;
  * 
  * @author Bill Mader
  */
-public class PrimaryManager {
+public final class PrimaryManager {
 
+	// See Software design thread pool example.
+	// Using normal runnables
+	// Takes a text file that can manage all of the plugins
+	
 	/** Handlers **/
 	// List of threads to pull from.
 	private List<Thread> threadPool;

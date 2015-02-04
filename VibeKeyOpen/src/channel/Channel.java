@@ -9,11 +9,27 @@ import java.io.InputStream;
 
 import com.gmail.kunicins.olegs.libshout.Libshout;
 
-public class Channel {
+import core_objects_abstract.Stream;
+import djbot.DJBot;
 
+public class Channel extends Stream {
+
+	private String cName;
+	private enum State {CLOSE, IDLE, PLAY, PAUSE};
+	private State state;
+	
+	/** Constructor that sets the name of the channel. */
+	public Channel(String name, DJBot bot) {
+		super(bot);
+		this.cName = name;
+		this.state = State.CLOSE;
+	}
+	
 	
 	// Demo code to play a song through icecast
-	public static void addSong(String filename) {
+	@Override
+	public void play() {
+		String filename = this.bot.getSong().getFilePath();
 		byte[] buffer = new byte[1024];
 		InputStream mp3 = null;
 		try {
@@ -30,7 +46,7 @@ public class Channel {
 			icecast.setPort(8000);
 			icecast.setProtocol(Libshout.PROTOCOL_HTTP);
 			icecast.setPassword("MotherDJBot");
-			icecast.setMount("/radio");
+			icecast.setMount("/" + this.cName);
 			icecast.setFormat(Libshout.FORMAT_MP3);
 			icecast.open();
 			int read = mp3.read(buffer);
@@ -56,4 +72,29 @@ public class Channel {
 		Channel.addSong(args[0]);
 	}
 */
+
+	@Override
+	public void pause() {
+		if (this.state == State.PLAY)
+			this.state = State.PAUSE;		
+	}
+
+	@Override
+	public void resume() {
+		if (this.state == State.PAUSE)
+			this.state = State.PLAY;
+	}
+
+	@Override
+	public void stop() {
+		if (this.state != State.CLOSE)
+			this.state = State.IDLE;		
+	}
+
+
+	@Override
+	public void open() {
+		if (this.state == State.CLOSE)
+			this.state = State.IDLE;
+	}
 }
