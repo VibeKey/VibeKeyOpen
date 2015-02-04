@@ -16,6 +16,7 @@ import core_objects_abstract.Song;
 public class DJBot {
 	/** Constants **/
 	private static int MIN_SIZE = 10;
+	public static String CHANGE = "needNewSearch";
 	
 	/** Handlers **/
 	// The list of preference handlers.
@@ -29,20 +30,51 @@ public class DJBot {
 	// A HashMap of media search terms that DJ-Bot will use.
 	private HashMap<String, String> mediaTerms;
 	
+	/** Song Holding */
+	// Buffer of extra songs so they do not clog the queue.
+	private List<Song> buffer;
+	
 	public DJBot() {
 		this.independentPlugins = new ArrayList<BotPlugin>();
 		this.dependentPlugins = new ArrayList<DependentBotPlugin>();
 	}
 	
-	public String wake() {
-		if (songList.size() < MIN_SIZE) addSongs();
-		
-		return songList.remove(0).getFilePath();
+	/**
+	 * Gets the next song in queue.
+	 * @return
+	 */
+	public Song getSong() {
+		wake();
+		return songList.remove(0);
 	}
 	
-	public void addSongs() {
+	/**
+	 * Creates a thread to add new songs, run plugins, and searches.
+	 */
+	private void wake() {
+		runPlugins();
+		if (songList.size() < MIN_SIZE) addSongs();
+	}
+	
+	private void addSongs() {
 		while (songList.size() < MIN_SIZE) {
-			
+			if (buffer.size() > 0) songList.add(buffer.remove(0));
+			else runSearch();
 		}
+	}
+	
+	private void runSearch() {
+	}
+
+	private void runPlugins() {
+		for (BotPlugin plugin : this.dependentPlugins) plugin.modifyTerms(mediaTerms, songList);
+		for (BotPlugin plugin : this.independentPlugins) plugin.modifyTerms(mediaTerms, songList);
+		
+		if (mediaTerms.containsKey(CHANGE)) {
+			mediaTerms.remove(CHANGE);
+			runSearch();
+		} 
+		
+		if (buffer.size() < MIN_SIZE) runSearch();
 	}
 }

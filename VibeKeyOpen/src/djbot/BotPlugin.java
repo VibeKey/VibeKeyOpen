@@ -13,6 +13,8 @@ import core_objects_abstract.Song;
  *
  */
 public abstract class BotPlugin {
+	protected boolean flagSearch;
+	
 	/**
 	 * Used by DJ Bot to modify search behavior.
 	 * @param terms 		The list of current search terms, 

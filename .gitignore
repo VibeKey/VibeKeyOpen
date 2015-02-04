@@ -1,2 +1,7 @@
 /bin/
 .metadata
+.project
+/GenreExclusion/.classpath
+/VibeKeyOpen/.classpath
+/VibeKeyOpen/.project
+/VibeKeyOpen/.log
