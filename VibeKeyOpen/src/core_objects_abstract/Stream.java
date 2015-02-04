@@ -21,18 +21,4 @@ public abstract class Stream {
 		this.bot = bot;
 	}
 
-
-	/** Abstract methods for stream control. Functionality to be determined
-	 * by concrete class. */ 
-	
-	public abstract void open();
-	
-	public abstract void play();
-
-	public abstract void pause();
-
-	public abstract void resume();
-
-	public abstract void stop();
-
 }
