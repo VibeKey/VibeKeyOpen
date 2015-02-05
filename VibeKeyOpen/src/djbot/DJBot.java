@@ -64,6 +64,7 @@ public class DJBot {
 	}
 	
 	private void runSearch() {
+		System.out.println("I am running a search.");
 	}
 
 	private void runPlugins() {

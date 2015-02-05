@@ -1,5 +1,6 @@
 package core_objects_abstract;
 
+import java.io.BufferedInputStream;
 import java.util.HashMap;
 
 /**
@@ -8,7 +9,7 @@ import java.util.HashMap;
  * @author Rose Reatherford
  * @date Created: 12/17/2014
  */
-public class Song {
+public class Song implements Comparable<Song> {
 	// Constants //
 	/** Constant for a file path. */
 	public static String FILEPATH = "filepath";
@@ -26,6 +27,8 @@ public class Song {
 	private HashMap<String, String> information;
 	/** The length of the song, in second. */
 	private int length;
+	/** The song buffer. */
+	private BufferedInputStream buffer;
 	
 	/**
 	 * A constructor that creates a basic song.
@@ -80,5 +83,10 @@ public class Song {
 	 */
 	public void addParameter(String parameter, String value) {
 		information.put(parameter, value);
+	}
+
+	@Override
+	public int compareTo(Song song) {
+		return song.getLength() - this.length;
 	}
 }
