@@ -1,11 +1,6 @@
 package channel;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.util.List;
 
 import com.gmail.kunicins.olegs.libshout.Libshout;
 
@@ -116,7 +111,7 @@ public class Channel extends Stream {
 		return this.icecast;
 	}
 	
-	public DJBot getDJBot() {
-		return this.bot;
+	public List<byte[]> getNextSongBuffer() {
+		return this.bot.getSong().getBuffer();
 	}
 }
