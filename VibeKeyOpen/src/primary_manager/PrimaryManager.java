@@ -1,9 +1,14 @@
 package primary_manager;
 
+import core_objects_abstract.Song;
 import core_objects_abstract.Stream;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Queue;
+
+import threads.BufferThread;
 
 /**
  * Primary handler for streaming music and managing multiple streams.
@@ -19,6 +24,9 @@ public final class PrimaryManager {
 	/** Handlers **/
 	// List of threads to pull from.
 	private List<Thread> threadPool;
+	/** An int that controls the number of buffer threads. */
+	private int bufferThreadPool;
+	private Queue<Song> bufferQueue;
 	// List of streams to play music from.
 	private List<Stream> streams;
 
@@ -28,6 +36,9 @@ public final class PrimaryManager {
 		for (int i = 0; i < 10; i++) {
 			this.threadPool.add(new Thread());
 		}
+		
+		bufferThreadPool = 5;
+		bufferQueue = new PriorityQueue<Song>();
 
 		// Creates a new list of streams.
 		this.streams = new ArrayList<Stream>();
@@ -48,31 +59,14 @@ public final class PrimaryManager {
 		// Add thread to the end of the queue.
 		this.threadPool.add(t);
 	}
-
-	// TODO: Question, do we want play, pause etc. to work on all streams at
-	// once or one at a time (specified in the parameter perhaps)?
-
-	public void playStream() {
-		for (Stream s : this.streams) {
-			s.play();
-		}
-	}
-
-	public void pauseStream() {
-		for (Stream s : this.streams) {
-			s.pause();
-		}
-	}
-
-	public void resumeStream() {
-		for (Stream s : this.streams) {
-			s.resume();
-		}
-	}
-
-	public void stopStream() {
-		for (Stream s : this.streams) {
-			s.stop();
+	
+	public void requestBufferThread(Song song) {
+		if (bufferThreadPool > 0) {
+			bufferThreadPool--;
+			new BufferThread(song).run();
+			return;
+		} else {
+			bufferQueue.add(song);
 		}
 	}
 
@@ -94,12 +88,23 @@ public final class PrimaryManager {
 
 	// TODO: What exactly do we want these methods to do?
 	
+	/**
+	 * Sets up all the things so that the whole of the program can begin to run.
+	 */
 	public void run() {
 
 	}
 
 	public void display() {
 
+	}
+
+	public void finishBuffer() {
+		if (!this.bufferQueue.isEmpty()) {
+			new BufferThread(this.bufferQueue.poll()).run();
+		} else {
+			this.bufferThreadPool++;
+		}
 	}
 
 }

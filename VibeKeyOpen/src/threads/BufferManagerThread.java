@@ -17,8 +17,6 @@ public class BufferManagerThread extends Thread {
 		if (current == null) return;
 		
 		// TODO: Request thread for actual buffering.
-		
-		current.buffer();
 	}
 	
 	private void switchBuffer() {
