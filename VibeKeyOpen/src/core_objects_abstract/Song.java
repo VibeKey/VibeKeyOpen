@@ -1,7 +1,9 @@
 package core_objects_abstract;
 
 import java.io.BufferedInputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * A core object for songs.
@@ -21,16 +23,18 @@ public class Song implements Comparable<Song> {
 	public static String ARTIST = "artist";
 	/** Constant for a song id. */
 	public static String ALBUM = "album";
+	/** The size to buffer the song. */
+	public static int BUFFER_SIZE = 1024;
 	
 	// Local Information //
 	/** Stores other song information locally. */
 	private HashMap<String, String> information;
 	/** Size of the song, in bytes. */
-	private int size;
+	private long size;
 	/** The length of the song, in second. */
 	private int length;
 	/** The song buffer. */
-	private byte[] buffer;
+	private List<Byte[]> buffer;
 	/** The priority of this song to buffer. */
 	private int priority;
 	
@@ -45,12 +49,27 @@ public class Song implements Comparable<Song> {
 		this.information.put(ID, id);
 		this.length = length;
 		this.size = size;
+		this.buffer = new ArrayList<Byte[]>();
 	}
 	
-	public void beginBuffer() {
-		buffer = new byte[size];
+	/**
+	 * Returns the pointer to the buffer.
+	 * @return A list of all currently buffered parts of the song, 
+	 * 			broken into BUFFER_SIZE arrays
+	 */
+	public List<Byte[]> getBuffer() {
+		return buffer;
+	}
+	
+	/**
+	 * Buffers the BUFFER_SIZE of one part of the song.
+	 */
+	public void buffer() {
+		Byte[] buff = new Byte[BUFFER_SIZE];
 		
-		// Request for the PrimaryManager to buffer it.
+		// TODO: Buffer the array.
+		
+		buffer.add(buff);
 	}
 	
 	/**
