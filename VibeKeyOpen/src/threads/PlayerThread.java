@@ -1,7 +1,8 @@
-package channel;
+package threads;
 
 import java.io.IOException;
 
+import channel.Channel;
 import core_objects_abstract.Song;
 
 public class PlayerThread extends Thread {

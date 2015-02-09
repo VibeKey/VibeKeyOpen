@@ -25,10 +25,14 @@ public class Song implements Comparable<Song> {
 	// Local Information //
 	/** Stores other song information locally. */
 	private HashMap<String, String> information;
+	/** Size of the song, in bytes. */
+	private int size;
 	/** The length of the song, in second. */
 	private int length;
 	/** The song buffer. */
-	private BufferedInputStream buffer;
+	private byte[] buffer;
+	/** The priority of this song to buffer. */
+	private int priority;
 	
 	/**
 	 * A constructor that creates a basic song.
@@ -36,10 +40,17 @@ public class Song implements Comparable<Song> {
 	 * @param length The length of the song in total seconds.
 	 * @param id The id of the song.
 	 */
-	public Song (String filepath, int length, String id) {
+	public Song (String filepath, int length, String id, int size) {
 		this.information.put(FILEPATH, filepath);
 		this.information.put(ID, id);
 		this.length = length;
+		this.size = size;
+	}
+	
+	public void beginBuffer() {
+		buffer = new byte[size];
+		
+		// Request for the PrimaryManager to buffer it.
 	}
 	
 	/**
@@ -87,6 +98,6 @@ public class Song implements Comparable<Song> {
 
 	@Override
 	public int compareTo(Song song) {
-		return song.getLength() - this.length;
+		return this.priority - song.priority;
 	}
 }
