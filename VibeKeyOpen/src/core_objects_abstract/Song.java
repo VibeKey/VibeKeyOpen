@@ -34,7 +34,7 @@ public class Song implements Comparable<Song> {
 	/** The length of the song, in second. */
 	private int length;
 	/** The song buffer. */
-	private List<Byte[]> buffer;
+	private List<byte[]> buffer;
 	/** The priority of this song to buffer. */
 	private int priority;
 	
@@ -49,7 +49,7 @@ public class Song implements Comparable<Song> {
 		this.information.put(ID, id);
 		this.length = length;
 		this.size = size;
-		this.buffer = new ArrayList<Byte[]>();
+		this.buffer = new ArrayList<byte[]>();
 	}
 	
 	/**
@@ -57,7 +57,7 @@ public class Song implements Comparable<Song> {
 	 * @return A list of all currently buffered parts of the song, 
 	 * 			broken into BUFFER_SIZE arrays
 	 */
-	public List<Byte[]> getBuffer() {
+	public List<byte[]> getBuffer() {
 		return buffer;
 	}
 	
@@ -65,7 +65,7 @@ public class Song implements Comparable<Song> {
 	 * Buffers the BUFFER_SIZE of one part of the song.
 	 */
 	public void buffer() {
-		Byte[] buff = new Byte[BUFFER_SIZE];
+		byte[] buff = new byte[BUFFER_SIZE];
 		
 		// TODO: Buffer the array.
 		
