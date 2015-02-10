@@ -11,9 +11,11 @@ public class PlayerThread extends Thread {
 	Channel channel;
 //	byte[] buffer = new byte[1024];
 //	private List<byte[]> buffer;
-	private boolean play = true;
+//	private boolean play = true;
 	private Iterator<byte[]> bufferIter;
 	private byte[] cur;
+	
+	public final PlayerControl control = new PlayerControl();
 	
 	public PlayerThread(Channel channel) {
 		this.channel = channel;
@@ -30,7 +32,7 @@ public class PlayerThread extends Thread {
 //			Iterator<byte[]> it = buffer.iterator();
 //			byte[] cur = null;
 			
-			while (play) {
+			while (true) {
 //				if (play) { // If currently playing
 				if (bufferIter.hasNext()) { // If there's more song data to play
 					cur = bufferIter.next();
@@ -50,6 +52,8 @@ public class PlayerThread extends Thread {
 //					sleep(10);
 //					break;
 //				}
+				
+				control.pauseCheck();
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -60,12 +64,12 @@ public class PlayerThread extends Thread {
 		}
 	}
 	
-	public void pause() {
-		play = false;
-	}
-	
-	public void play() {
-		play = true;
-		this.run();
-	}
+//	public void pause() {
+//		play = false;
+//	}
+//	
+//	public void play() {
+//		play = true;
+//		this.run(); // This is bad...
+//	}
 }

@@ -25,6 +25,7 @@ public class PlayState implements State {
 
 	@Override
 	public void pause() {
+		channel.getThread().control.pause();
 		channel.setState(channel.getPauseState());
 	}
 

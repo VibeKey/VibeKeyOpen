@@ -30,6 +30,7 @@ public class PauseState implements State {
 
 	@Override
 	public void resume() {
+		channel.getThread().control.resume();
 		channel.setState(channel.getPlayState());
 	}
 

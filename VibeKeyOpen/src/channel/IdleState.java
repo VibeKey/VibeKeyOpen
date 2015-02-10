@@ -25,6 +25,9 @@ public class IdleState implements State {
 
 	@Override
 	public void play() {
+		if (!channel.getThread().isAlive()) {
+			channel.getThread().start();
+		}
 		channel.setState(channel.getPlayState());
 	}
 

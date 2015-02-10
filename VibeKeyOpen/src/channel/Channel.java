@@ -2,6 +2,8 @@ package channel;
 
 import java.util.List;
 
+import threads.PlayerThread;
+
 import com.gmail.kunicins.olegs.libshout.Libshout;
 
 import core_objects_abstract.Stream;
@@ -20,15 +22,19 @@ public class Channel extends Stream {
 	
 	Libshout icecast;
 	
+	PlayerThread thread;
+	
 	/** Constructor that sets the name of the channel. */
 	public Channel(String name, DJBot bot) {
 		super(bot);
 		this.cName = name;
 //		this.state = new ClosedState();
-		closedState = new ClosedState(this);
-		idleState = new IdleState(this);
-		playState = new PlayState(this);
-		pauseState = new PauseState(this);
+		this.closedState = new ClosedState(this);
+		this.idleState = new IdleState(this);
+		this.playState = new PlayState(this);
+		this.pauseState = new PauseState(this);
+		
+		this.thread = new PlayerThread(this);
 	}
 	
 	
@@ -113,5 +119,34 @@ public class Channel extends Stream {
 	
 	public List<byte[]> getNextSongBuffer() {
 		return this.bot.getSong().getBuffer();
+	}
+
+
+	public PlayerThread getThread() {
+		return this.thread;
+	}
+	
+	public void open() {
+		this.state.open();
+	}
+	
+	public void close() {
+		this.state.close();
+	}
+	
+	public void play() {
+		this.state.play();
+	}
+	
+	public void pause() {
+		this.state.pause();
+	}
+	
+	public void resume() {
+		this.state.resume();
+	}
+	
+	public void stop() {
+		this.state.stop();
 	}
 }
