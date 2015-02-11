@@ -1,0 +1,43 @@
+body {
+	margin: 0px;
+	background-color: black;
+	font-family: "Agency FB", sans-serif;
+	font-size: 1.5em;
+}
+
+#tab-container {
+	margin-top: 20px;
+	display: inline-block;
+	background-color: #666666;
+}
+
+#tab-content {
+	height: 100%;
+	margin: 0px;
+	display: none;
+	float: left;
+}
+
+#tab-selector {
+	width: 120px;
+	background-color: #464646;
+	margin: 0px;
+	float: left;
+}
+
+#page-body {
+	width: 100%;
+	background-color: blue;
+	height: 100%;
+}
+
+.single-tab {
+	/*border: 2px solid #888888; */
+	margin: 2px;
+	background-image: linear-gradient( #c0c0c0, #cccccc);
+}
+
+.selected-tab {
+	background-color: #ffffff;
+	color: #ffffff;
+}
