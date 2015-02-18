@@ -1,5 +1,6 @@
-package theme_management;
+package src.theme_management;
 
+import java.awt.Shape;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -17,6 +18,9 @@ public abstract class ThemeItem implements ThemeObject{
 	
 	//the ThemeManager this item will be interacting with
 	private ThemeManager manager;
+	
+	//private Shape shape;
+	
 	
 	public ThemeItem(){
 		this.id=this.hashCode()+"";
@@ -132,8 +136,7 @@ public abstract class ThemeItem implements ThemeObject{
 	@Override
 	public abstract ThemeStyle findStyle();
 
-	@Override
-	public abstract boolean drawSelf();
+	
 
 	/**
 	 * 
@@ -150,5 +153,39 @@ public abstract class ThemeItem implements ThemeObject{
 	public void setManager(ThemeManager manager) {
 		this.manager = manager;
 	}
+
+	protected abstract Shape getShape();
+
+	/*public void setShape(Shape shape) {
+		this.shape = shape;
+	}*/
+	
+	public List<Shape> render(){
+		List<Shape> shapes = new ArrayList<Shape>();
+		shapes.add(getShape());
+		for(ThemeObject to : children){
+			shapes.addAll(to.getShapes());
+		}
+		//TODO make JSP stuff here???
+		return shapes;
+	}
+
+	public String primitivePartialRender() {
+		String s = "";
+		
+		String[] data = this.getShapeData();
+		
+		s+=data[0];
+		
+		for(ThemeObject to : children){
+			s+=to.primitivePartialRender();
+		}
+		
+		s+=data[1];
+		
+		return s;
+	}
+
+	protected abstract String[] getShapeData();
 
 }

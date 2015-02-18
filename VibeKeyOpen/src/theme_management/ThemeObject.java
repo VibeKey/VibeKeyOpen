@@ -1,4 +1,7 @@
-package theme_management;
+package src.theme_management;
+
+import java.awt.Shape;
+import java.util.Collection;
 
 public interface ThemeObject {
 	
@@ -57,7 +60,9 @@ public interface ThemeObject {
 	public boolean moveThemeItemToFront(String themeItemId);
 	
 	public ThemeStyle findStyle();
-	
-	public boolean drawSelf();
+
+	public Collection<? extends Shape> getShapes();
+
+	public String primitivePartialRender();
 	
 }
