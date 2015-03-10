@@ -1,4 +1,4 @@
-package src.theme_management;
+package theme_management;
 
 public interface ThemeStyle {
 

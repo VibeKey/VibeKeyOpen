@@ -1,4 +1,4 @@
-package src.theme_management;
+package theme_management;
 
 import java.awt.Shape;
 import java.util.ArrayList;
