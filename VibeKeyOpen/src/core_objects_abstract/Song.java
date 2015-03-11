@@ -1,6 +1,5 @@
 package core_objects_abstract;
 
-import java.io.BufferedInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -69,7 +68,7 @@ public class Song implements Comparable<Song> {
 	 * @return
 	 */
 	public boolean finishedBuffering() {
-		return false;
+		return buffer.size() < Math.ceil(size / BUFFER_SIZE);
 	}
 	
 	/**

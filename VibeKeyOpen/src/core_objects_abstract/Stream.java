@@ -1,8 +1,5 @@
 package core_objects_abstract;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import djbot.DJBot;
 
 public abstract class Stream {
