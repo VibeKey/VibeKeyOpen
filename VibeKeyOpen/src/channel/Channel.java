@@ -13,6 +13,9 @@ public class Channel extends Stream {
 
 	public static final State PAUSE_STATE = new PauseState();
 	public static final State STOP_STATE = new IdleState();
+	public static final State PLAY_STATE = new PlayState();
+	public static final State CLOSED_STATE = new ClosedState();
+	public static final State OPEN_STATE = new IdleState();
 	private String cName;
 	
 	private State state = STOP_STATE;
@@ -76,29 +79,51 @@ public class Channel extends Stream {
 		Channel.addSong(args[0]);
 	}
 */
-	
+	/**
+	 * Sets the state for the channel.
+	 * @param state
+	 */
 	public void setState(State state) {
 		this.state = state;
 		this.state.function(this);
 	}
 
+	/**
+	 * Gets the name of the channel.
+	 * @return
+	 */
 	public String getName() {
 		return this.cName;
 	}
 	
+	/**
+	 * Sets the Icecast connection for the channel.
+	 * @param icecast
+	 */
 	public void setIcecast(Libshout icecast) {
 		this.icecast = icecast;
 	}
 	
+	/**
+	 * Gets the Icecast connection for the channel.
+	 * @return
+	 */
 	public Libshout getIcecast() {
 		return this.icecast;
 	}
 	
+	/**
+	 * Prepares the buffer for the next song.
+	 * @return
+	 */
 	public List<byte[]> getNextSongBuffer() {
 		return this.bot.getSong().getBuffer();
 	}
 
-
+	/**
+	 * Gets the thread for this channel.
+	 * @return
+	 */
 	public PlayerThread getThread() {
 		return this.thread;
 	}

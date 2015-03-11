@@ -2,48 +2,29 @@ package channel;
 
 import com.gmail.kunicins.olegs.libshout.Libshout;
 
-public class IdleState implements State {
-	
-	Channel channel;
-	
-	public IdleState(Channel channel) {
-		this.channel = channel;
-	}
+/**
+ * Idle State can be active when you stop a track or open a new channel.
+ * 
+ * @author Jonathan
+ */
+public class IdleState extends State {
 
+	/**
+	 * This is the function that the PlayState runs
+	 */
 	@Override
-	public void open() {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public void close() {
+	public void function(Channel channel) {
 		Libshout icecast = channel.getIcecast();
 		icecast.close();
 		channel.setIcecast(null);
-		channel.setState(channel.getClosedState());
 	}
 
-	@Override
-	public void play() {
-		if (!channel.getThread().isAlive()) {
-			channel.getThread().start();
-		}
-		channel.setState(channel.getPlayState());
-	}
-
-	@Override
-	public void pause() {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public void resume() {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public void stop() {
-		channel.setState(channel.getIdleState());
+	/**
+	 * These are the allowed states to change from the PlayState
+	 */
+	protected void addAllowedStates() {
+		this.allowedStates.add(Channel.PLAY_STATE);
+		this.allowedStates.add(Channel.CLOSED_STATE);
 	}
 
 }

@@ -4,16 +4,13 @@ import java.io.IOException;
 
 import com.gmail.kunicins.olegs.libshout.Libshout;
 
-public class ClosedState implements State {
-	
-	Channel channel;
-	
-	public ClosedState(Channel channel) {
-		this.channel = channel;
-	}
+public class ClosedState extends State {
 
+	/**
+	 * This is the function that the PlayState runs
+	 */
 	@Override
-	public void open() {
+	public void function(Channel channel) {
 		Libshout icecast = null;
 		try {
 			icecast = new Libshout();
@@ -29,33 +26,13 @@ public class ClosedState implements State {
 		}
 		
 		channel.setIcecast(icecast);
-		
-		channel.setState(channel.getIdleState());
 	}
 
-	@Override
-	public void close() {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public void play() {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public void pause() {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public void resume() {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public void stop() {
-		throw new UnsupportedOperationException();
+	/**
+	 * These are the allowed states to change from the PlayState
+	 */
+	protected void addAllowedStates() {
+		this.allowedStates.add(Channel.OPEN_STATE);
 	}
 
 }
