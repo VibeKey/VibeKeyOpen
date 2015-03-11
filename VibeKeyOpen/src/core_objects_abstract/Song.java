@@ -45,6 +45,7 @@ public class Song implements Comparable<Song> {
 	 * @param id The id of the song.
 	 */
 	public Song (String filepath, int length, String id, int size) {
+		this.information = new HashMap<String, String>();
 		this.information.put(FILEPATH, filepath);
 		this.information.put(ID, id);
 		this.length = length;

@@ -61,9 +61,9 @@ public final class PrimaryManager {
 	 * Returns the thread now that it has finished running.
 	 * @param t The thread that has finished.
 	 */
-	public void returnThread(Thread t) {
+	public void returnThread(ControlledThread t) {
 		// Add thread to the end of the queue.
-		this.threadPool.add((ControlledThread) t);
+		this.threadPool.add(t);
 	}
 	
 	public void requestBufferThread(Song song) {

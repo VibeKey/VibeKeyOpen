@@ -1,10 +1,12 @@
 package primary_manager;
 
+import djbot.DJBot;
+
 public class VibeKey {
-	public static PrimaryManager manager;
+	public static PrimaryManager manager = new PrimaryManager();;
 
 	public static void main(String[] args) {
-		manager = new PrimaryManager();
+		manager.takeThread(new DJBot());
 	}
 
 }

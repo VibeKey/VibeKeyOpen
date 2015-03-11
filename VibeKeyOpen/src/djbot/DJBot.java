@@ -38,6 +38,8 @@ public class DJBot extends ControlledRunner {
 	public DJBot() {
 		this.independentPlugins = new ArrayList<BotPlugin>();
 		this.dependentPlugins = new ArrayList<DependentBotPlugin>();
+		this.buffer = new ArrayList<Song>();
+		this.songList  = new ArrayList<Song>();
 	}
 	
 	/**
@@ -45,7 +47,7 @@ public class DJBot extends ControlledRunner {
 	 * @return
 	 */
 	public Song getSong() {
-		wake();		
+		VibeKey.manager.takeThread(this);	
 		return songList.remove(0);
 	}
 	
@@ -55,11 +57,6 @@ public class DJBot extends ControlledRunner {
 	private void changeRankings() {
 		for (int i = 0; i < songList.size(); i++) 
 			songList.get(i).changeRank(i);
-	}
-
-	
-	private void wake() {
-		VibeKey.manager.takeThread(this);
 	}
 	
 	private void addSongs() {
@@ -71,6 +68,9 @@ public class DJBot extends ControlledRunner {
 	
 	private void runSearch() {
 		System.out.println("I am running a search.");
+		for (int i = 0; i < MIN_SIZE; i++) {
+			buffer.add(new Song("", 6000, "What's new?", 684596498));
+		}
 	}
 
 	/**
