@@ -73,6 +73,9 @@ public class DJBot extends ControlledRunner {
 		System.out.println("I am running a search.");
 	}
 
+	/**
+	 * Runs all the plugins. 
+	 */
 	private void runPlugins() {
 		boolean changed = false;
 		
@@ -80,11 +83,7 @@ public class DJBot extends ControlledRunner {
 			if (plugin.modifyTerms(mediaTerms, songList) && !changed) changed = true;
 		for (BotPlugin plugin : this.independentPlugins) plugin.modifyTerms(mediaTerms, songList);
 		
-		if (changed) {
-			runSearch();
-		} 
-		
-		if (buffer.size() < MIN_SIZE) runSearch();
+		if (changed || buffer.size() < MIN_SIZE) runSearch();
 	}
 
 	@Override
