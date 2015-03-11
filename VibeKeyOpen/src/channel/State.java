@@ -1,16 +1,24 @@
 package channel;
 
-public interface State {
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class State {
+	protected List<State> allowedStates;
 	
-	public void open();
+	protected State() {
+		this.allowedStates = new ArrayList<State>();
+		this.addAllowedStates();
+	}
 	
-	public void close();
+	public void changeState(Channel channel, State state) {
+		if (allowedStates.contains(state)) {
+			channel.setState(state);
+		} else {
+			throw new UnsupportedOperationException();
+		}
+	}
 	
-	public void play();
-	
-	public void pause();
-	
-	public void resume();
-	
-	public void stop();
+	public abstract void function(Channel channel);
+	protected abstract void addAllowedStates();
 }

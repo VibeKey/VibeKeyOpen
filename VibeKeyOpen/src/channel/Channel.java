@@ -11,14 +11,11 @@ import djbot.DJBot;
 
 public class Channel extends Stream {
 
+	public static final State PAUSE_STATE = new PauseState();
+	public static final State STOP_STATE = new IdleState();
 	private String cName;
-//	private enum State {CLOSE, IDLE, PLAY, PAUSE};
-	private State closedState;
-	private State idleState;
-	private State playState;
-	private State pauseState;
 	
-	private State state = closedState;
+	private State state = STOP_STATE;
 	
 	Libshout icecast;
 	
@@ -28,11 +25,6 @@ public class Channel extends Stream {
 	public Channel(String name, DJBot bot) {
 		super(bot);
 		this.cName = name;
-//		this.state = new ClosedState();
-		this.closedState = new ClosedState(this);
-		this.idleState = new IdleState(this);
-		this.playState = new PlayState(this);
-		this.pauseState = new PauseState(this);
 		
 		this.thread = new PlayerThread(this);
 	}
@@ -85,24 +77,9 @@ public class Channel extends Stream {
 	}
 */
 	
-	public State getClosedState() {
-		return this.closedState;
-	}
-	
-	public State getIdleState() {
-		return this.idleState;
-	}
-	
-	public State getPlayState() {
-		return this.playState;
-	}
-	
-	public State getPauseState() {
-		return this.pauseState;
-	}
-	
 	public void setState(State state) {
 		this.state = state;
+		this.state.function(this);
 	}
 
 	public String getName() {
@@ -124,29 +101,5 @@ public class Channel extends Stream {
 
 	public PlayerThread getThread() {
 		return this.thread;
-	}
-	
-	public void open() {
-		this.state.open();
-	}
-	
-	public void close() {
-		this.state.close();
-	}
-	
-	public void play() {
-		this.state.play();
-	}
-	
-	public void pause() {
-		this.state.pause();
-	}
-	
-	public void resume() {
-		this.state.resume();
-	}
-	
-	public void stop() {
-		this.state.stop();
 	}
 }

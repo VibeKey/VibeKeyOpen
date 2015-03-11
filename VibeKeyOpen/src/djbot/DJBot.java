@@ -45,9 +45,19 @@ public class DJBot {
 	 */
 	public Song getSong() {
 		wake();
-		return songList.remove(0);
+		Song newSong = songList.remove(0);
+		changeRankings();
+		return newSong;
 	}
 	
+	/**
+	 * Updates the rank 
+	 */
+	private void changeRankings() {
+		for (int i = 0; i < songList.size(); i++) 
+			songList.get(i).changeRank(i);
+	}
+
 	/**
 	 * Creates a thread to add new songs, run plugins, and searches.
 	 */

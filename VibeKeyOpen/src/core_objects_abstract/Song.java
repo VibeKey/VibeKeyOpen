@@ -35,8 +35,8 @@ public class Song implements Comparable<Song> {
 	private int length;
 	/** The song buffer. */
 	private List<byte[]> buffer;
-	/** The priority of this song to buffer. */
-	private int priority;
+	private int rank;
+	private long time;
 	
 	/**
 	 * A constructor that creates a basic song.
@@ -50,6 +50,8 @@ public class Song implements Comparable<Song> {
 		this.length = length;
 		this.size = size;
 		this.buffer = new ArrayList<byte[]>();
+		this.time = 0;
+		this.rank = 10;
 	}
 	
 	/**
@@ -59,6 +61,14 @@ public class Song implements Comparable<Song> {
 	 */
 	public List<byte[]> getBuffer() {
 		return buffer;
+	}
+	
+	/**
+	 * Returns true if the thread is finished buffering, else false.
+	 * @return
+	 */
+	public boolean finishedBuffering() {
+		return false;
 	}
 	
 	/**
@@ -114,9 +124,22 @@ public class Song implements Comparable<Song> {
 	public void addParameter(String parameter, String value) {
 		information.put(parameter, value);
 	}
+	
+	public void changeRank(int newRank) {
+		this.rank = newRank;
+	}
+	
+	/**
+	 * Computes the priority of the song proportional to the rank and 
+	 * 	amount already buffer minus the time it has been in the queue.
+	 * @return The priority of this song.
+	 */
+	private long computePriority() {
+		return rank * ((BUFFER_SIZE * buffer.size()) - (System.currentTimeMillis() - time));
+	}
 
 	@Override
 	public int compareTo(Song song) {
-		return this.priority - song.priority;
+		return (int) (computePriority() - song.computePriority());
 	}
 }

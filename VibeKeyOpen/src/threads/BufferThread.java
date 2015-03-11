@@ -23,7 +23,7 @@ public class BufferThread extends Thread {
 	@Override
 	public void run() {
 		song.buffer();
-		VibeKey.manager.finishBuffer();
+		VibeKey.manager.finishBuffer(song);
 	}
 
 }

@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
+import threads.BufferManagerThread;
 import threads.BufferThread;
 
 /**
@@ -25,8 +26,7 @@ public final class PrimaryManager {
 	// List of threads to pull from.
 	private List<Thread> threadPool;
 	/** An int that controls the number of buffer threads. */
-	private int bufferThreadPool;
-	private Queue<Song> bufferQueue;
+	private BufferManagerThread buffer;
 	// List of streams to play music from.
 	private List<Stream> streams;
 
@@ -37,8 +37,8 @@ public final class PrimaryManager {
 			this.threadPool.add(new Thread());
 		}
 		
-		bufferThreadPool = 5;
-		bufferQueue = new PriorityQueue<Song>();
+		buffer = new BufferManagerThread();
+		buffer.run();
 
 		// Creates a new list of streams.
 		this.streams = new ArrayList<Stream>();
@@ -61,13 +61,11 @@ public final class PrimaryManager {
 	}
 	
 	public void requestBufferThread(Song song) {
-		if (bufferThreadPool > 0) {
-			bufferThreadPool--;
-			new BufferThread(song).run();
-			return;
-		} else {
-			bufferQueue.add(song);
-		}
+		buffer.bufferSong(song);
+	}
+	
+	public void finishBuffer(Song song) {
+		buffer.finishBuffer(song);
 	}
 
 	// TODO: Question, do we want them to pass in a stream to add or give them a
@@ -97,14 +95,6 @@ public final class PrimaryManager {
 
 	public void display() {
 
-	}
-
-	public void finishBuffer() {
-		if (!this.bufferQueue.isEmpty()) {
-			new BufferThread(this.bufferQueue.poll()).run();
-		} else {
-			this.bufferThreadPool++;
-		}
 	}
 
 }

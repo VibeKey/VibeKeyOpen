@@ -1,42 +1,15 @@
 package channel;
 
-public class PlayState implements State {
+public class PlayState extends State {
+	@Override
+	public void function(Channel channel) {
+		channel.getThread().control.resume();
+	}
+
 	
-	Channel channel;
-	
-	public PlayState(Channel channel) {
-		this.channel = channel;
-	}
-
-	@Override
-	public void open() {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public void close() {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public void play() {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public void pause() {
-		channel.getThread().control.pause();
-		channel.setState(channel.getPauseState());
-	}
-
-	@Override
-	public void resume() {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public void stop() {
-		channel.setState(channel.getIdleState());
+	protected void addAllowedStates() {
+		this.allowedStates.add(Channel.PAUSE_STATE);
+		this.allowedStates.add(Channel.STOP_STATE);
 	}
 
 }
