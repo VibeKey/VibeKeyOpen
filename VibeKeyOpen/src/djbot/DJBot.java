@@ -18,7 +18,6 @@ import core_objects_abstract.Song;
 public class DJBot extends ControlledRunner {
 	/** Constants **/
 	private static int MIN_SIZE = 10;
-	public static String CHANGE = "needNewSearch";
 	
 	/** Handlers **/
 	// The list of preference handlers.
@@ -75,11 +74,13 @@ public class DJBot extends ControlledRunner {
 	}
 
 	private void runPlugins() {
-		for (BotPlugin plugin : this.dependentPlugins) plugin.modifyTerms(mediaTerms, songList);
+		boolean changed = false;
+		
+		for (BotPlugin plugin : this.dependentPlugins)
+			if (plugin.modifyTerms(mediaTerms, songList) && !changed) changed = true;
 		for (BotPlugin plugin : this.independentPlugins) plugin.modifyTerms(mediaTerms, songList);
 		
-		if (mediaTerms.containsKey(CHANGE)) {
-			mediaTerms.remove(CHANGE);
+		if (changed) {
 			runSearch();
 		} 
 		
@@ -90,7 +91,7 @@ public class DJBot extends ControlledRunner {
 	/**
 	 * Creates a thread to add new songs, run plugins, and searches.
 	 */
-	public void run() {
+	public void execute() {
 		runPlugins();
 		if (songList.size() < MIN_SIZE) addSongs();
 		changeRankings();

@@ -8,6 +8,7 @@ import java.util.List;
 
 import threads.BufferManagerThread;
 import threads.controlled.ControlledRunner;
+import threads.controlled.ControlledThread;
 
 /**
  * Primary handler for streaming music and managing multiple streams.
@@ -22,7 +23,7 @@ public final class PrimaryManager {
 	
 	/** Handlers **/
 	// List of threads to pull from.
-	private List<Thread> threadPool;
+	private List<ControlledThread> threadPool;
 	/** An int that controls the number of buffer threads. */
 	private BufferManagerThread buffer;
 	// List of streams to play music from.
@@ -30,9 +31,9 @@ public final class PrimaryManager {
 
 	public PrimaryManager() {
 		// Creates new thread list and adds ten threads to it.
-		this.threadPool = new ArrayList<Thread>();
+		this.threadPool = new ArrayList<ControlledThread>();
 		for (int i = 0; i < 10; i++) {
-			this.threadPool.add(new Thread());
+			this.threadPool.add(new ControlledThread());
 		}
 		
 		// Makes and runs the buffer manager.
@@ -47,13 +48,12 @@ public final class PrimaryManager {
 	 * Takes a thread to run whatever is needed.
 	 * @return The thread that can be used by the requester. 
 	 */
-	public Thread takeThread(ControlledRunner runner) {
+	public void takeThread(ControlledRunner runner) {
 		if (this.threadPool.size() > 0) {
 			// Thread pool has a thread to give. Remove from pool and return.
-			return this.threadPool.remove(0);
+			this.threadPool.remove(0).run(runner);
 		} else {
 			// Thread pool does not have a thread return null for now.
-			return null;
 		}
 	}
 
@@ -63,7 +63,7 @@ public final class PrimaryManager {
 	 */
 	public void returnThread(Thread t) {
 		// Add thread to the end of the queue.
-		this.threadPool.add(t);
+		this.threadPool.add((ControlledThread) t);
 	}
 	
 	public void requestBufferThread(Song song) {

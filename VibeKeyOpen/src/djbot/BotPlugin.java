@@ -22,7 +22,7 @@ public abstract class BotPlugin {
 	 * @param currentSongs 	The current list of songs, 
 	 * 						typically not modified.
 	 */
-	public abstract void modifyTerms(HashMap<String,String> terms, List<Song> currentSongs);
+	public abstract boolean modifyTerms(HashMap<String,String> terms, List<Song> currentSongs);
 	
 	/**
 	 * Changes the behavior of the plugin, called by dependent plugins.
