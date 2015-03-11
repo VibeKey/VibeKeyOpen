@@ -6,7 +6,9 @@ public class VibeKey {
 	public static PrimaryManager manager = new PrimaryManager();;
 
 	public static void main(String[] args) {
-		manager.takeThread(new DJBot());
+		System.out.println(new DJBot().getSong().getId());
+		System.out.println(new DJBot().getSong().getId());
+		System.out.println(new DJBot().getSong().getId());
 	}
 
 }

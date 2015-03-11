@@ -48,6 +48,7 @@ public class DJBot extends ControlledRunner {
 	 */
 	public Song getSong() {
 		VibeKey.manager.takeThread(this);	
+		System.out.println(songList.size());
 		return songList.remove(0);
 	}
 	
@@ -61,14 +62,14 @@ public class DJBot extends ControlledRunner {
 	
 	private void addSongs() {
 		while (songList.size() < MIN_SIZE) {
-			if (buffer.size() > 0) songList.add(buffer.remove(0));
-			else runSearch();
+			if (buffer.size() <= 0) runSearch();
+			songList.add(buffer.remove(0));
 		}
 	}
 	
 	private void runSearch() {
-		System.out.println("I am running a search.");
-		for (int i = 0; i < MIN_SIZE; i++) {
+		System.out.println("I am running a search, song list is size: " + songList.size());
+		for (int i = 0; i < MIN_SIZE * 5; i++) {
 			buffer.add(new Song("", 6000, "What's new?", 684596498));
 		}
 	}
