@@ -5,11 +5,9 @@ import core_objects_abstract.Stream;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Queue;
 
 import threads.BufferManagerThread;
-import threads.BufferThread;
+import threads.controlled.ControlledRunner;
 
 /**
  * Primary handler for streaming music and managing multiple streams.
@@ -37,15 +35,19 @@ public final class PrimaryManager {
 			this.threadPool.add(new Thread());
 		}
 		
+		// Makes and runs the buffer manager.
 		buffer = new BufferManagerThread();
 		buffer.run();
 
 		// Creates a new list of streams.
 		this.streams = new ArrayList<Stream>();
-
 	}
 
-	public Thread takeThread() {
+	/**
+	 * Takes a thread to run whatever is needed.
+	 * @return The thread that can be used by the requester. 
+	 */
+	public Thread takeThread(ControlledRunner runner) {
 		if (this.threadPool.size() > 0) {
 			// Thread pool has a thread to give. Remove from pool and return.
 			return this.threadPool.remove(0);
@@ -55,6 +57,10 @@ public final class PrimaryManager {
 		}
 	}
 
+	/**
+	 * Returns the thread now that it has finished running.
+	 * @param t The thread that has finished.
+	 */
 	public void returnThread(Thread t) {
 		// Add thread to the end of the queue.
 		this.threadPool.add(t);
@@ -83,8 +89,6 @@ public final class PrimaryManager {
 			}
 		}
 	}
-
-	// TODO: What exactly do we want these methods to do?
 	
 	/**
 	 * Sets up all the things so that the whole of the program can begin to run.

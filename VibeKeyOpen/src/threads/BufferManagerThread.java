@@ -5,9 +5,21 @@ import java.util.Queue;
 
 import core_objects_abstract.Song;
 
+/**
+ * Manages the buffer threads and the songs that need to be buffered.
+ * 
+ * @author Rose Reatherford
+ * @created 3/11/2015
+ */
 public class BufferManagerThread extends Thread {
-	private Queue<Song> bufferList;
+	// Static Variables
+	/** The max number of buffering threads. */
 	private static int MAX_THREADS = 3;
+	
+	// Local Variables
+	/** The queue of songs that need to be buffered. */
+	private Queue<Song> bufferList;
+	/** The number of threads in the pool. */
 	private int threadPool;
 
 	public BufferManagerThread() {
@@ -25,22 +37,25 @@ public class BufferManagerThread extends Thread {
 		if (!bufferList.isEmpty()) buffer();
 	}
 	
+	/**
+	 * Adds the song to the list of songs to be buffered.
+	 * @param song The song to buffer.
+	 */
 	public void bufferSong(Song song) {
 		bufferList.add(song);
 		buffer();
 	}
 	
+	/**
+	 * Creates a new thread to buffer the song at the top of the queue. 
+	 */
 	private void buffer() {
-		if (threadPool <= 0) return;
+		// Checks that the thread pool and buffer list contain items.
+		if (threadPool <= 0 || bufferList.size() <= 0) return;
 		
+		// Creates a new thread to buffer the top song.
 		threadPool--;
 		Thread thread = new BufferThread(bufferList.poll());
 		thread.run();
-	}
-
-	@Override
-	public void run() {
-		super.run();
-		
 	}
 }

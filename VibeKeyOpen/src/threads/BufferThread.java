@@ -25,5 +25,4 @@ public class BufferThread extends Thread {
 		song.buffer();
 		VibeKey.manager.finishBuffer(song);
 	}
-
 }
