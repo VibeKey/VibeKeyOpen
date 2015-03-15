@@ -1,8 +1,12 @@
 package core_objects_abstract;
 
-import java.util.ArrayList;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * A core object for songs.
@@ -49,7 +53,7 @@ public class Song implements Comparable<Song> {
 		this.information.put(ID, id);
 		this.length = length;
 		this.size = size;
-		this.buffer = new ArrayList<byte[]>();
+		this.buffer = new CopyOnWriteArrayList<byte[]>();
 		this.time = 0;
 		this.rank = 10;
 	}
@@ -78,6 +82,27 @@ public class Song implements Comparable<Song> {
 		byte[] buff = new byte[BUFFER_SIZE];
 		
 		// TODO: Buffer the array.
+		BufferedInputStream f = null;
+		try {
+			f = new BufferedInputStream(new FileInputStream(this.information.get(FILEPATH)));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			f.read(buff, BUFFER_SIZE * this.buffer.size(), BUFFER_SIZE);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			f.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		buffer.add(buff);
 	}
