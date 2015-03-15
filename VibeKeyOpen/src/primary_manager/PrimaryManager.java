@@ -26,56 +26,11 @@ public final class PrimaryManager {
 	// List of streams to play music from.
 	private List<Stream> streams;
 
-	public PrimaryManager() {
-		/* 
-		 * Kept for reference - should be able to run using thread executors from VibeKey class (WONGB)
-		 * 
-		// Creates new thread list and adds ten threads to it.
-		this.threadPool = new ArrayList<ControlledThread>();
-		for (int i = 0; i < 10; i++) {
-			this.threadPool.add(new ControlledThread());
-		}
-		// Makes and runs the buffer manager.
-		buffer = new BufferManagerThread();
-		buffer.run();
-		*/
-		
+	public PrimaryManager() {		
 
 		// Creates a new list of streams.
 		this.streams = new ArrayList<Stream>();
 	}
-
-	/**
-	 * Takes a thread to run whatever is needed.
-	 * @return The thread that can be used by the requester. 
-	public void takeThread(ControlledRunner runner) {
-		if (this.threadPool.size() > 0) {
-			// Thread pool has a thread to give. Remove from pool and return.
-			this.threadPool.remove(0).run(runner);
-		} else {
-			// Thread pool does not have a thread return null for now.
-		}
-	}
-	 */
-
-	/**
-	 * Returns the thread now that it has finished running.
-	 * @param t The thread that has finished.
-	public void returnThread(ControlledThread t) {
-		// Add thread to the end of the queue.
-		this.threadPool.add(t);
-	}
-	 */
-	
-	/*
-	public void requestBufferThread(Song song) {
-		buffer.bufferSong(song);
-	}
-	
-	public void finishBuffer(Song song) {
-		buffer.finishBuffer(song);
-	}
-	*/
 	
 	public void bufferSong(Song song){
 		bufferExecutor.submit(new BufferSongRunnable(song));
