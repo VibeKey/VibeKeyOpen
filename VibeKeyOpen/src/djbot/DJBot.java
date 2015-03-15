@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import primary_manager.VibeKey;
-import threads.controlled.ControlledRunner;
 import core_objects_abstract.Song;
 
 /**
@@ -15,7 +13,7 @@ import core_objects_abstract.Song;
  * @author Rose Reatherford
  * @date Created: 12/17/2014; Last Updated: 12/31/2014
  */
-public class DJBot extends ControlledRunner {
+public class DJBot implements Runnable{
 	/** Constants **/
 	private static int MIN_SIZE = 10;
 	
@@ -47,7 +45,6 @@ public class DJBot extends ControlledRunner {
 	 * @return
 	 */
 	public Song getSong() {
-		VibeKey.manager.takeThread(this);	
 		System.out.println(songList.size());
 		return songList.remove(0);
 	}
@@ -91,7 +88,7 @@ public class DJBot extends ControlledRunner {
 	/**
 	 * Creates a thread to add new songs, run plugins, and searches.
 	 */
-	public void execute() {
+	public void run() {
 		runPlugins();
 		if (songList.size() < MIN_SIZE) addSongs();
 		changeRankings();

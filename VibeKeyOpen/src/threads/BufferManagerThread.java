@@ -50,12 +50,14 @@ public class BufferManagerThread extends Thread {
 	 * Creates a new thread to buffer the song at the top of the queue. 
 	 */
 	private void buffer() {
-		// Checks that the thread pool and buffer list contain items.
-		if (threadPool <= 0 || bufferList.size() <= 0) return;
 		
-		// Creates a new thread to buffer the top song.
-		threadPool--;
-		Thread thread = new BufferThread(bufferList.poll());
-		thread.run();
+//		
+//		// Checks that the thread pool and buffer list contain items.
+//		if (threadPool <= 0 || bufferList.size() <= 0) return;
+//		
+//		// Creates a new thread to buffer the top song.
+//		threadPool--;
+//		Thread thread = new BufferThread(bufferList.poll());
+//		thread.run();
 	}
 }

@@ -2,7 +2,7 @@ package channel;
 
 import java.util.List;
 
-import threads.PlayerThread;
+import runnables.PlayerRunnable;
 
 import com.gmail.kunicins.olegs.libshout.Libshout;
 
@@ -22,14 +22,14 @@ public class Channel extends Stream {
 	
 	Libshout icecast;
 	
-	PlayerThread thread;
+	PlayerRunnable thread;
 	
 	/** Constructor that sets the name of the channel. */
 	public Channel(String name, DJBot bot) {
 		super(bot);
 		this.cName = name;
 		
-		this.thread = new PlayerThread(this);
+		this.thread = new PlayerRunnable(this);
 	}
 	
 	
@@ -124,7 +124,7 @@ public class Channel extends Stream {
 	 * Gets the thread for this channel.
 	 * @return
 	 */
-	public PlayerThread getThread() {
+	public PlayerRunnable getThread() {
 		return this.thread;
 	}
 }
