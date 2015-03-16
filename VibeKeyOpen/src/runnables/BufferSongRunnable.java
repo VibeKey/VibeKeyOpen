@@ -15,7 +15,10 @@ public class BufferSongRunnable implements Runnable {
 	public void run() {
 		System.out.println("Buffering...");
 		songToBuffer.buffer();
-		if (!songToBuffer.finishedBuffering()) VibeKey.manager.bufferSong(songToBuffer);
+		System.out.println(songToBuffer.finishedBuffering());
+		if (!songToBuffer.finishedBuffering()){
+			VibeKey.manager.bufferSong(songToBuffer);
+		}
 	}
 
 }

@@ -1,6 +1,7 @@
 package core_objects_abstract;
 
 import java.io.BufferedInputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -79,32 +80,61 @@ public class Song implements Comparable<Song> {
 	 * Buffers the BUFFER_SIZE of one part of the song.
 	 */
 	public void buffer() {
+		System.out.println("Begin Song buffering...");
 		byte[] buff = new byte[BUFFER_SIZE];
 		
 		// TODO: Buffer the array.
-		BufferedInputStream f = null;
-		try {
-			f = new BufferedInputStream(new FileInputStream(this.information.get(FILEPATH)));
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+        try {
+            File file = new File("C:\\Users\\Benedict\\git\\VibeKeyOpen\\VibeKeyOpen\\Songs\\LoseMyself.mp3");
+            FileInputStream in = new FileInputStream(file);
+            
+            int bytesRead = 0;
+            
+//			byte[] data = new byte[1024]; // allocates memory for 1024 bytes
+			bytesRead = in.read(buff);
+
+			System.out.println("read " + bytesRead
+					+ " bytes, and placed them into temp array named data");
+			
+			buffer.add(buff);
+			
+            in.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+//		BufferedInputStream f = null;	
+//		
+//		try {
+//			System.out.println("Opening File");
+//			f = new BufferedInputStream(new FileInputStream(this.information.get(FILEPATH)));
+//			System.out.println("File Opened");
+//			
+//			System.out.println("Reading bytes: " + BUFFER_SIZE * this.buffer.size() + " to " + (BUFFER_SIZE * this.buffer.size() + BUFFER_SIZE));
+//			int ret = f.read(buff, BUFFER_SIZE * this.buffer.size(), BUFFER_SIZE);
+//			System.out.println("Second try/Catch done " + ret);
+//			
+//
+//			System.out.println(buff);
+//			if (buff.length != 0) buffer.add(buff);
+//			System.out.println("Ending song buffering...");
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			
+//			e.printStackTrace();
+//		} finally{
+//			System.out.println("Begin last try/catch.");
+//			try {
+//				f.close();
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			System.out.println("Last try/Catch done");
+//		}
 		
-		try {
-			f.read(buff, BUFFER_SIZE * this.buffer.size(), BUFFER_SIZE);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
-		try {
-			f.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
-		buffer.add(buff);
 	}
 	
 	/**

@@ -54,6 +54,10 @@ public final class PrimaryManager {
 		}
 	}
 	
+	public ExecutorService getBufferExecutor(){
+		return bufferExecutor;
+	}
+	
 	/**
 	 * Sets up all the things so that the whole of the program can begin to run.
 	 */

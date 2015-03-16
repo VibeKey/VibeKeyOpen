@@ -1,28 +1,30 @@
 package runnables.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
-import java.util.concurrent.Future;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import org.junit.Test;
 
-import primary_manager.PrimaryManager;
+import primary_manager.VibeKey;
 import core_objects_abstract.Song;
 
 public class BufferTest {
 
 	@Test
-	public void test() throws InterruptedException {
-		Song song = new Song("C:\\Users\\reatherl\\git\\VibeKeyOpen\\VibeKeyOpen\\VibeKeyOpen\\Songs\\LoseMyself.mp3", 201, 
-				"Lose Myself", 3219456);
+	public void test() throws InterruptedException, IOException {
+		Song song = new Song("C:\\Users\\Benedict\\git\\VibeKeyOpen\\VibeKeyOpen\\Songs\\LoseMyself.mp3", 201, 
+				"Lose Myself", 3217030);
 		
-		PrimaryManager manager = new PrimaryManager();
-		Future<?> future = manager.bufferSong(song);
-		while (!song.finishedBuffering()) {
-			Thread.sleep(1000);
-		}
+		VibeKey.manager.bufferSong(song);
+		Thread.sleep(5000);
 		
-		long size = (long) Math.ceil(3219456 / Song.BUFFER_SIZE);
+		long size = (long) Math.ceil(3217030 / Song.BUFFER_SIZE);
 		assertTrue("The estimated size is not the actual size.\nActual Size: " 
 				+ song.getBuffer().size() + "\nEstimated Size: " + size, song.getBuffer().size() == size);
 	}
