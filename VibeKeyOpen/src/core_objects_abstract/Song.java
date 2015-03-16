@@ -86,12 +86,10 @@ public class Song implements Comparable<Song> {
 		// TODO: Buffer the array.
 
         try {
-            File file = new File("C:\\Users\\Benedict\\git\\VibeKeyOpen\\VibeKeyOpen\\Songs\\LoseMyself.mp3");
+            File file = new File(this.information.get(FILEPATH));
             FileInputStream in = new FileInputStream(file);
             
             int bytesRead = 0;
-            
-//			byte[] data = new byte[1024]; // allocates memory for 1024 bytes
 			bytesRead = in.read(buff);
 
 			System.out.println("read " + bytesRead
@@ -103,7 +101,11 @@ public class Song implements Comparable<Song> {
         } catch (Exception e) {
             e.printStackTrace();
         }
-//		BufferedInputStream f = null;	
+
+		synchronized (this) {
+			this.notifyAll();
+		}
+		// BufferedInputStream f = null;	
 //		
 //		try {
 //			System.out.println("Opening File");

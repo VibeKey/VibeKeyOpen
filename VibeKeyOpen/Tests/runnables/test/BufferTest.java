@@ -18,11 +18,17 @@ public class BufferTest {
 
 	@Test
 	public void test() throws InterruptedException, IOException {
-		Song song = new Song("C:\\Users\\Benedict\\git\\VibeKeyOpen\\VibeKeyOpen\\Songs\\LoseMyself.mp3", 201, 
+		
+		Song song = new Song(new File("Songs/LoseMyself.mp3").getAbsolutePath(), 201, 
 				"Lose Myself", 3217030);
 		
 		VibeKey.manager.bufferSong(song);
-		Thread.sleep(5000);
+		
+		while(!song.finishedBuffering()){
+			synchronized(song){
+				song.wait();
+			}
+		}
 		
 		long size = (long) Math.ceil(3217030 / Song.BUFFER_SIZE);
 		assertTrue("The estimated size is not the actual size.\nActual Size: " 
