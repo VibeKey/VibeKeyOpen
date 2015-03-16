@@ -13,9 +13,8 @@ public class BufferSongRunnable implements Runnable {
 
 	@Override
 	public void run() {
-		System.out.println("Buffering...");
 		songToBuffer.buffer();
-		System.out.println(songToBuffer.finishedBuffering());
+		
 		if (!songToBuffer.finishedBuffering()){
 			VibeKey.manager.bufferSong(songToBuffer);
 		}
