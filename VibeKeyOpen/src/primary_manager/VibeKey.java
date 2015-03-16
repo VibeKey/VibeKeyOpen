@@ -13,9 +13,11 @@ public class VibeKey {
 	public static ExecutorService threadExecutor = Executors.newCachedThreadPool();
 
 	public static void main(String[] args) {
-		System.out.println(new DJBot().getSong().getId());
-		System.out.println(new DJBot().getSong().getId());
-		System.out.println(new DJBot().getSong().getId());
+		DJBot bot = new DJBot();
+		System.out.println(bot.getSong().getId());
+		System.out.println(bot.getSong().getId());
+		System.out.println(bot.getSong().getId());
+		System.out.println(bot.getSong().getId());
 	}
 
 	public static ExecutorService getNewExecutor(int maxSize){

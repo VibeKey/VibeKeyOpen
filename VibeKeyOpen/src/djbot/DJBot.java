@@ -46,6 +46,7 @@ public class DJBot implements Runnable{
 	 */
 	public Song getSong() {
 		System.out.println(songList.size());
+		run();
 		return songList.remove(0);
 	}
 	
