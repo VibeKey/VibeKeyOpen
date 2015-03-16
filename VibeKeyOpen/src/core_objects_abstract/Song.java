@@ -72,7 +72,7 @@ public class Song implements Comparable<Song> {
 	 * @return
 	 */
 	public boolean finishedBuffering() {
-		return buffer.size() < Math.ceil(size / BUFFER_SIZE);
+		return buffer.size() >= Math.ceil(size / BUFFER_SIZE);
 	}
 	
 	/**

@@ -3,6 +3,7 @@ package primary_manager;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 
 import runnables.BufferSongRunnable;
 import core_objects_abstract.Song;
@@ -21,19 +22,20 @@ public final class PrimaryManager {
 	
 	/** ExecutorServices */
 	// Cached Thread Executor for buffering of songs
-	private ExecutorService bufferExecutor = VibeKey.getNewExecutor(5);
+	private ExecutorService bufferExecutor;
 	
 	// List of streams to play music from.
 	private List<Stream> streams;
 
 	public PrimaryManager() {		
-
+		bufferExecutor = VibeKey.getNewExecutor(5);
+		
 		// Creates a new list of streams.
 		this.streams = new ArrayList<Stream>();
 	}
 	
-	public void bufferSong(Song song){
-		bufferExecutor.submit(new BufferSongRunnable(song));
+	public Future<?> bufferSong(Song song) {
+		return bufferExecutor.submit(new BufferSongRunnable(song));
 	}
 
 	// TODO: Question, do we want them to pass in a stream to add or give them a
