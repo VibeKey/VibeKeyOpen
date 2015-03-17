@@ -86,6 +86,7 @@ public class Song implements Comparable<Song> {
             File file = new File(this.information.get(FILEPATH));
             in = new FileInputStream(file);
             
+            in.skip(buffer.size() * 1024);
 			in.read(buff);
 			
 			buffer.add(buff);
