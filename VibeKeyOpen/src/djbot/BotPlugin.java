@@ -17,7 +17,7 @@ public abstract class BotPlugin {
 	
 	/**
 	 * Used by DJ Bot to modify search behavior.
-	 * @param terms 		The list of current search terms, 
+	 * @param terms 		The list of current search terms, xc
 	 * 						should be modified.
 	 * @param currentSongs 	The current list of songs, 
 	 * 						typically not modified.

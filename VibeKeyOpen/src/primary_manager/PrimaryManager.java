@@ -1,5 +1,8 @@
 package primary_manager;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -32,6 +35,7 @@ public final class PrimaryManager {
 		
 		// Creates a new list of streams.
 		this.streams = new ArrayList<Stream>();
+		
 	}
 	
 	public Future<?> bufferSong(Song song) {
