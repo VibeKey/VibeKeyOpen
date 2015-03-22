@@ -1,45 +1,48 @@
 package theme.core;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public abstract class ThemeObject {
+	// Global Variables
+	protected String ID = "id";
+	protected String X = "x";
+	protected String Y = "y";
+	protected String HEIGHT = "height";
+	protected String WIDTH = "width";
+	
 	// Object Properties
-	/** The x-coordinate of the upper left-hand corner. */
-	protected int x;
-	/** The y-coordinate of the upper left-hand corner. */
-	protected int y;
-	/** The height of the object, in pixels. */
-	protected int height;
-	/** The width of the object, in pixels. */
-	protected int width;
+	protected HashMap<String, String> fields;
+	protected List<String> searchFields;
 	
 	// Misc. Properties
 	/** The parent of this object. */
 	protected ThemeObject parent;
-	/** ID of this object. */
-	protected String id;
 	/** HashMap of all children, given by their IDs */
 	protected HashMap<String, ThemeObject> children;
 	
 	protected ThemeObject() {
 		this.children = new HashMap<String, ThemeObject>();
-		this.x = 0;
-		this. y = 0;
-		this.height = 0;
-		this.width = 0;
+		this.fields = new HashMap<String, String>();
+		this.searchFields = new ArrayList<String>();
+		
+		this.searchFields.add(ID);
+		this.searchFields.add(X);
+		this.searchFields.add(Y);
+		this.searchFields.add(HEIGHT);
+		this.searchFields.add(WIDTH);
+		registerUniqueFields();
 	}
 	
 	public void makeObject(String info, ThemeObject parent) {
 		this.parent = parent;
 		
-		String temp;
-		if ((temp = findParam(info, " id:")) != null) id = temp;
-		if ((temp = findParam(info, " x:")) != null) x = Integer.parseInt(temp);
-		if ((temp = findParam(info, " y:")) != null) y = Integer.parseInt(temp);
-		if ((temp = findParam(info, " width:")) != null) width = Integer.parseInt(temp);
-		if ((temp = findParam(info, " height:")) != null) height = Integer.parseInt(temp);
+		for (String field : searchFields) {
+			String param = findParam(info, field);
+			if (param != null) fields.put(field, param);
+		}
 		
-		parseUniqueFields(info);
 		if (parent != null) parent.registerChild(this); 
 	}
 	
@@ -49,10 +52,11 @@ public abstract class ThemeObject {
 	 * @param toFind The field to find the param for.
 	 * @return The param if it exists, null otherwise.
 	 */
-	protected String findParam(String info, String toFind) {
-		if (info.contains(toFind)) {
+	private String findParam(String info, String toFind) {
+		String find = " " + toFind + ":";
+		if (info.contains(find)) {
 			
-			int start = info.indexOf(toFind) + toFind.length();
+			int start = info.indexOf(find) + find.length();
 			int end = info.length();
 			for (int i = start; i < info.length(); i++) {
 				if (info.charAt(i) == ' ' || info.charAt(i) == '>') {
@@ -63,21 +67,24 @@ public abstract class ThemeObject {
 			
 			String param = info.substring(start, end);
 			
-			System.out.print(toFind + " " + param);
+			System.out.print(find + " " + param);
 			return param;
 		}
 		
 		return null;
 	}
 	
-	protected abstract void parseUniqueFields(String info);
+	/**
+	 * Register the name of all the unique fields to the searchField map.
+	 */
+	protected abstract void registerUniqueFields();
 	
 	/**
 	 * Gets the ID of the function.
 	 * @return The ID of the function.
 	 */
 	public String getID() {
-		return id;
+		return fields.get(ID);
 	}
 	
 	/**
@@ -108,7 +115,8 @@ public abstract class ThemeObject {
 	public void setID(String newID, Object caller) {
 		if (!caller.equals(parent) && parent != null) 
 			parent.childIDChange(newID, this);
-		this.id = newID;
+		fields.remove(ID);
+		fields.put(ID, newID);
 	}
 	
 	/**

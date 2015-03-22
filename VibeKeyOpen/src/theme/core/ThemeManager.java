@@ -10,6 +10,7 @@ public final class ThemeManager {
 	
 	public ThemeManager() {
 		objects = new HashMap<String, Class<? extends ThemeObject>>();
+		globalTheme = new GlobalTheme();
 	}
 	
 	/**

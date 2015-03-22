@@ -1,7 +1,7 @@
 package theme.core;
 
-public class TestObj extends ThemeObject {
-	public TestObj() {
+public class GlobalTheme extends ThemeObject {
+	public GlobalTheme() {
 		super();
 	}
 
@@ -12,7 +12,7 @@ public class TestObj extends ThemeObject {
 	}
 
 	@Override
-	protected void parseUniqueFields(String info) {
+	protected void registerUniqueFields() {
 		// TODO Auto-generated method stub
 		
 	}
