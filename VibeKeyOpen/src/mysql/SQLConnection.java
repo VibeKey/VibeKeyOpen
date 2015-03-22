@@ -29,14 +29,14 @@ public class SQLConnection {
 	
 	
 	public void execStoredProc() throws SQLException{
-		CallableStatement cStmt = conn.prepareCall("{call Calendar_GET(?,?,?,?)}");
+		CallableStatement cStmt = conn.prepareCall("{call Calendar_GET(?,?,?)}");
 		cStmt.setInt(1,03);
 		cStmt.setInt(2, 2015);
-		cStmt.registerOutParameter(3, java.sql.Types.INTEGER);
-		cStmt.registerOutParameter(4, java.sql.Types.VARCHAR);
+		cStmt.registerOutParameter(3, java.sql.Types.VARCHAR);
 		cStmt.executeQuery();
 		
-		String name = cStmt.getString(4);
+		String name = cStmt.getString(3);
+		System.out.println(name);
 	}
 	
 }
