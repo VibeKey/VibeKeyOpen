@@ -18,13 +18,8 @@ public class SQLConnection {
 	}
 	
 	public void execQuery(String query) throws SQLException {
-		java.sql.Statement stmt = conn.createStatement();
-		ResultSet results = stmt.executeQuery(query);
-		while (results.next()) {
-			int id = results.getInt("id");
-			String name = results.getString("name");
-			System.out.println("ID: " + id + ", NAME: " + name);
-		}
+		Query q = new Query(query, this.conn);
+		q.execute();
 	}
 	
 	
