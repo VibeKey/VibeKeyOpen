@@ -26,7 +26,6 @@ public class VibeKey {
 		
 		SQLConnection conn = new SQLConnection("wmhd-test.csse.rose-hulman.edu", "wmhd-test", "jungckjp", "");
 		conn.execQuery("SELECT * FROM Calendar_Item");
-		conn.execStoredProc();
 		
 		/*
 		CallableStatement cStmt = conn.prepareCall("{call Calendar_GET(?,?,?,?)}");

@@ -23,8 +23,19 @@ public class SQLConnection {
 	}
 	
 	
-	public void execStoredProc() throws SQLException{
+	public void execCalendar_GET() throws SQLException{
 		CallableStatement cStmt = conn.prepareCall("{call Calendar_GET(?,?,?)}");
+		cStmt.setInt(1,03);
+		cStmt.setInt(2, 2015);
+		cStmt.registerOutParameter(3, java.sql.Types.VARCHAR);
+		cStmt.executeQuery();
+		
+		String name = cStmt.getString(3);
+		System.out.println(name);
+	}
+	
+	public void execSong_Select() throws SQLException{
+		CallableStatement cStmt = conn.prepareCall("{call Song_Select(?,?,?,?,?,?,?)}");
 		cStmt.setInt(1,03);
 		cStmt.setInt(2, 2015);
 		cStmt.registerOutParameter(3, java.sql.Types.VARCHAR);
