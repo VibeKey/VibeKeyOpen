@@ -1,5 +1,8 @@
 package primary_manager;
 
+import com.example.e4.rcp.todo.model.*;
+import com.example.e4.rcp.todo.service.*;
+
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -26,6 +29,10 @@ public class VibeKey {
 		
 		SQLConnection conn = new SQLConnection("wmhd-test.csse.rose-hulman.edu", "wmhd-test", "jungckjp", "");
 		conn.execQuery("SELECT * FROM Calendar_Item");
+		
+		Todo todo = new Todo();
+		todo.setDescription("hooray for plugin");
+		System.out.println(todo.getDescription());
 		
 		/*
 		CallableStatement cStmt = conn.prepareCall("{call Calendar_GET(?,?,?,?)}");
