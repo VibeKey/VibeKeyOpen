@@ -34,10 +34,10 @@ public class SQLConnection {
 		System.out.println(name);
 	}
 	
-	public void execSong_Select() throws SQLException{
-		CallableStatement cStmt = conn.prepareCall("{call Song_Select(?,?,?,?,?,?,?)}");
-		cStmt.setInt(1,03);
-		cStmt.setInt(2, 2015);
+	public void execSong_Select(int numberOfSongs, String genre) throws SQLException{
+		CallableStatement cStmt = conn.prepareCall("{call Song_Select(?,?,?)}");
+		cStmt.setInt(1,numberOfSongs);
+		cStmt.setString(2, genre);
 		cStmt.registerOutParameter(3, java.sql.Types.VARCHAR);
 		cStmt.executeQuery();
 		
