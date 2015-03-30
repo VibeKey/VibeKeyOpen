@@ -1,4 +1,4 @@
-package web;
+package web.channel;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,11 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class FileCounter
+ * Servlet implementation class Channel Servlet
+ * 
+ * @author Benedict Wong
  */
 
-@WebServlet("/Content")
-public class ContentServlet extends HttpServlet {
+@WebServlet("/api/channel")
+public class ChannelServlet extends HttpServlet {
 
 	/**
 	 * 
@@ -32,8 +34,11 @@ public class ContentServlet extends HttpServlet {
 		String responseString;
 
 		switch (method) {
-		case "getSongDetails":
-			responseString = RequestHandler.handleGetSongDetails(request);
+		case "getChannelList":
+			responseString = ChannelRequestHandler.handleGetChannelList(request);
+			break;
+		case "getChannelStatus":
+			responseString = ChannelRequestHandler.handleGetChannelStatus(request);
 			break;
 		// case "getUniqueID":
 		// response.getWriter().print(RequestHandler.handleGetUniqueIDRequest(request));

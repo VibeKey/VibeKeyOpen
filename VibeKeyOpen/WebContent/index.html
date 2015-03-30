@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>WMHD - The Monkey</title>
+<meta name="author" content="Benedict Wong">
 <link href="http://wmhd2.rose-hulman.edu/tempindex.css" type="text/css" rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
 <script>
@@ -14,27 +15,12 @@
 		var parent = document.getElementById("textdiv");
 		parent.innerHTML = "";
 
-		// var playButton = document.createElement("img");
-		// playButton.src = "playbutton.png";
-		// playButton.className = "musicbutton";
-
-		// var pauseButton = document.createElement("img");
-		// pauseButton.src = "pausebutton.png";
-		// pauseButton.className = "musicbutton";
-
-		// var link = document.createElement("a");
-		// link.href = "http://wmhd2.rose-hulman.edu:8000/radio";
-		// link.appendChild(playButton);	
-		// parent.appendChild(playButton);
-		// parent.appendChild(pauseButton);
-
 		$(parent).append("<a onclick='playStream()'><img src='http://wmhd2.rose-hulman.edu/playbutton.png' alt='Play Stream' style='width:50px; height:50px;'></a>");
 		$(parent).append("<a onclick='pauseStream()'><img src='http://wmhd2.rose-hulman.edu/pausebutton.png' alt='Pause Stream' style='width:50px; height:50px;'></a>");
-
 	}
 
 	function playStream(){
-		$(document.body).append("<audio id='audioStream' autoplay preload=none id='player' onloadedmetadata='displayData(event)>'><source src='http://wmhd-test.csse.rose-hulman.edu:8000/radio' type='audio/ogg; codecs=" + '"opus"' + "'><p>Your browser doesn't support HTML audio. Sorry.</p>	</audio>");
+		$(document.body).append("<audio id='audioStream' autoplay preload=none id='player' onloadedmetadata='displayData(event)>'><source src='http://wmhd-test.csse.rose-hulman.edu:8000/radio' type='audio/mpeg; codecs=" + '"opus"' + "'><p>Your browser doesn't support HTML audio. Sorry.</p>	</audio>");
 	}
 	
 	function pauseStream(){
@@ -50,7 +36,6 @@
 <body>
 	<img src="http://wmhd2.rose-hulman.edu/wmhd.png" alt="WMHD - The Monkey">
 	<div>
-		<!-- container -->
 		<div id="pagecontent">
 			<div id="header">
 				<h2>The Monkey</h2>
@@ -69,25 +54,3 @@
 	</div>
 </body>
 </html>
-<!-- 
-
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>VibeKeyOpen</title>
-</head>
-<body>
-	Hello World!
-	<img src="http://wmhd2.rose-hulman.edu/wmhd.png" alt="Logo"
-		width="200px" height="200px" />
-	<br />
-	<audio controls preload=none id='player'
-		onloadedmetadata='displayData(event)>'>
-		<source src='http://wmhd-test.csse.rose-hulman.edu:8000/radio'
-			type='audio/ogg; codecs="opus"'>
-		<p>Your browser doesn't support HTML audio. Sorry.</p>
-	</audio>
-</body>
-</html> -->
