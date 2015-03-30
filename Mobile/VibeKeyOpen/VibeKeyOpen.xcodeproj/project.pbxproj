@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AB2488441AC884B700F3A75F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2488431AC884B700F3A75F /* AppDelegate.swift */; };
-		AB2488461AC884B700F3A75F /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2488451AC884B700F3A75F /* FirstViewController.swift */; };
-		AB2488481AC884B700F3A75F /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2488471AC884B700F3A75F /* SecondViewController.swift */; };
+		AB2488461AC884B700F3A75F /* StationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2488451AC884B700F3A75F /* StationsViewController.swift */; };
+		AB2488481AC884B700F3A75F /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2488471AC884B700F3A75F /* CalendarViewController.swift */; };
 		AB24884B1AC884B700F3A75F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB2488491AC884B700F3A75F /* Main.storyboard */; };
 		AB24884D1AC884B700F3A75F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB24884C1AC884B700F3A75F /* Images.xcassets */; };
 		AB2488501AC884B700F3A75F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB24884E1AC884B700F3A75F /* LaunchScreen.xib */; };
@@ -25,6 +25,9 @@
 		AB24887E1AC89B9900F3A75F /* play_button.png in Resources */ = {isa = PBXBuildFile; fileRef = AB24887D1AC89B9900F3A75F /* play_button.png */; };
 		AB2488801AC89C5800F3A75F /* pause_button.png in Resources */ = {isa = PBXBuildFile; fileRef = AB24887F1AC89C5800F3A75F /* pause_button.png */; };
 		AB2488841AC89CB700F3A75F /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2488831AC89CB700F3A75F /* NowPlayingViewController.swift */; };
+		AB595F741AC9AC0000AB1141 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = AB595F731AC9ABFF00AB1141 /* search.png */; };
+		AB595F761AC9AC9A00AB1141 /* accounts.png in Resources */ = {isa = PBXBuildFile; fileRef = AB595F751AC9AC9A00AB1141 /* accounts.png */; };
+		AB595F781AC9AD9600AB1141 /* gears.png in Resources */ = {isa = PBXBuildFile; fileRef = AB595F771AC9AD9600AB1141 /* gears.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,8 +44,8 @@
 		AB24883E1AC884B700F3A75F /* VibeKeyOpen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VibeKeyOpen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB2488421AC884B700F3A75F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB2488431AC884B700F3A75F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AB2488451AC884B700F3A75F /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		AB2488471AC884B700F3A75F /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		AB2488451AC884B700F3A75F /* StationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsViewController.swift; sourceTree = "<group>"; };
+		AB2488471AC884B700F3A75F /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		AB24884A1AC884B700F3A75F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AB24884C1AC884B700F3A75F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		AB24884F1AC884B700F3A75F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -60,6 +63,9 @@
 		AB24887D1AC89B9900F3A75F /* play_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_button.png; sourceTree = "<group>"; };
 		AB24887F1AC89C5800F3A75F /* pause_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause_button.png; sourceTree = "<group>"; };
 		AB2488831AC89CB700F3A75F /* NowPlayingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NowPlayingViewController.swift; path = ../NowPlayingViewController.swift; sourceTree = "<group>"; };
+		AB595F731AC9ABFF00AB1141 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
+		AB595F751AC9AC9A00AB1141 /* accounts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = accounts.png; sourceTree = "<group>"; };
+		AB595F771AC9AD9600AB1141 /* gears.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gears.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,8 +108,8 @@
 			isa = PBXGroup;
 			children = (
 				AB2488431AC884B700F3A75F /* AppDelegate.swift */,
-				AB2488451AC884B700F3A75F /* FirstViewController.swift */,
-				AB2488471AC884B700F3A75F /* SecondViewController.swift */,
+				AB2488451AC884B700F3A75F /* StationsViewController.swift */,
+				AB2488471AC884B700F3A75F /* CalendarViewController.swift */,
 				AB2488831AC89CB700F3A75F /* NowPlayingViewController.swift */,
 				AB2488491AC884B700F3A75F /* Main.storyboard */,
 				AB24884C1AC884B700F3A75F /* Images.xcassets */,
@@ -152,6 +158,9 @@
 				AB2488711AC88E7D00F3A75F /* now_playing.png */,
 				AB24886C1AC889BA00F3A75F /* radio.png */,
 				AB24886E1AC88A7200F3A75F /* calendar.png */,
+				AB595F731AC9ABFF00AB1141 /* search.png */,
+				AB595F751AC9AC9A00AB1141 /* accounts.png */,
+				AB595F771AC9AD9600AB1141 /* gears.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -239,15 +248,18 @@
 				AB24884B1AC884B700F3A75F /* Main.storyboard in Resources */,
 				AB2488721AC88E7D00F3A75F /* now_playing.png in Resources */,
 				AB2488781AC897F300F3A75F /* wmhd.png in Resources */,
+				AB595F741AC9AC0000AB1141 /* search.png in Resources */,
 				AB2488801AC89C5800F3A75F /* pause_button.png in Resources */,
 				AB24887A1AC89AC400F3A75F /* thumbs_up.png in Resources */,
 				AB2488501AC884B700F3A75F /* LaunchScreen.xib in Resources */,
+				AB595F761AC9AC9A00AB1141 /* accounts.png in Resources */,
 				AB24886F1AC88A7200F3A75F /* calendar.png in Resources */,
 				AB24887C1AC89AC800F3A75F /* thumbs_down.png in Resources */,
 				AB24887E1AC89B9900F3A75F /* play_button.png in Resources */,
 				AB2488761AC893A900F3A75F /* volume_up.png in Resources */,
 				AB2488741AC893A500F3A75F /* volume_off.png in Resources */,
 				AB24886D1AC889BA00F3A75F /* radio.png in Resources */,
+				AB595F781AC9AD9600AB1141 /* gears.png in Resources */,
 				AB24884D1AC884B700F3A75F /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,9 +279,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB2488841AC89CB700F3A75F /* NowPlayingViewController.swift in Sources */,
-				AB2488481AC884B700F3A75F /* SecondViewController.swift in Sources */,
+				AB2488481AC884B700F3A75F /* CalendarViewController.swift in Sources */,
 				AB2488441AC884B700F3A75F /* AppDelegate.swift in Sources */,
-				AB2488461AC884B700F3A75F /* FirstViewController.swift in Sources */,
+				AB2488461AC884B700F3A75F /* StationsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +475,7 @@
 				AB2488611AC884B700F3A75F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AB2488621AC884B700F3A75F /* Build configuration list for PBXNativeTarget "VibeKeyOpenTests" */ = {
 			isa = XCConfigurationList;
@@ -471,6 +484,7 @@
 				AB2488641AC884B700F3A75F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

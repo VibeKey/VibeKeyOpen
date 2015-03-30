@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  CalendarViewController.swift
 //  VibeKeyOpen
 //
 //  Created by Jonathan Jungck on 3/29/15.
@@ -8,10 +8,12 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class CalendarViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
