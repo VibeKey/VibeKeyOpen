@@ -9,7 +9,7 @@
         <!--Stations-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController title="Stations" id="9pv-A4-QxB" customClass="FirstViewController" customModule="VibeKeyOpen" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Stations" id="9pv-A4-QxB" customClass="StationsViewController" customModule="VibeKeyOpen" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -49,7 +49,7 @@
         <!--Calendar-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController title="Calendar" id="8rJ-Kc-sve" customClass="SecondViewController" customModule="VibeKeyOpen" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Calendar" id="8rJ-Kc-sve" customClass="CalendarViewController" customModule="VibeKeyOpen" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -65,7 +65,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by SecondViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by CalendarViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
                                 <rect key="frame" x="192" y="329" width="216" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -80,7 +80,7 @@
                             <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Calendar" image="calendar.png" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Calendar" image="calendar.png" id="cPa-gy-q4n"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -104,7 +104,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O3e-lP-GKn">
                                         <rect key="frame" x="0.0" y="367" width="600" height="184"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="volume_off.png" translatesAutoresizingMaskIntoConstraints="NO" id="czs-Ng-9Zq">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="volume_off.png" translatesAutoresizingMaskIntoConstraints="NO" id="czs-Ng-9Zq">
                                                 <rect key="frame" x="36" y="137" width="32" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="26" id="15j-2q-0Ea"/>
@@ -123,7 +123,7 @@
                                                     </mask>
                                                 </variation>
                                             </imageView>
-                                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZAH-g7-mpv" userLabel="Play">
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZAH-g7-mpv" userLabel="Play">
                                                 <rect key="frame" x="262" y="51" width="76" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="cVc-Ne-Qi4"/>
@@ -148,7 +148,7 @@
                                                     <action selector="buttonPressed:" destination="bzU-8M-DMD" eventType="touchUpInside" id="6Dt-F9-V6h"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Sk-bW-KIn" userLabel="ThumbsDown">
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Sk-bW-KIn" userLabel="ThumbsDown">
                                                 <rect key="frame" x="107" y="51" width="95" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="hgq-tC-bm5">
@@ -172,7 +172,7 @@
                                                     </mask>
                                                 </variation>
                                             </button>
-                                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PMx-YW-hTL" userLabel="ThumbsUp">
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PMx-YW-hTL" userLabel="ThumbsUp">
                                                 <rect key="frame" x="419" y="51" width="76" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="DlL-Yr-SZa"/>
@@ -194,10 +194,10 @@
                                                     </mask>
                                                 </variation>
                                             </button>
-                                            <slider opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="247" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="J9F-lV-Ddl">
+                                            <slider opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="247" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="J9F-lV-Ddl">
                                                 <rect key="frame" x="79" y="131" width="445" height="31"/>
                                             </slider>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" fixedFrame="YES" image="volume_up.png" translatesAutoresizingMaskIntoConstraints="NO" id="Z1O-RP-Ohp">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" ambiguous="YES" misplaced="YES" image="volume_up.png" translatesAutoresizingMaskIntoConstraints="NO" id="Z1O-RP-Ohp">
                                                 <rect key="frame" x="530" y="122" width="50" height="48"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="gN4-Cm-duy"/>
@@ -224,14 +224,14 @@
                                             <constraint firstItem="Z1O-RP-Ohp" firstAttribute="leading" secondItem="J9F-lV-Ddl" secondAttribute="trailing" constant="8" id="RdH-XH-gFM"/>
                                             <constraint firstItem="czs-Ng-9Zq" firstAttribute="leading" secondItem="O3e-lP-GKn" secondAttribute="leading" constant="32" id="Rol-Wc-mpy"/>
                                             <constraint firstAttribute="centerY" secondItem="czs-Ng-9Zq" secondAttribute="centerY" multiplier="0.7" id="aiN-KK-DfD"/>
-                                            <constraint firstAttribute="centerY" secondItem="PMx-YW-hTL" secondAttribute="centerY" multiplier="1.5" id="dzy-QT-mMV"/>
+                                            <constraint firstAttribute="centerY" secondItem="PMx-YW-hTL" secondAttribute="centerY" multiplier="1.2" id="dzy-QT-mMV"/>
                                             <constraint firstAttribute="centerX" secondItem="PMx-YW-hTL" secondAttribute="centerX" multiplier="0.66" id="gOA-IK-IyS"/>
                                             <constraint firstAttribute="centerX" secondItem="ZAH-g7-mpv" secondAttribute="centerX" id="hAN-VN-dex"/>
                                             <constraint firstAttribute="centerY" secondItem="J9F-lV-Ddl" secondAttribute="centerY" multiplier="0.7" id="rQH-yW-TLN"/>
-                                            <constraint firstAttribute="centerY" secondItem="ZAH-g7-mpv" secondAttribute="centerY" multiplier="1.5" id="vOT-3h-mZn"/>
+                                            <constraint firstAttribute="centerY" secondItem="ZAH-g7-mpv" secondAttribute="centerY" multiplier="1.2" id="vOT-3h-mZn"/>
                                             <constraint firstItem="J9F-lV-Ddl" firstAttribute="leading" secondItem="czs-Ng-9Zq" secondAttribute="trailing" constant="8" id="wYP-4B-S6c"/>
                                             <constraint firstAttribute="centerY" secondItem="Z1O-RP-Ohp" secondAttribute="centerY" multiplier="0.7" id="xoY-tZ-8Fd"/>
-                                            <constraint firstAttribute="centerY" secondItem="3Sk-bW-KIn" secondAttribute="centerY" multiplier="1.5" id="z9G-Ig-Beh"/>
+                                            <constraint firstAttribute="centerY" secondItem="3Sk-bW-KIn" secondAttribute="centerY" multiplier="1.2" id="z9G-Ig-Beh"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -239,10 +239,10 @@
                                                 <exclude reference="z9G-Ig-Beh"/>
                                                 <exclude reference="Rol-Wc-mpy"/>
                                                 <exclude reference="aiN-KK-DfD"/>
-                                                <exclude reference="hAN-VN-dex"/>
-                                                <exclude reference="vOT-3h-mZn"/>
                                                 <exclude reference="rQH-yW-TLN"/>
                                                 <exclude reference="wYP-4B-S6c"/>
+                                                <exclude reference="hAN-VN-dex"/>
+                                                <exclude reference="vOT-3h-mZn"/>
                                                 <exclude reference="dzy-QT-mMV"/>
                                                 <exclude reference="gOA-IK-IyS"/>
                                                 <exclude reference="IUJ-Y7-v2b"/>
@@ -256,10 +256,10 @@
                                                 <include reference="z9G-Ig-Beh"/>
                                                 <include reference="Rol-Wc-mpy"/>
                                                 <include reference="aiN-KK-DfD"/>
-                                                <include reference="hAN-VN-dex"/>
-                                                <include reference="vOT-3h-mZn"/>
                                                 <include reference="rQH-yW-TLN"/>
                                                 <include reference="wYP-4B-S6c"/>
+                                                <include reference="hAN-VN-dex"/>
+                                                <include reference="vOT-3h-mZn"/>
                                                 <include reference="dzy-QT-mMV"/>
                                                 <include reference="gOA-IK-IyS"/>
                                                 <include reference="IUJ-Y7-v2b"/>
@@ -293,7 +293,7 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="Now Playing" image="now_playing.png" id="pE3-6r-RzS"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="Now Playing" image="now_playing.png" id="pE3-6r-RzS"/>
                     <navigationItem key="navigationItem" title="Now Playing" id="q18-HX-dDt">
                         <barButtonItem key="backBarButtonItem" title="Playlist" id="wEs-nj-Z1h"/>
                     </navigationItem>
@@ -305,7 +305,7 @@
             </objects>
             <point key="canvasLocation" x="13.5" y="864"/>
         </scene>
-        <!--Item-->
+        <!--Search-->
         <scene sceneID="Nkk-l3-YgU">
             <objects>
                 <viewController id="Q8C-Zj-ESq" sceneMemberID="viewController">
@@ -318,13 +318,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="h2T-JU-kx1"/>
+                    <tabBarItem key="tabBarItem" tag="3" title="Search" image="search.png" id="h2T-JU-kx1"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dS6-oO-ofm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="639" y="858"/>
         </scene>
-        <!--Item-->
+        <!--Account-->
         <scene sceneID="jqg-gY-VlM">
             <objects>
                 <viewController id="skr-1p-GGa" sceneMemberID="viewController">
@@ -337,11 +337,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="N4n-MR-S61"/>
+                    <tabBarItem key="tabBarItem" tag="4" title="Account" image="accounts.png" id="N4n-MR-S61"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HC4-fL-kyk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1280" y="858"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="09g-Tl-HNQ">
+            <objects>
+                <viewController id="7kN-3I-6P4" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="H1c-mB-hfx"/>
+                        <viewControllerLayoutGuide type="bottom" id="N0e-ji-H81"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fJe-5f-TiJ">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" tag="5" title="Settings" image="gears.png" id="Kve-85-Bb2"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IfP-uP-u7j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1924.5" y="858"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -359,6 +377,7 @@
                         <segue destination="bzU-8M-DMD" kind="relationship" relationship="viewControllers" id="5Rp-JA-fdn"/>
                         <segue destination="Q8C-Zj-ESq" kind="relationship" relationship="viewControllers" id="lKq-oC-Obx"/>
                         <segue destination="skr-1p-GGa" kind="relationship" relationship="viewControllers" id="lfW-AW-dxF"/>
+                        <segue destination="7kN-3I-6P4" kind="relationship" relationship="viewControllers" id="9Ep-Mb-qia"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -367,10 +386,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="accounts.png" width="30" height="30"/>
         <image name="calendar.png" width="30" height="30"/>
+        <image name="gears.png" width="30" height="30"/>
         <image name="now_playing.png" width="32" height="32"/>
         <image name="play_button.png" width="500" height="500"/>
         <image name="radio.png" width="30" height="30"/>
+        <image name="search.png" width="30" height="30"/>
         <image name="thumbs_down.png" width="500" height="500"/>
         <image name="thumbs_up.png" width="500" height="500"/>
         <image name="volume_off.png" width="201" height="201"/>

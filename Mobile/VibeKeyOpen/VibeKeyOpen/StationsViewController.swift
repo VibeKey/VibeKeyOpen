@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  StationsViewController.swift
 //  VibeKeyOpen
 //
 //  Created by Jonathan Jungck on 3/29/15.
@@ -8,12 +8,10 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class StationsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         // Do any additional setup after loading the view, typically from a nib.
     }
 

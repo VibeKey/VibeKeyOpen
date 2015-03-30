@@ -13,9 +13,10 @@ class NowPlayingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.tabBar.translucent = false;
         
-        PlayButton.setImage(UIImage(named: "play_button.png"), forState: UIControlState.Normal)
-        PlayButton.setImage(UIImage(named: "pause_button.png"), forState: UIControlState.Highlighted)
+//        PlayButton.setImage(UIImage(named: "play_button.png"), forState: UIControlState.Normal)
+//        PlayButton.setImage(UIImage(named: "pause_button.png"), forState: UIControlState.Highlighted)
 
         // Do any additional setup after loading the view.
     }
@@ -27,10 +28,14 @@ class NowPlayingViewController: UIViewController {
     
     
     @IBAction func buttonPressed(sender: UIButton) {
-//        if(sender.tag == 1) {
-//            sender.setImage(UIImage(named: "pause_button.png"), forState: UIControlState.Normal)
-//            
-//        }
+        if(sender.tag == 1) {
+            sender.setImage(UIImage(named: "pause_button.png"), forState: UIControlState.Normal)
+            sender.tag = 3
+        }
+        else if (sender.tag == 3) {
+            sender.setImage(UIImage(named: "play_button.png"), forState: UIControlState.Normal)
+            sender.tag = 1
+        }
     }
     
 
