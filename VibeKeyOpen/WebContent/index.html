@@ -1,0 +1,56 @@
+
+<html>
+<head>
+<title>WMHD - The Monkey</title>
+<meta name="author" content="Benedict Wong">
+<link href="http://wmhd2.rose-hulman.edu/tempindex.css" type="text/css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script>
+	var values = [];
+	values["wiki"] = "Watch our progress here: <a href='https://github.com/VibeKey/VibeKeyOpen/wiki' target = '_blank'>VibeKey Wiki</a>";
+	values["contact"] = "Get in touch with WMHD Radio via Kevin Lanke (Advisor) at lanke@rose-hulman.edu or Rex Buckley (General Manager) at bucklerj@rose-hulman.edu";
+	values["club"] = "WMHD Radio Club meets every Wednesday at 5:00 in the BSB basement";
+	
+	function showPlayControls() {
+		var parent = document.getElementById("textdiv");
+		parent.innerHTML = "";
+
+		$(parent).append("<a onclick='playStream()'><img src='http://wmhd2.rose-hulman.edu/playbutton.png' alt='Play Stream' style='width:50px; height:50px;'></a>");
+		$(parent).append("<a onclick='pauseStream()'><img src='http://wmhd2.rose-hulman.edu/pausebutton.png' alt='Pause Stream' style='width:50px; height:50px;'></a>");
+	}
+
+	function playStream(){
+		$(document.body).append("<audio id='audioStream' autoplay preload=none id='player' onloadedmetadata='displayData(event)>'><source src='http://wmhd-test.csse.rose-hulman.edu:8000/radio' type='audio/mpeg; codecs=" + '"opus"' + "'><p>Your browser doesn't support HTML audio. Sorry.</p>	</audio>");
+	}
+	
+	function pauseStream(){
+		$("#audioStream").remove();
+	}
+	
+	function tabClick(text) {
+		document.getElementById("textdiv").innerHTML = values[text];
+	}
+	
+</script>
+</head>
+<body>
+	<img src="http://wmhd2.rose-hulman.edu/wmhd.png" alt="WMHD - The Monkey">
+	<div>
+		<div id="pagecontent">
+			<div id="header">
+				<h2>The Monkey</h2>
+			</div>
+			<div id="textdiv">
+				<p>Coming soon</p>
+			</div>
+			<div id="tabs">
+				<span class="tab" value="listen" onclick="showPlayControls()">Listen</span>
+				<span class="tab" value="wiki" onclick="tabClick('wiki')">VibeKey
+					Wiki</span> <span class="tab" value="contact"
+					onclick="tabClick('contact')">Contact Us</span> <span class="tab"
+					value="club" onclick="tabClick('club')">Club Info</span>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
