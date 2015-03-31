@@ -22,13 +22,13 @@
                                 <rect key="frame" x="221" y="279" width="158" height="42"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by FirstViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5M-7J-77L">
                                 <rect key="frame" x="203" y="329" width="195" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -62,13 +62,13 @@
                                 <rect key="frame" x="195" y="279" width="210" height="42"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by CalendarViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Loaded by CalendarViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
                                 <rect key="frame" x="192" y="329" width="216" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -89,7 +89,7 @@
         <!--Now Playing-->
         <scene sceneID="YzN-0O-3aG">
             <objects>
-                <viewController title="Now Playing" id="bzU-8M-DMD" customClass="NowPlayingViewController" customModule="VibeKeyOpen" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Now Playing" id="bzU-8M-DMD" customClass="RadioPlayerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rhQ-QO-e7f"/>
                         <viewControllerLayoutGuide type="bottom" id="VQN-m7-VT5"/>
@@ -145,7 +145,7 @@
                                                     </mask>
                                                 </variation>
                                                 <connections>
-                                                    <action selector="buttonPressed:" destination="bzU-8M-DMD" eventType="touchUpInside" id="6Dt-F9-V6h"/>
+                                                    <action selector="buttonPressed:" destination="bzU-8M-DMD" eventType="touchUpInside" id="2aI-ww-APW"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Sk-bW-KIn" userLabel="ThumbsDown">
@@ -171,6 +171,9 @@
                                                         <include reference="nSa-mD-Z7b"/>
                                                     </mask>
                                                 </variation>
+                                                <connections>
+                                                    <action selector="buttonPressed:" destination="bzU-8M-DMD" eventType="touchUpInside" id="97d-ho-j6H"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PMx-YW-hTL" userLabel="ThumbsUp">
                                                 <rect key="frame" x="419" y="51" width="76" height="30"/>
@@ -193,9 +196,15 @@
                                                         <include reference="XFD-oz-kd5"/>
                                                     </mask>
                                                 </variation>
+                                                <connections>
+                                                    <action selector="buttonPressed:" destination="bzU-8M-DMD" eventType="touchUpInside" id="A2l-qe-hpE"/>
+                                                </connections>
                                             </button>
                                             <slider opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="247" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="J9F-lV-Ddl">
                                                 <rect key="frame" x="79" y="131" width="445" height="31"/>
+                                                <connections>
+                                                    <action selector="volumeChanged:" destination="bzU-8M-DMD" eventType="valueChanged" id="D0e-tB-czY"/>
+                                                </connections>
                                             </slider>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" ambiguous="YES" misplaced="YES" image="volume_up.png" translatesAutoresizingMaskIntoConstraints="NO" id="Z1O-RP-Ohp">
                                                 <rect key="frame" x="530" y="122" width="50" height="48"/>
@@ -216,27 +225,58 @@
                                                     </mask>
                                                 </variation>
                                             </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay No Mind (feat. Passion Pit)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l65-bd-wH7">
+                                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                    <rect key="frame" x="0.0" y="18" width="400" height="27"/>
+                                                </variation>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Madeon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aav-98-itE">
+                                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="l65-bd-wH7" secondAttribute="trailing" id="0i9-7t-46U"/>
                                             <constraint firstAttribute="centerX" secondItem="3Sk-bW-KIn" secondAttribute="centerX" multiplier="2" id="8X0-Xk-561"/>
                                             <constraint firstAttribute="trailing" secondItem="Z1O-RP-Ohp" secondAttribute="trailing" constant="24" id="IUJ-Y7-v2b"/>
+                                            <constraint firstItem="aav-98-itE" firstAttribute="leading" secondItem="O3e-lP-GKn" secondAttribute="leading" id="OmL-OI-oEo"/>
                                             <constraint firstItem="Z1O-RP-Ohp" firstAttribute="leading" secondItem="J9F-lV-Ddl" secondAttribute="trailing" constant="8" id="RdH-XH-gFM"/>
                                             <constraint firstItem="czs-Ng-9Zq" firstAttribute="leading" secondItem="O3e-lP-GKn" secondAttribute="leading" constant="32" id="Rol-Wc-mpy"/>
-                                            <constraint firstAttribute="centerY" secondItem="czs-Ng-9Zq" secondAttribute="centerY" multiplier="0.7" id="aiN-KK-DfD"/>
-                                            <constraint firstAttribute="centerY" secondItem="PMx-YW-hTL" secondAttribute="centerY" multiplier="1.2" id="dzy-QT-mMV"/>
+                                            <constraint firstAttribute="centerY" secondItem="czs-Ng-9Zq" secondAttribute="centerY" multiplier="0.65" id="aiN-KK-DfD"/>
+                                            <constraint firstAttribute="centerY" secondItem="PMx-YW-hTL" secondAttribute="centerY" id="dzy-QT-mMV"/>
+                                            <constraint firstAttribute="centerY" secondItem="aav-98-itE" secondAttribute="centerY" multiplier="2" id="ejn-1n-wEl"/>
+                                            <constraint firstItem="l65-bd-wH7" firstAttribute="leading" secondItem="O3e-lP-GKn" secondAttribute="leading" id="gFC-8i-f5g"/>
                                             <constraint firstAttribute="centerX" secondItem="PMx-YW-hTL" secondAttribute="centerX" multiplier="0.66" id="gOA-IK-IyS"/>
                                             <constraint firstAttribute="centerX" secondItem="ZAH-g7-mpv" secondAttribute="centerX" id="hAN-VN-dex"/>
-                                            <constraint firstAttribute="centerY" secondItem="J9F-lV-Ddl" secondAttribute="centerY" multiplier="0.7" id="rQH-yW-TLN"/>
-                                            <constraint firstAttribute="centerY" secondItem="ZAH-g7-mpv" secondAttribute="centerY" multiplier="1.2" id="vOT-3h-mZn"/>
+                                            <constraint firstAttribute="trailing" secondItem="aav-98-itE" secondAttribute="trailing" id="iGo-dY-6BP"/>
+                                            <constraint firstAttribute="centerY" secondItem="J9F-lV-Ddl" secondAttribute="centerY" multiplier="0.65" id="rQH-yW-TLN"/>
+                                            <constraint firstAttribute="centerY" secondItem="l65-bd-wH7" secondAttribute="centerY" multiplier="4" id="rm1-wr-7Ln"/>
+                                            <constraint firstAttribute="centerY" secondItem="ZAH-g7-mpv" secondAttribute="centerY" id="vOT-3h-mZn"/>
                                             <constraint firstItem="J9F-lV-Ddl" firstAttribute="leading" secondItem="czs-Ng-9Zq" secondAttribute="trailing" constant="8" id="wYP-4B-S6c"/>
-                                            <constraint firstAttribute="centerY" secondItem="Z1O-RP-Ohp" secondAttribute="centerY" multiplier="0.7" id="xoY-tZ-8Fd"/>
-                                            <constraint firstAttribute="centerY" secondItem="3Sk-bW-KIn" secondAttribute="centerY" multiplier="1.2" id="z9G-Ig-Beh"/>
+                                            <constraint firstAttribute="centerY" secondItem="Z1O-RP-Ohp" secondAttribute="centerY" multiplier="0.65" id="xoY-tZ-8Fd"/>
+                                            <constraint firstAttribute="centerY" secondItem="3Sk-bW-KIn" secondAttribute="centerY" id="z9G-Ig-Beh"/>
                                         </constraints>
                                         <variation key="default">
+                                            <mask key="subviews">
+                                                <exclude reference="l65-bd-wH7"/>
+                                                <exclude reference="aav-98-itE"/>
+                                            </mask>
                                             <mask key="constraints">
+                                                <exclude reference="0i9-7t-46U"/>
+                                                <exclude reference="gFC-8i-f5g"/>
+                                                <exclude reference="rm1-wr-7Ln"/>
                                                 <exclude reference="8X0-Xk-561"/>
                                                 <exclude reference="z9G-Ig-Beh"/>
+                                                <exclude reference="OmL-OI-oEo"/>
+                                                <exclude reference="ejn-1n-wEl"/>
+                                                <exclude reference="iGo-dY-6BP"/>
                                                 <exclude reference="Rol-Wc-mpy"/>
                                                 <exclude reference="aiN-KK-DfD"/>
                                                 <exclude reference="rQH-yW-TLN"/>
@@ -251,9 +291,19 @@
                                             </mask>
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="subviews">
+                                                <include reference="l65-bd-wH7"/>
+                                                <include reference="aav-98-itE"/>
+                                            </mask>
                                             <mask key="constraints">
+                                                <include reference="0i9-7t-46U"/>
+                                                <include reference="gFC-8i-f5g"/>
+                                                <include reference="rm1-wr-7Ln"/>
                                                 <include reference="8X0-Xk-561"/>
                                                 <include reference="z9G-Ig-Beh"/>
+                                                <include reference="OmL-OI-oEo"/>
+                                                <include reference="ejn-1n-wEl"/>
+                                                <include reference="iGo-dY-6BP"/>
                                                 <include reference="Rol-Wc-mpy"/>
                                                 <include reference="aiN-KK-DfD"/>
                                                 <include reference="rQH-yW-TLN"/>
@@ -298,7 +348,8 @@
                         <barButtonItem key="backBarButtonItem" title="Playlist" id="wEs-nj-Z1h"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="PlayButton" destination="ZAH-g7-mpv" id="BeB-Kd-yQJ"/>
+                        <outlet property="downvote" destination="3Sk-bW-KIn" id="NML-Rt-Zi5"/>
+                        <outlet property="upvote" destination="PMx-YW-hTL" id="Xet-Hl-xiJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="svx-eI-W2e" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -352,6 +403,7 @@
                         <viewControllerLayoutGuide type="bottom" id="N0e-ji-H81"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fJe-5f-TiJ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -365,6 +417,7 @@
         <scene sceneID="yl2-sM-qoP">
             <objects>
                 <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
