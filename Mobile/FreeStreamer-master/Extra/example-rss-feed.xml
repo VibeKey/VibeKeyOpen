@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+  <channel>
+    <title>Playlist Feed</title>
+    <item>
+       <title>soma.fm GrooveSalad MP3 56</title>
+       <link>http://somafm.com/groovesalad56.pls</link>
+    </item>
+    <item>
+       <title>BassDrive AAC</title>
+       <link>http://www.bassdrive.com/v2/streams/BassDrive3.pls</link>
+    </item>
+    <item>
+       <title>BassDrive 128</title>
+       <link>http://www.bassdrive.com/v2/streams/BassDrive.pls</link>
+    </item>
+    <item>
+    	<title>Radio Swiss Classic</title>
+    	<link>http://www.radioswissclassic.ch/live/mp3.m3u</link>
+    </item>
+    <item>
+    	<title>Radio Swiss Jazz</title>
+    	<link>http://www.radioswissjazz.ch/live/mp3.m3u</link>
+    </item>
+    <item>
+    	<title>BBC 5 Live</title>
+    	<link>http://www.radiofeeds.co.uk/bbc5live.pls</link>
+    </item>
+    <item>
+        <title>Test MP3 file</title>
+        <link>https://dl.dropboxusercontent.com/u/995250/FreeStreamer/As%20long%20as%20the%20stars%20shine.mp3</link>
+    </item>
+    <item>
+        <title>Local MP3 file</title>
+        <link>file://test.mp3</link>
+    </item>
+    <item>
+        <title>Local 2 seconds MP3 file</title>
+        <link>file://test-2sec.mp3</link>
+    </item>
+    <item>
+        <title>M3U playlist test</title>
+        <link>https://raw.githubusercontent.com/muhku/FreeStreamer/master/Extra/test-playlist.m3u</link>
+    </item>
+  </channel>
+</rss>

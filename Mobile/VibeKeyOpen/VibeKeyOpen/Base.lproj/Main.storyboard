@@ -230,9 +230,6 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
-                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="0.0" y="18" width="400" height="27"/>
-                                                </variation>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Madeon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aav-98-itE">
                                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
@@ -269,14 +266,14 @@
                                                 <exclude reference="aav-98-itE"/>
                                             </mask>
                                             <mask key="constraints">
+                                                <exclude reference="OmL-OI-oEo"/>
+                                                <exclude reference="ejn-1n-wEl"/>
+                                                <exclude reference="iGo-dY-6BP"/>
                                                 <exclude reference="0i9-7t-46U"/>
                                                 <exclude reference="gFC-8i-f5g"/>
                                                 <exclude reference="rm1-wr-7Ln"/>
                                                 <exclude reference="8X0-Xk-561"/>
                                                 <exclude reference="z9G-Ig-Beh"/>
-                                                <exclude reference="OmL-OI-oEo"/>
-                                                <exclude reference="ejn-1n-wEl"/>
-                                                <exclude reference="iGo-dY-6BP"/>
                                                 <exclude reference="Rol-Wc-mpy"/>
                                                 <exclude reference="aiN-KK-DfD"/>
                                                 <exclude reference="rQH-yW-TLN"/>
@@ -296,14 +293,14 @@
                                                 <include reference="aav-98-itE"/>
                                             </mask>
                                             <mask key="constraints">
+                                                <include reference="OmL-OI-oEo"/>
+                                                <include reference="ejn-1n-wEl"/>
+                                                <include reference="iGo-dY-6BP"/>
                                                 <include reference="0i9-7t-46U"/>
                                                 <include reference="gFC-8i-f5g"/>
                                                 <include reference="rm1-wr-7Ln"/>
                                                 <include reference="8X0-Xk-561"/>
                                                 <include reference="z9G-Ig-Beh"/>
-                                                <include reference="OmL-OI-oEo"/>
-                                                <include reference="ejn-1n-wEl"/>
-                                                <include reference="iGo-dY-6BP"/>
                                                 <include reference="Rol-Wc-mpy"/>
                                                 <include reference="aiN-KK-DfD"/>
                                                 <include reference="rQH-yW-TLN"/>
