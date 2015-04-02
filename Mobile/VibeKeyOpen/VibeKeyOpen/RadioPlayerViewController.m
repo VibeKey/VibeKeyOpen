@@ -10,6 +10,7 @@
 #import <AVKit/AVKit.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
+#import "FSAudioController.h"
 
 
 @interface RadioPlayerViewController () {
@@ -50,7 +51,9 @@ ofType:@"mp3"];
     else if(sender.tag == 1) {
         [sender setImage:[UIImage imageNamed:@"pause_button.png"] forState:UIControlStateNormal];
         sender.tag = 3;
-        [audioPlayer play];
+        FSAudioController * audio = [[FSAudioController alloc] init];
+        [audio playFromURL:[[NSURL alloc] initWithString:@"http://wmhd-test.csse.rose-hulman.edu:8000/radio"]];
+        //[audioPlayer play];
     }
     else if (sender.tag == 2) {
         [sender setImage:[UIImage imageNamed:@"upvote.png"] forState:UIControlStateNormal];
