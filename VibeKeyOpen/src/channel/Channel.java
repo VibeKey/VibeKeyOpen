@@ -22,14 +22,28 @@ public class Channel extends Stream {
 	
 	Libshout icecast;
 	
-	PlayerRunnable thread;
+	PlayerRunnable player;
 	
-	/** Constructor that sets the name of the channel. */
-	public Channel(String name, DJBot bot) {
-		super(bot);
+	
+	/** Constructor that sets the name of the channel. 
+	 * @throws InterruptedException */
+	public Channel(int channelID, String name) throws InterruptedException {
+		super(channelID);
 		this.cName = name;
 		
-		this.thread = new PlayerRunnable(this);
+		this.player = new PlayerRunnable(this);
+	}
+	
+	public PlayerRunnable getPlayerRunnable(){
+		return player;
+	}
+	
+	
+	public Channel(int channelID, String name, DJBot bot) throws InterruptedException {
+		super(channelID, bot);
+		this.cName = name;
+		
+		this.player = new PlayerRunnable(this);
 	}
 	
 	
@@ -111,20 +125,12 @@ public class Channel extends Stream {
 	public Libshout getIcecast() {
 		return this.icecast;
 	}
-	
-	/**
-	 * Prepares the buffer for the next song.
-	 * @return
-	 */
-	public List<byte[]> getNextSongBuffer() {
-		return this.bot.getSong().getBuffer();
-	}
 
 	/**
 	 * Gets the thread for this channel.
 	 * @return
 	 */
 	public PlayerRunnable getThread() {
-		return this.thread;
+		return this.player;
 	}
 }

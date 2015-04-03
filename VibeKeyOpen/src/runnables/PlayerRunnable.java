@@ -6,58 +6,61 @@ import java.util.ListIterator;
 import channel.Channel;
 import core_objects_abstract.Song;
 
+/**
+ * Runnable that handles all song information and sends to icecast
+ * 
+ * @author Benedict Wong
+ * Created: 12/03/2015, Last modified: 4/3/2015
+ */
 public class PlayerRunnable implements Runnable {
-	
+
 	Channel channel;
-//	byte[] buffer = new byte[1024];
-//	private List<byte[]> buffer;
-//	private boolean play = true;
-	private ListIterator<byte[]> bufferIter;
-	private byte[] cur;
-	
+	private byte[] curr;
+
+	Song currentSong;
+
 	public final PlayerControl control = new PlayerControl();
-	
-	public PlayerRunnable(Channel channel) {
+
+	public PlayerRunnable(Channel channel) throws InterruptedException {
 		this.channel = channel;
-//		this.buffer = channel.getNextSongBuffer();
-		this.bufferIter = channel.getNextSongBuffer().listIterator(0);
-		this.cur = null;
+		this.curr = null;
+		currentSong = channel.getDJBot().getNextSong();
+		
+		// //make sure the first song is finished buffering before starting to
+		// play
+		// while (!currentSong.finishedBuffering()) {
+		// synchronized (currentSong) {
+		// currentSong.wait();
+		// }
+		// }
 	}
-	
+
 	public void run() {
 		try {
-//			Song song = channel.getDJBot().getSong();
-//			buffer = song.getBuffer();
-		
-//			Iterator<byte[]> it = buffer.iterator();
-//			byte[] cur = null;
-			
-			int i = 0;
-			
+			// loop until the end of time
 			while (true) {
-//				if (play) { // If currently playing
-				if (bufferIter.hasNext()) { // If there's more song data to play
-					cur = bufferIter.next();
-					if (cur != null) { // and it's not null (i.e. the end of the song)
-						channel.getIcecast().send(cur, Song.BUFFER_SIZE); // Play it!
-						i++;
-					} else {
-						// End of stream, get next song buffer (iterator)
-//							break;
-//							this.buffer = channel.getNextSongBuffer();
-						i = 0;
-						this.bufferIter = channel.getNextSongBuffer().listIterator(0);
+				synchronized (currentSong) {
+					// if not at end of song
+					if (!currentSong.atEndOfSong()) {
+						// if there is data in the song buffer
+						if (currentSong.hasNextBufferItem()) {
+
+							// Get byte array to send to icecast
+							curr = currentSong.getNextBufferItem();
+							
+							// send to icecast
+							channel.getIcecast().send(curr, Song.BUFFER_SIZE);
+						}
+						// else wait for next buffer item to become available
+						else {
+							currentSong.wait();
+						}
 					}
-				} else {
-					// Not done buffering, just wait
-					Thread.sleep(10);
-					this.bufferIter = channel.getNextSongBuffer().listIterator(i);
+					// if at end of song, get next song
+					else {
+						currentSong = channel.getDJBot().getNextSong();
+					}
 				}
-//				} else { // Else just wait until we actually can play something
-//					sleep(10);
-//					break;
-//				}
-				
 				control.pauseCheck();
 			}
 		} catch (IOException e) {
@@ -68,13 +71,17 @@ public class PlayerRunnable implements Runnable {
 			e.printStackTrace();
 		}
 	}
-	
-//	public void pause() {
-//		play = false;
-//	}
-//	
-//	public void play() {
-//		play = true;
-//		this.run(); // This is bad...
-//	}
+
+	public Song getCurrentSong() {
+		return currentSong;
+	}
+
+	// public void pause() {
+	// play = false;
+	// }
+	//
+	// public void play() {
+	// play = true;
+	// this.run(); // This is bad...
+	// }
 }

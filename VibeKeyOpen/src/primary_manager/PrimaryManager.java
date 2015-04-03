@@ -1,16 +1,15 @@
 package primary_manager;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 
 import runnables.BufferSongRunnable;
+import channel.Channel;
 import core_objects_abstract.Song;
 import core_objects_abstract.Stream;
+import djbot.DJBot;
 
 /**
  * Primary handler for streaming music and managing multiple streams.
@@ -27,14 +26,18 @@ public final class PrimaryManager {
 	// Cached Thread Executor for buffering of songs
 	private ExecutorService bufferExecutor;
 	
+	// Cached Thread Executor for channels
+	private ExecutorService channelExecutor;
+	
 	// List of streams to play music from.
-	private List<Stream> streams;
+	private Map<Integer, Stream> streams;
 
-	public PrimaryManager() {		
+	public PrimaryManager() {
 		bufferExecutor = VibeKey.getNewExecutor(5);
+		channelExecutor = VibeKey.getNewExecutor(Integer.MAX_VALUE);
 		
 		// Creates a new list of streams.
-		this.streams = new ArrayList<Stream>();
+		this.streams = new HashMap<Integer, Stream>();
 		
 	}
 	
@@ -46,16 +49,15 @@ public final class PrimaryManager {
 	// new stream to add and return it? Also how to we want to go about removing
 	// streams?
 
-	public void addStream() {
-		this.streams.add(null);
+	public void addStream(int streamID, String name) throws InterruptedException {
+		
+		Channel c = new Channel(streamID, name);
+		this.streams.put(streamID, c);
+		channelExecutor.submit(c.getPlayerRunnable());
 	}
 
-	public void removeStream(Stream toRemove) {
-		for (Stream s : this.streams) {
-			if (s.equals(toRemove)) {
-				this.streams.remove(s);
-			}
-		}
+	public void removeStream(int streamID) {
+		this.streams.remove(streamID);
 	}
 	
 	public ExecutorService getBufferExecutor(){
