@@ -1,15 +1,12 @@
 package channel;
 
-import java.util.List;
-
 import runnables.PlayerRunnable;
 
 import com.gmail.kunicins.olegs.libshout.Libshout;
 
-import core_objects_abstract.Stream;
 import djbot.DJBot;
 
-public class Channel extends Stream {
+public class Channel{
 
 	public static final State PAUSE_STATE = new PauseState();
 	public static final State STOP_STATE = new IdleState();
@@ -20,15 +17,25 @@ public class Channel extends Stream {
 	
 	private State state = STOP_STATE;
 	
-	Libshout icecast;
+	private Libshout icecast;
+	private PlayerRunnable player;
+	private int channelID;
+	private DJBot bot;
 	
-	PlayerRunnable player;
-	
+	public DJBot getDJBot(){
+		return bot;
+	}
 	
 	/** Constructor that sets the name of the channel. 
 	 * @throws InterruptedException */
 	public Channel(int channelID, String name) throws InterruptedException {
-		super(channelID);
+		this(channelID, name, new DJBot());
+	}
+	
+	
+	public Channel(int channelID, String name, DJBot bot) throws InterruptedException {
+		this.channelID = channelID;
+		this.bot = bot;
 		this.cName = name;
 		
 		this.player = new PlayerRunnable(this);
@@ -38,12 +45,8 @@ public class Channel extends Stream {
 		return player;
 	}
 	
-	
-	public Channel(int channelID, String name, DJBot bot) throws InterruptedException {
-		super(channelID, bot);
-		this.cName = name;
-		
-		this.player = new PlayerRunnable(this);
+	public int getChannelID(){
+		return channelID;
 	}
 	
 	

@@ -15,7 +15,10 @@ public class SongRequestHandler {
 		return null;
 	}
 	public static String handleGetSongList(HttpServletRequest request) {
-		// TODO Auto-generated method stub
+
+        if (request.getHeader("channel") == null) {
+//            return failString("Invalid key");
+        }
 		return null;
 	}
 

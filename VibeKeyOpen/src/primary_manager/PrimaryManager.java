@@ -8,7 +8,6 @@ import java.util.concurrent.Future;
 import runnables.BufferSongRunnable;
 import channel.Channel;
 import core_objects_abstract.Song;
-import core_objects_abstract.Stream;
 import djbot.DJBot;
 
 /**
@@ -30,14 +29,14 @@ public final class PrimaryManager {
 	private ExecutorService channelExecutor;
 	
 	// List of streams to play music from.
-	private Map<Integer, Stream> streams;
+	private Map<Integer, Channel> channel;
 
 	public PrimaryManager() {
 		bufferExecutor = VibeKey.getNewExecutor(5);
 		channelExecutor = VibeKey.getNewExecutor(Integer.MAX_VALUE);
 		
 		// Creates a new list of streams.
-		this.streams = new HashMap<Integer, Stream>();
+		this.channel = new HashMap<Integer, Channel>();
 		
 	}
 	
@@ -52,12 +51,12 @@ public final class PrimaryManager {
 	public void addStream(int streamID, String name) throws InterruptedException {
 		
 		Channel c = new Channel(streamID, name);
-		this.streams.put(streamID, c);
+		this.channel.put(streamID, c);
 		channelExecutor.submit(c.getPlayerRunnable());
 	}
 
 	public void removeStream(int streamID) {
-		this.streams.remove(streamID);
+		this.channel.remove(streamID);
 	}
 	
 	public ExecutorService getBufferExecutor(){
