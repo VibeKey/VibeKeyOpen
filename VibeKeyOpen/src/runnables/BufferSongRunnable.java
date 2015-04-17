@@ -3,6 +3,12 @@ package runnables;
 import primary_manager.VibeKey;
 import core_objects_abstract.Song;
 
+/**
+ * Runnable to submit to executor to buffer songs
+ * 
+ * @author Benedict
+ *
+ */
 public class BufferSongRunnable implements Runnable {
 
 	private final Song songToBuffer;
@@ -13,10 +19,9 @@ public class BufferSongRunnable implements Runnable {
 
 	@Override
 	public void run() {
-		songToBuffer.buffer();
 		
-		if (!songToBuffer.finishedBuffering()){
-			VibeKey.manager.bufferSong(songToBuffer);
+		while (!songToBuffer.finishedBuffering()){
+			songToBuffer.buffer();
 		}
 	}
 

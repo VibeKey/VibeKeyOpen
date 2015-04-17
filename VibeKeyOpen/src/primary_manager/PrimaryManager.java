@@ -7,8 +7,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 
 import runnables.BufferSongRunnable;
+import channel.Channel;
 import core_objects_abstract.Song;
-import core_objects_abstract.Stream;
 
 /**
  * Primary handler for streaming music and managing multiple streams.
@@ -25,14 +25,18 @@ public final class PrimaryManager {
 	// Cached Thread Executor for buffering of songs
 	private ExecutorService bufferExecutor;
 	
+	// Cached Thread Executor for channels
+	private ExecutorService channelExecutor;
+	
 	// List of streams to play music from.
-	private Map<Integer, Stream> streams;
+	private Map<Integer, Channel> channel;
 
-	public PrimaryManager() {		
+	public PrimaryManager() {
 		bufferExecutor = VibeKey.getNewExecutor(5);
+		channelExecutor = VibeKey.getNewExecutor(Integer.MAX_VALUE);
 		
 		// Creates a new list of streams.
-		this.streams = new HashMap<Integer, Stream>();
+		this.channel = new HashMap<Integer, Channel>();
 		
 	}
 	
@@ -44,16 +48,19 @@ public final class PrimaryManager {
 	// new stream to add and return it? Also how to we want to go about removing
 	// streams?
 
-	public void addStream(int id, Stream stream) {
-		this.streams.put(id, stream);
+	public void addStream(int streamID, String name) throws InterruptedException {
+		
+		Channel c = new Channel(streamID, name);
+		this.channel.put(streamID, c);
+		channelExecutor.submit(c.getPlayerRunnable());
 	}
 
-	public void removeStream(int id) {
-		this.streams.remove(id);
+	public void removeStream(int streamID) {
+		this.channel.remove(streamID);
 	}
 	
-	public Collection<Stream> getChannelList() {
-		return streams.values();
+	public Collection<Channel> getChannelList() {
+		return this.channel.values();
 	}
 	
 	public ExecutorService getBufferExecutor(){

@@ -1,15 +1,12 @@
 package channel;
 
-import java.util.List;
-
 import runnables.PlayerRunnable;
 
 import com.gmail.kunicins.olegs.libshout.Libshout;
 
-import core_objects_abstract.Stream;
 import djbot.DJBot;
 
-public class Channel extends Stream {
+public class Channel{
 
 	public static final State PAUSE_STATE = new PauseState();
 	public static final State STOP_STATE = new IdleState();
@@ -20,16 +17,36 @@ public class Channel extends Stream {
 	
 	private State state = STOP_STATE;
 	
-	Libshout icecast;
+	private Libshout icecast;
+	private PlayerRunnable player;
+	private int channelID;
+	private DJBot bot;
 	
-	PlayerRunnable thread;
+	public DJBot getDJBot(){
+		return bot;
+	}
 	
-	/** Constructor that sets the name of the channel. */
-	public Channel(String name, DJBot bot) {
-		super(bot);
+	/** Constructor that sets the name of the channel. 
+	 * @throws InterruptedException */
+	public Channel(int channelID, String name) throws InterruptedException {
+		this(channelID, name, new DJBot());
+	}
+	
+	
+	public Channel(int channelID, String name, DJBot bot) throws InterruptedException {
+		this.channelID = channelID;
+		this.bot = bot;
 		this.cName = name;
 		
-		this.thread = new PlayerRunnable(this);
+		this.player = new PlayerRunnable(this);
+	}
+	
+	public PlayerRunnable getPlayerRunnable(){
+		return player;
+	}
+	
+	public int getChannelID(){
+		return channelID;
 	}
 	
 	
@@ -111,20 +128,12 @@ public class Channel extends Stream {
 	public Libshout getIcecast() {
 		return this.icecast;
 	}
-	
-	/**
-	 * Prepares the buffer for the next song.
-	 * @return
-	 */
-	public List<byte[]> getNextSongBuffer() {
-		return this.bot.getSong().getBuffer();
-	}
 
 	/**
 	 * Gets the thread for this channel.
 	 * @return
 	 */
 	public PlayerRunnable getThread() {
-		return this.thread;
+		return this.player;
 	}
 }

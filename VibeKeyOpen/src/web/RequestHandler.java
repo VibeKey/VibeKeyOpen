@@ -4,7 +4,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import primary_manager.VibeKey;
 import channel.Channel;
-import core_objects_abstract.Stream;
 
 public class RequestHandler {
 
@@ -16,7 +15,7 @@ public class RequestHandler {
 	
 	public static String handleGetChannelList() {
 		String result = "";
-		for(Stream stream : VibeKey.manager.getChannelList()) {
+		for(Channel stream : VibeKey.manager.getChannelList()) {
 			if (stream instanceof Channel) {
 				result += ((Channel) stream).getName() + ",";
 			}

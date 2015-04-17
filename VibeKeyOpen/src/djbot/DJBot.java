@@ -1,9 +1,11 @@
 package djbot;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import primary_manager.VibeKey;
 import core_objects_abstract.Song;
 
 /**
@@ -44,7 +46,7 @@ public class DJBot implements Runnable{
 	 * Gets the next song in queue.
 	 * @return
 	 */
-	public Song getSong() {
+	public Song getNextSong() {
 		System.out.println(songList.size());
 		run();
 		return songList.remove(0);
@@ -61,15 +63,24 @@ public class DJBot implements Runnable{
 	private void addSongs() {
 		while (songList.size() < MIN_SIZE) {
 			if (buffer.size() <= 0) runSearch();
-			songList.add(buffer.remove(0));
+			Song nextSong = buffer.remove(0);
+			VibeKey.manager.bufferSong(nextSong);
+			songList.add(nextSong);
 		}
 	}
 	
 	private void runSearch() {
 		System.out.println("I am running a search, song list is size: " + songList.size());
-		for (int i = 0; i < MIN_SIZE * 5; i++) {
-			buffer.add(new Song("", 6000, "What's new?", 684596498));
-		}
+//		for (int i = 0; i < MIN_SIZE * 5; i++) {
+//			buffer.add(new Song("", 6000, "What's new?", 684596498));
+//		}
+
+		//temp song file to buffer for testing
+		File songFile = new File("Songs/LoseMyself.mp3");
+		
+		Song song = new Song(songFile.getAbsolutePath(), 201, 
+				"Lose Myself", (int) songFile.length());
+		buffer.add(song);
 	}
 
 	/**
