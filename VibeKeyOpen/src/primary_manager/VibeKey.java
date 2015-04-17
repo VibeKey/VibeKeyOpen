@@ -1,11 +1,6 @@
 package primary_manager;
 
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Types;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.SynchronousQueue;
@@ -13,9 +8,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 import mysql.SQLConnection;
-
-import com.mysql.jdbc.Statement;
-
+import channel.Channel;
 import djbot.DJBot;
 
 public class VibeKey {
@@ -51,6 +44,12 @@ public class VibeKey {
 		System.out.println(bot.getSong().getId());
 		System.out.println(bot.getSong().getId());
 		System.out.println(bot.getSong().getId());
+		
+		manager.addStream(0, new Channel("Channel 0", new DJBot()));
+		manager.addStream(1, new Channel("Channel 1", new DJBot()));
+		manager.addStream(2, new Channel("Channel 2", new DJBot()));
+		
+		while(true);
 	}
 
 	public static ExecutorService getNewExecutor(int maxSize){

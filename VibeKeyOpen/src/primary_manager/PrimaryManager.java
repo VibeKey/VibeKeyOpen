@@ -1,10 +1,8 @@
 package primary_manager;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 
@@ -28,13 +26,13 @@ public final class PrimaryManager {
 	private ExecutorService bufferExecutor;
 	
 	// List of streams to play music from.
-	private List<Stream> streams;
+	private Map<Integer, Stream> streams;
 
 	public PrimaryManager() {		
 		bufferExecutor = VibeKey.getNewExecutor(5);
 		
 		// Creates a new list of streams.
-		this.streams = new ArrayList<Stream>();
+		this.streams = new HashMap<Integer, Stream>();
 		
 	}
 	
@@ -46,16 +44,16 @@ public final class PrimaryManager {
 	// new stream to add and return it? Also how to we want to go about removing
 	// streams?
 
-	public void addStream() {
-		this.streams.add(null);
+	public void addStream(int id, Stream stream) {
+		this.streams.put(id, stream);
 	}
 
-	public void removeStream(Stream toRemove) {
-		for (Stream s : this.streams) {
-			if (s.equals(toRemove)) {
-				this.streams.remove(s);
-			}
-		}
+	public void removeStream(int id) {
+		this.streams.remove(id);
+	}
+	
+	public Collection<Stream> getChannelList() {
+		return streams.values();
 	}
 	
 	public ExecutorService getBufferExecutor(){

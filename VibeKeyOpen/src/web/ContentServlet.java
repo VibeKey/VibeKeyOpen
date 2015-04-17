@@ -31,14 +31,21 @@ public class ContentServlet extends HttpServlet {
 
 		String responseString;
 
+		System.out.println("GET Request");
 		switch (method) {
 		case "getSongDetails":
+			System.out.println("Called getSongDetails");
+			System.out.println(request.getParameterValues("arg1")[0]);
 			responseString = RequestHandler.handleGetSongDetails(request);
 			break;
+		case "getChannelList":
+			System.out.println("Called getChannelList");
+			responseString = RequestHandler.handleGetChannelList();
 		// case "getUniqueID":
 		// response.getWriter().print(RequestHandler.handleGetUniqueIDRequest(request));
 		// break;
 		default:
+			System.out.println("Tried to call " + method);
 			responseString = "{\"timestamp\":"
 					+ System.currentTimeMillis()
 					+ ", \"success\":0, \"error\":\"Invalid GET method supplied: "
