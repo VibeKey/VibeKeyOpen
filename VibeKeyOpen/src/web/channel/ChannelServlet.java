@@ -35,7 +35,7 @@ public class ChannelServlet extends HttpServlet {
 
 		switch (method) {
 		case "getChannelList":
-			responseString = ChannelRequestHandler.handleGetChannelList(request);
+			responseString = ChannelRequestHandler.handleGetChannelList();
 			break;
 		case "getChannelStatus":
 			responseString = ChannelRequestHandler.handleGetChannelStatus(request);
