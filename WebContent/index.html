@@ -7,9 +7,34 @@
 	
 </head>
 
-<body>
-	<a id="search" href="#searchFunc">Search</a> 
-	<a id="news" href="#newsFunc">News</a>
+<body onload="tabHeights()">
+	<script>
+	function tabHeights() {
+		var height = calculateHeight(7);
+		var myElements = document.querySelectorAll(".tabLinks");
+ 
+		for (var i = 0; i < myElements.length; i++) {
+			myElements[i].style.height = height + "px";
+			myElements[i].style.line-height = height + "px";
+			myElements[i].style.margin-bottom = (height / 2) + "px";
+		}
+	}
+	function calculateHeight(n){
+		return ($(window).height() / (n * 2)) * .75;
+	}
+	
+	</script>
+	<div id="container" class="tabContainer">
+		<div id="search" class="tabLinks">
+			<a id="search" href="#searchFunc">Search</a> 
+		</div>
+		
+		<div id="search" class="tabLinks">
+			<a id="news" href="#newsFunc">News</a>
+		</div>
+	</div>
+	
+	
 	
 	<div id="searchTab" class="tab">
 		<h1>I am a search tab!</h1>
@@ -20,6 +45,9 @@
 	
 	<div id="newsTab" class="tab">
 		<h1>I am a news tab!</h1>
+	</div>
+	
+	<div class="">
 	</div>
 	
     <!-- Include the Sidr JS -->

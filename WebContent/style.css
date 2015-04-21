@@ -10,7 +10,6 @@ pagebody{
 	margin: auto;
 	border: 1px solid rgb(000, 061, 075);
 	border-bottom: 8px solid rgb(000, 061, 075);
-	background-image: url('/banner.png');
 	background-repeat: no-repeat;
 	background-position:bottom center;
 }
@@ -18,6 +17,32 @@ pagebody{
 .tab {
 	display:none;
 }
+
+.tabContainer{
+	padding-top:12.5%;
+	padding-bottom:12.5%;
+	height:100%;
+	width:10%;
+	display: inline-block;
+}
+
+.tabLinks{
+	height:100px;
+	line-height:100px;
+	width:75%;
+	margin-bottom:50px;
+	vertical-align:50%;
+	background-color:rgb(147, 147, 147);
+	font-size:20px;
+}
+
+.tabLinks a:link, .tabLinks a:visited  {
+	color:rgb(255,255,255); 
+	text-decoration: none;
+}
+
+.tabLinks a:hover {color:rgb(243,221,187); text-decoration: none;}
+.tabLinks a:active {color:rgb(228,195,145); text-decoration: none;} 
 
 body {
 	font-family: sans-serif;
