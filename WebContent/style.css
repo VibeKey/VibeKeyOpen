@@ -18,31 +18,48 @@ pagebody{
 	display:none;
 }
 
-.tabContainer{
-	padding-top:12.5%;
-	padding-bottom:12.5%;
+.tabContainer {
 	height:100%;
 	width:10%;
-	display: inline-block;
+	padding-top:50px;
 }
 
-.tabLinks{
-	height:100px;
-	line-height:100px;
+.tabLink {
+	font-size:14px;
 	width:75%;
-	margin-bottom:50px;
-	vertical-align:50%;
 	background-color:rgb(147, 147, 147);
-	font-size:20px;
+	height:100%;
+	vertical-align:middle;
+	display:inline-block;
+	margin-left:0;
+	border:0;
 }
 
-.tabLinks a:link, .tabLinks a:visited  {
+.tabLinkContainer{
+	height:75px;
+	line-height:75px;
+	width:100%;
+	margin-bottom:30px;
+}
+
+.arrow-right {
+	position:fixed;
+	display:inline-block;
+	width: 0; 
+	height: 0; 
+	border-top: 37.5px solid transparent;
+	border-bottom: 38.5px solid transparent;
+	
+	border-left: 25px solid rgb(147, 147, 147);
+}
+
+.tabLink a:link, .tabLink a:visited  {
 	color:rgb(255,255,255); 
 	text-decoration: none;
 }
 
-.tabLinks a:hover {color:rgb(243,221,187); text-decoration: none;}
-.tabLinks a:active {color:rgb(228,195,145); text-decoration: none;} 
+.tabLink a:hover {color:rgb(243,221,187); text-decoration: none;}
+.tabLink a:active {color:rgb(228,195,145); text-decoration: none;} 
 
 body {
 	font-family: sans-serif;

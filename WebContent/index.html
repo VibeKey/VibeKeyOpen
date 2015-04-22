@@ -11,7 +11,15 @@
 	<script>
 	function tabHeights() {
 		var height = calculateHeight(7);
-		var myElements = document.querySelectorAll(".tabLinks");
+		var myElements = document.querySelectorAll(".tabLinkContainer");
+ 
+		for (var i = 0; i < myElements.length; i++) {
+			myElements[i].style.height = height + "px";
+			myElements[i].style.line-height = height + "px";
+			myElements[i].style.margin-bottom = (height / 2) + "px";
+		}
+		
+		var myElements = document.querySelectorAll(".arrow-right");
  
 		for (var i = 0; i < myElements.length; i++) {
 			myElements[i].style.height = height + "px";
@@ -25,12 +33,53 @@
 	
 	</script>
 	<div id="container" class="tabContainer">
-		<div id="search" class="tabLinks">
-			<a id="search" href="#searchFunc">Search</a> 
+		<div class="tabLinkContainer">
+			<span id="search" class="tabLink">
+				<a id="search" href="#searchFunc">Search</a> 
+			</span>
+			<span class="arrow-right"></span>
 		</div>
 		
-		<div id="search" class="tabLinks">
-			<a id="news" href="#newsFunc">News</a>
+		<div class="tabLinkContainer">
+			<span id="news" class="tabLink">
+				<a id="news" href="#newsFunc">News</a>
+			</span>
+			<span class="arrow-right"></span>
+		</div>
+		
+		<div class="tabLinkContainer">
+			<span id="soundboard" class="tabLink">
+				<a id="soundboard" href="#soundboardFunc">Soundboard</a>
+			</span>
+			<span class="arrow-right"></span>
+		</div>
+		
+		<div class="tabLinkContainer">
+			<span id="calendar" class="tabLink">
+				<a id="calendar" href="#calendarFunc">Calendar</a>
+			</span>
+			<span class="arrow-right"></span>
+		</div>
+		
+		<div class="tabLinkContainer">
+			<span id="djChat" class="tabLink">
+				<a id="djChat" href="#djChatFunc">DJ Chat</a>
+			</span>
+			<span class="arrow-right"></span>
+		</div>
+		
+		<div class="tabLinkContainer">
+			<span id="audience" class="tabLink">
+				<a id="audience" href="#audienceFunc">Audience</a>
+			</span>
+			<span class="arrow-right"></span>
+		</div>
+		
+		<div class="tabLinkContainer">
+			<span id="settings" class="tabLink">
+				<a id="settings" href="#settingsFunc">Settings</a>
+			</span>
+			<span class="arrow-right"></span>
 		</div>
 	</div>
 	
