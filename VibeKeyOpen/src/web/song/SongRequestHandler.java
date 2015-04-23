@@ -2,6 +2,10 @@ package web.song;
 
 import javax.servlet.http.HttpServletRequest;
 
+import channel.Channel;
+import primary_manager.VibeKey;
+import web.Response.*;
+
 /**
  * Helper for SongServlet - RequestHandler
  * 
@@ -17,8 +21,13 @@ public class SongRequestHandler {
 	public static String handleGetSongList(HttpServletRequest request) {
 
         if (request.getHeader("channel") == null) {
-//            return failString("Invalid key");
+            return new FailResponse("Invalid key").toString();
         }
+        
+        Channel channel = VibeKey.manager.getChannels().get(Integer.valueOf(request.getHeader("channel")));
+        
+//        channel.getPlayerRunnable()
+        
 		return null;
 	}
 

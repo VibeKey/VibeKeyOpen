@@ -1,14 +1,15 @@
 package web.channel;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import web.Response;
+import web.Response.FailResponse;
 
 /**
  * Servlet implementation class Channel Servlet
@@ -18,65 +19,58 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet("/api/channel")
 public class ChannelServlet extends HttpServlet {
-
-	/**
+    
+    /**
 	 * 
 	 */
-	private static final long serialVersionUID = 7525261946708300303L;
-
-	@Override
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/plain");
-		String method = request.getParameter("method") != null ? request
-				.getParameter("method") : "null";
-
-		String responseString;
-
-		switch (method) {
-		case "getChannelList":
-			responseString = ChannelRequestHandler.handleGetChannelList();
-			break;
-		case "getChannelStatus":
-			responseString = ChannelRequestHandler.handleGetChannelStatus(request);
-			break;
-		// case "getUniqueID":
-		// response.getWriter().print(RequestHandler.handleGetUniqueIDRequest(request));
-		// break;
-		default:
-			responseString = "{\"timestamp\":"
-					+ System.currentTimeMillis()
-					+ ", \"success\":0, \"error\":\"Invalid GET method supplied: "
-					+ method + "\"}";
-			break;
-		}
-		response.getWriter().print(responseString);
-		System.out.println(responseString);
-	}
-
-	@Override
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws IOException {
-
-		response.setContentType("text/plain");
-
-		String method = request.getParameter("method") != null ? request
-				.getParameter("method") : "null";
-
-		String responseString;
-
-		switch (method) {
-		// case "getUniqueID":
-		// response.getWriter().print(RequestHandler.handleGetUniqueIDRequest(request));
-		// break;
-		default:
-			responseString = "{\"timestamp\":"
-					+ System.currentTimeMillis()
-					+ ", \"success\":0, \"error\":\"Invalid POST method supplied: "
-					+ method + "\"}";
-			break;
-		}
-		response.getWriter().print(responseString);
-		System.out.println(responseString);
-	}
+    private static final long serialVersionUID = 7525261946708300303L;
+    
+    @Override
+    protected void doGet(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException {
+    
+        response.setContentType("text/plain");
+        String method = request.getParameter("method") != null ? request
+                .getParameter("method") : "null";
+        
+        Response responseObject;
+        
+        switch (method) {
+            case "getChannelList":
+                responseObject = ChannelRequestHandler.handleGetChannelList();
+                break;
+            case "getChannelStatus":
+                responseObject = ChannelRequestHandler.handleGetChannelStatus(request);
+                break;
+            // case "getUniqueID":
+            // response.getWriter().print(RequestHandler.handleGetUniqueIDRequest(request));
+            // break;
+            default:
+                responseObject = new FailResponse("Invalid method provided for channel API call - GET: " + method);
+                break;
+        }
+        response.getWriter().print(responseObject.toJson());
+    }
+    
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws IOException {
+    
+        response.setContentType("text/plain");
+        
+        String method = request.getParameter("method") != null ? request
+                .getParameter("method") : "null";
+        
+        Response responseObject;
+        
+        switch (method) {
+        // case "getUniqueID":
+        // response.getWriter().print(RequestHandler.handleGetUniqueIDRequest(request));
+        // break;
+            default:
+                responseObject = new FailResponse("Invalid method provided for channel API call - GET: " + method);
+                break;
+        }
+        response.getWriter().print(responseObject.toJson());
+    }
 }

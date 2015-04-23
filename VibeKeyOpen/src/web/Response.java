@@ -25,6 +25,11 @@ public abstract class Response {
         return this;
     }
     
+    public String toJson() {
+    
+        return this.toString();
+    }
+    
     @Override
     public String toString() {
     

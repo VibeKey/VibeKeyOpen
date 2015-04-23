@@ -2,19 +2,9 @@ package web.channel;
 
 import javax.servlet.http.HttpServletRequest;
 
-import java.io.PrintWriter;
-
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.google.gson.Gson;
-
 import primary_manager.VibeKey;
 import web.Response;
+import web.Response.FailResponse;
 import web.Response.SuccessResponse;
 import channel.Channel;
 
@@ -25,18 +15,29 @@ import channel.Channel;
  */
 
 public class ChannelRequestHandler {
-
-	public static String handleGetChannelList() {
-		
-		Response result = new SuccessResponse();
-		result.addToReturnData("channelList", VibeKey.manager.getChannelList());
-
-return new Gson().toJson(result);
-	}
-
-	public static String handleGetChannelStatus(HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+    
+    public static Response handleGetChannelList() {
+    
+        Response result = new SuccessResponse();
+        result.addToReturnData("channelList", VibeKey.manager.getChannelList());
+        
+        return result;
+    }
+    
+    public static Response handleGetChannelStatus(HttpServletRequest request) {
+    
+        String section = request.getHeader("section");
+        if (section == null) {
+            return new FailResponse("Invalid section provided");
+        }
+        
+        Channel channelInstance = VibeKey.manager.getChannels().get(section);
+        Response result = new SuccessResponse();
+        result.addToReturnData("name", channelInstance.getName());
+        result.addToReturnData("currentSong", channelInstance.getPlayerRunnable().getCurrentSong());
+        
+        // TODO Auto-generated method stub
+        return null;
+    }
+    
 }
