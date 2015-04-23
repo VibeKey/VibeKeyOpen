@@ -59,6 +59,10 @@ public final class PrimaryManager {
 		this.channel.remove(streamID);
 	}
 	
+	public Map<Integer, Channel> getChannels() {
+		return this.channel;
+	}
+	
 	public Collection<Channel> getChannelList() {
 		return this.channel.values();
 	}
