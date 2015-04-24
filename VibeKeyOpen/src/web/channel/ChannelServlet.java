@@ -1,6 +1,7 @@
 package web.channel;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import primary_manager.VibeKey;
 import web.Response;
 import web.Response.FailResponse;
 
@@ -19,6 +21,15 @@ import web.Response.FailResponse;
 
 @WebServlet("/api/channel")
 public class ChannelServlet extends HttpServlet {
+    
+    public ChannelServlet() throws ClassNotFoundException, SQLException, IOException, InterruptedException {
+    
+        super();
+        
+        if (VibeKey.isStarted == false) {
+            VibeKey.start();
+        }
+    }
     
     /**
 	 * 
@@ -42,9 +53,6 @@ public class ChannelServlet extends HttpServlet {
             case "getChannelStatus":
                 responseObject = ChannelRequestHandler.handleGetChannelStatus(request);
                 break;
-            // case "getUniqueID":
-            // response.getWriter().print(RequestHandler.handleGetUniqueIDRequest(request));
-            // break;
             default:
                 responseObject = new FailResponse("Invalid method provided for channel API call - GET: " + method);
                 break;
@@ -64,9 +72,6 @@ public class ChannelServlet extends HttpServlet {
         Response responseObject;
         
         switch (method) {
-        // case "getUniqueID":
-        // response.getWriter().print(RequestHandler.handleGetUniqueIDRequest(request));
-        // break;
             default:
                 responseObject = new FailResponse("Invalid method provided for channel API call - GET: " + method);
                 break;
