@@ -34,10 +34,9 @@ public class ChannelRequestHandler {
         Channel channelInstance = VibeKey.manager.getChannels().get(section);
         Response result = new SuccessResponse();
         result.addToReturnData("name", channelInstance.getName());
-        result.addToReturnData("currentSong", channelInstance.getPlayerRunnable().getCurrentSong());
+        result.addToReturnData("channelState", channelInstance.getState().getClass().getName());
         
         // TODO Auto-generated method stub
         return null;
     }
-    
 }

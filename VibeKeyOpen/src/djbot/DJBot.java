@@ -45,6 +45,16 @@ public class DJBot implements Runnable {
     }
     
     /**
+     * Gets the songlist.
+     * 
+     * @return
+     */
+    public List<Song> getSongList() {
+    
+        return new ArrayList<Song>(songList);
+    }
+    
+    /**
      * Gets the next song in queue.
      * 
      * @return
