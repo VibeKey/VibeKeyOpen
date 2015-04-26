@@ -1,40 +1,24 @@
 <!doctype html>
 <html lang="en">
 <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="sidr/stylesheets/jquery.sidr.dark.css">
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	
+	<script type="text/javascript" src="tabScript.js"></script>
+	<script type="text/javascript" src="hover.js"></script>
 </head>
 
-<body onload="tabHeights()">
+<body>
 	<script>
-	function tabHeights() {
-		var height = calculateHeight(7);
-		var myElements = document.querySelectorAll(".tabLinkContainer");
- 
-		for (var i = 0; i < myElements.length; i++) {
-			myElements[i].style.height = height + "px";
-			myElements[i].style.line-height = height + "px";
-			myElements[i].style.margin-bottom = (height / 2) + "px";
-		}
-		
-		var myElements = document.querySelectorAll(".arrow-right");
- 
-		for (var i = 0; i < myElements.length; i++) {
-			myElements[i].style.height = height + "px";
-			myElements[i].style.line-height = height + "px";
-			myElements[i].style.margin-bottom = (height / 2) + "px";
-		}
-	}
-	function calculateHeight(n){
-		return ($(window).height() / (n * 2)) * .75;
-	}
-	
+	$(document).ready(function() {
+		$('body').append(document.createElement('div').innerHTML = ("BRIDGETTE IS A PANCAKE"));
+	});
 	</script>
+
 	<div id="container" class="tabContainer">
-		<div class="tabLinkContainer">
-			<span id="search" class="tabLink">
+		<div id="searchContainer" class="tabLinkContainer">
+			<span id="searchSpan" class="tabLink">
 				<a id="search" href="#searchFunc">Search</a> 
 			</span>
 			<span class="arrow-right"></span>
@@ -86,6 +70,7 @@
 	
 	
 	<div id="searchTab" class="tab">
+		
 		<h1>I am a search tab!</h1>
 		<ul>
 			<li draggable="true">Item</li>
@@ -102,6 +87,6 @@
     <!-- Include the Sidr JS -->
     <script src="sidr/jquery.sidr.min.js"></script>
 	<script type="text/javascript" src="tabScript.js"></script>
-</body>
+	</body>
 </html>
 
