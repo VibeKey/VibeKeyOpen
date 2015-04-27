@@ -57,7 +57,7 @@ public class ChannelServlet extends HttpServlet {
                 responseObject = new FailResponse("Invalid method provided for channel API call - GET: " + method);
                 break;
         }
-        response.getWriter().print(responseObject.toJson());
+        response.getWriter().print(responseObject);
     }
     
     @Override
@@ -76,6 +76,6 @@ public class ChannelServlet extends HttpServlet {
                 responseObject = new FailResponse("Invalid method provided for channel API call - GET: " + method);
                 break;
         }
-        response.getWriter().print(responseObject.toJson());
+        response.getWriter().print(responseObject);
     }
 }
