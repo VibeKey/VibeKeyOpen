@@ -8,6 +8,7 @@ $(document).ready(function() {
 		$('#search').sidr({
 			name: 'searchFunc',
 			source: '#searchTab',
+			renaming: false,
 			onOpen: function(){
 				document.getElementById("searchSpan").style.width = "75%";
 				

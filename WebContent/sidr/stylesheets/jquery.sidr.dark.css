@@ -1,5 +1,6 @@
 .sidr{
 	display:none;
+	background:rgb(068,068,068);
 	position:absolute;
 	position:fixed;
 	top:0;
@@ -8,13 +9,10 @@
 	width:25%;
 	overflow-x:none;
 	overflow-y:auto;
-	font-family:arial;
-	font-size:15px;
-	background:#333;
-	color:#fff;
 }
 
 .sidr.left{
 	left:-260px;
 	right:auto
 }
+
