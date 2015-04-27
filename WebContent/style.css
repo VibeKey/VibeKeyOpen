@@ -14,10 +14,6 @@ pagebody{
 	background-position:bottom center;
 }
 
-.tab {
-	display:none;
-}
-
 .tabContainer {
 	height:100%;
 	width:12%;
@@ -43,7 +39,7 @@ pagebody{
 	padding:0px 5px 0px 5px;
 }
 
-.tabLinkContainerHover> .tabLink {
+.tabLinkContainerHover .tabLink {
 	width:75%;
 }
 
@@ -69,7 +65,7 @@ pagebody{
 } 
 
 body {
-	font-family: sans-serif;
+	font-family: Arial;
 	padding: 0;
 	margin: 0;
 	background: rgb(0, 0, 0);
@@ -80,11 +76,57 @@ a:visited {color:rgb(228,195,145); text-decoration: none;}
 a:hover {color:rgb(243,221,187); text-decoration: none;}
 a:active {color:rgb(228,195,145); text-decoration: none;} 
 
-h1 {
-	color: rgb(114, 015, 002);
-	float: bottom-left;
+.song {
+	width:100%;
+	background:rgb(194,194,194);
+	margin-bottom:15px;
+	box-shadow: 0px 5px 10px rgb(048,048,048);
+	padding:10px 10px 10px 10px;
 }
 
-h2 {
-	color: rgb(114, 015, 002);
+.song .voting {
+	display:inline-block;
+	height:100%;
+	margin:0px 0px 0px 0px;
+}
+
+.voting .upArrow {
+	width: 0; 
+	height: 0; 
+	border-right: 10px solid transparent;
+	border-left: 10px solid transparent;
+	border-bottom: 10px solid rgb(153, 000, 000);
+}
+
+.voting .number {
+	font-family:Impact;
+	color:#000;
+	font-size:20px;
+}
+
+.voting .downArrow {
+	width: 0; 
+	height: 0; 
+	border-right: 10px solid transparent;
+	border-left: 10px solid transparent;
+	border-top: 10px solid rgb(153, 000, 000);
+}
+
+.song .basic {
+	overflow:hidden;
+	width:70%;
+	display:inline-block;
+	height:100%;
+}
+
+.basic .name {
+	font-size:16px;
+	font-weight:bold;
+	color:#fff;
+}
+
+.basic .band {
+	font-size:12px;
+	color:#000;
+	padding-left:10px;
 }
