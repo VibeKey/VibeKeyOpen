@@ -12,6 +12,7 @@ public class ClosedState extends State {
 	@Override
 	public void function(Channel channel) {
 		Libshout icecast = null;
+		System.out.println("user.dir: " + System.getProperty("user.dir"));
 		try {
 			icecast = new Libshout();
 			icecast.setHost("localhost");
