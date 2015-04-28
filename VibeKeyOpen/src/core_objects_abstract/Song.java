@@ -37,8 +37,10 @@ public class Song implements Comparable<Song> {
     public static String            ARTIST_KEY   = "Artist";
     /** Constant for a song length. */
     public static String            LENGTH_KEY    = "Length";
+    /** Constant for a song length. */
+    public static String            SIZE_KEY  	  = "Size";
     /** Constant for a song id. */
-    public static String            ID_KEY    = "Id";
+    public static String            ID_KEY 		  = "Id";
     /** The size to buffer the song. */
     public static int               BUFFER_SIZE  = 1024;
     

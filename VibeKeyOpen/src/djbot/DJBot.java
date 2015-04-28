@@ -102,9 +102,15 @@ public class DJBot implements Runnable {
     		query += key + " = " + mediaTerms.get(key);
     	}
     	query += " LIMIT 20";
+    	
     	try {
 			ResultSet results = PrimaryManager.CONN.execQuery(query);
 			while (results.next()) {
+				Song song = new Song(results.getString(Song.FILEPATH_KEY), results.getInt(Song.LENGTH_KEY), 
+						results.getString(Song.TITLE_KEY), results.getString(Song.GENRE_KEY), 
+						results.getString(Song.ARTIST_KEY), results.getInt(Song.SIZE_KEY));
+				buffer.add(song);
+				
 				int id = results.getInt("Id");
 				String name = results.getString("Name");
 				System.out.println("ID: " + id + ", NAME: " + name);
@@ -112,9 +118,6 @@ public class DJBot implements Runnable {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-    	
-
-    	
     }
     
     /**
