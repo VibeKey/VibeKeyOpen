@@ -13,13 +13,14 @@ public class Query {
 		this.conn = conn;
 	}
 	
-	public void execute() throws SQLException {
+	public ResultSet execute() throws SQLException {
 		java.sql.Statement stmt = conn.createStatement();
 		ResultSet results = stmt.executeQuery(query);
-		while (results.next()) {
-			int id = results.getInt("id");
-			String name = results.getString("name");
-			System.out.println("ID: " + id + ", NAME: " + name);
-		}
+		return results;
+//		while (results.next()) {
+//			int id = results.getInt("id");
+//			String name = results.getString("name");
+//			System.out.println("ID: " + id + ", NAME: " + name);
+//		}
 	}
 }

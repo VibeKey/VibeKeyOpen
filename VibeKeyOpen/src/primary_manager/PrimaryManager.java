@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 
+import mysql.SQLConnection;
 import runnables.BufferSongRunnable;
 import channel.Channel;
 import core_objects_abstract.Song;
@@ -20,7 +21,7 @@ public final class PrimaryManager {
 	// See Software design thread pool example.
 	// Using normal runnables
 	// Takes a text file that can manage all of the plugins
-	
+	public static SQLConnection CONN = new SQLConnection("wmhd-test.csse.rose-hulman.edu", "wmhd-test", "jungckjp", "");
 	/** ExecutorServices */
 	// Cached Thread Executor for buffering of songs
 	private ExecutorService bufferExecutor;

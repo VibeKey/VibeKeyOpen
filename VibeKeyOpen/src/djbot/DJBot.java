@@ -1,11 +1,15 @@
 package djbot;
 
 import java.io.File;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
+import mysql.Query;
+import primary_manager.PrimaryManager;
 import primary_manager.VibeKey;
 import core_objects_abstract.Song;
 
@@ -88,7 +92,7 @@ public class DJBot implements Runnable {
     }
     
     private void runSearch() {
-    	String query = "SELECT 20 FROM Media WHERE ";
+    	String query = "SELECT * FROM Media WHERE ";
     	
     	String[] keys = (String[]) mediaTerms.keySet().toArray();
     	for(int i = 0; i < keys.length; i++) {
@@ -97,7 +101,19 @@ public class DJBot implements Runnable {
     		if (i != 0) query += " && ";
     		query += key + " = " + mediaTerms.get(key);
     	}
+    	query += " LIMIT 20";
+    	try {
+			ResultSet results = PrimaryManager.CONN.execQuery(query);
+			while (results.next()) {
+				int id = results.getInt("Id");
+				String name = results.getString("Name");
+				System.out.println("ID: " + id + ", NAME: " + name);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
     	
+
     	
     }
     

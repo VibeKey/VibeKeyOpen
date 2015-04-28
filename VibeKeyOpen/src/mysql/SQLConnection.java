@@ -3,24 +3,29 @@ package mysql;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SQLConnection {
     
     protected Connection conn;
     
-    public SQLConnection(String address, String dbName, String user, String password) throws ClassNotFoundException, SQLException {
+    public SQLConnection(String address, String dbName, String user, String password) {
     
+    	try {
         Class.forName("com.mysql.jdbc.Driver");
         
         this.conn = DriverManager.getConnection(
                 "jdbc:mysql://" + address + "/" + dbName, user, password);
+    	} catch (Exception e){
+    		System.out.println(e);
+    	}
     }
     
-    public void execQuery(String query) throws SQLException {
+    public ResultSet execQuery(String query) throws SQLException {
     
         Query q = new Query(query, this.conn);
-        q.execute();
+        return q.execute();
     }
     
     public void execCalendar_GET() throws SQLException {

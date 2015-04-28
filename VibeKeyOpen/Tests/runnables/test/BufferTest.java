@@ -17,7 +17,7 @@ public class BufferTest {
     
         File songFile = new File("Songs/LoseMyself.mp3");
         
-        Song song = new Song(songFile.getAbsolutePath(), 201, "Lose Myself", null, null, null,
+        Song song = new Song(songFile.getAbsolutePath(), 201, "Lose Myself", null, null,
                 (int) songFile.length());
         
         VibeKey.manager.bufferSong(song);
@@ -56,9 +56,9 @@ public class BufferTest {
         File songFile1 = new File("Songs/LoseMyself.mp3");
         File songFile2 = new File("Songs/Rift.mp3");
         
-        Song song1 = new Song(songFile1.getAbsolutePath(), 201, "Lose Myself", null, null, null,
+        Song song1 = new Song(songFile1.getAbsolutePath(), 201, "Lose Myself", null, null,
                 (int) songFile1.length());
-        Song song2 = new Song(songFile2.getAbsolutePath(), 201, "Rift", null, null, null,
+        Song song2 = new Song(songFile2.getAbsolutePath(), 201, "Rift", null, null,
                 (int) songFile2.length());
         
         VibeKey.manager.bufferSong(song1);
