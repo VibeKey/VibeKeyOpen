@@ -11,8 +11,49 @@
 
 <body>
 	<script>
-	$(document).ready(function() {
-		$('body').append(document.createElement('div').innerHTML = ("BRIDGETTE IS A PANCAKE"));
+	$(document).ready(function() {	
+		// Create overall layout.
+		var songItem = document.createElement('div');
+		var votingItem = document.createElement('span');
+		var basicItem = document.createElement('span');
+		
+		songItem.className = "song";
+		votingItem.className = "voting";
+		basicItem.className = "basic";
+		
+		songItem.appendChild(votingItem);
+		songItem.appendChild(basicItem);
+		
+		// Create all voting items.
+		var up = document.createElement('div');
+		var number = document.createElement('div');
+		var down = document.createElement('div');
+		
+		up.className = "upArrow";
+		number.className = "number";
+		down.className = "downArrow";
+		
+		number.innerHTML = "24";
+		
+		votingItem.appendChild(up);
+		votingItem.appendChild(number);
+		votingItem.appendChild(down);
+		
+		// Create all basic items.
+		var name = document.createElement('div');
+		var band = document.createElement('div');
+		
+		name.className = "name";
+		band.className = "band";
+		
+		name.innerHTML = "Take Me To Church";
+		band.innerHTML = "Hozier";
+		
+		basicItem.appendChild(name);
+		basicItem.appendChild(band);
+		
+		// Append to body for now.
+		document.getElementById("searchTab").appendChild(songItem);
 	});
 	</script>
 
@@ -68,26 +109,6 @@
 	</div>
 	
 	<div id="searchTab" class="sidr">
-		<div class="song">
-			<span class="voting">
-				<div class="upArrow"></div>
-				<div class="number">20</div>
-				<div class="downArrow"></div>
-			</span>
-			<span class="basic">
-				<div class="name">Take Me To Church</div>
-				<div class="band">Hozier</div>
-			</span>
-			<span class="buttons">
-			</span>
-		</div>
-		<div class="song">
-			<span class="voting">
-				<div class="upArrow"></div>
-				<div class="number">16</div>
-				<div class="downArrow"></div>
-			</span>
-		</div>
 	</div>
 	
 	<div id="newsTab" class="sidr">
