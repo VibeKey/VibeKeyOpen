@@ -28,15 +28,17 @@ public class Song implements Comparable<Song> {
      * Keys to hashmap
      */
     /** Constant for a file path. */
-    public static String            FILEPATH_KEY = "filepath";
+    public static String            FILEPATH_KEY = "Filepath";
     /** Constant for a song id. */
-    public static String            TITLE_KEY    = "title";
+    public static String            TITLE_KEY    = "Name";
     /** Constant for a song genre. */
-    public static String            GENRE_KEY    = "genre";
+    public static String            GENRE_KEY    = "Genre";
     /** Constant for a song artist. */
-    public static String            ARTIST_KEY   = "artist";
-    /** Constant for a song album. */
-    public static String            ALBUM_KEY    = "album";
+    public static String            ARTIST_KEY   = "Artist";
+    /** Constant for a song length. */
+    public static String            LENGTH_KEY    = "Length";
+    /** Constant for a song id. */
+    public static String            ID_KEY    = "Id";
     /** The size to buffer the song. */
     public static int               BUFFER_SIZE  = 1024;
     
@@ -63,14 +65,13 @@ public class Song implements Comparable<Song> {
      * @param title
      *            The title of the song.
      */
-    public Song(String filepath, int length, String title, String genre, String artist, String album, int size) {
+    public Song(String filepath, int length, String title, String genre, String artist, int size) {
     
         this.information = new HashMap<String, String>();
         this.information.put(FILEPATH_KEY, filepath);
         this.information.put(TITLE_KEY, title);
         this.information.put(GENRE_KEY, genre);
         this.information.put(ARTIST_KEY, artist);
-        this.information.put(ALBUM_KEY, album);
         this.length = length;
         this.size = size;
         this.buffer = new LinkedBlockingQueue<byte[]>();
@@ -247,8 +248,6 @@ public class Song implements Comparable<Song> {
             object.addProperty("title", song.getParameter(TITLE_KEY));
             object.addProperty("genre", song.getParameter(GENRE_KEY));
             object.addProperty("artist", song.getParameter(ARTIST_KEY));
-            object.addProperty("album", song.getParameter(ALBUM_KEY));
-            object.addProperty("title", song.getParameter(ALBUM_KEY));
             // we create the json object for the song and send it back to the
             // Gson serializer
             return object;

@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 import primary_manager.VibeKey;
 import core_objects_abstract.Song;
@@ -87,18 +88,17 @@ public class DJBot implements Runnable {
     }
     
     private void runSearch() {
-    
-        System.out.println("I am running a search, song list is size: " + songList.size());
-        // for (int i = 0; i < MIN_SIZE * 5; i++) {
-        // buffer.add(new Song("", 6000, "What's new?", 684596498));
-        // }
-        
-        // temp song file to buffer for testing
-        File songFile = new File("Songs/LoseMyself.mp3");
-        
-        Song song = new Song(songFile.getAbsolutePath(), 201,
-                "Lose Myself", null, null, null, (int) songFile.length());
-        buffer.add(song);
+    	String query = "SELECT 20 FROM Media WHERE ";
+    	
+    	String[] keys = (String[]) mediaTerms.keySet().toArray();
+    	for(int i = 0; i < keys.length; i++) {
+    		String key = keys[i];
+    		
+    		if (i != 0) query += " && ";
+    		query += key + " = " + mediaTerms.get(key);
+    	}
+    	
+    	
     }
     
     /**
