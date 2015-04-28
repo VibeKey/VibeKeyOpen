@@ -4,6 +4,7 @@
 .mylyn
 .log
 .classpath
+*.project
 .project
 .settings
 /target/
