@@ -133,7 +133,7 @@ a:active {color:rgb(228,195,145); text-decoration: none;}
 }
 .playlist{
 	display:inline-block;
-	position:fixed;
+	position:absolute;
 	height:70%;
 	width:25%;
 	left:37%;
