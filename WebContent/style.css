@@ -143,3 +143,12 @@ a:active {color:rgb(228,195,145); text-decoration: none;}
 	min-width:400px;
 	background-color: white;
 }
+.dummyCalendar{
+margin-left:auto;
+margin-right:auto;
+}
+
+table.dummyCalendar td{
+width:30px;
+}
+
