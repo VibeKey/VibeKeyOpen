@@ -1,16 +1,23 @@
 $(document).ready(function() {
 	
-	var height = ((window.height - 100) / (7 * 2)) + "px",
-		heightHalf = ((window.height - 100) / (7)) + "px";
-	var container = $('.tabLinkContainer');
+	var height = (($(window).height()-155) / (10.5));
+	var heightHalf = height/2;
+	var container = $(".tabLinkContainer");
  
-	container.css("height", height);
-	container.css('line-height', height);
+	$(".tabLinkContainer").css('height',height);
+	//$(".tabLinkContainer").css('line-height',heightHalf);
 		
 	var arrows = document.querySelectorAll(".arrow-right");
  
-	for (var i = 0; i < arrows.length; i++) {
-	}
+	$(".arrow-right").css('border-top-width',.5*height);
+	$(".arrow-right").css('border-top-style',"solid");
+	$(".arrow-right").css('border-top-color',"transparent");
+	$(".arrow-right").css('border-bottom',.52*height);
+	$(".arrow-right").css('border-bottom-style',"solid");
+	$(".arrow-right").css('border-bottom-color',"transparent");
+	$(".arrow-right").css('border-left',.33*height);
+	$(".arrow-right").css('border-left-style',"solid");
+	$(".arrow-right").css('border-left-color',"rgb(147,147,147)");
 });
 	
 	
