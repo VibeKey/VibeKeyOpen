@@ -142,6 +142,7 @@ a:active {color:rgb(228,195,145); text-decoration: none;}
 	min-height = 300px;
 	min-width:400px;
 	background-color: white;
+	overflow:hidden;
 }
 .dummyCalendar{
 margin-left:auto;
@@ -150,5 +151,56 @@ margin-right:auto;
 
 table.dummyCalendar td{
 width:30px;
+}
+
+.songItem {
+	width:100%;
+	background:rgb(194,194,194);
+	margin-bottom:15px;
+	box-shadow: 0px 5px 10px rgb(048,048,048);
+	padding:10px 10px 10px 10px;
+}
+.basicPart{
+	overflow:hidden;
+	width:70%;
+	display:inline-block;
+	height:100%;
+}
+
+.votingPart{
+	display:inline-block;
+	height:100%;
+	margin:0px 0px 0px 0px;
+}
+
+.bandName{
+	font-size:12px;
+	color:#000;
+	padding-left:10px;
+}
+.songName{
+	font-size:16px;
+	font-weight:bold;
+	color:#fff;
+}
+.songUpArrow{
+	width: 0; 
+	height: 0; 
+	border-right: 10px solid transparent;
+	border-left: 10px solid transparent;
+	border-bottom: 10px solid rgb(153, 000, 000);
+}
+
+.songDownArrow{
+	width: 0; 
+	height: 0; 
+	border-right: 10px solid transparent;
+	border-left: 10px solid transparent;
+	border-top: 10px solid rgb(153, 000, 000);
+}
+.likeNumber{
+	font-family:Impact;
+	color:#000;
+	font-size:20px;
 }
 
