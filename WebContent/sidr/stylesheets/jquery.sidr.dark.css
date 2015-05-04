@@ -7,7 +7,7 @@
 	height:100%;
 	z-index:999999;
 	width:25%;
-	overflow-x:none;
+	overflow-x:hidden;
 	overflow-y:auto;
 }
 

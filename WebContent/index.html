@@ -12,17 +12,23 @@
 <body>
 	<script>
 	$(document).ready(function() {	
+		var song = createSong("555", "Take Me To Church", "Hozier");
+		var searchTab = document.getElementById("searchFunc");
+	
 		// Create overall layout.
 		var songItem = document.createElement('div');
 		var votingItem = document.createElement('span');
 		var basicItem = document.createElement('span');
+		var buttonItem = document.createElement('span');
 		
 		songItem.className = "song";
 		votingItem.className = "voting";
 		basicItem.className = "basic";
+		buttonItem.className = "button";
 		
 		songItem.appendChild(votingItem);
 		songItem.appendChild(basicItem);
+		songItem.appendChild(buttonItem);
 		
 		// Create all voting items.
 		var up = document.createElement('div');
@@ -33,7 +39,7 @@
 		number.className = "number";
 		down.className = "downArrow";
 		
-		number.innerHTML = "24";
+		number.innerHTML = song["votes"];
 		
 		votingItem.appendChild(up);
 		votingItem.appendChild(number);
@@ -46,19 +52,125 @@
 		name.className = "name";
 		band.className = "band";
 		
-		name.innerHTML = "Take Me To Church";
-		band.innerHTML = "Hozier";
+		name.innerHTML = song["name"];
+		band.innerHTML = song["artist"];
 		
 		basicItem.appendChild(name);
 		basicItem.appendChild(band);
 		
+		// Add all the buttons.
+		var info = document.createElement('span');
+		var add = document.createElement('span');
+		var del = document.createElement('span');
+		
+		info.className = "circle";
+		add.className = "circle";
+		del.className = "circle";
+		
+		info.innerHTML = "i";
+		add.innerHTML = "+";
+		del.innerHTML = "x";
+		
+		add.style.background = '#008000';
+		add.style.color = "white";
+		del.style.background = "red";
+		del.style.color = "white";
+		
+		add.onclick = function add() {
+			var play = document.getElementById("playlist");
+		
+			searchTab.removeChild(songItem);
+			play.appendChild(songItem);
+			del.onclick = function remove() {
+				removeMore(play, songItem, votingItem, 
+								basicItem, buttonItem);
+			}
+			
+			// Do server call to add to playlist.
+		}
+		
+		del.onclick = function remove() {
+			removeMore(searchTab, songItem, votingItem, 
+								basicItem, buttonItem);
+		}
+		
+		buttonItem.appendChild(info);
+		buttonItem.appendChild(add);
+		buttonItem.appendChild(del);
+		
 		// Append to body for now.
-		var searchTab = document.getElementById("searchFunc");
 		searchTab.appendChild(songItem);
 	});
+	
+	function createSong(id, name, artist) {
+		var result = new Object();
+		result["id"] = id;
+		result["name"] = name;
+		result["artist"] = artist;
+		
+		// Call for this data.
+		result["votes"] = 50;
+		
+		return result;
+	}
+	
+	function removeParent() {
+	}
+	
+	function removeMore(parent, songItem, votingItem, basicItem, buttonItem) {
+		songItem.removeChild(votingItem);
+		songItem.removeChild(basicItem);
+		songItem.removeChild(buttonItem);
+	
+		var con = document.createElement('div');
+		var desc = document.createElement('div');
+		var but = document.createElement('div');
+		var yes = document.createElement('span');
+		var no = document.createElement('span');
+			
+		songItem.appendChild(con);
+			
+		con.className = "confirm";
+		but.className = "button";
+		yes.className = "circle";
+		no.className = "circle";
+			
+		desc.innerHTML = "Are you sure you want to remove this song from the database?"
+		yes.innerHTML = "Yes.";
+		no.innerHTML = "No.";
+			
+		yes.onclick = function yes() {
+			parent.removeChild(songItem);
+			// Also remove from server functionality here!
+		}
+			
+		no.onclick = function no() {
+			songItem.removeChild(con);
+				
+			songItem.appendChild(votingItem);
+			songItem.appendChild(basicItem);
+			songItem.appendChild(buttonItem);
+		}
+			
+		con.appendChild(desc);
+		con.appendChild(but);
+		but.appendChild(yes);
+		but.appendChild(no);
+	}
+	
+	function loadInformation(song) {
+		// Load in the information for this. 
+		song["tags"] = "I, Have, None!";
+		
+		return song;
+	}
+	
+	function displayInformation(song, infoBox) {
+		
+	}
 	</script>
 	
-	<span class="playlist">
+	<span id="playlist" class="playlist">
 			<h1>Playlist</h1>
 	</span>
 	<!-- creates all the tabs on the side that can be clicked -->

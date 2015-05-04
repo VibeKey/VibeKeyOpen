@@ -83,11 +83,11 @@ a:active {color:rgb(228,195,145); text-decoration: none;}
 	margin-bottom:15px;
 	box-shadow: 0px 5px 10px rgb(048,048,048);
 	padding:10px 10px 10px 10px;
+	height:60px;
 }
 
 .song .voting {
 	display:inline-block;
-	height:100%;
 	margin:0px 0px 0px 0px;
 }
 
@@ -115,9 +115,8 @@ a:active {color:rgb(228,195,145); text-decoration: none;}
 
 .song .basic {
 	overflow:hidden;
-	width:70%;
+	width:60%;
 	display:inline-block;
-	height:100%;
 }
 
 .basic .name {
@@ -131,6 +130,45 @@ a:active {color:rgb(228,195,145); text-decoration: none;}
 	color:#000;
 	padding-left:10px;
 }
+
+.button {
+	overflow:hidden;
+	display:inline-block;
+}
+
+.button .circle {
+	display:inline-block;
+	width:18px;
+	height:18px;
+	border-radius:9px;
+	font-size:9px;
+	color:#000;
+	line-height:20px;
+	text-align:center;
+	background:#fff;
+	margin-right:5px;
+}
+
+.song .confirm {
+	width:100%;
+	text-align:center;
+	line-height:12px;
+	font-size:12px;
+}
+
+.confirm .button .circle {
+	display:inline-block;
+	width:30px;
+	height:30px;
+	border-radius:15px;
+	font-size:15px;
+	color:#000;
+	line-height:30px;
+	text-align:center;
+	background:#fff;
+	margin-top:10px;
+}
+
 .playlist{
 	display:inline-block;
 	position:absolute;
