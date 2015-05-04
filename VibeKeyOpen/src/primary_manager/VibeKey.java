@@ -21,6 +21,12 @@ public class VibeKey {
     
     public static void start() throws SQLException, ClassNotFoundException, IOException, InterruptedException {
     
+        try {
+            System.load((VibeKey.class.getClassLoader().getResource("../../").toString() + "WEB-INF/lib/libshout-java.so").replace("file:", ""));
+        } catch (UnsatisfiedLinkError e) {
+            System.out.println("Libshout-java.so already loaded - moving on...");
+        }
+        System.out.println("Done loading Libshout-java.so");
         // SQLConnection conn = new SQLConnection("wmhd-test.csse.rose-hulman.edu", "wmhd-test", "jungckjp", "");
         // conn.execQuery("SELECT * FROM Calendar_Item");
         
