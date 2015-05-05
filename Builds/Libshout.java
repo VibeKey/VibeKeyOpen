@@ -5,12 +5,10 @@ import java.io.IOException;
 public class Libshout implements AutoCloseable {
 	static {
 		try {
+			System.out.println("Loading: " + System.getProperty("user.dir") + "/lib/libshout-java.so");
 			System.load(System.getProperty("user.dir") + "/lib/libshout-java.so");
 		} catch (UnsatisfiedLinkError e) {
-			try{System.load(System.getProperty("user.dir") + "/target/libshout-java.so");}
-            catch(UnsatisfiedLinkError e1){
-                System.out.println("Could not find libshout-java.so or was already opened");
-            }
+			System.out.println("Already loaded...");
 		}
 	}
 	private static final int SUCCESS = 0;

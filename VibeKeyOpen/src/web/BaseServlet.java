@@ -9,10 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import primary_manager.VibeKey;
 import web.Response.FailResponse;
 import web.Response.SuccessResponse;
-
-import com.gmail.kunicins.olegs.libshout.Libshout;
 
 /**
  * Servlet implementation class Channel Servlet
@@ -47,14 +46,17 @@ public class BaseServlet extends HttpServlet {
             case "info":
                 SuccessResponse resp = new SuccessResponse();
                 
-                String url = System.getProperty("user.dir") + "/lib/libshout-java.so";
-                resp.addToReturnData("path", System.getProperty("user.dir") + "/lib/libshout-java.so");
+                resp.addToReturnData("path", this.getClass().getClassLoader().getResource("../../").toString() + "WEB-INF/lib/libshout.so");
                 
                 responseObject = resp;
                 break;
             case "test":
                 try {
-                    new Libshout();
+                    // new Libshout();
+                    
+                    if (VibeKey.isStarted == false) {
+                        VibeKey.start();
+                    }
                 } catch (Exception e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
