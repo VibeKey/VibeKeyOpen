@@ -112,7 +112,6 @@ function addSongToTab(song, tab) {
 				listener(infoBox, listen);
 			});
 			infoBox.style["animation-name"] = "moveIn";
-			infoBox.style["-moz-animation-name"] = "moveIn";
 			infoBox.style["-webkit-animation-name"] = "moveIn";
 		} else {
 			infoBox.innerHTML = "Some words!";
@@ -131,7 +130,6 @@ function listener(infoBox, listen) {
 	infoBox.parentNode.removeChild(infoBox);
 	infoBox.removeEventListener("animationend", listen);
 	infoBox.style["animation-name"] = "moveOut";
-	infoBox.style["-moz-animation-name"] = "moveOut";
 	infoBox.style["-webkit-animation-name"] = "moveOut";
 }
 
