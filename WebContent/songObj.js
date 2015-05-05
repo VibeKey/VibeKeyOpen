@@ -111,7 +111,7 @@ function addSongToTab(song, tab) {
 			infoBox.addEventListener("animationend", function listen() {
 				listener(infoBox, listen);
 			});
-			infoBox.addEventListener("webkitanimationend", function listen() {
+			infoBox.addEventListener("webkitAnimationEnd", function listen() {
 				listener(infoBox, listen);
 			});
 			
@@ -133,7 +133,7 @@ function addSongToTab(song, tab) {
 function listener(infoBox, listen) {
 	infoBox.parentNode.removeChild(infoBox);
 	infoBox.removeEventListener("animationend", listen);
-	infoBox.removeEventListener("webkitanimationend", listen);
+	infoBox.removeEventListener("webkitAnimationEnd", listen);
 	
 	infoBox.style["animation-name"] = "moveOut";
 	infoBox.style["-webkit-animation-name"] = "moveOut";
