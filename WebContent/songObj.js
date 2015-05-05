@@ -10,6 +10,37 @@ function createSong(id, name, artist) {
 	return result;
 }
 
+function drags(obj) {
+    var dragObj = null;
+	draggable(obj);
+	
+	function draggable(obj)
+	{
+		obj.style.position = "absolute";
+		obj.onmousedown = function(){
+				dragObj = obj;
+		}
+	}
+
+	document.onmouseup = function(e){
+		dragObj = null;
+	};
+
+	document.onmousemove = function(e){
+		var x = e.pageX;
+		var y = e.pageY;
+
+		if (dragObj == null){
+			return;
+		}
+
+		dragObj.style.left = x +"px";
+		dragObj.style.top= y +"px";
+	};
+}
+
+
+
 function addSongToTab(song, tab) {
 	// Create overall layout.
 	var songItem = document.createElement('div');
@@ -18,6 +49,9 @@ function addSongToTab(song, tab) {
 	var votingItem = document.createElement('span');
 	var basicItem = document.createElement('span');
 	var buttonItem = document.createElement('span');
+	
+	// Add draggable things.
+	drags(songItem);
 	
 	songItem.className = "song";
 	containBox.className = "containBox";

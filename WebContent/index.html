@@ -8,6 +8,8 @@
 	<link rel="stylesheet" href="animations.css">
 	<link rel="stylesheet" href="sidr/stylesheets/jquery.sidr.dark.css">
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<script type="text/javascript" src="tabScript.js"></script>
 	<script type="text/javascript" src="hover.js"></script>
 	<script type="text/javascript" src="songObj.js"></script>
@@ -15,7 +17,7 @@
 </head>
 
 <body>
-	<script>
+	<script>	
 	$(document).ready(function() {	
 		var song1 = createSong("555", "Take Me To Church", "Hozier");
 		var song2 = createSong("555", "Shake It Off", "Taylor Swift");
@@ -30,9 +32,7 @@
 		addSongToTab(song3, searchTab);
 		addSongToTab(song4, searchTab);
 		addSongToTab(song4, play);
-		
 	});
-	
 	</script>
 	
 	<div class="playlist">
