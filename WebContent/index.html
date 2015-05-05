@@ -8,6 +8,7 @@
 	<script type="text/javascript" src="tabScript.js"></script>
 	<script type="text/javascript" src="hover.js"></script>
 	<script type="text/javascript" src="songObj.js"></script>
+	<script type="text/javascript" src="Draggable.js"></script>
 </head>
 
 <body>
@@ -29,7 +30,6 @@
 		
 	});
 	
-	
 	</script>
 	
 	<div class="playlist">
@@ -44,7 +44,7 @@
 				<div class="lineDance1"></div>
 			</div>
 		</div>
-		<div id="playlist" class="playsongs">
+		<div id="playlist" ondrop="drop(event)" ondragover="allowDrop(event)" class="playsongs">
 		</div>
 	</div>
 	<!-- creates all the tabs on the side that can be clicked -->
