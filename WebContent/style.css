@@ -54,17 +54,6 @@ pagebody{
 	border-left: 25px solid rgb(147, 147, 147);
 }
 
-.tabLink a:link, .tabLink a:visited  {
-	color:rgb(255,255,255); 
-	text-decoration: none;
-}
-
-.tabLinkContainerHover>.tabLink a {color:rgb(243,221,187); text-decoration: none;}
-.tabLinkContainer:active>.tabLink a {
-	color:rgb(228,195,145); 
-	text-decoration: none;
-} 
-
 body {
 	font-family: Arial;
 	padding: 0;
@@ -72,16 +61,49 @@ body {
 	background: rgb(0, 0, 0);
 }
 
-a:link {color:rgb(228,195,145); text-decoration: none;}
-a:visited {color:rgb(228,195,145); text-decoration: none;}
+a:link {color:white; text-decoration: none;}
+a:visited {color:white; text-decoration: none;}
 a:hover {color:rgb(243,221,187); text-decoration: none;}
-a:active {color:rgb(228,195,145); text-decoration: none;} 
+a:active {color:white; text-decoration: none;} 
 
 .song {
 	width:100%;
-	background:rgb(194,194,194);
 	margin-bottom:15px;
-	box-shadow: 0px 5px 10px rgb(048,048,048);
+	text-align:left;
+}
+
+.song .infoBox {
+	background:#000;
+	box-shadow: 0 10px 5px -5px rgb(048,048,048);
+	padding:10px 10px 10px 10px;
+	width:90%;
+	margin: 0 auto;
+	animation-duration:500ms;
+	animation-name:moveOut;
+	color:#fff;
+}
+
+@keyframes moveOut {
+	from {
+		height:0px;
+		width:60%;
+		padding:0px 0px 0px 0px;
+		font-size:0px;
+	}
+}
+
+@keyframes moveIn {
+	to {
+		height:0px;
+		width:60%;
+		padding:0px 0px 0px 0px;
+		font-size:0px;
+	}
+}
+
+.song .containBox {
+	background:rgb(194,194,194);
+	box-shadow: 0 10px 5px -5px rgb(048,048,048);
 	padding:10px 10px 10px 10px;
 	height:60px;
 }
@@ -173,15 +195,98 @@ a:active {color:rgb(228,195,145); text-decoration: none;}
 	display:inline-block;
 	position:absolute;
 	height:70%;
-	width:50%;
+	width:30%;
 	left:27%;
 	top:7%;
 	text-align:center;
-	min-height = 300px;
+	min-height:300px;
 	min-width:400px;
-	background-color: white;
+	background-color:white;
 	overflow:hidden;
 }
+
+.playsongs {
+	background:rgb(068,068,068);
+	height:70%;
+	width:100%;
+	overflow-y:auto;
+	overflow-x:hidden;
+}
+
+.playhead {
+	height:20%;
+	width:100%;
+}
+
+.bounce {
+	display:inline-block;
+	height:100%;
+	width:20%;
+	float:right;
+}
+
+.lineDance1 {
+	display:block;
+	margin-top:5px;
+	height:5%;
+	background-color:rgb(153, 000, 000);
+	animation-direction:alternate;
+	animation-duration:500ms;
+	animation-iteration-count:infinite;
+	animation-name:lineBounce1;
+}
+
+.lineDance2 {
+	display:block;
+	right:0%;
+	margin-top:5px;
+	height:5%;
+	background-color:rgb(153, 000, 000);
+	animation-direction:alternate;
+	animation-duration:750ms;
+	animation-iteration-count:infinite;
+	animation-name:lineBounce2;
+}
+
+.lineDance3 {
+	display:block;
+	right:0%;
+	margin-top:5px;
+	height:5%;
+	background-color:rgb(153, 000, 000);
+	animation-direction:alternate;
+	animation-duration:550ms;
+	animation-iteration-count:infinite;
+	animation-name:lineBounce3;
+}
+
+@keyframes lineBounce1 {
+	to {
+		width:60%;
+	}
+	from {
+		width:10%;
+	}
+}
+
+@keyframes lineBounce2 {
+	to {
+		width:80%;
+	}
+	from {
+		width:30%;
+	}
+}
+
+@keyframes lineBounce3 {
+	to {
+		width:100%;
+	}
+	from {
+		width:50%;
+	}
+}
+
 .dummyCalendar{
 margin-left:auto;
 margin-right:auto;
@@ -189,56 +294,5 @@ margin-right:auto;
 
 table.dummyCalendar td{
 width:30px;
-}
-
-.songItem {
-	width:100%;
-	background:rgb(194,194,194);
-	margin-bottom:15px;
-	box-shadow: 0px 5px 10px rgb(048,048,048);
-	padding:10px 10px 10px 10px;
-}
-.basicPart{
-	overflow:hidden;
-	width:70%;
-	display:inline-block;
-	height:100%;
-}
-
-.votingPart{
-	display:inline-block;
-	height:100%;
-	margin:0px 0px 0px 0px;
-}
-
-.bandName{
-	font-size:12px;
-	color:#000;
-	padding-left:10px;
-}
-.songName{
-	font-size:16px;
-	font-weight:bold;
-	color:#fff;
-}
-.songUpArrow{
-	width: 0; 
-	height: 0; 
-	border-right: 10px solid transparent;
-	border-left: 10px solid transparent;
-	border-bottom: 10px solid rgb(153, 000, 000);
-}
-
-.songDownArrow{
-	width: 0; 
-	height: 0; 
-	border-right: 10px solid transparent;
-	border-left: 10px solid transparent;
-	border-top: 10px solid rgb(153, 000, 000);
-}
-.likeNumber{
-	font-family:Impact;
-	color:#000;
-	font-size:20px;
 }
 

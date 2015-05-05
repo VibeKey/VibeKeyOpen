@@ -12,23 +12,54 @@
 <body>
 	<script>
 	$(document).ready(function() {	
-		var song = createSong("555", "Take Me To Church", "Hozier");
+		var song1 = createSong("555", "Take Me To Church", "Hozier");
+		var song2 = createSong("555", "Shake It Off", "Taylor Swift");
+		var song3 = createSong("555", "Sail", "AWOLNATION");
+		var song4 = createSong("555", "From Eden", "Hozier");
+		
 		var searchTab = document.getElementById("searchFunc");
+		var play = document.getElementById("playlist");
+		
+		addSongToTab(song1, searchTab);
+		addSongToTab(song2, searchTab);
+		addSongToTab(song3, searchTab);
+		addSongToTab(song4, searchTab);
+		addSongToTab(song4, play);
+		
+	});
 	
+	function createSong(id, name, artist) {
+		var result = new Object();
+		result["id"] = id;
+		result["name"] = name;
+		result["artist"] = artist;
+		
+		// Call for this data.
+		result["votes"] = 50;
+		
+		return result;
+	}
+	
+	function addSongToTab(song, tab) {
 		// Create overall layout.
 		var songItem = document.createElement('div');
+		var containBox = document.createElement('div');
+		var containInfo = document.createElement('div');
 		var votingItem = document.createElement('span');
 		var basicItem = document.createElement('span');
 		var buttonItem = document.createElement('span');
 		
 		songItem.className = "song";
+		containBox.className = "containBox";
 		votingItem.className = "voting";
 		basicItem.className = "basic";
 		buttonItem.className = "button";
 		
-		songItem.appendChild(votingItem);
-		songItem.appendChild(basicItem);
-		songItem.appendChild(buttonItem);
+		songItem.appendChild(containBox);
+		containBox.appendChild(containInfo);
+		containInfo.appendChild(votingItem);
+		containInfo.appendChild(basicItem);
+		containInfo.appendChild(buttonItem);
 		
 		// Create all voting items.
 		var up = document.createElement('div');
@@ -76,51 +107,63 @@
 		del.style.background = "red";
 		del.style.color = "white";
 		
+		buttonItem.appendChild(info);
+		if (tab != document.getElementById("playlist")) buttonItem.appendChild(add);
+		buttonItem.appendChild(del);
+		
+		// Create functionality.
 		add.onclick = function add() {
 			var play = document.getElementById("playlist");
-		
-			searchTab.removeChild(songItem);
+			
+			// Remove and append.
+			buttonItem.removeChild(buttonItem.childNodes[1]);
+			tab.removeChild(songItem);
 			play.appendChild(songItem);
+			
+			// Change the remove function to reflect the new parent.
 			del.onclick = function remove() {
-				removeMore(play, songItem, votingItem, 
-								basicItem, buttonItem);
+				removeMore(play, songItem, containBox, containInfo);
 			}
 			
 			// Do server call to add to playlist.
 		}
 		
 		del.onclick = function remove() {
-			removeMore(searchTab, songItem, votingItem, 
-								basicItem, buttonItem);
+			removeMore(tab, songItem, containBox, containInfo);
 		}
 		
-		buttonItem.appendChild(info);
-		buttonItem.appendChild(add);
-		buttonItem.appendChild(del);
+		// Make info box.
+		var infoBox = document.createElement('div');
+		infoBox.className = "infoBox";
+		
+		info.onclick = function info() {
+			if (infoBox.parentNode == songItem) {
+				infoBox.addEventListener("animationend", function listen() {
+					listener(infoBox, listen);
+				});
+				infoBox.style["animation-name"] = "moveIn";
+			} else {
+				infoBox.innerHTML = "Some words!";
+			
+				songItem.appendChild(infoBox);
+			}
+		}
 		
 		// Append to body for now.
-		searchTab.appendChild(songItem);
-	});
-	
-	function createSong(id, name, artist) {
-		var result = new Object();
-		result["id"] = id;
-		result["name"] = name;
-		result["artist"] = artist;
-		
-		// Call for this data.
-		result["votes"] = 50;
-		
-		return result;
+		tab.appendChild(songItem);
 	}
 	
-	function removeParent() {
+	
+	
+	function listener(infoBox, listen) {
+		infoBox.parentNode.removeChild(infoBox);
+		infoBox.removeEventListener("animationend", listen);
+		infoBox.style["animation-name"] = "moveOut";
 	}
 	
-	function removeMore(parent, songItem, votingItem, basicItem, buttonItem) {
-		songItem.removeChild(votingItem);
-		songItem.removeChild(basicItem);
-		songItem.removeChild(buttonItem);
+	function removeMore(parent, songItem, 
+						containBox, containInfo) {
+		containBox.removeChild(containInfo);
 	
 		var con = document.createElement('div');
 		var desc = document.createElement('div');
@@ -128,28 +171,35 @@
 		var yes = document.createElement('span');
 		var no = document.createElement('span');
 			
-		songItem.appendChild(con);
+		containBox.appendChild(con);
 			
 		con.className = "confirm";
 		but.className = "button";
 		yes.className = "circle";
 		no.className = "circle";
 			
-		desc.innerHTML = "Are you sure you want to remove this song from the database?"
+			
+		if (parent == document.getElementById("playlist")) {
+			desc.innerHTML = "Are you sure you want to remove this song from the playlist?";
+		} else {
+			desc.innerHTML = "Are you sure you want to remove this song from the database?";
+		}
 		yes.innerHTML = "Yes.";
 		no.innerHTML = "No.";
 			
 		yes.onclick = function yes() {
 			parent.removeChild(songItem);
-			// Also remove from server functionality here!
+			
+			if (parent == document.getElementById("playlist")) {
+				// Add remove from playlist functionality
+			} else {
+				// Also remove from server functionality here!
+			}
 		}
 			
 		no.onclick = function no() {
-			songItem.removeChild(con);
-				
-			songItem.appendChild(votingItem);
-			songItem.appendChild(basicItem);
-			songItem.appendChild(buttonItem);
+			containBox.removeChild(con);
+			containBox.appendChild(containInfo);
 		}
 			
 		con.appendChild(desc);
@@ -170,60 +220,72 @@
 	}
 	</script>
 	
-	<span id="playlist" class="playlist">
-			<h1>Playlist</h1>
-	</span>
+	<div class="playlist">
+		<div class="playhead">
+			<div>
+			</div>
+			<div class="bounce">
+				<div class="lineDance1"></div>
+				<div class="lineDance2"></div>
+				<div class="lineDance3"></div>
+				<div class="lineDance2"></div>
+				<div class="lineDance1"></div>
+			</div>
+		</div>
+		<div id="playlist" class="playsongs">
+		</div>
+	</div>
 	<!-- creates all the tabs on the side that can be clicked -->
 	<div id="container" class="tabContainer">		
 				
-		<div id="searchContainer" class="tabLinkContainer">
+		<a id="search" href="#searchFunc"><div id="searchContainer" class="tabLinkContainer">
 			<span id="searchSpan" class="tabLink">
-				<a id="search" href="#searchFunc">Search</a> 
+				Search
 			</span>
 			<span class="arrow-right"></span>
-		</div>
+		</div></a> 
 		
-		<div class="tabLinkContainer">
+		<a id="news" href="#newsFunc"><div class="tabLinkContainer">
 			<span id="newsSpan" class="tabLink">
-				<a id="news" href="#newsFunc">News</a>
+				News
 			</span>
 			<span class="arrow-right"></span>
-		</div>
+		</div></a>
 		
-		<div class="tabLinkContainer">
+		<a id="soundboard" href="#soundboardFunc"><div class="tabLinkContainer">
 			<span id="soundboardSpan" class="tabLink">
-				<a id="soundboard" href="#soundboardFunc">Soundboard</a>
+				Soundboard
 			</span>
 			<span class="arrow-right"></span>
-		</div>
+		</div></a>
 		
-		<div class="tabLinkContainer">
+		<a id="calendar" href="#calendarFunc"><div class="tabLinkContainer">
 			<span id="calendarSpan" class="tabLink">
-				<a id="calendar" href="#calendarFunc">Calendar</a>
+				Calendar
 			</span>
 			<span class="arrow-right"></span>
-		</div>
+		</div></a>
 		
-		<div class="tabLinkContainer">
+		<a id="djChat" href="#djChatFunc"><div class="tabLinkContainer">
 			<span id="djChatSpan" class="tabLink">
-				<a id="djChat" href="#djChatFunc">DJ Chat</a>
+				DJ Chat
 			</span>
 			<span class="arrow-right"></span>
-		</div>
+		</div></a>
 		
-		<div class="tabLinkContainer">
+		<a id="audience" href="#audienceFunc"><div class="tabLinkContainer">
 			<span id="audienceSpan" class="tabLink">
-				<a id="audience" href="#audienceFunc">Audience</a>
+				Audience
 			</span>
 			<span class="arrow-right"></span>
-		</div>
+		</div></a>
 		
-		<div class="tabLinkContainer">
+		<a id="settings" href="#settingsFunc"><div class="tabLinkContainer">
 			<span id="settingsSpan" class="tabLink">
-				<a id="settings" href="#settingsFunc">Settings</a>
+				Settings
 			</span>
 			<span class="arrow-right"></span>
-		</div>
+		</div></a>
 	</div>
 	
 	<!-- This is the part where we create what's inside the actual tabs that pull out -->
