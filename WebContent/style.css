@@ -30,32 +30,84 @@ a:active {color:white; text-decoration: none;}
 	display:inline-block;
 	position:absolute;
 	height:70%;
-	width:30%;
-	left:27%;
-	top:7%;
-	text-align:center;
+	width:50%;
+	left:20%;
+	top:10%;
 	min-height:300px;
 	min-width:400px;
-	background-color:white;
+}
+
+.playlistBody {
+	display:inline-block;
+	width:100%;
+	height:100%;
 }
 
 .playsongs {
-	background:rgb(068,068,068);
 	height:70%;
 	width:100%;
 	overflow-y:auto;
+	overflow-x:hidden;
+}
+
+.playsongsBorder{
+	position:absolute;
+	top:0;
+	left:2.5%;
+	height:100%;
+	width:95%;
+	background:rgb(068,068,068);
+	z-index:-1
 }
 
 .playhead {
+	background-color:white;
+	position:relative;
 	height:20%;
 	width:100%;
+	z-index:100;
+}
+
+.playHeadInfo {
+	position:absolute;
+	bottom:0;
+	left:0;
+	width:100%;
+	padding:10px 10px 10px 10px;
+}
+
+.playHeadInfo .genre {
+	color:rgb(153, 000, 000);
+	font-size:30px;
+	display:block;
+	line-height:30px;
+	font-family:‘Lucida Console’, Monaco, monospace;
+	font-weight: bold;
+}
+
+.playHeadInfo .tags{
+	font-size:25px;
+	display:block;
+	line-height:25px;
+	margin-left:30px;
+	color:rgb(194,194,194);
+	font-family:‘Lucida Console’, Monaco, monospace;
 }
 
 .bounce {
-	display:inline-block;
+	top:0;
+	left:0;
+	position:absolute;
 	height:100%;
-	width:20%;
-	float:right;
+	width:100%;
+	box-shadow: 0 10px 5px -5px rgb(048,048,048);
+}
+
+.playbottom {
+	height:10%;
+	width:100%;
+	background-color:white;
+	box-shadow: 0 -10px 5px -5px rgb(048,048,048);
 }
 
 .dummyCalendar{

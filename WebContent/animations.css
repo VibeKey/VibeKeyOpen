@@ -1,104 +1,68 @@
-.lineDance1 {
-	display:block;
-	margin-top:5px;
-	height:5%;
+.lineDance {
+	display:inline-block;
+	position:absolute; 
+	bottom:0;
+	width:3%;
 	background-color:rgb(153, 000, 000);
+	opacity:.05;
 	
 	-webkit-animation-direction:alternate;
 	animation-direction:alternate;
-	-webkit-animation-duration:500ms;
-	animation-duration:500ms;
 	-webkit-animation-iteration-count:infinite;
 	animation-iteration-count:infinite;
-	-webkit-animation-name:lineBounce1;
-	animation-name:lineBounce1;
-}
-
-.lineDance2 {
-	display:block;
-	right:0%;
-	margin-top:5px;
-	height:5%;
-	background-color:rgb(153, 000, 000);
-	
-	-webkit-animation-direction:alternate;
-	animation-direction:alternate;
-	-webkit-animation-duration:500ms;
-	animation-duration:650ms;
-	-webkit-animation-iteration-count:infinite;
-	animation-iteration-count:infinite;
-	-webkit-animation-name:lineBounce2;
-	animation-name:lineBounce2;
-}
-
-.lineDance3 {
-	display:block;
-	right:0%;
-	margin-top:5px;
-	height:5%;
-	background-color:rgb(153, 000, 000);
-	
-	-webkit-animation-direction:alternate;
-	animation-direction:alternate;
-	-webkit-animation-duration:500ms;
-	animation-duration:550ms;
-	-webkit-animation-iteration-count:infinite;
-	animation-iteration-count:infinite;
-	-webkit-animation-name:lineBounce3;
-	animation-name:lineBounce3;
 }
 
 @keyframes lineBounce1 {
 	to {
-		width:60%;
+		height:40%;
 	}
 	from {
-		width:10%;
+		height:10%;
 	}
 }
 
 @-webkit-keyframes lineBounce1 {
 	to {
-		width:60%;
+		height:40%;
 	}
 	from {
-		width:10%;
+		height:10%;
 	}
 }
 
 @keyframes lineBounce2 {
 	to {
-		width:80%;
+		height:60%;
 	}
 	from {
-		width:30%;
+		height:30%;
 	}
 }
 
 @-webkit-keyframes lineBounce2 {
 	to {
-		width:80%;
+		height:60%;
 	}
 	from {
-		width:30%;
+		height:30%;
 	}
 }
 
 @keyframes lineBounce3 {
 	to {
-		width:100%;
+		height:80%;
 	}
 	from {
-		width:50%;
+		height:50%;
 	}
 }
 
 @-webkit-keyframes lineBounce3 {
 	to {
-		width:100%;
+		height:80%;
 	}
 	from {
-		width:50%;
+		height:50%;
 	}
 }
 
