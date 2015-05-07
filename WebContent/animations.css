@@ -1,0 +1,103 @@
+.lineDance {
+	display:inline-block;
+	position:absolute; 
+	bottom:0;
+	width:3%;
+	background-color:rgb(153, 000, 000);
+	opacity:.05;
+	
+	-webkit-animation-direction:alternate;
+	animation-direction:alternate;
+	-webkit-animation-iteration-count:infinite;
+	animation-iteration-count:infinite;
+}
+
+@keyframes lineBounce1 {
+	to {
+		height:40%;
+	}
+	from {
+		height:10%;
+	}
+}
+
+@-webkit-keyframes lineBounce1 {
+	to {
+		height:40%;
+	}
+	from {
+		height:10%;
+	}
+}
+
+@keyframes lineBounce2 {
+	to {
+		height:60%;
+	}
+	from {
+		height:30%;
+	}
+}
+
+@-webkit-keyframes lineBounce2 {
+	to {
+		height:60%;
+	}
+	from {
+		height:30%;
+	}
+}
+
+@keyframes lineBounce3 {
+	to {
+		height:80%;
+	}
+	from {
+		height:50%;
+	}
+}
+
+@-webkit-keyframes lineBounce3 {
+	to {
+		height:80%;
+	}
+	from {
+		height:50%;
+	}
+}
+
+@keyframes moveIn {
+	to {
+		height:0px;
+		width:60%;
+		padding:0px 0px 0px 0px;
+		font-size:0px;
+	}
+}
+
+@-webkit-keyframes moveIn {
+	to {
+		height:0px;
+		width:60%;
+		padding:0px 0px 0px 0px;
+		font-size:0px;
+	}
+}
+
+@keyframes moveOut {
+	from {
+		height:0px;
+		width:60%;
+		padding:0px 0px 0px 0px;
+		font-size:0px;
+	}
+}
+
+@-webkit-keyframes moveOut {
+	from {
+		height:0px;
+		width:60%;
+		padding:0px 0px 0px 0px;
+		font-size:0px;
+	}
+}

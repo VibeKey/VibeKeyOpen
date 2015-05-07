@@ -3,115 +3,220 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="songStyle.css">
+	<link rel="stylesheet" href="tabStyle.css">
+	<link rel="stylesheet" href="animations.css">
 	<link rel="stylesheet" href="sidr/stylesheets/jquery.sidr.dark.css">
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<script type="text/javascript" src="tabScript.js"></script>
 	<script type="text/javascript" src="hover.js"></script>
+	<script type="text/javascript" src="songObj.js"></script>
+	<script type="text/javascript" src="Draggable.js"></script>
 </head>
 
 <body>
-	<script>
+	<script>	
 	$(document).ready(function() {	
-		// Create overall layout.
-		var songItem = document.createElement('div');
-		var votingItem = document.createElement('span');
-		var basicItem = document.createElement('span');
+		var song1 = createSong("555", "Take Me To Church", "Hozier");
+		var song2 = createSong("555", "Shake It Off", "Taylor Swift");
+		var song3 = createSong("555", "Sail", "AWOLNATION");
+		var song4 = createSong("555", "From Eden", "Hozier");
 		
-		songItem.className = "song";
-		votingItem.className = "voting";
-		basicItem.className = "basic";
-		
-		songItem.appendChild(votingItem);
-		songItem.appendChild(basicItem);
-		
-		// Create all voting items.
-		var up = document.createElement('div');
-		var number = document.createElement('div');
-		var down = document.createElement('div');
-		
-		up.className = "upArrow";
-		number.className = "number";
-		down.className = "downArrow";
-		
-		number.innerHTML = "24";
-		
-		votingItem.appendChild(up);
-		votingItem.appendChild(number);
-		votingItem.appendChild(down);
-		
-		// Create all basic items.
-		var name = document.createElement('div');
-		var band = document.createElement('div');
-		
-		name.className = "name";
-		band.className = "band";
-		
-		name.innerHTML = "Take Me To Church";
-		band.innerHTML = "Hozier";
-		
-		basicItem.appendChild(name);
-		basicItem.appendChild(band);
-		
-		// Append to body for now.
 		var searchTab = document.getElementById("searchFunc");
-		searchTab.appendChild(songItem);
+		var play = document.getElementById("playlist");
+		
+		addSongToTab(song1, searchTab);
+		addSongToTab(song2, searchTab);
+		addSongToTab(song3, searchTab);
+		addSongToTab(song4, searchTab);
+		addSongToTab(song4, play);
 	});
 	</script>
 	
-	<span class="playlist">
-			<h1>Playlist</h1>
-	</span>
+	<div class="playlist">
+		<div class="playlistBody">
+			<div class="playhead">
+				<div class="playHeadInfo">
+					<span class="genre">Genre:Rock</span>
+					<span class="tags">Tags: Bouncey, Fun, Male Singer</span>
+				</div>
+				<div class="bounce">
+					<div class="lineDance" style="
+						left:5%;
+						-webkit-animation-name:lineBounce1;
+						animation-name:lineBounce1;
+						-webkit-animation-duration:650ms;
+						animation-duration:650ms;"></div>
+					<div class="lineDance" style="
+						left:10%;
+						-webkit-animation-name:lineBounce1;
+						animation-name:lineBounce1;
+						-webkit-animation-duration:750ms;
+						animation-duration:750ms;"></div>
+					<div class="lineDance" style="
+						left:15%;
+						-webkit-animation-name:lineBounce1;
+						animation-name:lineBounce1;
+						-webkit-animation-duration:950ms;
+						animation-duration:950ms;"></div>
+					<div class="lineDance" style="
+						left:20%;
+						-webkit-animation-name:lineBounce1;
+						animation-name:lineBounce1;
+						-webkit-animation-duration:1050ms;
+						animation-duration:1050ms;"></div>
+					<div class="lineDance" style="
+						left:25%;
+						-webkit-animation-name:lineBounce2;
+						animation-name:lineBounce2;
+						-webkit-animation-duration:700ms;
+						animation-duration:700ms;"></div>
+					<div class="lineDance" style="
+						left:30%;
+						-webkit-animation-name:lineBounce2;
+						animation-name:lineBounce2;
+						-webkit-animation-duration:300ms;
+						animation-duration:300ms;"></div>
+					<div class="lineDance" style="
+						left:35%;
+						-webkit-animation-name:lineBounce2;
+						animation-name:lineBounce2;
+						-webkit-animation-duration:600ms;
+						animation-duration:600ms;"></div>
+					<div class="lineDance"  style="
+						left:40%;
+						-webkit-animation-name:lineBounce3;
+						animation-name:lineBounce3;
+						-webkit-animation-duration:550ms;
+						animation-duration:550ms;"></div>
+					<div class="lineDance"  style="
+						left:45%;
+						-webkit-animation-name:lineBounce3;
+						animation-name:lineBounce3;
+						-webkit-animation-duration:750ms;
+						animation-duration:750ms;"></div>
+					<div class="lineDance"  style="
+						left:50%;
+						-webkit-animation-name:lineBounce3;
+						animation-name:lineBounce3;
+						-webkit-animation-duration:650ms;
+						animation-duration:650ms;"></div>
+					<div class="lineDance"  style="
+						left:55%;
+						-webkit-animation-name:lineBounce3;
+						animation-name:lineBounce3;
+						-webkit-animation-duration:750ms;
+						animation-duration:750ms;"></div>
+					<div class="lineDance"  style="
+						left:60%;
+						-webkit-animation-name:lineBounce3;
+						animation-name:lineBounce3;
+						-webkit-animation-duration:550ms;
+						animation-duration:550ms;"></div>
+					<div class="lineDance" style="
+						left:65%;
+						-webkit-animation-name:lineBounce2;
+						animation-name:lineBounce2;
+						-webkit-animation-duration:600ms;
+						animation-duration:600ms;"></div>
+					<div class="lineDance" style="
+						left:70%;
+						-webkit-animation-name:lineBounce2;
+						animation-name:lineBounce2;
+						-webkit-animation-duration:300ms;
+						animation-duration:300ms;"></div>
+					<div class="lineDance" style="
+						left:75%;
+						-webkit-animation-name:lineBounce2;
+						animation-name:lineBounce2;
+						-webkit-animation-duration:700ms;
+						animation-duration:700ms;"></div>
+					<div class="lineDance" style="
+						left:80%;
+						-webkit-animation-name:lineBounce1;
+						animation-name:lineBounce1;
+						-webkit-animation-duration:1050ms;
+						animation-duration:1050ms;"></div>
+					<div class="lineDance" style="
+						left:95%;
+						-webkit-animation-name:lineBounce1;
+						animation-name:lineBounce1;
+						-webkit-animation-duration:650ms;
+						animation-duration:650ms;"></div>
+					<div class="lineDance" style="
+						left:90%;
+						-webkit-animation-name:lineBounce1;
+						animation-name:lineBounce1;
+						-webkit-animation-duration:750ms;
+						animation-duration:750ms;"></div>
+					<div class="lineDance" style="
+						left:85%;
+						-webkit-animation-name:lineBounce1;
+						animation-name:lineBounce1;
+						-webkit-animation-duration:950ms;
+						animation-duration:950ms;"></div>
+				</div>
+			</div>
+			<div id="playlist" class="playsongs">
+				<div class="playsongsBorder"></div>
+			</div>
+			<div class="playbottom"></div>
+		</div>
+		
+	</div>
 	<!-- creates all the tabs on the side that can be clicked -->
 	<div id="container" class="tabContainer">		
 				
-		<div id="searchContainer" class="tabLinkContainer">
+		<a id="search" href="#searchFunc"><div id="searchContainer" class="tabLinkContainer">
 			<span id="searchSpan" class="tabLink">
-				<a id="search" href="#searchFunc">Search</a> 
+				Search
 			</span>
 			<span class="arrow-right"></span>
-		</div>
+		</div></a> 
 		
-		<div class="tabLinkContainer">
+		<a id="news" href="#newsFunc"><div class="tabLinkContainer">
 			<span id="newsSpan" class="tabLink">
-				<a id="news" href="#newsFunc">News</a>
+				News
 			</span>
 			<span class="arrow-right"></span>
-		</div>
+		</div></a>
 		
-		<div class="tabLinkContainer">
+		<a id="soundboard" href="#soundboardFunc"><div class="tabLinkContainer">
 			<span id="soundboardSpan" class="tabLink">
-				<a id="soundboard" href="#soundboardFunc">Soundboard</a>
+				Soundboard
 			</span>
 			<span class="arrow-right"></span>
-		</div>
+		</div></a>
 		
-		<div class="tabLinkContainer">
+		<a id="calendar" href="#calendarFunc"><div class="tabLinkContainer">
 			<span id="calendarSpan" class="tabLink">
-				<a id="calendar" href="#calendarFunc">Calendar</a>
+				Calendar
 			</span>
 			<span class="arrow-right"></span>
-		</div>
+		</div></a>
 		
-		<div class="tabLinkContainer">
+		<a id="djChat" href="#djChatFunc"><div class="tabLinkContainer">
 			<span id="djChatSpan" class="tabLink">
-				<a id="djChat" href="#djChatFunc">DJ Chat</a>
+				DJ Chat
 			</span>
 			<span class="arrow-right"></span>
-		</div>
+		</div></a>
 		
-		<div class="tabLinkContainer">
+		<a id="audience" href="#audienceFunc"><div class="tabLinkContainer">
 			<span id="audienceSpan" class="tabLink">
-				<a id="audience" href="#audienceFunc">Audience</a>
+				Audience
 			</span>
 			<span class="arrow-right"></span>
-		</div>
+		</div></a>
 		
-		<div class="tabLinkContainer">
+		<a id="settings" href="#settingsFunc"><div class="tabLinkContainer">
 			<span id="settingsSpan" class="tabLink">
-				<a id="settings" href="#settingsFunc">Settings</a>
+				Settings
 			</span>
 			<span class="arrow-right"></span>
-		</div>
+		</div></a>
 	</div>
 	
 	<!-- This is the part where we create what's inside the actual tabs that pull out -->

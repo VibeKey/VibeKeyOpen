@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import primary_manager.VibeKey;
 import web.Response.FailResponse;
+import web.Response.SuccessResponse;
 
 /**
  * Servlet implementation class Channel Servlet
@@ -24,10 +25,6 @@ public class BaseServlet extends HttpServlet {
     public BaseServlet() throws ClassNotFoundException, SQLException, IOException, InterruptedException {
     
         super();
-        
-        if (VibeKey.isStarted == false) {
-            VibeKey.start();
-        }
     }
     
     /**
@@ -46,6 +43,27 @@ public class BaseServlet extends HttpServlet {
         Response responseObject;
         
         switch (method) {
+            case "info":
+                SuccessResponse resp = new SuccessResponse();
+                
+                resp.addToReturnData("path", this.getClass().getClassLoader().getResource("../../").toString() + "WEB-INF/lib/libshout.so");
+                
+                responseObject = resp;
+                break;
+            case "test":
+                try {
+                    // new Libshout();
+                    
+                    if (VibeKey.isStarted == false) {
+                        VibeKey.start();
+                    }
+                } catch (Exception e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                    responseObject = new FailResponse(e);
+                }
+                responseObject = new SuccessResponse();
+                break;
             default:
                 responseObject = new FailResponse("Invalid method provided for channel API call - GET: " + method);
                 break;

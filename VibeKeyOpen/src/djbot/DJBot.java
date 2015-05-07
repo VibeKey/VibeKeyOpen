@@ -1,14 +1,11 @@
 package djbot;
 
-import java.io.File;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
 
-import mysql.Query;
 import primary_manager.PrimaryManager;
 import primary_manager.VibeKey;
 import core_objects_abstract.Song;
@@ -47,6 +44,7 @@ public class DJBot implements Runnable {
         this.dependentPlugins = new ArrayList<DependentBotPlugin>();
         this.buffer = new ArrayList<Song>();
         this.songList = new ArrayList<Song>();
+        this.mediaTerms = new HashMap<String, String>();
     }
     
     /**
@@ -83,8 +81,9 @@ public class DJBot implements Runnable {
     private void addSongs() {
     
         while (songList.size() < MIN_SIZE) {
-            if (buffer.size() <= 0)
+            if (buffer.size() <= 0) {
                 runSearch();
+            }
             Song nextSong = buffer.remove(0);
             VibeKey.manager.bufferSong(nextSong);
             songList.add(nextSong);
@@ -92,32 +91,37 @@ public class DJBot implements Runnable {
     }
     
     private void runSearch() {
-    	String query = "SELECT * FROM Media WHERE ";
-    	
-    	String[] keys = (String[]) mediaTerms.keySet().toArray();
-    	for(int i = 0; i < keys.length; i++) {
-    		String key = keys[i];
-    		
-    		if (i != 0) query += " && ";
-    		query += key + " = " + mediaTerms.get(key);
-    	}
-    	query += " LIMIT 20";
-    	
-    	try {
-			ResultSet results = PrimaryManager.CONN.execQuery(query);
-			while (results.next()) {
-				Song song = new Song(results.getString(Song.FILEPATH_KEY), results.getInt(Song.LENGTH_KEY), 
-						results.getString(Song.TITLE_KEY), results.getString(Song.GENRE_KEY), 
-						results.getString(Song.ARTIST_KEY), results.getInt(Song.SIZE_KEY));
-				buffer.add(song);
-				
-				int id = results.getInt("Id");
-				String name = results.getString("Name");
-				System.out.println("ID: " + id + ", NAME: " + name);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+    
+        String query = "SELECT * FROM Media";
+        
+        // String[] keys = mediaTerms.keySet().toArray(new String[mediaTerms.keySet().size()]);
+        // for (int i = 0; i < keys.length; i++) {
+        // String key = keys[i];
+        //
+        // if (i != 0)
+        // query += " && ";
+        // query += key + " = " + mediaTerms.get(key);
+        // }
+        // query += " LIMIT 20";
+        
+        System.out.println(query);
+        
+        try {
+            ResultSet results = PrimaryManager.CONN.execQuery(query);
+            while (results.next()) {
+                Song song = new Song(results.getString(Song.FILEPATH_KEY), results.getInt(Song.LENGTH_KEY),
+                        results.getString(Song.TITLE_KEY), results.getString(Song.GENRE_KEY),
+                        results.getString(Song.ARTIST_KEY), results.getInt(Song.SIZE_KEY));
+                buffer.add(song);
+                
+                int id = results.getInt("Id");
+                String name = results.getString("Name");
+                System.out.println("ID: " + id + ", NAME: " + name);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("ERROR IN SQL QUERY");
+        }
     }
     
     /**
