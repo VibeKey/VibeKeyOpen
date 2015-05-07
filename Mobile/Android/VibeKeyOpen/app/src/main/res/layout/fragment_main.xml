@@ -1,9 +1,10 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context=".MainActivity$PlaceholderFragment">
 
     <TextView
@@ -11,47 +12,63 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/stationTitleDefault"
-        android:id="@+id/stationTitle"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/stationTitle" />
 
     <ImageView
         android:layout_width="fill_parent"
-        android:layout_height="64dp"
-        android:layout_below="@+id/stationTitle"
-        android:layout_above="@+id/controlLayout"
+        android:layout_height="324dp"
         android:id="@+id/albumCoverView"
         android:src="@drawable/wmhd"
-        android:layout_centerHorizontal="true"
-        android:contentDescription="@string/imageDescription" />
+        android:contentDescription="@string/imageDescription"/>
 
-
-    <RelativeLayout
+    <TextView
         android:layout_width="fill_parent"
-        android:layout_height="192dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/controlLayout">
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/songInfoText"
+        android:id="@+id/songInfoText"/>
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/songInfoText"
-            android:id="@+id/songInfoText"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/controlLayout"
+        android:orientation="horizontal">
 
-        <SeekBar
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/seekBar"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
-    </RelativeLayout>
+        <ImageButton
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:id="@+id/downvoteButton"
+            android:src="@drawable/thumbs_down"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:background="@null"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="16dp"/>
+
+        <ImageButton
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:id="@+id/playPauseButton"
+            android:src="@drawable/play_button"
+            android:background="@null"
+            android:layout_gravity="center"
+            android:layout_margin="64dp"/>
+
+        <ImageButton
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:id="@+id/upvoteButton"
+            android:src="@drawable/thumbs_up"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:background="@null"
+            android:layout_gravity="center_vertical"/>
+
+    </LinearLayout>
 
 
 
 
-</RelativeLayout>
+</LinearLayout>
