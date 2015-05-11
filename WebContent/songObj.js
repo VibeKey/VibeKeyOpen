@@ -34,15 +34,12 @@ function addSongToTab(song, tab) {
 	basicItem.className = "basic";
 	buttonItem.className = "button";
 	
+	listItem.appendChild(songItem);
+	
 	$('.sortable').sortable({
 		containment:$('#searchFunc')
 	});
 	$('.sortable').disableSelection();
-	/*$('.song').draggable({
-		containment:"parent",
-		cursor:"move",
-		scroll:false,
-	});*/
 	
 	songItem.appendChild(containBox);
 	containBox.appendChild(containInfo);
@@ -144,8 +141,7 @@ function addSongToTab(song, tab) {
 	}
 	
 	// Append to body for now.
-	listItem.appendChild(songItem);
-	$(".sortable").append(listItem);
+	tab.appendChild(listItem);
 	//tab.appendChild(listItem);
 }
 

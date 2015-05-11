@@ -23,10 +23,15 @@
 		var song3 = createSong("555", "Sail", "AWOLNATION");
 		var song4 = createSong("555", "From Eden", "Hozier");
 		
+		var songList = document.createElement('ul');
+		songList.className = "sortable";
+		songList.setAttribute("id", "searchSongs");
+		
 		var searchTab = document.getElementById("searchFunc");
+		searchTab.appendChild(songList);
 		var play = document.getElementById("playlist");
 		
-		addSongToTab(song1, searchTab);
+		addSongToTab(song1, songList);
 		addSongToTab(song2, searchTab);
 		addSongToTab(song3, searchTab);
 		addSongToTab(song4, searchTab);
@@ -158,7 +163,8 @@
 						animation-duration:950ms;"></div>
 				</div>
 			</div>
-			<div id="playlist" class="playsongs" ondrop = "drop(event)">
+			<div class="playsongs">
+				<ul id="playlist" class="sortable"></ul>
 				<div class="playsongsBorder"></div>
 			</div>
 			<div class="playbottom"></div>
@@ -220,7 +226,6 @@
 	
 	<!-- This is the part where we create what's inside the actual tabs that pull out -->
 	<div id="searchTab" class="sidr">
-		<ul class ="sortable">unordered List</ul>
 	</div>
 	
 	<div id="newsTab" class="sidr">
