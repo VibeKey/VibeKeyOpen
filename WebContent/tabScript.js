@@ -21,7 +21,6 @@ $(document).ready(function() {
 		$(".arrow-right").css('border-left',.33*height);
 		$(".arrow-right").css('border-left-style',"solid");
 		$(".arrow-right").css('border-left-color',"rgb(147,147,147)");
-	
 	}
 	
 });

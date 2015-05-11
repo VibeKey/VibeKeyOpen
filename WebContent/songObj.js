@@ -26,7 +26,6 @@ function addSongToTab(song, tab) {
 	var buttonItem = document.createElement('span');
 	
 	// Add draggable things.
-	
 	listItem.className = "sortableli";
 	songItem.className = "song";
 	containBox.className = "containBox";
@@ -142,7 +141,10 @@ function addSongToTab(song, tab) {
 	
 	// Append to body for now.
 	tab.appendChild(listItem);
-	//tab.appendChild(listItem);
+	
+	// Change font size to fit.
+	var size = (200 / song["name"].length);
+	if (size < 20) name.style["font-size"] = size + "px";
 }
 
 
