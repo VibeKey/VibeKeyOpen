@@ -14,4 +14,9 @@
     <string name="stationTitleDefault">Station Name Goes Here...</string>
     <string name="songInfoText">Song Info Goes Here...</string>
     <string name="imageDescription">Album Cover</string>
+    <string name="loginWelcomeText">Welcome to VibeKey</string>
+    <string name="LoginButtonText">Login</string>
+    <string name="serverNameText">Server Name</string>
+    <string name="usernameText">Username</string>
+    <string name="passwordText">Password</string>
 </resources>
