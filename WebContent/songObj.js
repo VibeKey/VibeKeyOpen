@@ -1,3 +1,4 @@
+
 function createSong(id, name, artist) {
 	var result = new Object();
 	result["id"] = id;
@@ -16,6 +17,7 @@ function createSong(id, name, artist) {
 
 function addSongToTab(song, tab) {
 	// Create overall layout.
+	var listItem = document.createElement('li');
 	var songItem = document.createElement('div');
 	var containBox = document.createElement('div');
 	var containInfo = document.createElement('div');
@@ -25,11 +27,19 @@ function addSongToTab(song, tab) {
 	
 	// Add draggable things.
 	
+	listItem.className = "sortableli";
 	songItem.className = "song";
 	containBox.className = "containBox";
 	votingItem.className = "voting";
 	basicItem.className = "basic";
 	buttonItem.className = "button";
+	
+	listItem.appendChild(songItem);
+	
+	$('.sortable').sortable({
+		containment:$('#searchFunc')
+	});
+	$('.sortable').disableSelection();
 	
 	songItem.appendChild(containBox);
 	containBox.appendChild(containInfo);
@@ -93,19 +103,19 @@ function addSongToTab(song, tab) {
 		
 		// Remove and append.
 		buttonItem.removeChild(buttonItem.childNodes[1]);
-		tab.removeChild(songItem);
-		play.appendChild(songItem);
+		tab.removeChild(listItem);
+		play.appendChild(listItem);
 		
 		// Change the remove function to reflect the new parent.
 		del.onclick = function remove() {
-			removeMore(play, songItem, containBox, containInfo);
+			removeMore(play, listItem, containBox, containInfo);
 		}
 		
 		// Do server call to add to playlist.
 	}
 	
 	del.onclick = function remove() {
-		removeMore(tab, songItem, containBox, containInfo);
+		removeMore(tab, listItem, containBox, containInfo);
 	}
 	
 	// Make info box.
@@ -131,7 +141,8 @@ function addSongToTab(song, tab) {
 	}
 	
 	// Append to body for now.
-	tab.appendChild(songItem);
+	tab.appendChild(listItem);
+	//tab.appendChild(listItem);
 }
 
 
@@ -145,7 +156,7 @@ function listener(infoBox, listen) {
 	infoBox.style["-webkit-animation-name"] = "moveOut";
 }
 
-function removeMore(parent, songItem, 
+function removeMore(parent, listItem, 
 					containBox, containInfo) {
 	containBox.removeChild(containInfo);
 
@@ -172,7 +183,7 @@ function removeMore(parent, songItem,
 	no.innerHTML = "No.";
 		
 	yes.onclick = function yes() {
-		parent.removeChild(songItem);
+		parent.removeChild(listItem);
 		
 		if (parent == document.getElementById("playlist")) {
 			// Add remove from playlist functionality

@@ -37,3 +37,8 @@
 	border-bottom: 39px solid transparent;
 	border-left: 25px solid rgb(147, 147, 147);
 }
+
+.sortable{
+list-style-type:none;
+padding:0px;
+}
