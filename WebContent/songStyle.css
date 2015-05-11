@@ -24,14 +24,20 @@
 	box-shadow: 0 10px 5px -5px rgb(048,048,048);
 	padding:10px 10px 10px 10px;
 	height:60px;
+	position:relative;
 }
 
 .song .voting {
 	display:inline-block;
 	margin:0px 0px 0px 0px;
+	position:absolute;
+	width:10%;
+	height:100%;
 }
 
 .voting .upArrow {
+	position:absolute;
+	left:0;
 	width: 0; 
 	height: 0; 
 	border-right: 10px solid transparent;
@@ -40,12 +46,20 @@
 }
 
 .voting .number {
-	font-family:Impact;
+	position:absolute;
+	left:0;
+	top:10px;
+	font-family:DigitalDream;
 	color:#000;
 	font-size:20px;
+	padding-top:5px;
+	padding-bottom:5px;
 }
 
 .voting .downArrow {
+	position:absolute;
+	left:0;
+	top:40px;
 	width: 0; 
 	height: 0; 
 	border-right: 10px solid transparent;
@@ -54,21 +68,26 @@
 }
 
 .song .basic {
+	padding-top:10px;
+	position:relative;
 	overflow:hidden;
 	width:60%;
 	display:inline-block;
+	left:10%;
 }
 
 .basic .name {
-	font-size:16px;
+	font-size:20px;
 	font-weight:bold;
 	color:#fff;
+	font-family:DigitalDream;
 }
 
 .basic .band {
-	font-size:12px;
+	font-size:18px;
 	color:#000;
 	padding-left:10px;
+	font-family:Ganon;
 }
 
 .button {
@@ -80,6 +99,7 @@
 }
 
 .button .circle {
+	cursor:pointer;
 	display:inline-block;
 	width:18px;
 	height:18px;

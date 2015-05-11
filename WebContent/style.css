@@ -35,6 +35,7 @@ a:active {color:white; text-decoration: none;}
 	top:10%;
 	min-height:300px;
 	min-width:400px;
+	max-width:700px;
 }
 
 .playlistBody {
@@ -81,7 +82,7 @@ a:active {color:white; text-decoration: none;}
 	font-size:30px;
 	display:block;
 	line-height:30px;
-	font-family:‘Lucida Console’, Monaco, monospace;
+	font-family:Zero Hour;
 	font-weight: bold;
 }
 
@@ -91,7 +92,7 @@ a:active {color:white; text-decoration: none;}
 	line-height:25px;
 	margin-left:30px;
 	color:rgb(194,194,194);
-	font-family:‘Lucida Console’, Monaco, monospace;
+	font-family:Ganon;
 }
 
 .bounce {
@@ -111,11 +112,25 @@ a:active {color:white; text-decoration: none;}
 }
 
 .dummyCalendar{
-margin-left:auto;
-margin-right:auto;
+	margin-left:auto;
+	margin-right:auto;
 }
 
 table.dummyCalendar td{
-width:30px;
+	width:30px;
 }
 
+@font-face {
+    font-family: DigitalDream;
+    src: url(fonts/DIGITALDREAMNARROW.ttf);
+}
+
+@font-face {
+    font-family: Ganon;
+    src: url(fonts/retganon.ttf);
+}
+
+@font-face {
+    font-family: Zero Hour;
+    src: url(fonts/zerohour.ttf);
+}
