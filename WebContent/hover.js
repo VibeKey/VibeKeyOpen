@@ -11,7 +11,7 @@ $(document).ready(function() {
 			renaming: false,
 			onOpen: function(){
 				document.getElementById("searchSpan").style.width = "75%";
-				
+				trig();
 			},
 			onClose: function(){
 				document.getElementById("searchSpan").style.width = "";
@@ -96,4 +96,9 @@ $(document).ready(function() {
 			}
 		});
 		
+		
 	});
+	
+function trig() {
+	$(window).triggerHandler("resize");
+}

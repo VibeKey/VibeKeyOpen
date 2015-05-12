@@ -1,6 +1,9 @@
 $(document).ready(function() {
+	window.addEventListener("resize", changeTabs); 
+	window.onload = changeTabs;
+});
 	
-	window.onload = function(){
+function changeTabs(){
 	
 		var height = (($(window).height()-155) / (10.5));
 		var heightHalf = height/2;
@@ -22,7 +25,4 @@ $(document).ready(function() {
 		$(".arrow-right").css('border-left-style',"solid");
 		$(".arrow-right").css('border-left-color',"rgb(147,147,147)");
 	}
-	
-});
-	
 	

@@ -143,11 +143,28 @@ function addSongToTab(song, tab) {
 	tab.appendChild(listItem);
 	
 	// Change font size to fit.
-	var size = (200 / song["name"].length);
-	if (size < 20) name.style["font-size"] = size + "px";
+	changeText(basicItem, name, band, song);
+	window.addEventListener("resize", function(){
+		changeText(basicItem, name, band, song);
+	}); 
+	
 }
 
-
+function changeText(basicItem, name, band, song) {
+	var size = (basicItem.offsetWidth / song["name"].length);
+	if (size < 20) {
+		name.style["font-size"] = size + "px";
+		name.style["height"] = size + 2 + "px";
+	}
+	
+	band.innerHTML = basicItem.offsetWidth;
+	
+	var size = (200 / song["artist"].length);
+	if (size < 18) {
+		band.style["font-size"] = size + "px";
+		band.style["height"] = size + 2 + "px";
+	}
+}
 
 function listener(infoBox, listen) {
 	infoBox.parentNode.removeChild(infoBox);
