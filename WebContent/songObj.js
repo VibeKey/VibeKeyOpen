@@ -143,26 +143,38 @@ function addSongToTab(song, tab) {
 	tab.appendChild(listItem);
 	
 	// Change font size to fit.
-	changeText(basicItem, name, band, song);
-	window.addEventListener("resize", function(){
-		changeText(basicItem, name, band, song);
+	songItem.addEventListener("onload", function(){
+		changeText(basicItem, name, band, song, tab);
 	}); 
+	window.addEventListener("resize", function(){
+		changeText(basicItem, name, band, song, tab);
+	}); 
+	
 	
 }
 
-function changeText(basicItem, name, band, song) {
-	var size = (basicItem.offsetWidth / song["name"].length);
-	if (size < 20) {
-		name.style["font-size"] = size + "px";
-		name.style["height"] = size + 2 + "px";
+function changeText(basicItem, name, band, song, tab) {
+	var parentWidth;
+	parentWidth = basicItem.offsetWidth;
+	
+	var nameSize = name.scrollWidth;
+	var leftover = nameSize - parentWidth;
+	if (leftover > 0) {
+		name.style["transition-property"] = "text-indent";
+		name.style["transition-duration"] = song["name"].length / 2 + "s";
+		
+		name.onmouseover = function() {
+			name.style["text-indent"] = "-" + leftover + "px";
+		};
+		name.onmouseout = function() {
+			name.style["text-indent"] = null;
+		};
+		
 	}
 	
-	band.innerHTML = basicItem.offsetWidth;
-	
-	var size = (200 / song["artist"].length);
-	if (size < 18) {
-		band.style["font-size"] = size + "px";
-		band.style["height"] = size + 2 + "px";
+	band.innerHTML = leftover;
+	if (song["artist"].length * band.style["font-size"] > parentWidth) {
+		
 	}
 }
 
