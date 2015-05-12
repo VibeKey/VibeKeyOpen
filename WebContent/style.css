@@ -106,9 +106,23 @@ a:active {color:white; text-decoration: none;}
 
 .playbottom {
 	height:10%;
-	width:100%;
+	width:99%;
 	background-color:white;
 	box-shadow: 0 -10px 5px -5px rgb(048,048,048);
+	vertical-align:middle;
+	padding: .5% .5% .5% .5%;
+	overflow:hidden;
+	display: flex;
+	justify-content: center;
+	align-items: baseline;
+	flex-direction: row;
+	align-self:center;
+	align-content:center;
+}
+
+.playerButton {
+	width:50px; 
+	height:50px;
 }
 
 .dummyCalendar{
