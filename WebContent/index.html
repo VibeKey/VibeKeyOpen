@@ -18,7 +18,7 @@
 
 <body>
 	<script>	
-	$(document).ready(function() {	
+	$(document).ready(function() {
 		var song1 = createSong("555", "Take Me To Church", "Hozier");
 		var song2 = createSong("555", "Shake It Off", "Taylor Swift");
 		var song3 = createSong("555", "Sail", "AWOLNATION");
@@ -39,7 +39,10 @@
 		addSongToTab(song4, play);
 	});
 	</script>
-	
+	<audio id='audioStream' autoplay 
+		preload=none source 
+		src='http://wmhd-test.csse.rose-hulman.edu:8000/radio' ></audio>
+		
 	<div class="playlist">
 		<div class="playlistBody">
 			<div class="playhead">
@@ -48,120 +51,41 @@
 					<span class="tags">Tags: Bouncey, Fun, Male Singer</span>
 				</div>
 				<div class="bounce">
-					<div class="lineDance" style="
-						left:5%;
-						-webkit-animation-name:lineBounce1;
-						animation-name:lineBounce1;
-						-webkit-animation-duration:650ms;
-						animation-duration:650ms;"></div>
-					<div class="lineDance" style="
-						left:10%;
-						-webkit-animation-name:lineBounce1;
-						animation-name:lineBounce1;
-						-webkit-animation-duration:750ms;
-						animation-duration:750ms;"></div>
-					<div class="lineDance" style="
-						left:15%;
-						-webkit-animation-name:lineBounce1;
-						animation-name:lineBounce1;
-						-webkit-animation-duration:950ms;
-						animation-duration:950ms;"></div>
-					<div class="lineDance" style="
-						left:20%;
-						-webkit-animation-name:lineBounce1;
-						animation-name:lineBounce1;
-						-webkit-animation-duration:1050ms;
-						animation-duration:1050ms;"></div>
-					<div class="lineDance" style="
-						left:25%;
-						-webkit-animation-name:lineBounce2;
-						animation-name:lineBounce2;
-						-webkit-animation-duration:700ms;
-						animation-duration:700ms;"></div>
-					<div class="lineDance" style="
-						left:30%;
-						-webkit-animation-name:lineBounce2;
-						animation-name:lineBounce2;
-						-webkit-animation-duration:300ms;
-						animation-duration:300ms;"></div>
-					<div class="lineDance" style="
-						left:35%;
-						-webkit-animation-name:lineBounce2;
-						animation-name:lineBounce2;
-						-webkit-animation-duration:600ms;
-						animation-duration:600ms;"></div>
-					<div class="lineDance"  style="
-						left:40%;
-						-webkit-animation-name:lineBounce3;
-						animation-name:lineBounce3;
-						-webkit-animation-duration:550ms;
-						animation-duration:550ms;"></div>
-					<div class="lineDance"  style="
-						left:45%;
-						-webkit-animation-name:lineBounce3;
-						animation-name:lineBounce3;
-						-webkit-animation-duration:750ms;
-						animation-duration:750ms;"></div>
-					<div class="lineDance"  style="
-						left:50%;
-						-webkit-animation-name:lineBounce3;
-						animation-name:lineBounce3;
-						-webkit-animation-duration:650ms;
-						animation-duration:650ms;"></div>
-					<div class="lineDance"  style="
-						left:55%;
-						-webkit-animation-name:lineBounce3;
-						animation-name:lineBounce3;
-						-webkit-animation-duration:750ms;
-						animation-duration:750ms;"></div>
-					<div class="lineDance"  style="
-						left:60%;
-						-webkit-animation-name:lineBounce3;
-						animation-name:lineBounce3;
-						-webkit-animation-duration:550ms;
-						animation-duration:550ms;"></div>
-					<div class="lineDance" style="
-						left:65%;
-						-webkit-animation-name:lineBounce2;
-						animation-name:lineBounce2;
-						-webkit-animation-duration:600ms;
-						animation-duration:600ms;"></div>
-					<div class="lineDance" style="
-						left:70%;
-						-webkit-animation-name:lineBounce2;
-						animation-name:lineBounce2;
-						-webkit-animation-duration:300ms;
-						animation-duration:300ms;"></div>
-					<div class="lineDance" style="
-						left:75%;
-						-webkit-animation-name:lineBounce2;
-						animation-name:lineBounce2;
-						-webkit-animation-duration:700ms;
-						animation-duration:700ms;"></div>
-					<div class="lineDance" style="
-						left:80%;
-						-webkit-animation-name:lineBounce1;
-						animation-name:lineBounce1;
-						-webkit-animation-duration:1050ms;
-						animation-duration:1050ms;"></div>
-					<div class="lineDance" style="
-						left:95%;
-						-webkit-animation-name:lineBounce1;
-						animation-name:lineBounce1;
-						-webkit-animation-duration:650ms;
-						animation-duration:650ms;"></div>
-					<div class="lineDance" style="
-						left:90%;
-						-webkit-animation-name:lineBounce1;
-						animation-name:lineBounce1;
-						-webkit-animation-duration:750ms;
-						animation-duration:750ms;"></div>
-					<div class="lineDance" style="
-						left:85%;
-						-webkit-animation-name:lineBounce1;
-						animation-name:lineBounce1;
-						-webkit-animation-duration:950ms;
-						animation-duration:950ms;"></div>
+					<div class="lineDance" id="line1"
+						style="
+							left:0%;
+							-webkit-animation-name:lineBounce1;
+							animation-name:lineBounce1;
+							-webkit-animation-duration:950ms;
+							animation-duration:950ms;"></div>
+					<div class="lineDance" id="line2"
+						style="
+							left:20%;
+							-webkit-animation-name:lineBounce2;
+							animation-name:lineBounce2;
+							-webkit-animation-duration:600ms;
+							animation-duration:600ms;"></div>
+					<div class="lineDance" id="line3"
+						style="
+							left:40%;
+							-webkit-animation-name:lineBounce3;
+							animation-name:lineBounce3;
+							-webkit-animation-duration:550ms;
+							animation-duration:550ms;"></div>
+					<div class="lineDance" id="line4"
+						style="
+							left:60%;
+							-webkit-animation-name:lineBounce2;
+							animation-name:lineBounce2;
+							-webkit-animation-duration:600ms;
+							animation-duration:600ms;"></div>
+					<div class="lineDance" id="line5"
+						style="
+							left:80%;
+							-webkit-animation-name:lineBounce1;
+							animation-name:lineBounce1;
+							-webkit-animation-duration:950ms;
+							animation-duration:950ms;"></div>
 				</div>
 			</div>
 			<div class="playsongs">
@@ -169,15 +93,16 @@
 				<div class="playsongsBorder"></div>
 			</div>
 			<div class="playbottom">
-				<div class="button" style="float:none; ">
+				<div class="button" style="float:none; height:auto;">
 					<a onclick="pressPlayerButton()" class="circle" 
 						style="background:#000;
 						width:50px;
 						height:50px;
 						border-radius:25px;
 						line-height:25px;" id="player">
-						<img id="playButton" src='http://wmhd2.rose-hulman.edu/playbutton.png' 
-							alt='Play Stream' style='width:50px; height:50px;'>
+						<img id="pauseButton" 
+							src='http://wmhd2.rose-hulman.edu/pausebutton.png' 
+							alt='Pause Stream' style='width:50px; height:50px;'>
 					</a>
 				</div>
 			</div>

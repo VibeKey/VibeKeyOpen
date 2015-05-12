@@ -98,6 +98,8 @@
 }
 
 .button {
+	width:30%;
+	height:auto;
 	position:relative;
 	display: flex;
 	justify-content: center;
@@ -123,6 +125,7 @@
 	background:#fff;
 	margin-right:2.5px;
 	margin-left:2.5px;
+	font-family:DigitalDream;
 }
 
 .song .confirm {
