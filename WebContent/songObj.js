@@ -35,9 +35,7 @@ function addSongToTab(song, tab) {
 	
 	listItem.appendChild(songItem);
 	
-	$('.sortable').sortable({
-		containment:$('#searchFunc')
-	});
+	$('.sortable').sortable();
 	$('.sortable').disableSelection();
 	
 	songItem.appendChild(containBox);
