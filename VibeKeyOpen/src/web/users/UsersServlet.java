@@ -1,6 +1,7 @@
 package web.users;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import primary_manager.VibeKey;
 import web.Response;
 import web.Response.FailResponse;
 
@@ -19,11 +21,13 @@ public class UsersServlet extends HttpServlet {
      */
     private static final long serialVersionUID = -2790596508036351419L;
     
-    /** Getter & Setter Methods **/
-    
-    public UsersServlet() throws IOException {
+    public UsersServlet() throws IOException, ClassNotFoundException, SQLException, InterruptedException {
     
         super();
+        
+        if (VibeKey.isStarted == false) {
+            VibeKey.start();
+        }
     }
     
     @Override

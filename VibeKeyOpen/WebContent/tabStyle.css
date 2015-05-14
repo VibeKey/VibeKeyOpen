@@ -1,0 +1,47 @@
+.tabContainer {
+	display:inline-block;
+	height:100%;
+	width:12%;
+	padding-top:50px;
+}
+
+.tabLinkContainer{
+	height:75px;
+	line-height:75px;
+	width:100%;
+	margin-bottom:30px;
+}
+
+.tabLink {
+	font-size:14px;
+	width:65%;
+	background-color:rgb(147, 147, 147);
+	height:100%;
+	vertical-align:middle;
+	display:inline-block;
+	margin-left:0;
+	border:0;
+	padding:0px 5px 0px 5px;
+}
+
+.tabLinkContainerHover .tabLink {
+	width:75%;
+}
+
+.arrow-right {
+	position:absolute;
+	display:inline-block;
+	width: 0; 
+	height: 0; 
+	border-top: 37.5px solid transparent;
+	border-bottom: 39px solid transparent;
+	border-left: 25px solid rgb(147, 147, 147);
+}
+
+.sortable{
+list-style-type:none;
+padding:0px;
+}
+.sortableli{
+list-style-type:none;
+padding:0px;}

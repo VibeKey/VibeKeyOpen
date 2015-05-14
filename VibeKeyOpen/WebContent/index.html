@@ -1,63 +1,271 @@
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-<title>WMHD - The Monkey</title>
-<meta name="author" content="Benedict Wong">
-<link href="http://wmhd2.rose-hulman.edu/tempindex.css" type="text/css" rel="stylesheet" />
-<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-<script>
-	var values = [];
-	values["wiki"] = "Watch our progress here: <a href='https://github.com/VibeKey/VibeKeyOpen/wiki' target = '_blank'>VibeKey Wiki</a>";
-	values["contact"] = "Get in touch with WMHD Radio via Kevin Lanke (Advisor) at lanke@rose-hulman.edu or Rex Buckley (General Manager) at bucklerj@rose-hulman.edu";
-	values["club"] = "WMHD Radio Club meets every Wednesday at 5:00 in the BSB basement";
-	
-	function showPlayControls() {
-		var parent = document.getElementById("textdiv");
-		parent.innerHTML = "";
-
-		$(parent).append("<a onclick='playStream()'><img src='http://wmhd2.rose-hulman.edu/playbutton.png' alt='Play Stream' style='width:50px; height:50px;'></a>");
-		$(parent).append("<a onclick='pauseStream()'><img src='http://wmhd2.rose-hulman.edu/pausebutton.png' alt='Pause Stream' style='width:50px; height:50px;'></a>");
-	}
-
-	var isPlaying = false;
-	
-	function playStream(){
-		if(!isPlaying){
-			$(document.body).append("<audio id='audioStream' autoplay preload=none source src='http://wmhd-test.csse.rose-hulman.edu:8000/radio' ><p>Your browser doesn't support HTML audio. Sorry.</p></audio>");
-			isPlaying = true;
-		}
-	}
-	
-	function pauseStream(){
-		if(isPlaying){
-			$("#audioStream").remove();
-			isPlaying = false;
-		}
-	}
-	
-	function tabClick(text) {
-		document.getElementById("textdiv").innerHTML = values[text];
-	}
-	
-</script>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="songStyle.css">
+	<link rel="stylesheet" href="tabStyle.css">
+	<link rel="stylesheet" href="animations.css">
+	<link rel="stylesheet" href="sidr/stylesheets/jquery.sidr.dark.css">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="tabScript.js"></script>
+	<script type="text/javascript" src="hover.js"></script>
+	<script type="text/javascript" src="songObj.js"></script>
+	<script type="text/javascript" src="Draggable.js"></script>
+	<script type="text/javascript" src="streamScript.js"></script>
+	<script type="text/javascript" src="buttonScript.js"></script>
 </head>
+
 <body>
-	<img src="http://wmhd2.rose-hulman.edu/wmhd.png" alt="WMHD - The Monkey">
-	<div>
-		<div id="pagecontent">
-			<div id="header">
-				<h2>The Monkey</h2>
+	<script>	
+	$(document).ready(function() {
+		var song1 = createSong("555", "Take Me To Church", "Hozier");
+		var song2 = createSong("555", "Shake It Off", "Taylor Swift");
+		var song3 = createSong("555", "Sail", "AWOLNATION");
+		var song4 = createSong("555", "From Eden", "Hozier");
+		
+		var songList = document.createElement('ul');
+		songList.className = "sortable";
+		songList.setAttribute("id", "searchSongs");
+		
+		var searchTab = document.getElementById("searchFunc");
+		searchTab.appendChild(songList);
+		var play = document.getElementById("playlist");
+		
+		addSongToTab(song1, songList);
+		addSongToTab(song2, searchTab);
+		addSongToTab(song3, searchTab);
+		addSongToTab(song4, searchTab);
+		addSongToTab(song4, play);
+	});
+	</script>
+	<audio id='audioStream' autoplay 
+		preload=none source 
+		src='http://wmhd-test.csse.rose-hulman.edu:8000/radio' ></audio>
+		
+	<div class="playlist">
+		<div class="playlistBody">
+			<div class="playhead">
+				<div class="playHeadInfo">
+					<span class="genre">Genre:Rock</span>
+					<span class="tags">Tags: Bouncey, Fun, Male Singer</span>
+				</div>
+				<div class="bounce">
+					<div class="lineDance" id="line1"
+						style="
+							left:0%;
+							-webkit-animation-name:lineBounce1;
+							animation-name:lineBounce1;
+							-webkit-animation-duration:950ms;
+							animation-duration:950ms;"></div>
+					<div class="lineDance" id="line2"
+						style="
+							left:20%;
+							-webkit-animation-name:lineBounce2;
+							animation-name:lineBounce2;
+							-webkit-animation-duration:600ms;
+							animation-duration:600ms;"></div>
+					<div class="lineDance" id="line3"
+						style="
+							left:40%;
+							-webkit-animation-name:lineBounce3;
+							animation-name:lineBounce3;
+							-webkit-animation-duration:550ms;
+							animation-duration:550ms;"></div>
+					<div class="lineDance" id="line4"
+						style="
+							left:60%;
+							-webkit-animation-name:lineBounce2;
+							animation-name:lineBounce2;
+							-webkit-animation-duration:600ms;
+							animation-duration:600ms;"></div>
+					<div class="lineDance" id="line5"
+						style="
+							left:80%;
+							-webkit-animation-name:lineBounce1;
+							animation-name:lineBounce1;
+							-webkit-animation-duration:950ms;
+							animation-duration:950ms;"></div>
+				</div>
 			</div>
-			<div id="textdiv">
-				<p>Coming soon</p>
+			<div class="playsongs" id="playSongs">
+				<div class="playsongsBorderLeft"></div>
+				<div class="playsongsBorderRight"></div>
+				<ul id="playlist" class="sortable"></ul>
+				<div class="otherLists" id="up" style="display:none;">
+					I am the upload.
+				</div>
+				<div class="otherLists" id="list" style="display:none;">
+					I am the list of playlists.
+				</div>
 			</div>
-			<div id="tabs">
-				<span class="tab" value="listen" onclick="showPlayControls()">Listen</span>
-				<span class="tab" value="wiki" onclick="tabClick('wiki')">VibeKey
-					Wiki</span> <span class="tab" value="contact"
-					onclick="tabClick('contact')">Contact Us</span> <span class="tab"
-					value="club" onclick="tabClick('club')">Club Info</span>
+			<div class="playbottom">
+				<div class="button" style="float:none; height:auto;">
+					<div onclick="clickList()" id="listButton" class="circle">
+						List
+					</div>
+					<div onclick="pressPlayerButton()" class="play" 
+						id="player">
+						<img id="pauseButton" 
+							src='http://wmhd2.rose-hulman.edu/pausebutton.png' 
+							alt='Pause Stream' style='width:50px; height:50px;'>
+					</div>
+					<div onclick="clickUpload()" id="upButton" class="circle">
+						<img src="/images/up.png">
+					</div>
+				</div>
 			</div>
 		</div>
+		
 	</div>
-</body>
+	<!-- creates all the tabs on the side that can be clicked -->
+	<div id="container" class="tabContainer">		
+				
+		<a id="search" href="#searchFunc"><div id="searchContainer" class="tabLinkContainer">
+			<span id="searchSpan" class="tabLink">
+				Search
+			</span>
+			<span class="arrow-right"></span>
+		</div></a> 
+		
+		<a id="news" href="#newsFunc"><div class="tabLinkContainer">
+			<span id="newsSpan" class="tabLink">
+				News
+			</span>
+			<span class="arrow-right"></span>
+		</div></a>
+		
+		<a id="soundboard" href="#soundboardFunc"><div class="tabLinkContainer">
+			<span id="soundboardSpan" class="tabLink">
+				Soundboard
+			</span>
+			<span class="arrow-right"></span>
+		</div></a>
+		
+		<a id="calendar" href="#calendarFunc"><div class="tabLinkContainer">
+			<span id="calendarSpan" class="tabLink">
+				Calendar
+			</span>
+			<span class="arrow-right"></span>
+		</div></a>
+		
+		<a id="djChat" href="#djChatFunc"><div class="tabLinkContainer">
+			<span id="djChatSpan" class="tabLink">
+				DJ Chat
+			</span>
+			<span class="arrow-right"></span>
+		</div></a>
+		
+		<a id="audience" href="#audienceFunc"><div class="tabLinkContainer">
+			<span id="audienceSpan" class="tabLink">
+				Audience
+			</span>
+			<span class="arrow-right"></span>
+		</div></a>
+		
+		<a id="settings" href="#settingsFunc"><div class="tabLinkContainer">
+			<span id="settingsSpan" class="tabLink">
+				Settings
+			</span>
+			<span class="arrow-right"></span>
+		</div></a>
+	</div>
+	
+	<!-- This is the part where we create what's inside the actual tabs that pull out -->
+	<div id="searchTab" class="sidr">
+	</div>
+	
+	<div id="newsTab" class="sidr">
+		<h1>I am a news tab!</h1>
+	</div>
+	
+	<div id="soundboardTab" class="sidr">
+		<h1>I am a soundboard tab!</h1>
+	</div>
+	<div id="calendarTab" class="sidr">
+		<h1>I am a calendar tab!</h1>
+		
+		<TABLE class="dummyCalendar"BORDER=3 CELLSPACING=3 CELLPADDING=3> 
+<TR>
+<TD COLSPAN="7" ALIGN=center><B>April 2015</B></TD> 
+</TR>
+<TR> 
+<TD COLSPAN="7" ALIGN=center><I>Play all of the music!</I></TD>
+</TR>
+<TR> 
+<TD ALIGN=center>Sun</TD>
+<TD ALIGN=center>Mon</TD>
+<TD ALIGN=center>Tue</TD>
+<TD ALIGN=center>Wed</TD>
+<TD ALIGN=center>Thu</TD>
+<TD ALIGN=center>Fri</TD>
+<TD ALIGN=center>Sat</TD>
+</TR>
+<TR> 
+<TD ALIGN=center></TD>
+<TD ALIGN=center></TD>
+<TD ALIGN=center></TD>
+<TD ALIGN=center><a href="https://youtu.be/dQw4w9WgXcQ">1</TD>
+<TD ALIGN=center>2</TD>
+<TD ALIGN=center>3</TD>
+<TD ALIGN=center>4</TD>
+</TR>
+<TR> 
+<TD ALIGN=center>5</TD>
+<TD ALIGN=center>6</TD>
+<TD ALIGN=center>7</TD>
+<TD ALIGN=center>8</TD>
+<TD ALIGN=center>9</TD>
+<TD ALIGN=center>10</TD>
+<TD ALIGN=center>11</TD>
+</TR>
+<TR> 
+<TD ALIGN=center>12</TD>
+<TD ALIGN=center>13</TD>
+<TD ALIGN=center>14</TD>
+<TD ALIGN=center>15</TD>
+<TD ALIGN=center>16</TD>
+<TD ALIGN=center>17</TD>
+<TD ALIGN=center>18</TD>
+</TR>
+<TR> 
+<TD ALIGN=center>19</TD>
+<TD ALIGN=center>20</TD>
+<TD ALIGN=center>21</TD>
+<TD ALIGN=center>22</TD>
+<TD ALIGN=center>23</TD>
+<TD ALIGN=center>24</TD>
+<TD ALIGN=center>25</TD>
+</TR>
+<TR> 
+<TD ALIGN=center>26</TD>
+<TD ALIGN=center>27</TD>
+<TD ALIGN=center>28</TD>
+<TD ALIGN=center>29</TD>
+<TD ALIGN=center>30</TD>
+<TD ALIGN=center></TD>
+<TD ALIGN=center></TD>
+</TR>
+
+</TABLE>
+
+
+	</div>
+	<div id="djChatTab" class="sidr">
+		<h1>I am a DJ Chat tab!</h1>
+	</div>
+	<div id="audienceTab" class="sidr">
+		<h1>I am an audience tab!</h1>
+	</div>
+	<div id="settingsTab" class="sidr">
+		<h1>I am a settings tab!</h1>
+	</div>
+	
+	
+    <!-- Include the Sidr JS -->
+    <script src="sidr/jquery.sidr.min.js"></script>
+	<script type="text/javascript" src="tabScript.js"></script>
+	</body>
 </html>
+

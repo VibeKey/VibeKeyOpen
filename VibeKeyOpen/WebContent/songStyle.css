@@ -1,0 +1,183 @@
+.song {
+	position:relative;
+	width:100%;
+	margin-bottom:15px;
+	text-align:left;
+	z-index:2;
+}
+
+.song .infoBox {
+	background:#000;
+	box-shadow: 0 10px 5px -5px rgb(048,048,048);
+	padding:10px 10px 10px 10px;
+	width:90%;
+	margin: 0 auto;
+	
+	-webkit-animation-duration:500ms;
+	animation-duration:500ms;
+	
+	-webkit-animation-name:moveOut;
+	animation-name:moveOut;
+	color:#fff;
+}
+
+.song .containBox {
+	background:rgb(194,194,194);
+	box-shadow: 0 10px 5px -5px rgb(048,048,048);
+	padding:10px 10px 10px 10px;
+	height:60px;
+	position:relative;
+}
+
+.song .voting {
+	display:inline-block;
+	margin:0px 0px 0px 0px;
+	position:absolute;
+	width:10%;
+	height:100%;
+}
+
+.voting .upArrow {
+	position:absolute;
+	left:0;
+	width: 0; 
+	height: 0; 
+	border-right: 10px solid transparent;
+	border-left: 10px solid transparent;
+	border-bottom: 10px solid rgb(153, 000, 000);
+}
+
+.voting .number {
+	position:absolute;
+	left:0;
+	top:10px;
+	font-family:DigitalDream;
+	color:#000;
+	font-size:20px;
+	padding-top:5px;
+	padding-bottom:5px;
+}
+
+.voting .downArrow {
+	position:absolute;
+	left:0;
+	top:40px;
+	width: 0; 
+	height: 0; 
+	border-right: 10px solid transparent;
+	border-left: 10px solid transparent;
+	border-top: 10px solid rgb(153, 000, 000);
+}
+
+.song .basic {
+	padding-top:10px;
+	position:relative;
+	overflow:hidden;
+	width:60%;
+	display:inline-block;
+	left:10%;
+	overflow:hidden;
+}
+
+.basic .name {
+	white-space:nowrap;
+	font-size:20px;
+	font-weight:bold;
+	color:#fff;
+	font-family:DigitalDream;
+}
+
+.basic .band {
+	white-space:nowrap;
+	font-size:18px;
+	color:#000;
+	padding-left:10px;
+	font-family:Ganon;
+}
+
+.basic .hover:hover {
+	
+}
+
+.button {
+	width:30%;
+	height:100%;
+	position:relative;
+	display: flex;
+	justify-content:center;
+	flex-direction:row;
+	overflow:hidden;
+	float:right;
+	vertical-align:middle;
+}
+
+.button .circle {
+	cursor:pointer;
+	display:inline-block;
+	align-self:center;
+	width:24px;
+	height:24px;
+	border-radius:12px;
+	font-size:12px;
+	color:#000;
+	line-height:24px;
+	text-align:center;
+	background:#fff;
+	margin-right:2.5px;
+	margin-left:2.5px;
+	font-family:DigitalDream;
+}
+
+.playbottom .button .circle {
+	cursor:pointer;
+	display:inline-block;
+	align-self:center;
+	width:30px;
+	height:30px;
+	border-radius:15px;
+	font-size:15px;
+	color:#fff;
+	line-height:30px;
+	text-align:center;
+	background:#000;
+	margin-right:2.5px;
+	margin-left:2.5px;
+	font-family:DigitalDream;
+}
+
+.playbottom .button .play {
+	cursor:pointer;
+	display:inline-block;
+	align-self:center;
+	width:50px;
+	height:50px;
+	border-radius:25px;
+	font-size:25px;
+	color:#fff;
+	line-height:50px;
+	text-align:center;
+	background:#000;
+	margin-right:2.5px;
+	margin-left:2.5px;
+	font-family:DigitalDream;
+}
+
+.song .confirm {
+	width:100%;
+	text-align:center;
+	line-height:12px;
+	font-size:12px;
+}
+
+.confirm .button .circle {
+	display:inline-block;
+	width:30px;
+	height:30px;
+	border-radius:15px;
+	font-size:15px;
+	color:#000;
+	line-height:30px;
+	text-align:center;
+	background:#fff;
+	margin-top:10px;
+}
