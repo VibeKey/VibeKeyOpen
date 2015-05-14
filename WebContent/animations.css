@@ -101,3 +101,15 @@
 		font-size:0px;
 	}
 }
+
+@keyframes collapse {
+	to {
+		height:0px;
+	}
+}
+
+@keyframes expand {
+	from {
+		height:0px;
+	}
+}

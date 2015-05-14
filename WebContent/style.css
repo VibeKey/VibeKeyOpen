@@ -32,7 +32,7 @@ a:active {color:white; text-decoration: none;}
 	position:absolute;
 	height:70%;
 	width:50%;
-	left:20%;
+	left:25%;
 	top:10%;
 	min-height:300px;
 	min-width:400px;
@@ -46,20 +46,42 @@ a:active {color:white; text-decoration: none;}
 }
 
 .playsongs {
-	height:70%;
+	height:65%;
 	width:100%;
 	overflow-y:auto;
 	overflow-x:hidden;
+	-webkit-animation-duration:950ms;
+	animation-duration:950ms;
+	background:rgb(068,068,068);
+	z-index:-1;
 }
 
-.playsongsBorder{
+.playsongs .otherLists {
+	position:relative;
+	display:inline-block;
+	width:100%;
+	margin-bottom:2.5%;
+	margin-top:2.5%;
+}
+
+.playsongsBorderLeft{
 	position:absolute;
 	top:0;
-	left:2.5%;
+	left:0;
 	height:100%;
-	width:95%;
-	background:rgb(068,068,068);
-	z-index:-1
+	width:2.5%;
+	background:black;
+	z-index:0;
+}
+
+.playsongsBorderRight{
+	position:absolute;
+	top:0;
+	left:97.5%;
+	height:100%;
+	width:2.5%;
+	background:black;
+	z-index:0;
 }
 
 .playhead {
@@ -106,7 +128,9 @@ a:active {color:white; text-decoration: none;}
 }
 
 .playbottom {
-	height:10%;
+	position:relative;
+	z-index:3;
+	height:15%;
 	width:99%;
 	background-color:white;
 	box-shadow: 0 -10px 5px -5px rgb(048,048,048);
@@ -114,11 +138,8 @@ a:active {color:white; text-decoration: none;}
 	padding: .5% .5% .5% .5%;
 	overflow:hidden;
 	display: flex;
-	justify-content: center;
-	align-items: baseline;
+	justify-content: space-around;
 	flex-direction: row;
-	align-self:center;
-	align-content:center;
 }
 
 .playerButton {

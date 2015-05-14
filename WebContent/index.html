@@ -14,6 +14,7 @@
 	<script type="text/javascript" src="songObj.js"></script>
 	<script type="text/javascript" src="Draggable.js"></script>
 	<script type="text/javascript" src="streamScript.js"></script>
+	<script type="text/javascript" src="buttonScript.js"></script>
 </head>
 
 <body>
@@ -88,22 +89,31 @@
 							animation-duration:950ms;"></div>
 				</div>
 			</div>
-			<div class="playsongs">
+			<div class="playsongs" id="playSongs">
+				<div class="playsongsBorderLeft"></div>
+				<div class="playsongsBorderRight"></div>
 				<ul id="playlist" class="sortable"></ul>
-				<div class="playsongsBorder"></div>
+				<div class="otherLists" id="up" style="display:none;">
+					I am the upload.
+				</div>
+				<div class="otherLists" id="list" style="display:none;">
+					I am the list of playlists.
+				</div>
 			</div>
 			<div class="playbottom">
 				<div class="button" style="float:none; height:auto;">
-					<a onclick="pressPlayerButton()" class="circle" 
-						style="background:#000;
-						width:50px;
-						height:50px;
-						border-radius:25px;
-						line-height:25px;" id="player">
+					<div onclick="clickList()" id="listButton" class="circle">
+						List
+					</div>
+					<div onclick="pressPlayerButton()" class="play" 
+						id="player">
 						<img id="pauseButton" 
 							src='http://wmhd2.rose-hulman.edu/pausebutton.png' 
 							alt='Pause Stream' style='width:50px; height:50px;'>
-					</a>
+					</div>
+					<div onclick="clickUpload()" id="upButton" class="circle">
+						<img src="/images/up.png">
+					</div>
 				</div>
 			</div>
 		</div>
