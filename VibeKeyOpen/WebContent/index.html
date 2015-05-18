@@ -26,24 +26,6 @@
 	
 	//initially creates some songs on the website using methods in songObj.js
 	$(document).ready(function() {
-		var song1 = createSong("555", "Take Me To Church", "Hozier");
-		var song2 = createSong("555", "Shake It Off", "Taylor Swift");
-		var song3 = createSong("555", "Sail", "AWOLNATION");
-		var song4 = createSong("555", "From Eden", "Hozier");
-		
-		var songList = document.createElement('ul');
-		songList.className = "sortable";
-		songList.setAttribute("id", "searchSongs");
-		
-		var searchTab = document.getElementById("searchFunc");
-		searchTab.appendChild(songList);
-		var play = document.getElementById("playlist");
-		
-		addSongToTab(song1, songList);
-		addSongToTab(song2, searchTab);
-		addSongToTab(song3, searchTab);
-		addSongToTab(song4, searchTab);
-		addSongToTab(song4, play);
 	});
 	</script>
 	<audio id='audioStream'  

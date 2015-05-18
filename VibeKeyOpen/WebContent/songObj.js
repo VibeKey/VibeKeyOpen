@@ -2,6 +2,26 @@
 //this JavaScript file is written in mostly JavaScript with a little bit of jQuery thrown in
 //Its main purpose is to create all elements related to songs displayed on the website and to append them wherever they need to be
 
+$(document).ready(function() {
+		var song1 = createSong("555", "Take Me To Church", "Hozier");
+		var song2 = createSong("555", "Shake It Off", "Taylor Swift");
+		var song3 = createSong("555", "Sail", "AWOLNATION");
+		var song4 = createSong("555", "From Eden", "Hozier");
+		
+		var searchTab = document.createElement('div');
+		searchTab.id = "searchSongs";
+		searchTab.className = "sortable";
+		
+		document.getElementById("searchFunc").appendChild(searchTab);
+		var play = document.getElementById("playlist");
+		
+		addSongToTab(song1, searchTab);
+		addSongToTab(song2, searchTab);
+		addSongToTab(song3, searchTab);
+		addSongToTab(song4, searchTab);
+		addSongToTab(song4, play);
+	});
+
 function createSong(id, name, artist) {
 	var result = new Object();
 	result["id"] = id;
