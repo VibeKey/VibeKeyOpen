@@ -22,15 +22,9 @@ function pressPlayerButton(){
 			document.getElementById(name).style["animation-play-state"] = "running";
 		}
 		
-		// Creates the pause image.
-		var pauseButton = document.createElement('img');
-		pauseButton.src = "http://wmhd2.rose-hulman.edu/pausebutton.png";
-		pauseButton.className = "playerButton";
-		pauseButton.id = "pauseButton";
-		
 		// Removes the play button and adds the pause button.
-		player.removeChild(document.getElementById("playButton"));
-		player.appendChild(pauseButton);
+		document.getElementById("playButton").style["display"] = "none";
+		document.getElementById("pauseButton").style["display"] = null;
 	} else {
 		// Pauses audio.
 		audio.pause();
@@ -43,15 +37,9 @@ function pressPlayerButton(){
 			document.getElementById(name).style["animation-play-state"] = "paused";
 		}
 		
-		// Creates the play image.
-		var playButton = document.createElement('img');
-		playButton.src = "http://wmhd2.rose-hulman.edu/playbutton.png";
-		playButton.className = "playerButton";
-		playButton.id = "playButton";
-		
-		// Removes the pause button and adds the play button.
-		player.removeChild(document.getElementById("pauseButton"));
-		player.appendChild(playButton);
+		// Removes the play button and adds the pause button.
+		document.getElementById("pauseButton").style["display"] = "none";
+		document.getElementById("playButton").style["display"] = null;
 	}
 }
 

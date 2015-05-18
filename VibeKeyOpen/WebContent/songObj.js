@@ -11,10 +11,6 @@ function createSong(id, name, artist) {
 	return result;
 }
 
-
-
-
-
 function addSongToTab(song, tab) {
 	// Create overall layout.
 	var listItem = document.createElement('li');
@@ -81,25 +77,42 @@ function addSongToTab(song, tab) {
 	add.className = "circle";
 	del.className = "circle";
 	
-	info.innerHTML = "i";
-	add.innerHTML = "+";
-	del.innerHTML = "x";
+	info.innerHTML = "<img id='" + song["name"]
+		+ "InfoButton' src='/images/info_circle.png' style='width:24px;height:24px;'>";
+	add.innerHTML = "<img id='" + song["name"]
+		+ "PlusButton' src='/images/add_circle.png' style='width:24px;height:24px;'>";
 	
-	add.style.background = '#008000';
-	add.style.color = "white";
-	del.style.background = "red";
-	del.style.color = "white";
+	var delButton = document.createElement('img');
+	delButton.className = "img";
+	delButton.src = '/images/trash.png';
+	delButton.id = song["name"] + "DelButton";
+	
+	var xButton = document.createElement('img');
+	xButton.className = "img";
+	xButton.src = '/images/x_circle.png';
+	xButton.id = song["name"] + "XButton";
+	
+	if (tab == document.getElementById("playlist")) {
+   		add.style["display"] = "none";
+		delButton.style["display"] = "none";
+	} else {
+		xButton.style["display"] = "none";
+	}
+	
+	del.appendChild(delButton);
+	del.appendChild(xButton);
+		
 	
 	buttonItem.appendChild(info);
-	if (tab != document.getElementById("playlist")) buttonItem.appendChild(add);
+	buttonItem.appendChild(add);
 	buttonItem.appendChild(del);
 	
 	// Create functionality.
-	add.onclick = function add() {
+	add.onclick = function addButtonFunctionality() {
 		var play = document.getElementById("playlist");
 		
 		// Remove and append.
-		buttonItem.removeChild(buttonItem.childNodes[1]);
+		add.style["display"] = "none";
 		tab.removeChild(listItem);
 		play.appendChild(listItem);
 		
@@ -107,6 +120,10 @@ function addSongToTab(song, tab) {
 		del.onclick = function remove() {
 			removeMore(play, listItem, containBox, containInfo);
 		}
+		
+		// Change the button look.
+		delButton.style["display"] = "none";
+		xButton.style["display"] = null;
 		
 		// Do server call to add to playlist.
 	}
@@ -141,12 +158,12 @@ function addSongToTab(song, tab) {
 	tab.appendChild(listItem);
 	
 	// Change font size to fit.
-	songItem.addEventListener("onload", function(){
+	
+	function listenForResize(){
 		changeText(basicItem, name, band, song, tab);
-	}); 
-	window.addEventListener("resize", function(){
-		changeText(basicItem, name, band, song, tab);
-	}); 
+	}
+	registerEventListener(window, {event: "resize", callback: listenForResize});
+	registerEventListener(songItem, {event: "onload", callback: listenForResize});
 	
 	
 }
@@ -170,8 +187,18 @@ function changeText(basicItem, name, band, song, tab) {
 		
 	}
 	
-	band.innerHTML = leftover;
-	if (song["artist"].length * band.style["font-size"] > parentWidth) {
+	var bandSize = band.scrollWidth;
+	var leftoverBand = bandSize - parentWidth;
+	if (leftoverBand > 0) {
+		band.style["transition-property"] = "text-indent";
+		band.style["transition-duration"] = song["artist"].length / 2 + "s";
+		
+		band.onmouseover = function() {
+			band.style["text-indent"] = "-" + leftoverBand + "px";
+		};
+		band.onmouseout = function() {
+			band.style["text-indent"] = null;
+		};
 		
 	}
 }
@@ -187,7 +214,7 @@ function listener(infoBox, listen) {
 
 function removeMore(parent, listItem, 
 					containBox, containInfo) {
-	containBox.removeChild(containInfo);
+	containInfo.style["display"] = "none";
 
 	var con = document.createElement('div');
 	var desc = document.createElement('div');
@@ -223,7 +250,7 @@ function removeMore(parent, listItem,
 		
 	no.onclick = function no() {
 		containBox.removeChild(con);
-		containBox.appendChild(containInfo);
+		containInfo.style["display"] = null;
 	}
 		
 	con.appendChild(desc);

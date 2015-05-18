@@ -31,10 +31,14 @@ function unRegisterAllEventListeners(obj) {
 
 // Begin original code.
 // Upload button functionality.
-function clickUpload() {
-	if (button != "up") {
+function clickBottomButton(e) {
+	buttonFunctionality(e.getAttribute('id'));
+}
+
+function buttonFunctionality(newButton) {
+	if (button != newButton) {
 		var oldButton = button;
-		button = "up";
+		button = newButton;
 		collapseAndExpand(document.getElementById(oldButton), 
 			document.getElementById(button));	
 	} else {
@@ -45,30 +49,14 @@ function clickUpload() {
 	}
 	
 	// Swap between the down and normal.
-	if (oldButton != "playlist") 
-		document.getElementById(oldButton + "Button").innerHTML = oldButton;
-	if (button != "playlist") 
-		document.getElementById(button + "Button").innerHTML = "v";
-}
-
-function clickList() {
-	if (button != "list") {
-		var oldButton = button;
-		button = "list";
-		collapseAndExpand(document.getElementById(oldButton), 
-			document.getElementById(button));
-	} else {
-		var oldButton = button;
-		button = "playlist";
-		collapseAndExpand(document.getElementById(oldButton), 
-			document.getElementById(button));
+	if (oldButton != "playlist") {
+		document.getElementById(oldButton + "Img").style["display"] = null;
+		document.getElementById(oldButton + "DownArrow").style["display"] = "none";
 	}
-	
-	// Swap between the down and normal.
-	if (oldButton != "playlist") 
-		document.getElementById(oldButton + "Button").innerHTML = oldButton;
-	if (button != "playlist") 
-		document.getElementById(button + "Button").innerHTML = "v";
+	if (button != "playlist") {
+		document.getElementById(button + "Img").style["display"] = "none";
+		document.getElementById(button + "DownArrow").style["display"] = null;
+	}
 }
 
 function collapseAndExpand(prev, next) {

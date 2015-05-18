@@ -19,6 +19,12 @@
 
 <body>
 	<script>	
+	function process(data, textStatus, jqXHR) {
+		var succ = document.createElement('p');
+		succ.innerHTML = "SUCCESS" + data;
+		document.body.appendChild(succ);
+	}
+	
 	$(document).ready(function() {
 		var song1 = createSong("555", "Take Me To Church", "Hozier");
 		var song2 = createSong("555", "Shake It Off", "Taylor Swift");
@@ -40,9 +46,9 @@
 		addSongToTab(song4, play);
 	});
 	</script>
-	<audio id='audioStream' autoplay 
+	<audio id='audioStream'  
 		preload=none source 
-		src='http://wmhd-test.csse.rose-hulman.edu:8000/radio' ></audio>
+		src='http://wmhd-test.csse.rose-hulman.edu:8000/radio' ></audio> 
 		
 	<div class="playlist">
 		<div class="playlistBody">
@@ -102,17 +108,26 @@
 			</div>
 			<div class="playbottom">
 				<div class="button" style="float:none; height:auto;">
-					<div onclick="clickList()" id="listButton" class="circle">
-						List
+					<div onclick="clickBottomButton(this)" id="list" class="circle">
+						<img id="listImg" style="width:30px; height:30px;" 
+							src="/images/list.png">
+						<img id="listDownArrow" style="width:30px; height:30px; display:none;" 
+							src="/images/down_arrow.png">
 					</div>
 					<div onclick="pressPlayerButton()" class="play" 
 						id="player">
 						<img id="pauseButton" 
-							src='http://wmhd2.rose-hulman.edu/pausebutton.png' 
+							src="/images/pausebutton.png" 
 							alt='Pause Stream' style='width:50px; height:50px;'>
+						<img id="playButton" 
+							src="/images/playbutton.png" 
+							alt='Play Stream' style='width:50px; height:50px;'>
 					</div>
-					<div onclick="clickUpload()" id="upButton" class="circle">
-						<img src="/images/up.png">
+					<div onclick="clickBottomButton(this)" id="up" class="circle">
+						<img id="upImg" style="width:30px; height:30px;" 
+							src="/images/up.png">
+						<img id="upDownArrow" style="width:30px; height:30px; display:none;" 
+							src="/images/down_arrow.png">
 					</div>
 				</div>
 			</div>
@@ -120,64 +135,15 @@
 		
 	</div>
 	<!-- creates all the tabs on the side that can be clicked -->
-	<div id="container" class="tabContainer">		
-				
-		<a id="search" href="#searchFunc"><div id="searchContainer" class="tabLinkContainer">
-			<span id="searchSpan" class="tabLink">
-				Search
-			</span>
-			<span class="arrow-right"></span>
-		</div></a> 
-		
-		<a id="news" href="#newsFunc"><div class="tabLinkContainer">
-			<span id="newsSpan" class="tabLink">
-				News
-			</span>
-			<span class="arrow-right"></span>
-		</div></a>
-		
-		<a id="soundboard" href="#soundboardFunc"><div class="tabLinkContainer">
-			<span id="soundboardSpan" class="tabLink">
-				Soundboard
-			</span>
-			<span class="arrow-right"></span>
-		</div></a>
-		
-		<a id="calendar" href="#calendarFunc"><div class="tabLinkContainer">
-			<span id="calendarSpan" class="tabLink">
-				Calendar
-			</span>
-			<span class="arrow-right"></span>
-		</div></a>
-		
-		<a id="djChat" href="#djChatFunc"><div class="tabLinkContainer">
-			<span id="djChatSpan" class="tabLink">
-				DJ Chat
-			</span>
-			<span class="arrow-right"></span>
-		</div></a>
-		
-		<a id="audience" href="#audienceFunc"><div class="tabLinkContainer">
-			<span id="audienceSpan" class="tabLink">
-				Audience
-			</span>
-			<span class="arrow-right"></span>
-		</div></a>
-		
-		<a id="settings" href="#settingsFunc"><div class="tabLinkContainer">
-			<span id="settingsSpan" class="tabLink">
-				Settings
-			</span>
-			<span class="arrow-right"></span>
-		</div></a>
-	</div>
+	<div id="container" class="tabContainer"></div>
 	
 	<!-- This is the part where we create what's inside the actual tabs that pull out -->
 	<div id="searchTab" class="sidr">
 	</div>
 	
 	<div id="newsTab" class="sidr">
-		<h1>I am a news tab!</h1>
+		<iframe class="sideArea" src="news.html">
+		</iframe>
 	</div>
 	
 	<div id="soundboardTab" class="sidr">
