@@ -51,7 +51,7 @@
 	position:absolute;
 	left:0;
 	top:10px;
-	font-family:DigitalDream;
+	font-family:Ganon;
 	color:#000;
 	font-size:20px;
 	padding-top:5px;
@@ -81,10 +81,10 @@
 
 .basic .name {
 	white-space:nowrap;
-	font-size:20px;
+	font-size:25px;
 	font-weight:bold;
 	color:#fff;
-	font-family:DigitalDream;
+	font-family:Ganon;
 }
 
 .basic .band {
@@ -122,10 +122,14 @@
 	color:#000;
 	line-height:24px;
 	text-align:center;
-	background:#fff;
-	margin-right:2.5px;
+	background:#000;
 	margin-left:2.5px;
-	font-family:DigitalDream;
+	font-family:Ganon;
+}
+
+.button .circle .img {
+	height:24px;
+	width:24px;
 }
 
 .playbottom .button .circle {
@@ -142,7 +146,7 @@
 	background:#000;
 	margin-right:2.5px;
 	margin-left:2.5px;
-	font-family:DigitalDream;
+	font-family:Ganon;
 }
 
 .playbottom .button .play {
@@ -159,7 +163,7 @@
 	background:#000;
 	margin-right:2.5px;
 	margin-left:2.5px;
-	font-family:DigitalDream;
+	font-family:Ganon;
 }
 
 .song .confirm {

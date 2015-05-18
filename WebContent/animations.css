@@ -113,3 +113,15 @@
 		height:0px;
 	}
 }
+
+@-webkit-keyframes collapse {
+	to {
+		height:0px;
+	}
+}
+
+@-webkit-keyframes expand {
+	from {
+		height:0px;
+	}
+}

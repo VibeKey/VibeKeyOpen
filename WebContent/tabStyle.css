@@ -12,6 +12,11 @@
 	margin-bottom:30px;
 }
 
+.tabLinkImg{
+	height:75px;
+	width:75px;
+}
+
 .tabLink {
 	font-size:14px;
 	width:65%;
@@ -33,9 +38,15 @@
 	display:inline-block;
 	width: 0; 
 	height: 0; 
-	border-top: 37.5px solid transparent;
-	border-bottom: 39px solid transparent;
-	border-left: 25px solid rgb(147, 147, 147);
+	border-top-width: 37.5px;
+	border-top-style:solid;
+	border-top-color:transparent;
+	border-bottom-width: 39px;
+	border-bottom-style:solid;
+	border-bottom-color:transparent;
+	border-left-width: 25px;
+	border-left-style:solid;
+	border-left-color:rgb(147,147,147);
 }
 
 .sortable{
@@ -45,3 +56,11 @@ padding:0px;
 .sortableli{
 list-style-type:none;
 padding:0px;}
+
+.sideArea{
+	width:100%;
+	height:100%;
+	padding:0 0 0 0;
+	margin:0 0 0 0;
+	border:0;
+}

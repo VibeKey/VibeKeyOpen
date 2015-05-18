@@ -105,7 +105,7 @@ a:active {color:white; text-decoration: none;}
 	font-size:30px;
 	display:block;
 	line-height:30px;
-	font-family:Zero Hour;
+	font-family:Ganon;
 	font-weight: bold;
 }
 
@@ -157,16 +157,6 @@ table.dummyCalendar td{
 }
 
 @font-face {
-    font-family: DigitalDream;
-    src: url(fonts/DIGITALDREAMNARROW.ttf);
-}
-
-@font-face {
     font-family: Ganon;
     src: url(fonts/retganon.ttf);
-}
-
-@font-face {
-    font-family: Zero Hour;
-    src: url(fonts/zerohour.ttf);
 }
