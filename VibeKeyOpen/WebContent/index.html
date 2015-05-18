@@ -12,7 +12,6 @@
 	<script type="text/javascript" src="tabScript.js"></script>
 	<script type="text/javascript" src="hover.js"></script>
 	<script type="text/javascript" src="songObj.js"></script>
-	<script type="text/javascript" src="Draggable.js"></script>
 	<script type="text/javascript" src="streamScript.js"></script>
 	<script type="text/javascript" src="buttonScript.js"></script>
 </head>
@@ -25,6 +24,7 @@
 		document.body.appendChild(succ);
 	}
 	
+	//initially creates some songs on the website using methods in songObj.js
 	$(document).ready(function() {
 		var song1 = createSong("555", "Take Me To Church", "Hozier");
 		var song2 = createSong("555", "Shake It Off", "Taylor Swift");
@@ -137,7 +137,7 @@
 	<!-- creates all the tabs on the side that can be clicked -->
 	<div id="container" class="tabContainer"></div>
 	
-	<!-- This is the part where we create what's inside the actual tabs that pull out -->
+	<!-- This is the part where we create what's inside the actual tabs that pull out on the left side -->
 	<div id="searchTab" class="sidr">
 	</div>
 	
@@ -152,6 +152,8 @@
 	<div id="calendarTab" class="sidr">
 		<h1>I am a calendar tab!</h1>
 		
+		
+		<!-- creates static calendar for quick fix. Has to manually be changed on month change -->
 		<TABLE class="dummyCalendar"BORDER=3 CELLSPACING=3 CELLPADDING=3> 
 <TR>
 <TD COLSPAN="7" ALIGN=center><B>April 2015</B></TD> 
