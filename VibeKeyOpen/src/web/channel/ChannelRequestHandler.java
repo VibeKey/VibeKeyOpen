@@ -26,17 +26,21 @@ public class ChannelRequestHandler {
     
     public static Response handleGetChannelStatus(HttpServletRequest request) {
     
-        String section = request.getHeader("section");
-        if (section == null) {
-            return new FailResponse("Invalid section provided");
+        String channelId = request.getHeader("channelId");
+        if (channelId == null) {
+            return new FailResponse("Invalid channelId provided");
         }
         
-        Channel channelInstance = VibeKey.manager.getChannels().get(section);
+        Channel channelInstance = VibeKey.manager.getChannel(Integer.valueOf(channelId));
+        if (channelInstance == null) {
+            return new FailResponse("Invalid channelId provided: " + Integer.valueOf(channelId));
+        }
+        
         Response result = new SuccessResponse();
         result.addToReturnData("name", channelInstance.getName());
         result.addToReturnData("channelState", channelInstance.getState().getClass().getName());
         
         // TODO Auto-generated method stub
-        return null;
+        return result;
     }
 }
