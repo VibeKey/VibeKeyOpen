@@ -1,3 +1,7 @@
+
+/*this is the most general css file (index.html). 
+Deals with most basic css of the general site such as body, playlist*/
+
 pagebody{
 	background-color: rgb(0, 0, 0);
 	border-top-left-radius: 10px !important;
