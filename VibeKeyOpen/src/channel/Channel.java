@@ -1,8 +1,14 @@
 package channel;
 
+import java.lang.reflect.Type;
+
 import runnables.PlayerRunnable;
 
 import com.gmail.kunicins.olegs.libshout.Libshout;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
 
 import djbot.DJBot;
 
@@ -162,5 +168,22 @@ public class Channel {
     public PlayerRunnable getThread() {
     
         return this.player;
+    }
+    
+    public class ChannelSerializer implements JsonSerializer<Channel> {
+        
+        @Override
+        public JsonElement serialize(Channel song, Type typeOfSrc, JsonSerializationContext context) {
+        
+            // This method gets involved whenever the parser encounters the Song
+            // object (for which this serializer is registered)
+            JsonObject object = new JsonObject();
+            object.addProperty("name", cName);
+            object.addProperty("id", channelID);
+            object.addProperty("state", state.getClass().getName());
+            // we create the json object for the song and send it back to the
+            // Gson serializer
+            return object;
+        }
     }
 }

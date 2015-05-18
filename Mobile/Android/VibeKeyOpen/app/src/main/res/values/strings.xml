@@ -19,4 +19,8 @@
     <string name="serverNameText">Server Name</string>
     <string name="usernameText">Username</string>
     <string name="passwordText">Password</string>
+    <string name="title_activity_login">LoginActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_channel_selection">ChannelSelectionActivity</string>
 </resources>
