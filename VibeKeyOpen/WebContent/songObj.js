@@ -34,6 +34,11 @@ function createSong(id, name, artist) {
 	return result;
 }
 
+function dragFunc(event, listItem, parent) {
+	event.dataTransfer.setData("li", event.target.id);
+	listItem.style["display"] = "none";
+}
+
 function addSongToTab(song, tab) {
 	// Create overall layout.
 	var listItem = document.createElement('li');
@@ -55,8 +60,7 @@ function addSongToTab(song, tab) {
 	listItem.appendChild(songItem);
 	
 	//this is the code that makes the song objects draggable using jQuery UI
-	$('.sortable').sortable();
-	$('.sortable').disableSelection();
+	
 	
 	songItem.appendChild(containBox);
 	containBox.appendChild(containInfo);
@@ -131,10 +135,9 @@ function addSongToTab(song, tab) {
 	buttonItem.appendChild(add);
 	buttonItem.appendChild(del);
 	
+	var play = document.getElementById("playlist");
 	// Create functionality.
-	add.onclick = function addButtonFunctionality() {
-		var play = document.getElementById("playlist");
-		
+	add.onclick = function addButtonFunctionality() {		
 		// Remove and append.
 		add.style["display"] = "none";
 		tab.removeChild(listItem);
@@ -178,18 +181,41 @@ function addSongToTab(song, tab) {
 		}
 	}
 	
+	listItem._add = add;
+	
 	// Append to body for now.
 	tab.appendChild(listItem);
 	
 	// Change font size to fit.
-	
 	function listenForResize(){
 		changeText(basicItem, name, band, song, tab);
 	}
 	registerEventListener(window, {event: "resize", callback: listenForResize});
 	registerEventListener(songItem, {event: "onload", callback: listenForResize});
 	
-	
+	// Does the dragging.
+	$('.sortable').sortable({
+		connectWith: $('.sortable'),
+		start: function (event, ui) {
+			band.innerHTML = ui.item.parent();
+            oldList = ui.item.parent();
+        },
+		stop: function (event, ui) {
+			if (ui.item.parent() != oldList) {
+				if (ui.item.parent() == play) {
+					ui.item.prop("_add") = "none";
+					//ui.item._buttons.delButton.style["display"] = "none";
+					//ui.item._buttons.xButton.style["display"] = null;
+				} else {
+					//ui.item._buttons.add.style["display"] = null;
+					//ui.item._buttons.delButton.style["display"] = null;
+					//ui.item._buttons.xButton.style["display"] = "none";
+				}
+			}
+        },
+		containment:"window"
+	});
+	$('.sortable').disableSelection();
 }
 
 function changeText(basicItem, name, band, song, tab) {
