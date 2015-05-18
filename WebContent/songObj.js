@@ -1,4 +1,7 @@
 
+//this JavaScript file is written in mostly JavaScript with a little bit of jQuery thrown in
+//Its main purpose is to create all elements related to songs displayed on the website and to append them wherever they need to be
+
 function createSong(id, name, artist) {
 	var result = new Object();
 	result["id"] = id;
@@ -30,7 +33,7 @@ function addSongToTab(song, tab) {
 	buttonItem.className = "button";
 	
 	listItem.appendChild(songItem);
-	
+	//this is the code that makes the song objects draggable using jQuery UI
 	$('.sortable').sortable();
 	$('.sortable').disableSelection();
 	
@@ -55,7 +58,7 @@ function addSongToTab(song, tab) {
 	votingItem.appendChild(number);
 	votingItem.appendChild(down);
 	
-	// Create all basic items.
+	// Create all basic song items.
 	var name = document.createElement('div');
 	var band = document.createElement('div');
 	
@@ -132,7 +135,7 @@ function addSongToTab(song, tab) {
 		removeMore(tab, listItem, containBox, containInfo);
 	}
 	
-	// Make info box.
+	// Make info box that comes down when the info button is clicked on
 	var infoBox = document.createElement('div');
 	infoBox.className = "infoBox";
 	
