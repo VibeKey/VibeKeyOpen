@@ -25,7 +25,8 @@ function makeTab(tabName) {
 			span.style["width"] = null;
 			span.style["background-color"] = null;
 			arrow.style["border-left-color"] = null;
-		}
+		},
+		body:document.getElementById("stuffBody")
 	});
 }
 

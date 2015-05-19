@@ -208,6 +208,7 @@ function addSongToTab(song, tab) {
 			//ui.target.context.appendChild(ui.item.context);
 			
 			if (ui.item.context.parentNode != oldList) {
+				ui.item.context.style["width"] = null;
 				if (ui.item.context.parentNode == play) {
 					ui.item.context._add.style["display"] = "none";
 					ui.item.context._del.style["display"] = "none";
@@ -224,9 +225,10 @@ function addSongToTab(song, tab) {
 		helper:function(event, item) {
 			var helper = $(item.context).clone();
 			helper.css("position", "fixed");
-			
+			helper.css("width", "25%");
 			return helper;
-		}
+		},
+		cursor:"grabbing"
 	});
 	$('.sortable').disableSelection();
 }
