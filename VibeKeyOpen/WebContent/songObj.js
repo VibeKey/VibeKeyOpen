@@ -3,6 +3,7 @@
 //Its main purpose is to create all elements related to songs displayed on the website and to append them wherever they need to be
 
 $(document).ready(function() {
+		//initial setup of songs for playlist
 		var song1 = createSong("555", "Take Me To Church", "Hozier");
 		var song2 = createSong("555", "Shake It Off", "Taylor Swift");
 		var song3 = createSong("555", "Sail", "AWOLNATION");
@@ -20,6 +21,18 @@ $(document).ready(function() {
 		addSongToTab(song3, searchTab);
 		addSongToTab(song4, searchTab);
 		addSongToTab(song4, play);
+		
+		var playlistHeader = document.getElementById("playhead");
+		
+		var refreshButton = document.createElement('span');
+		refreshButton.classname = "circle";
+		refreshButton.innerHTML = "<img id='refreshButton' src='/images/info_circle.png' style='width:24px;height:24px;'>";
+		playlistHeader.appendChild(refreshButton);
+		
+		var micButton = document.createElement('span');
+		micButton.className="circle";
+		micButton.innerHTML = "<img id='micButton' src='/images/info_circle.png' style='width:24px;height:24px;'>";
+		playlistHeader.appendChild(micButton);
 		
 		// Does the dragging.
 	$('.sortable').sortable({
