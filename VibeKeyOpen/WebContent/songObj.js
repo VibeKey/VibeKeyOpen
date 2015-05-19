@@ -23,16 +23,20 @@ $(document).ready(function() {
 		addSongToTab(song4, play);
 		
 		var playlistHeader = document.getElementById("playhead");
+		var buttonSpan = document.createElement('span');
+		buttonSpan.className = "button";
 		
 		var refreshButton = document.createElement('span');
-		refreshButton.classname = "circle";
-		refreshButton.innerHTML = "<img id='refreshButton' src='/images/info_circle.png' style='width:24px;height:24px;'>";
-		playlistHeader.appendChild(refreshButton);
+		refreshButton.className = "circle";
+		refreshButton.innerHTML = "<img id='refreshButton' src='/images/mic_mute.png' style='width:24px;height:24px;'>";
+		buttonSpan.appendChild(refreshButton);
 		
 		var micButton = document.createElement('span');
 		micButton.className="circle";
-		micButton.innerHTML = "<img id='micButton' src='/images/info_circle.png' style='width:24px;height:24px;'>";
-		playlistHeader.appendChild(micButton);
+		micButton.innerHTML = "<img id='micButton' src='/images/sync.png' style='width:24px;height:24px;'>";
+		buttonSpan.appendChild(micButton);
+		
+		playlistHeader.appendChild(buttonSpan);
 		
 		// Does the dragging.
 	$('.sortable').sortable({
