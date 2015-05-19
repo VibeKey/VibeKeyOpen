@@ -10,11 +10,13 @@
 	<link rel="stylesheet" href="sidr/stylesheets/jquery.sidr.dark.css">
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="frequencyAnimator.js"></script>
 	<script type="text/javascript" src="tabScript.js"></script>
 	<script type="text/javascript" src="hover.js"></script>
 	<script type="text/javascript" src="songObj.js"></script>
 	<script type="text/javascript" src="streamScript.js"></script>
 	<script type="text/javascript" src="buttonScript.js"></script>
+	
 </head>
 
 <body>
@@ -29,9 +31,6 @@
 	$(document).ready(function() {
 	});
 	</script>
-	<audio id='audioStream'  
-		preload=none source 
-		src='http://wmhd-test.csse.rose-hulman.edu:8000/radio' ></audio> 
 	<div id="stuffBody">
 		<div class="playlist">
 			<div class="playlistBody">
@@ -40,42 +39,8 @@
 						<span class="genre">Genre:Rock</span>
 						<span class="tags">Tags: Bouncey, Fun, Male Singer</span>
 					</div>
-					<div class="bounce">
-						<div class="lineDance" id="line1"
-							style="
-								left:0%;
-								-webkit-animation-name:lineBounce1;
-								animation-name:lineBounce1;
-								-webkit-animation-duration:950ms;
-								animation-duration:950ms;"></div>
-						<div class="lineDance" id="line2"
-							style="
-								left:20%;
-								-webkit-animation-name:lineBounce2;
-								animation-name:lineBounce2;
-								-webkit-animation-duration:600ms;
-								animation-duration:600ms;"></div>
-						<div class="lineDance" id="line3"
-							style="
-								left:40%;
-								-webkit-animation-name:lineBounce3;
-								animation-name:lineBounce3;
-								-webkit-animation-duration:550ms;
-								animation-duration:550ms;"></div>
-						<div class="lineDance" id="line4"
-							style="
-								left:60%;
-								-webkit-animation-name:lineBounce2;
-								animation-name:lineBounce2;
-								-webkit-animation-duration:600ms;
-								animation-duration:600ms;"></div>
-						<div class="lineDance" id="line5"
-							style="
-								left:80%;
-								-webkit-animation-name:lineBounce1;
-								animation-name:lineBounce1;
-								-webkit-animation-duration:950ms;
-								animation-duration:950ms;"></div>
+					<div class="bounce" id="bounceAnimation">
+						
 					</div>
 				</div>
 				

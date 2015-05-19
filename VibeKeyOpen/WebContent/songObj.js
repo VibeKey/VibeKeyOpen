@@ -20,6 +20,43 @@ $(document).ready(function() {
 		addSongToTab(song3, searchTab);
 		addSongToTab(song4, searchTab);
 		addSongToTab(song4, play);
+		
+		// Does the dragging.
+	$('.sortable').sortable({
+		connectWith: $('.sortable'),
+		start: function (event, ui) {
+			//ui.item.context.parentNode.removeChild(ui.item.context);
+			//document.body.appendChild(ui.item.context);
+            oldList = ui.item.context.parentNode;
+        },
+		receive: function (event, ui) {
+			//document.body.removeChild(ui.item.context);
+			//ui.target.context.appendChild(ui.item.context);
+			
+			if (ui.item.context.parentNode != oldList) {
+				ui.item.context.style["width"] = null;
+				if (ui.item.context.parentNode == play) {
+					ui.item.context._add.style["display"] = "none";
+					ui.item.context._del.style["display"] = "none";
+					ui.item.context._x.style["display"] = null;
+				} else {
+					ui.item.context._add.style["display"] = null;
+					ui.item.context._del.style["display"] = null;
+					ui.item.context._x.style["display"] = "none";
+				}
+			}
+        },
+		appendTo:document.body,
+		forceHelperSize:true,
+		helper:function(event, item) {
+			var helper = $(item.context).clone();
+			helper.css("position", "fixed");
+			helper.css("width", "25%");
+			return helper;
+		},
+		cursor:"grabbing"
+	});
+	$('.sortable').disableSelection();
 	});
 
 function createSong(id, name, artist) {
@@ -58,10 +95,6 @@ function addSongToTab(song, tab) {
 	buttonItem.className = "button";
 	
 	listItem.appendChild(songItem);
-	
-	//this is the code that makes the song objects draggable using jQuery UI
-	
-	
 	songItem.appendChild(containBox);
 	containBox.appendChild(containInfo);
 	containInfo.appendChild(votingItem);
@@ -194,43 +227,6 @@ function addSongToTab(song, tab) {
 	}
 	registerEventListener(window, {event: "resize", callback: listenForResize});
 	registerEventListener(songItem, {event: "onload", callback: listenForResize});
-	
-	// Does the dragging.
-	$('.sortable').sortable({
-		connectWith: $('.sortable'),
-		start: function (event, ui) {
-			//ui.item.context.parentNode.removeChild(ui.item.context);
-			//document.body.appendChild(ui.item.context);
-            oldList = ui.item.context.parentNode;
-        },
-		receive: function (event, ui) {
-			//document.body.removeChild(ui.item.context);
-			//ui.target.context.appendChild(ui.item.context);
-			
-			if (ui.item.context.parentNode != oldList) {
-				ui.item.context.style["width"] = null;
-				if (ui.item.context.parentNode == play) {
-					ui.item.context._add.style["display"] = "none";
-					ui.item.context._del.style["display"] = "none";
-					ui.item.context._x.style["display"] = null;
-				} else {
-					ui.item.context._add.style["display"] = null;
-					ui.item.context._del.style["display"] = null;
-					ui.item.context._x.style["display"] = "none";
-				}
-			}
-        },
-		appendTo:document.body,
-		forceHelperSize:true,
-		helper:function(event, item) {
-			var helper = $(item.context).clone();
-			helper.css("position", "fixed");
-			helper.css("width", "25%");
-			return helper;
-		},
-		cursor:"grabbing"
-	});
-	$('.sortable').disableSelection();
 }
 
 function changeText(basicItem, name, band, song, tab) {
