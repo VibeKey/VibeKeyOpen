@@ -223,7 +223,8 @@ function addSongToTab(song, tab) {
 		forceHelperSize:true,
 		helper:function(event, item) {
 			var helper = $(item.context).clone();
-			helper.css("position", "absolute");
+			helper.css("position", "fixed");
+			
 			return helper;
 		}
 	});
