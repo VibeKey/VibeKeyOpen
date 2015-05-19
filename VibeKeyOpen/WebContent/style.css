@@ -34,7 +34,10 @@ a:hover {color:rgb(243,221,187); text-decoration: none;}
 a:active {color:white; text-decoration: none;} 
 
 .stuffBody {
-	
+	height:100%;
+	width:100%;
+	position:relative;
+	float:left;
 }
 
 .playlist{
