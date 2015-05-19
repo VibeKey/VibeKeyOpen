@@ -20,6 +20,43 @@ $(document).ready(function() {
 		addSongToTab(song3, searchTab);
 		addSongToTab(song4, searchTab);
 		addSongToTab(song4, play);
+		
+		// Does the dragging.
+	$('.sortable').sortable({
+		connectWith: $('.sortable'),
+		start: function (event, ui) {
+			//ui.item.context.parentNode.removeChild(ui.item.context);
+			//document.body.appendChild(ui.item.context);
+            oldList = ui.item.context.parentNode;
+        },
+		receive: function (event, ui) {
+			//document.body.removeChild(ui.item.context);
+			//ui.target.context.appendChild(ui.item.context);
+			
+			if (ui.item.context.parentNode != oldList) {
+				ui.item.context.style["width"] = null;
+				if (ui.item.context.parentNode == play) {
+					ui.item.context._add.style["display"] = "none";
+					ui.item.context._del.style["display"] = "none";
+					ui.item.context._x.style["display"] = null;
+				} else {
+					ui.item.context._add.style["display"] = null;
+					ui.item.context._del.style["display"] = null;
+					ui.item.context._x.style["display"] = "none";
+				}
+			}
+        },
+		appendTo:document.body,
+		forceHelperSize:true,
+		helper:function(event, item) {
+			var helper = $(item.context).clone();
+			helper.css("position", "fixed");
+			helper.css("width", "25%");
+			return helper;
+		},
+		cursor:"grabbing"
+	});
+	$('.sortable').disableSelection();
 	});
 
 function createSong(id, name, artist) {
@@ -32,6 +69,11 @@ function createSong(id, name, artist) {
 	result["votes"] = 50;
 	
 	return result;
+}
+
+function dragFunc(event, listItem, parent) {
+	event.dataTransfer.setData("li", event.target.id);
+	listItem.style["display"] = "none";
 }
 
 function addSongToTab(song, tab) {
@@ -53,11 +95,6 @@ function addSongToTab(song, tab) {
 	buttonItem.className = "button";
 	
 	listItem.appendChild(songItem);
-	
-	//this is the code that makes the song objects draggable using jQuery UI
-	$('.sortable').sortable();
-	$('.sortable').disableSelection();
-	
 	songItem.appendChild(containBox);
 	containBox.appendChild(containInfo);
 	containInfo.appendChild(votingItem);
@@ -131,10 +168,9 @@ function addSongToTab(song, tab) {
 	buttonItem.appendChild(add);
 	buttonItem.appendChild(del);
 	
+	var play = document.getElementById("playlist");
 	// Create functionality.
-	add.onclick = function addButtonFunctionality() {
-		var play = document.getElementById("playlist");
-		
+	add.onclick = function addButtonFunctionality() {		
 		// Remove and append.
 		add.style["display"] = "none";
 		tab.removeChild(listItem);
@@ -178,18 +214,19 @@ function addSongToTab(song, tab) {
 		}
 	}
 	
+	listItem._add = add;
+	listItem._del = delButton;
+	listItem._x = xButton;
+	
 	// Append to body for now.
 	tab.appendChild(listItem);
 	
 	// Change font size to fit.
-	
 	function listenForResize(){
 		changeText(basicItem, name, band, song, tab);
 	}
 	registerEventListener(window, {event: "resize", callback: listenForResize});
 	registerEventListener(songItem, {event: "onload", callback: listenForResize});
-	
-	
 }
 
 function changeText(basicItem, name, band, song, tab) {

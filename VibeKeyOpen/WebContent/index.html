@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+	<title>WMHD Radio</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="songStyle.css">
@@ -9,11 +10,13 @@
 	<link rel="stylesheet" href="sidr/stylesheets/jquery.sidr.dark.css">
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="frequencyAnimator.js"></script>
 	<script type="text/javascript" src="tabScript.js"></script>
 	<script type="text/javascript" src="hover.js"></script>
 	<script type="text/javascript" src="songObj.js"></script>
 	<script type="text/javascript" src="streamScript.js"></script>
 	<script type="text/javascript" src="buttonScript.js"></script>
+	
 </head>
 
 <body>
@@ -28,97 +31,60 @@
 	$(document).ready(function() {
 	});
 	</script>
-	<audio id='audioStream'  
-		preload=none source 
-		src='http://wmhd-test.csse.rose-hulman.edu:8000/radio' ></audio> 
-		
-	<div class="playlist">
-		<div class="playlistBody">
-			<div class="playhead">
-				<div class="playHeadInfo">
-					<span class="genre">Genre:Rock</span>
-					<span class="tags">Tags: Bouncey, Fun, Male Singer</span>
-				</div>
-				<div class="bounce">
-					<div class="lineDance" id="line1"
-						style="
-							left:0%;
-							-webkit-animation-name:lineBounce1;
-							animation-name:lineBounce1;
-							-webkit-animation-duration:950ms;
-							animation-duration:950ms;"></div>
-					<div class="lineDance" id="line2"
-						style="
-							left:20%;
-							-webkit-animation-name:lineBounce2;
-							animation-name:lineBounce2;
-							-webkit-animation-duration:600ms;
-							animation-duration:600ms;"></div>
-					<div class="lineDance" id="line3"
-						style="
-							left:40%;
-							-webkit-animation-name:lineBounce3;
-							animation-name:lineBounce3;
-							-webkit-animation-duration:550ms;
-							animation-duration:550ms;"></div>
-					<div class="lineDance" id="line4"
-						style="
-							left:60%;
-							-webkit-animation-name:lineBounce2;
-							animation-name:lineBounce2;
-							-webkit-animation-duration:600ms;
-							animation-duration:600ms;"></div>
-					<div class="lineDance" id="line5"
-						style="
-							left:80%;
-							-webkit-animation-name:lineBounce1;
-							animation-name:lineBounce1;
-							-webkit-animation-duration:950ms;
-							animation-duration:950ms;"></div>
-				</div>
-			</div>
-			<div class="playsongs" id="playSongs">
-				<div class="playsongsBorderLeft"></div>
-				<div class="playsongsBorderRight"></div>
-				<ul id="playlist" class="sortable"></ul>
-				<div class="otherLists" id="up" style="display:none;">
-					I am the upload.
-				</div>
-				<div class="otherLists" id="list" style="display:none;">
-					I am the list of playlists.
-				</div>
-			</div>
-			<div class="playbottom">
-				<div class="button" style="float:none; height:auto;">
-					<div onclick="clickBottomButton(this)" id="list" class="circle">
-						<img id="listImg" style="width:30px; height:30px;" 
-							src="/images/list.png">
-						<img id="listDownArrow" style="width:30px; height:30px; display:none;" 
-							src="/images/down_arrow.png">
+	<div id="stuffBody" class="">
+		<div class="playlist">
+			<div class="playlistBody">
+				<div class="playhead">
+					<div class="playHeadInfo">
+						<span class="genre">Genre:Rock</span>
+						<span class="tags">Tags: Bouncey, Fun, Male Singer</span>
 					</div>
-					<div onclick="pressPlayerButton()" class="play" 
-						id="player">
-						<img id="pauseButton" 
-							src="/images/pausebutton.png" 
-							alt='Pause Stream' style='width:50px; height:50px;'>
-						<img id="playButton" 
-							src="/images/playbutton.png" 
-							alt='Play Stream' style='width:50px; height:50px;'>
+					<div class="bounce" id="bounceAnimation">
+						
 					</div>
-					<div onclick="clickBottomButton(this)" id="up" class="circle">
-						<img id="upImg" style="width:30px; height:30px;" 
-							src="/images/up.png">
-						<img id="upDownArrow" style="width:30px; height:30px; display:none;" 
-							src="/images/down_arrow.png">
+				</div>
+				
+				<div class="playsongs" id="playSongs">
+					<div class="playsongsBorder"></div>
+					<ul id="playlist" class="sortable"></ul>
+					<div class="otherLists" id="up" style="display:none;">
+						I am the upload.
+					</div>
+					<div class="otherLists" id="list" style="display:none;">
+						I am the list of playlists.
+					</div>
+				</div>
+				<div class="playbottom">
+					<div class="button" style="float:none; height:auto;">
+						<div onclick="clickBottomButton(this)" id="list" class="circle">
+							<img id="listImg" style="width:30px; height:30px;" 
+								src="/images/list.png">
+							<img id="listDownArrow" style="width:30px; height:30px; display:none;" 
+								src="/images/down_arrow.png">
+						</div>
+						<div onclick="pressPlayerButton()" class="play" 
+							id="player">
+							<img id="pauseButton" 
+								src="/images/pausebutton.png" 
+								alt='Pause Stream' style='width:50px; height:50px;'>
+							<img id="playButton" 
+								src="/images/playbutton.png" 
+								alt='Play Stream' style='width:50px; height:50px;'>
+						</div>
+						<div onclick="clickBottomButton(this)" id="up" class="circle">
+							<img id="upImg" style="width:30px; height:30px;" 
+								src="/images/up.png">
+							<img id="upDownArrow" style="width:30px; height:30px; display:none;" 
+								src="/images/down_arrow.png">
+						</div>
 					</div>
 				</div>
 			</div>
+			
 		</div>
-		
+		<!-- creates all the tabs on the side that can be clicked -->
+		<div id="container" class="tabContainer"></div>
 	</div>
-	<!-- creates all the tabs on the side that can be clicked -->
-	<div id="container" class="tabContainer"></div>
-	
 	<!-- This is the part where we create what's inside the actual tabs that pull out on the left side -->
 	<div id="searchTab" class="sidr">
 	</div>

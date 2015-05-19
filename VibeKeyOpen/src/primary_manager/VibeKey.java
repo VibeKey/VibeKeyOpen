@@ -11,8 +11,6 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import channel.Channel;
-
 public class VibeKey {
     
     public static boolean         isStarted      = false;
@@ -54,16 +52,14 @@ public class VibeKey {
          * System.out.println(name);
          */
         
-        ExecutorService service = getNewExecutor(5);
-        Channel c = new Channel(1, "TEST");
-        c.setState(Channel.CLOSED_STATE);
-        service.submit(c.getPlayerRunnable());
+        manager.addStream(1, "TEST");
         
         // DJBot bot = new DJBot();
         // System.out.println(bot.getSong().getId());
         // System.out.println(bot.getSong().getId());
         // System.out.println(bot.getSong().getId());
         // System.out.println(bot.getSong().getId());
+        isStarted = true;
     }
     
     public static ExecutorService getNewExecutor(int maxSize) {

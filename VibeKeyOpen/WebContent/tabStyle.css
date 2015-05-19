@@ -53,12 +53,16 @@
 }
 
 .sortable{
-list-style-type:none;
-padding:0px;
+	position:relative;
+	list-style-type:none;
+	padding:0px;
+	z-index:1000;
+	min-height:100px;
 }
 .sortableli{
-list-style-type:none;
-padding:0px;}
+	list-style-type:none;
+	padding:0px;
+}
 
 .sideArea{
 	width:100%;

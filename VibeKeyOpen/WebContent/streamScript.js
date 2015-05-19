@@ -1,9 +1,3 @@
-$(document).ready(function() {	
-	document.getElementById("audioStream").addEventListener('error', function(e){
-		failed(e);
-	}, true);
-});
-
 var isPlaying = true;
 var firstPlay = true;
 	
@@ -16,11 +10,11 @@ function pressPlayerButton(){
 		isPlaying = true;
 		
 		// Resumes animations.
-		for (i=1; i <= 5; i++) {
-			var name = "line" + i;
-			document.getElementById(name).style["-webkit-animation-play-state"] = "running";
-			document.getElementById(name).style["animation-play-state"] = "running";
-		}
+		//for (i=1; i <= 5; i++) {
+		//	var name = "line" + i;
+		//	document.getElementById(name).style["-webkit-animation-play-state"] = "running";
+		//	document.getElementById(name).style["animation-play-state"] = "running";
+		//}
 		
 		// Removes the play button and adds the pause button.
 		document.getElementById("playButton").style["display"] = "none";
@@ -31,11 +25,11 @@ function pressPlayerButton(){
 		isPlaying = false;
 		
 		// Pauses Animations
-		for (i=1; i <= 5; i++) {
-			var name = "line" + i;
-			document.getElementById(name).style["-webkit-animation-play-state"] = "paused";
-			document.getElementById(name).style["animation-play-state"] = "paused";
-		}
+		//for (i=1; i <= 5; i++) {
+		//	var name = "line" + i;
+		//	document.getElementById(name).style["-webkit-animation-play-state"] = "paused";
+		//	document.getElementById(name).style["animation-play-state"] = "paused";
+		//}
 		
 		// Removes the play button and adds the pause button.
 		document.getElementById("pauseButton").style["display"] = "none";
