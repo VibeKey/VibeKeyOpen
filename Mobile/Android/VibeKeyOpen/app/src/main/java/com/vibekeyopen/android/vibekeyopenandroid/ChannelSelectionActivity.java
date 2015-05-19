@@ -4,14 +4,40 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.content.Intent;
 
 
 public class ChannelSelectionActivity extends ActionBarActivity {
+
+    public static final String KEY_CHANNEL_NAME = "Key Channel Name";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_channel_selection);
+
+        final ListView mListView = (ListView) findViewById(R.id.channelList);
+
+        // Temp array. To be replaced by and array of the available channels.
+        String[] channels = new String[]{"Rose's Rhythms", "Sadler's Station",
+                "Jonathan's Jams", "Trent's Tunes", "Ben's Beats"};
+
+        final ArrayAdapter<String> channelAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_expandable_list_item_1, channels);
+
+        mListView.setAdapter(channelAdapter);
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent channelIntent = new Intent(ChannelSelectionActivity.this, MainActivity.class);
+                channelIntent.putExtra(KEY_CHANNEL_NAME, channelAdapter.getItem(position).toString());
+                startActivity(channelIntent);
+            }
+        });
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.vibekeyopen.android.vibekeyopenandroid;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -16,7 +17,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import static com.vibekeyopen.android.vibekeyopenandroid.ChannelSelectionActivity.KEY_CHANNEL_NAME;
 
 
 public class MainActivity extends ActionBarActivity
@@ -32,6 +37,8 @@ public class MainActivity extends ActionBarActivity
      */
     private CharSequence mTitle;
 
+    static String channelName = "Default";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +52,9 @@ public class MainActivity extends ActionBarActivity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+
+        Intent data = this.getIntent();
+        channelName = data.getStringExtra(KEY_CHANNEL_NAME);
     }
 
     @Override
@@ -135,6 +145,8 @@ public class MainActivity extends ActionBarActivity
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            TextView mChannelName = (TextView) rootView.findViewById(R.id.channelTitle);
+            mChannelName.setText(MainActivity.channelName);
             return rootView;
         }
 

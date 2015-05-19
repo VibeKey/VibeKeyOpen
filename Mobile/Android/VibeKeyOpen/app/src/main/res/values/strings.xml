@@ -11,7 +11,7 @@
     <string name="action_example">Example action</string>
 
     <string name="action_settings">Settings</string>
-    <string name="stationTitleDefault">Station Name Goes Here...</string>
+    <string name="channelTitleDefault">Channel Name Goes Here...</string>
     <string name="songInfoText">Song Info Goes Here...</string>
     <string name="imageDescription">Album Cover</string>
     <string name="loginWelcomeText">Welcome to VibeKey</string>
