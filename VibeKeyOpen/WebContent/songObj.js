@@ -4,10 +4,64 @@
 
 $(document).ready(function() {
 		//initial setup of songs for playlist
-		var song1 = createSong("555", "Take Me To Church", "Hozier");
-		var song2 = createSong("555", "Shake It Off", "Taylor Swift");
-		var song3 = createSong("555", "Sail", "AWOLNATION");
-		var song4 = createSong("555", "From Eden", "Hozier");
+		var json = [
+			  '{"_id": "555b8fb8b19ac49446fe688c",' +
+				'"id": 0,' + 
+				'"name": "Uptown Funk!",' + 
+				'"artist": "Mark Ronson ft Bruno Mars",' + 
+				'"votes": 18}',
+			  '{"_id": "555b8fb80a2cec66533106e2",' +
+				'"id": 1,' +
+				'"name": "Shut Up and Dance",' +
+				'"artist": "Walk the Moon",' +
+				'"votes": 25}',
+			  '{"_id": "555b8fb828732abf48b4c26e",' +
+				'"id": 2,' +
+				'"name": "Sugar",' +
+				'"artist": "Maroon 5",' +
+				'"votes": 62}',
+			  '{"_id": "555b8fb8f27e2e130ed12b99",'+
+				'"id": 3,'+
+				'"name": "Love Me Like You Do",'+
+				'"artist": "Ellie Goulding",'+
+				'"votes": 84}',
+			  '{"_id": "555b8fb85692e14fb0de6ee9",'+
+				'"id": 4,'+
+				'"name": "Hey Mama",'+
+				'"artist": "David Guetta ft. Nicki Minaj & Afrojack",'+
+				'"votes": 56}',
+			  '{"_id": "555b8fb85692e14fb0de6ee9",'+
+				'"id": 5,'+
+				'"name": "Talking Body",'+
+				'"artist": "Tove Lo",'+
+				'"votes": 34}',
+			  '{"_id": "555b8fb85692e14fb0de6ee9",'+
+				'"id": 6,'+
+				'"name": "Style",'+
+				'"artist": "Taylor Swift",'+
+				'"votes": 78}',
+			  '{"_id": "555b8fb85692e14fb0de6ee9",'+
+				'"id": 7,'+
+				'"name": "Honey, I\'m Good.",'+
+				'"artist": "Andy Grammer",'+
+				'"votes": 35}',
+				'{"_id": "555b8fb85692e14fb0de6ee9",'+
+				'"id": 8,'+
+				'"name": "One Last Time",'+
+				'"artist": "Ariana Grande",'+
+				'"votes": 76}',
+				'{"_id": "555b8fb85692e14fb0de6ee9",'+
+				'"id": 9,'+
+				'"name": "Blank Space",'+
+				'"artist": "Taylor Swift",'+
+				'"votes": 32}',
+				'{"_id": "555b8fb85692e14fb0de6ee9",'+
+				'"id": 10,'+
+				'"name": "Take Me To Church",'+
+				'"artist": "Hozier",'+
+				'"votes": 64}'
+				
+			];
 		
 		var searchTab = document.createElement('div');
 		searchTab.id = "searchSongs";
@@ -16,11 +70,11 @@ $(document).ready(function() {
 		document.getElementById("searchFunc").appendChild(searchTab);
 		var play = document.getElementById("playlist");
 		
-		addSongToTab(song1, searchTab);
-		addSongToTab(song2, searchTab);
-		addSongToTab(song3, searchTab);
-		addSongToTab(song4, searchTab);
-		addSongToTab(song4, play);
+		var arr = [];
+		for (i = 0; i < json.length; i++) {
+			arr[i] = JSON.parse(json[i]);
+			addSongToTab(arr[i], searchTab);
+		}
 		
 		var playlistHeader = document.getElementById("playhead");
 		var buttonSpan = document.createElement('span');
@@ -110,6 +164,9 @@ function addSongToTab(song, tab) {
 	votingItem.className = "voting";
 	basicItem.className = "basic";
 	buttonItem.className = "button";
+	
+	buttonItem.style["box-shadow"] = "-22px 0px 37px -20px rgb(194,194,194)";
+	buttonItem.style["-webkit-box-shadow"] = "-22px 0px 37px -20px rgb(194,194,194)";
 	
 	listItem.appendChild(songItem);
 	songItem.appendChild(containBox);

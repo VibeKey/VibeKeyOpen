@@ -112,6 +112,7 @@
 	overflow:hidden;
 	float:right;
 	vertical-align:middle;
+	flex-wrap: wrap;
 }
 
 .button .circle {
