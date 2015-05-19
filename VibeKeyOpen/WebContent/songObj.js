@@ -182,6 +182,8 @@ function addSongToTab(song, tab) {
 	}
 	
 	listItem._add = add;
+	listItem._del = delButton;
+	listItem._x = xButton;
 	
 	// Append to body for now.
 	tab.appendChild(listItem);
@@ -197,23 +199,33 @@ function addSongToTab(song, tab) {
 	$('.sortable').sortable({
 		connectWith: $('.sortable'),
 		start: function (event, ui) {
-			band.innerHTML = ui.item.parent();
-            oldList = ui.item.parent();
+			//ui.item.context.parentNode.removeChild(ui.item.context);
+			//document.body.appendChild(ui.item.context);
+            oldList = ui.item.context.parentNode;
         },
-		stop: function (event, ui) {
-			if (ui.item.parent() != oldList) {
-				if (ui.item.parent() == play) {
-					ui.item.prop("_add") = "none";
-					//ui.item._buttons.delButton.style["display"] = "none";
-					//ui.item._buttons.xButton.style["display"] = null;
+		receive: function (event, ui) {
+			//document.body.removeChild(ui.item.context);
+			//ui.target.context.appendChild(ui.item.context);
+			
+			if (ui.item.context.parentNode != oldList) {
+				if (ui.item.context.parentNode == play) {
+					ui.item.context._add.style["display"] = "none";
+					ui.item.context._del.style["display"] = "none";
+					ui.item.context._x.style["display"] = null;
 				} else {
-					//ui.item._buttons.add.style["display"] = null;
-					//ui.item._buttons.delButton.style["display"] = null;
-					//ui.item._buttons.xButton.style["display"] = "none";
+					ui.item.context._add.style["display"] = null;
+					ui.item.context._del.style["display"] = null;
+					ui.item.context._x.style["display"] = "none";
 				}
 			}
         },
-		containment:"window"
+		appendTo:document.body,
+		forceHelperSize:true,
+		helper:function(event, item) {
+			var helper = $(item.context).clone();
+			helper.css("position", "absolute");
+			return helper;
+		}
 	});
 	$('.sortable').disableSelection();
 }

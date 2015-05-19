@@ -53,8 +53,9 @@
 }
 
 .sortable{
-list-style-type:none;
-padding:0px;
+	list-style-type:none;
+	padding:0px;
+	z-index:1;
 }
 .sortableli{
 list-style-type:none;
