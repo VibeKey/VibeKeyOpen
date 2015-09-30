@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="img/favicon.ico">
+    <script src="https://cdn.firebase.com/js/client/2.3.0/firebase.js"></script>
+    <script type="text/javascript" src="js/amplitude.min.js"></script>
+
+    <title>WHMD Radio Temporary Stream</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/cover.css" rel="stylesheet">
+    <script>
+      var ref = new Firebase("https://vibekey-open.firebaseio.com");
+      ref.on("value", function(snapshot) {
+        var main = snapshot.val();
+        document.getElementById("nowPlaying").innerHTML=main.nowPlaying;
+      }, function (errorObject) {
+        console.log("The read failed: " + errorObject.code);
+      });
+      ref.on("child_changed", function(snapshot) {
+        var main = snapshot.val();
+        document.getElementById("nowPlaying").innerHTML=main;
+      });
+      Amplitude.init({
+          "songs": [
+              {
+                      "call_sign": "WHMD",
+                      "station_name": "WHMD Online Radio",
+                      "location": "Terre Haute, IN",
+                      "url": "http://137.112.138.229:8000/stream",
+                      "live": true
+              }
+          ],
+        "autoplay": true
+      });
+    </script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">WHMD Online Radio Temporary Stream</h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li class="active"><a href="#">Home</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+
+          <div class="inner cover">
+            <h1 class="cover-heading">More Coming Soon!</h1>
+            <p class="lead" id="nowPlaying"></p>
+            <p>Stream currently plays songs at random from our music library.</p>
+          </div>
+
+          <div class="mastfoot">
+            <div class="inner">
+              <p>Problems with the website?  Contact the <a href="mailto:vibekeyWMHD@gmail.com">developers</a>.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
