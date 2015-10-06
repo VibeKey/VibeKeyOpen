@@ -20,29 +20,51 @@
     <!-- Custom styles for this template -->
     <link href="css/cover.css" rel="stylesheet">
     <script>
-      var ref = new Firebase("https://vibekey-open.firebaseio.com");
-      ref.on("value", function(snapshot) {
+      var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
+      var npRef = fireRef.child("nowPlaying");
+      npRef.on("value", function(snapshot) {
         var main = snapshot.val();
-        document.getElementById("nowPlaying").innerHTML=main.nowPlaying;
+        document.getElementById("nowPlaying").innerHTML=main.compiledPlayString;
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
       });
-      ref.on("child_changed", function(snapshot) {
-        var main = snapshot.val();
-        document.getElementById("nowPlaying").innerHTML=main;
+
+      var genresRef = fireRef.child("genres");
+
+      var curGenreRef = fireRef.child("curGenre");
+
+      var nextSongRef = fireRef.child("nextSong");
+
+      genresRef.on("value", function(snapshot) {
+        document.getElementById("genresList").innerHTML="";
+        snapshot.forEach(function(data) {
+          document.getElementById("genresList").innerHTML = document.getElementById("genresList").innerHTML + "<button type='button' class='btn btn-default' onclick='genreClicked(this)' id='" + data.val() + "'>" + data.val() + "</button>";
+        });
       });
+
       Amplitude.init({
           "songs": [
               {
                       "call_sign": "WHMD",
                       "station_name": "WHMD Online Radio",
                       "location": "Terre Haute, IN",
-                      "url": "http://137.112.138.229:8000/stream",
+                      "url": "http://137.112.138.229:8000/wmhd",
                       "live": true
               }
           ],
         "autoplay": true
       });
+
+
+      function genreClicked(elmnt){
+        curGenreRef.set(elmnt.id);
+      }
+      function clearGenre(){
+        curGenreRef.set("none");
+      }
+      function nextSong(){
+        nextSongRef.set(true);
+      }
     </script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -74,6 +96,12 @@
           <div class="inner cover">
             <h1 class="cover-heading">More Coming Soon!</h1>
             <p class="lead" id="nowPlaying"></p>
+            <p id="controlsList">
+              <button type="button" class="btn btn-default" onclick="clearGenre()">All Genres</button>
+              <button type="button" class="btn btn-default" onclick="nextSong()">Next Song</button>
+              <br>
+            </p>
+            <p id="genresList"></p>
             <p>Stream currently plays songs at random from our music library.</p>
           </div>
 

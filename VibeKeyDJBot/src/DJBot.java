@@ -1,84 +1,125 @@
-import java.io.BufferedInputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 import com.gmail.kunicins.olegs.libshout.Libshout;
-import com.mpatric.mp3agic.ID3v1;
-import com.mpatric.mp3agic.ID3v2;
-import com.mpatric.mp3agic.InvalidDataException;
-import com.mpatric.mp3agic.Mp3File;
-import com.mpatric.mp3agic.UnsupportedTagException;
 
 public class DJBot {
 	Firebase firebaseRef;
-	byte[] buffer = new byte[1024];
 	Libshout icecast;
-	ArrayList<File> files;
+	ArrayList<Song> songs;
+	Random rand;
+	boolean genreFilterOn=false;
+	String genreFilter;
+	Song curPlaying;
 	
 	public DJBot() {
-		icecast = initializeIcecast();
-		files = new ArrayList<File>();
-		listMp3s("/home/radio3/Music",files);
 		firebaseRef = new Firebase("https://vibekey-open.firebaseio.com/");
+		rand = new Random(System.currentTimeMillis());
+		
+		System.out.println("Loading songs... (this might take a while)");
+		songs = new ArrayList<Song>();
+		listMp3s("/home/radio3/Music",songs);
+		
 		
 		StringBuilder sb = new StringBuilder (String.valueOf ("Songs loaded: "));
-		sb.append (files.size());
+		sb.append (songs.size());
 		System.out.println(sb.toString());
+		
+		
+		System.out.println("Loading genres...");
+		ArrayList<String> genres = getAllGenres(songs);
+		sb = new StringBuilder (String.valueOf ("Genres loaded: "));
+		for(String genre : genres){
+			sb.append(genre);
+			sb.append(", ");
+		}
+		sb.delete(sb.length()-2, sb.length());
+		System.out.println(sb.toString());
+		
+		firebaseRef.child("genres").setValue(genres);
+		
+
+		icecast = initializeIcecast();
+		setupFirebaseListeners(firebaseRef);
+	}
+	
+	public void setupFirebaseListeners(Firebase rootRef){
+		Firebase genreFilterRef = rootRef.child("curGenre");
+		genreFilterRef.addValueEventListener(new ValueEventListener() {
+		      @Override
+		      public void onDataChange(DataSnapshot snapshot) {
+		    	  genreFilter = (String)snapshot.getValue();
+		    	  if(genreFilter.equals("none")){
+		    		  genreFilterOn=false;
+		    	  }else{
+		    		  genreFilterOn=true;
+		    	  }
+		      }
+		      @Override
+		      public void onCancelled(FirebaseError firebaseError) {
+		          System.out.println("The read failed: " + firebaseError.getMessage());
+		      }
+		  });
+		
+		Firebase nextSongRef = rootRef.child("nextSong");
+		nextSongRef.addValueEventListener(new ValueEventListener() {
+		      @Override
+		      public void onDataChange(DataSnapshot snapshot) {
+		    	  boolean nextSong = (Boolean)snapshot.getValue();
+		    	  if(nextSong){
+		    		  curPlaying.playing=false;
+		    		  nextSongRef.setValue(false);
+		    	  }
+		      }
+		      @Override
+		      public void onCancelled(FirebaseError firebaseError) {
+		          System.out.println("The read failed: " + firebaseError.getMessage());
+		      }
+		  });
+	}
+	
+	public ArrayList<String> getAllGenres(ArrayList<Song> songs){
+		ArrayList<String> genres = new ArrayList<String>();
+		for(Song song : songs){
+			String genre = song.getGenre();
+			if(!genre.equals("") && !genres.contains(genre)){
+				genres.add(genre);
+			}
+		}
+		return genres;
 	}
 	
 	public void playRandom(){
-		InputStream mp3;
-		Random rand = new Random();
-		for(int i=0;i<10000;i++){
-			int songNum = rand.nextInt(files.size());
-			File song = files.get(songNum);
-			try {
-				mp3 = new BufferedInputStream(new FileInputStream(song));
-				Mp3File songMetaDataFile = new Mp3File(song.getAbsolutePath());
-				if (songMetaDataFile.hasId3v2Tag()) {
-					ID3v2 id3v2Tag = songMetaDataFile.getId3v2Tag();
-					String nowPlaying = "Now playing:  \"" + id3v2Tag.getTitle() + "\" by " + id3v2Tag.getArtist() + "   (" + id3v2Tag.getGenreDescription() + ")";
-					System.out.println(nowPlaying);
-					firebaseRef.child("nowPlaying").setValue(nowPlaying);
-				}else if (songMetaDataFile.hasId3v1Tag()) {
-					ID3v1 id3v1Tag = songMetaDataFile.getId3v1Tag();
-					String nowPlaying = "Now playing:  \"" + id3v1Tag.getTitle() + "\" by " + id3v1Tag.getArtist() + "   (" + id3v1Tag.getGenreDescription() + ")";
-					System.out.println(nowPlaying);
-					firebaseRef.child("nowPlaying").setValue(nowPlaying);
-				}
-				
-				int read = mp3.read(buffer);
-				while (read > 0) {
-				    icecast.send(buffer, read);
-				    read = mp3.read(buffer);
-				}
-				mp3.close();
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (UnsupportedTagException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (InvalidDataException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-
-		}
+		Song song;
+		int songNum;
+		do{
+			songNum = rand.nextInt(songs.size());
+			song = songs.get(songNum);
+		} while(genreFilterOn && !song.getGenre().equals(genreFilter)); //hacky, will be removed very soon
+		
+		String nowPlaying = "Now playing:  \"" + song.getTitle() + "\" by " + song.getArtist() + "   (" + song.getGenre() + ")";
+		System.out.println(nowPlaying);
+		firebaseRef.child("nowPlaying").child("title").setValue(song.getTitle());
+		firebaseRef.child("nowPlaying").child("artist").setValue(song.getArtist());
+		firebaseRef.child("nowPlaying").child("genre").setValue(song.getGenre());
+		firebaseRef.child("nowPlaying").child("compiledPlayString").setValue(nowPlaying);
+		curPlaying = song;
+		//boolean finishedSucessfully = song.streamSong(icecast);
+		song.streamSong(icecast);
 	}
 	
 	public void closeIcecast(){
 		icecast.close();
+	}
+	
+	public void close(){
+		closeIcecast();
 	}
 	
 	Libshout initializeIcecast(){
@@ -89,7 +130,7 @@ public class DJBot {
 			icecast.setPort(8000);
 			icecast.setProtocol(Libshout.PROTOCOL_HTTP);
 			icecast.setPassword("ImASource!");
-			icecast.setMount("/stream");
+			icecast.setMount("/djbot");
 			icecast.setFormat(Libshout.FORMAT_MP3);
 			icecast.open();
 			return icecast;
@@ -100,16 +141,16 @@ public class DJBot {
 		}
 	}
 	
-	public void listMp3s(String directoryName, ArrayList<File> files) {
+	public void listMp3s(String directoryName, ArrayList<Song> songs) {
 	    File directory = new File(directoryName);
 
 	    // get all the files from a directory
 	    File[] fList = directory.listFiles();
 	    for (File file : fList) {
 	        if (file.isFile() && getFileExtension(file).equals("mp3")) {
-	            files.add(file);
+	            songs.add(new Song(file));
 	        } else if (file.isDirectory()) {
-	        	listMp3s(file.getAbsolutePath(), files);
+	        	listMp3s(file.getAbsolutePath(), songs);
 	        }
 	    }
 	}
