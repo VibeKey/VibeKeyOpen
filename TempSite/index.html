@@ -16,6 +16,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/myStyle.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/cover.css" rel="stylesheet">
@@ -35,13 +36,26 @@
 
       var nextSongRef = fireRef.child("nextSong");
 
+      var artistsRef = fireRef.child("songs");
+
+      var forceSongRef = fireRef.child("forceSong");
+
+      var curArtistRef;
+
       genresRef.on("value", function(snapshot) {
-        document.getElementById("genresList").innerHTML="";
+        document.getElementById("genresList").innerHTML="<h1>Genres</h1><br>";
         snapshot.forEach(function(data) {
-          document.getElementById("genresList").innerHTML = document.getElementById("genresList").innerHTML + "<button type='button' class='btn btn-default' onclick='genreClicked(this)' id='" + data.val() + "'>" + data.val() + "</button>";
+          document.getElementById("genresList").innerHTML = document.getElementById("genresList").innerHTML + "<button type='button' class='btn btn-default' onclick='genreClicked(this)' id='" + data.val() + "'>" + data.val() + "</button><br>";
         });
       });
 
+      artistsRef.on("value", function(snapshot) {
+        document.getElementById("artistList").innerHTML="<h1>Artists</h1><br>";
+        snapshot.forEach(function(data) {
+          document.getElementById("artistList").innerHTML = document.getElementById("artistList").innerHTML + "<button type='button' class='btn btn-default' onclick='artistClicked(this)' id='" + data.key() + "'>" + data.key() + "</button><br>";
+        });
+      });
+      
       Amplitude.init({
           "songs": [
               {
@@ -55,7 +69,21 @@
         "autoplay": true
       });
 
+      function artistClicked(elmnt){
+        curArtistRef = artistsRef.child(elmnt.id);
+        curArtistRef.once("value", function(snapshot) {
+          document.getElementById("songList").innerHTML="<h1>Songs</h1><br>";
+          snapshot.forEach(function(data) {
+            document.getElementById("songList").innerHTML = document.getElementById("songList").innerHTML + "<button type='button' class='btn btn-default' onclick='songClicked(this)' id='" + data.key() + "'>" + data.child("title").val() + "</button><br>";
+          });
+        });
+      }
 
+      function songClicked(elmnt){
+        curArtistRef.child(elmnt.id).once("value", function(snap) {
+          forceSongRef.set(snap.val().title);
+        });
+      }
       function genreClicked(elmnt){
         curGenreRef.set(elmnt.id);
       }
@@ -96,12 +124,19 @@
           <div class="inner cover">
             <h1 class="cover-heading">More Coming Soon!</h1>
             <p class="lead" id="nowPlaying"></p>
-            <p id="controlsList">
-              <button type="button" class="btn btn-default" onclick="clearGenre()">All Genres</button>
-              <button type="button" class="btn btn-default" onclick="nextSong()">Next Song</button>
-              <br>
-            </p>
-            <p id="genresList"></p>
+
+            <div class="col-sm-12">
+              <div class="col-sm-4" id="artistList"></div>
+              <div class="col-sm-4" id="songList"></div>
+              <div class="col-sm-4">            
+                <p id="controlsList">
+                  <button type="button" class="btn btn-default" onclick="clearGenre()">All Genres</button>
+                  <button type="button" class="btn btn-default" onclick="nextSong()">Next Song</button>
+                  <br>
+                </p>
+                <p id="genresList"></p>
+              </div>
+            </div>
             <p>Stream currently plays songs at random from our music library.</p>
           </div>
 
