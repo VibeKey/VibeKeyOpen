@@ -1,7 +1,10 @@
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -42,12 +45,30 @@ public class DJBot {
 		sb.delete(sb.length()-2, sb.length());
 		System.out.println(sb.toString());
 		
+		System.out.println("Loading all songs into database...");
+		Map<String, ArrayList<Map<String, String>>> songArtistMap = getAllSongsByArtist(songs);
+		
+		Set<String> artists = songArtistMap.keySet();
+		sb = new StringBuilder (String.valueOf ("Artists loaded: "));
+		for(String artist : artists){
+			sb.append(artist);
+			sb.append(", ");
+		}
+		sb.delete(sb.length()-2, sb.length());
+		System.out.println(sb.toString());
+		
+		System.out.println("Songs done loading!  Uploading...");
+		firebaseRef.child("songs").setValue(songArtistMap);
+		System.out.println("Song uploading done.");
+		
 		firebaseRef.child("genres").setValue(genres);
 		
 
 		icecast = initializeIcecast();
 		setupFirebaseListeners(firebaseRef);
+		
 	}
+	
 	
 	public void setupFirebaseListeners(Firebase rootRef){
 		Firebase genreFilterRef = rootRef.child("curGenre");
@@ -94,6 +115,40 @@ public class DJBot {
 		}
 		return genres;
 	}
+	
+	public Map<String, ArrayList<Map<String, String>>> getAllSongsByArtist(ArrayList<Song> songs){
+		Map<String, ArrayList<Map<String, String>>> ret = new HashMap<String, ArrayList<Map<String, String>>>();
+		for(Song song : songs){
+			
+			//construct map of metadata
+			Map<String, String> songData = new HashMap<String, String>();
+			songData.put("title", song.getTitle());
+			songData.put("artist", song.getArtist());
+			songData.put("album", song.getAlbum());
+			songData.put("genre", song.getGenre());
+			
+			
+			String artistKey = song.getArtist(); //have to take precautions putting artists as keys in firebase
+			artistKey = artistKey.replaceAll("\\/", "\\"); //replace forward slashes with back slashes to appease firebase
+			artistKey = artistKey.replaceAll("[\\.\\#\\$]", ""); //get rid of more special characters
+			artistKey = artistKey.replaceAll("\\[", "(");
+			artistKey = artistKey.replaceAll("\\]", "]");
+			if(artistKey.equals("")){
+				artistKey = " "; //fix for non-empty firebase keys
+			}
+			
+			if(ret.containsKey(artistKey)){
+				ArrayList<Map<String, String>> artistSongList = ret.get(artistKey);
+				artistSongList.add(songData);
+			}else{
+				ArrayList<Map<String, String>> artistSongList = new ArrayList<Map<String, String>>();
+				artistSongList.add(songData);
+				ret.put(artistKey, artistSongList);
+			}
+		}
+		return ret;
+	}
+	
 	
 	public void playRandom(){
 		Song song;
