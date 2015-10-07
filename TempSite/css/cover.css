@@ -51,6 +51,7 @@ body {
 .cover-container {
   margin-right: auto;
   margin-left: auto;
+  margin-top:160px;
 }
 
 /* Padding for spacing */
@@ -94,6 +95,11 @@ body {
   color: #fff;
   border-bottom-color: #fff;
 }
+.masthead {
+  background-color: #222 !important;
+  z-index: 99;
+  padding-bottom:20px;
+}
 
 @media (min-width: 768px) {
   .masthead-brand {
@@ -125,6 +131,7 @@ body {
 .mastfoot {
   color: #999; /* IE8 proofing */
   color: rgba(255,255,255,.5);
+  background-color: #222 !important;
 }
 
 
@@ -159,5 +166,13 @@ body {
   .mastfoot,
   .cover-container {
     width: 700px;
+  }
+}
+
+@media (min-width: 1500px) {
+  .masthead,
+  .mastfoot,
+  .cover-container {
+    width: 1300px;
   }
 }
