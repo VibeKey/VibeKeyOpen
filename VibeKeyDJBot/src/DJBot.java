@@ -97,6 +97,7 @@ public class DJBot {
 	
 	public Map<String, ArrayList<Song>> addSongsToFirebaseByArtist(ArrayList<Song> songs){
 		Firebase songsByArtistRef = firebaseRef.child("songs").child("byArtist");
+		songsByArtistRef.setValue(null);
 		Map<String, ArrayList<Song>> artistMap = new HashMap<String, ArrayList<Song>>();
 		for(Song song : songs){
 			if(artistMap.containsKey(song.getArtist())){
@@ -124,6 +125,7 @@ public class DJBot {
 	
 	public Map<String, ArrayList<Song>> addSongsToFirebaseByGenre(ArrayList<Song> songs){
 		Firebase songsByGenreRef = firebaseRef.child("songs").child("byGenre");
+		songsByGenreRef.setValue(null);
 		Map<String, ArrayList<Song>> genreMap = new HashMap<String, ArrayList<Song>>();
 		for(Song song : songs){
 			if(genreMap.containsKey(song.getGenre())){
@@ -153,6 +155,7 @@ public class DJBot {
 	public boolean addSongsToFirebase(ArrayList<Song> songs){
 		
 		Firebase allSongsRef = firebaseRef.child("songs").child("allSongs");
+		allSongsRef.setValue(null);
 		for(Song song : songs){
 			
 			SimplifiedSong simplifiedSong = song.simplifiedSong;
