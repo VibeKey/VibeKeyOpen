@@ -175,11 +175,11 @@ public class DJBot {
 	}
 	
 	
-	public void playRandom(){
+	public void playSong(){
 		Song song;
 		int songNum;
 		
-		if(genreFilterOn){
+		if(playMode.equals("forceGenre")){
 			songNum = rand.nextInt(genreMap.get(genreFilter).size());
 			song = genreMap.get(genreFilter).get(songNum);
 		}else{
