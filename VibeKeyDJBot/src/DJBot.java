@@ -13,56 +13,31 @@ import com.firebase.client.ValueEventListener;
 import com.gmail.kunicins.olegs.libshout.Libshout;
 
 public class DJBot {
-	Firebase firebaseRef;
+	Firebase firebaseRef =  new Firebase("https://vibekey-open.firebaseio.com/");
 	Libshout icecast;
-	ArrayList<Song> songs;
-	Random rand;
+	ArrayList<Song> songs = new ArrayList<Song>();
+	Map<String, ArrayList<Song>> genreMap;
+	Map<String, ArrayList<Song>> artistMap;
+	ArrayList<String> genres;
+	Random rand = new Random(System.currentTimeMillis());
 	boolean genreFilterOn=false;
 	String genreFilter;
 	Song curPlaying;
 	
 	public DJBot() {
-		firebaseRef = new Firebase("https://vibekey-open.firebaseio.com/");
-		rand = new Random(System.currentTimeMillis());
-		
 		System.out.println("Loading songs... (this might take a while)");
-		songs = new ArrayList<Song>();
-		listMp3s("/home/radio3/Music",songs);
-		
-		
+		loadAllSongs("/home/radio3/Music",songs);
 		StringBuilder sb = new StringBuilder (String.valueOf ("Songs loaded: "));
 		sb.append (songs.size());
 		System.out.println(sb.toString());
 		
 		
-		System.out.println("Loading genres...");
-		ArrayList<String> genres = getAllGenres(songs);
-		sb = new StringBuilder (String.valueOf ("Genres loaded: "));
-		for(String genre : genres){
-			sb.append(genre);
-			sb.append(", ");
-		}
-		sb.delete(sb.length()-2, sb.length());
-		System.out.println(sb.toString());
+		addSongsToFirebase(songs);
+		genreMap = addSongsToFirebaseByGenre(songs);
+		artistMap = addSongsToFirebaseByArtist(songs);
 		
-		System.out.println("Loading all songs into database...");
-		Map<String, ArrayList<Map<String, String>>> songArtistMap = getAllSongsByArtist(songs);
-		
-		Set<String> artists = songArtistMap.keySet();
-		sb = new StringBuilder (String.valueOf ("Artists loaded: "));
-		for(String artist : artists){
-			sb.append(artist);
-			sb.append(", ");
-		}
-		sb.delete(sb.length()-2, sb.length());
-		System.out.println(sb.toString());
-		
-		System.out.println("Songs done loading!  Uploading...");
-		firebaseRef.child("songs").setValue(songArtistMap);
-		System.out.println("Song uploading done.");
-		
-		firebaseRef.child("genres").setValue(genres);
-		
+
+		genres = addGenresToFirebase(genreMap);
 
 		icecast = initializeIcecast();
 		setupFirebaseListeners(firebaseRef);
@@ -70,8 +45,8 @@ public class DJBot {
 	}
 	
 	
-	public void setupFirebaseListeners(Firebase rootRef){
-		Firebase genreFilterRef = rootRef.child("curGenre");
+	public void setupFirebaseListeners(Firebase firebaseRef){
+		Firebase genreFilterRef = firebaseRef.child("curGenre");
 		genreFilterRef.addValueEventListener(new ValueEventListener() {
 		      @Override
 		      public void onDataChange(DataSnapshot snapshot) {
@@ -88,13 +63,13 @@ public class DJBot {
 		      }
 		  });
 		
-		Firebase nextSongRef = rootRef.child("nextSong");
+		Firebase nextSongRef = firebaseRef.child("nextSong");
 		nextSongRef.addValueEventListener(new ValueEventListener() {
 		      @Override
 		      public void onDataChange(DataSnapshot snapshot) {
 		    	  boolean nextSong = (Boolean)snapshot.getValue();
 		    	  if(nextSong){
-		    		  curPlaying.playing=false;
+		    		  curPlaying.playing=false; //should trigger the stop of the current song
 		    		  nextSongRef.setValue(false);
 		    	  }
 		      }
@@ -105,68 +80,112 @@ public class DJBot {
 		  });
 	}
 	
-	public ArrayList<String> getAllGenres(ArrayList<Song> songs){
-		ArrayList<String> genres = new ArrayList<String>();
+	public ArrayList<String> addGenresToFirebase(Map<String, ArrayList<Song>> genreMap){
+		ArrayList<String> genres = new ArrayList<String>(genreMap.keySet());
+		
 		for(Song song : songs){
 			String genre = song.getGenre();
 			if(!genre.equals("") && !genres.contains(genre)){
 				genres.add(genre);
 			}
 		}
+		
+		Firebase genresListRef = firebaseRef.child("songs").child("genreList");
+		genresListRef.setValue(genres);
 		return genres;
 	}
 	
-	public Map<String, ArrayList<Map<String, String>>> getAllSongsByArtist(ArrayList<Song> songs){
-		Map<String, ArrayList<Map<String, String>>> ret = new HashMap<String, ArrayList<Map<String, String>>>();
+	public Map<String, ArrayList<Song>> addSongsToFirebaseByArtist(ArrayList<Song> songs){
+		Firebase songsByArtistRef = firebaseRef.child("songs").child("byArtist");
+		Map<String, ArrayList<Song>> artistMap = new HashMap<String, ArrayList<Song>>();
 		for(Song song : songs){
-			
-			//construct map of metadata
-			Map<String, String> songData = new HashMap<String, String>();
-			songData.put("title", song.getTitle());
-			songData.put("artist", song.getArtist());
-			songData.put("album", song.getAlbum());
-			songData.put("genre", song.getGenre());
-			
-			
-			String artistKey = song.getArtist(); //have to take precautions putting artists as keys in firebase
-			artistKey = artistKey.replaceAll("\\/", "\\"); //replace forward slashes with back slashes to appease firebase
-			artistKey = artistKey.replaceAll("[\\.\\#\\$]", ""); //get rid of more special characters
-			artistKey = artistKey.replaceAll("\\[", "(");
-			artistKey = artistKey.replaceAll("\\]", "]");
-			if(artistKey.equals("")){
-				artistKey = " "; //fix for non-empty firebase keys
-			}
-			
-			if(ret.containsKey(artistKey)){
-				ArrayList<Map<String, String>> artistSongList = ret.get(artistKey);
-				artistSongList.add(songData);
+			if(artistMap.containsKey(song.getArtist())){
+				ArrayList<Song> artistSongList = artistMap.get(song.getArtist());
+				artistSongList.add(song);
 			}else{
-				ArrayList<Map<String, String>> artistSongList = new ArrayList<Map<String, String>>();
-				artistSongList.add(songData);
-				ret.put(artistKey, artistSongList);
+				ArrayList<Song> artistSongList = new ArrayList<Song>();
+				artistSongList.add(song);
+				artistMap.put(song.getArtist(), artistSongList);
 			}
 		}
-		return ret;
+		Set<String> artistMapKeySet = artistMap.keySet();
+		for(String artist : artistMapKeySet){
+			Firebase artistRef = songsByArtistRef.push();
+			artistRef.child("artist").setValue(artist);
+			ArrayList<Song> songsForArtist = artistMap.get(artist);
+			for(Song song : songsForArtist){
+				Firebase songRef = artistRef.push();
+				songRef.setValue(song.simplifiedSong);
+			}
+		}
+		return artistMap;
+	}
+	
+	
+	public Map<String, ArrayList<Song>> addSongsToFirebaseByGenre(ArrayList<Song> songs){
+		Firebase songsByGenreRef = firebaseRef.child("songs").child("byGenre");
+		Map<String, ArrayList<Song>> genreMap = new HashMap<String, ArrayList<Song>>();
+		for(Song song : songs){
+			if(genreMap.containsKey(song.getGenre())){
+				ArrayList<Song> genreSongList = genreMap.get(song.getGenre());
+				genreSongList.add(song);
+			}else{
+				ArrayList<Song> genreSongList = new ArrayList<Song>();
+				genreSongList.add(song);
+				genreMap.put(song.getGenre(), genreSongList);
+			}
+		}
+		Set<String> genreMapKeySet = genreMap.keySet();
+		for(String genre : genreMapKeySet){
+			Firebase genreRef = songsByGenreRef.push();
+			genreRef.child("genre").setValue(genre);
+			ArrayList<Song> songsForGenre = genreMap.get(genre);
+			for(Song song : songsForGenre){
+				Firebase songRef = genreRef.push();
+				songRef.setValue(song.simplifiedSong);
+			}
+		}
+		return genreMap;
+	}
+	
+	
+	
+	public boolean addSongsToFirebase(ArrayList<Song> songs){
+		
+		Firebase allSongsRef = firebaseRef.child("songs").child("allSongs");
+		for(Song song : songs){
+			
+			SimplifiedSong simplifiedSong = song.simplifiedSong;
+			allSongsRef.push().setValue(simplifiedSong);
+		}
+		return true;
 	}
 	
 	
 	public void playRandom(){
 		Song song;
 		int songNum;
-		do{
+		
+		if(genreFilterOn){
+			songNum = rand.nextInt(genreMap.get(genreFilter).size());
+			song = genreMap.get(genreFilter).get(songNum);
+		}else{
 			songNum = rand.nextInt(songs.size());
 			song = songs.get(songNum);
-		} while(genreFilterOn && !song.getGenre().equals(genreFilter)); //hacky, will be removed very soon
+		}
 		
 		String nowPlaying = "Now playing:  \"" + song.getTitle() + "\" by " + song.getArtist() + "   (" + song.getGenre() + ")";
 		System.out.println(nowPlaying);
-		firebaseRef.child("nowPlaying").child("title").setValue(song.getTitle());
-		firebaseRef.child("nowPlaying").child("artist").setValue(song.getArtist());
-		firebaseRef.child("nowPlaying").child("genre").setValue(song.getGenre());
-		firebaseRef.child("nowPlaying").child("compiledPlayString").setValue(nowPlaying);
+		setFirebaseNowPlaying(song);
 		curPlaying = song;
 		//boolean finishedSucessfully = song.streamSong(icecast);
 		song.streamSong(icecast);
+	}
+	
+	public void setFirebaseNowPlaying(Song song){
+		String nowPlaying = "Now playing:  \"" + song.getTitle() + "\" by " + song.getArtist() + "   (" + song.getGenre() + ")";
+		firebaseRef.child("nowPlaying").setValue(song.simplifiedSong);
+		firebaseRef.child("nowPlaying").child("compiledPlayString").setValue(nowPlaying);
 	}
 	
 	public void closeIcecast(){
@@ -196,7 +215,7 @@ public class DJBot {
 		}
 	}
 	
-	public void listMp3s(String directoryName, ArrayList<Song> songs) {
+	public void loadAllSongs(String directoryName, ArrayList<Song> songs) {
 	    File directory = new File(directoryName);
 
 	    // get all the files from a directory
@@ -205,7 +224,7 @@ public class DJBot {
 	        if (file.isFile() && getFileExtension(file).equals("mp3")) {
 	            songs.add(new Song(file));
 	        } else if (file.isDirectory()) {
-	        	listMp3s(file.getAbsolutePath(), songs);
+	        	loadAllSongs(file.getAbsolutePath(), songs);
 	        }
 	    }
 	}

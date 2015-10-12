@@ -1,6 +1,7 @@
 /bin/
 .metadata
 .project
+.recommenders/*
 /GenreExclusion/.classpath
 /VibeKeyOpen/.classpath
 /VibeKeyOpen/.project
