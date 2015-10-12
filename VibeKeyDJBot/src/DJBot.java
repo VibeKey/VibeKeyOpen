@@ -14,6 +14,7 @@ import com.gmail.kunicins.olegs.libshout.Libshout;
 
 public class DJBot {
 	Firebase firebaseRef =  new Firebase("https://vibekey-open.firebaseio.com/");
+	SongQueue queue = new SongQueue(firebaseRef);
 	Libshout icecast;
 	ArrayList<Song> songs = new ArrayList<Song>();
 	Map<String, ArrayList<Song>> genreMap;
@@ -22,6 +23,7 @@ public class DJBot {
 	Random rand = new Random(System.currentTimeMillis());
 	boolean genreFilterOn=false;
 	String genreFilter;
+	String playMode;
 	Song curPlaying;
 	
 	public DJBot() {
@@ -46,15 +48,38 @@ public class DJBot {
 	
 	
 	public void setupFirebaseListeners(Firebase firebaseRef){
-		Firebase genreFilterRef = firebaseRef.child("curGenre");
+		Firebase genreFilterRef = firebaseRef.child("controls").child("forceGenre");
 		genreFilterRef.addValueEventListener(new ValueEventListener() {
 		      @Override
 		      public void onDataChange(DataSnapshot snapshot) {
 		    	  genreFilter = (String)snapshot.getValue();
-		    	  if(genreFilter.equals("none")){
-		    		  genreFilterOn=false;
-		    	  }else{
-		    		  genreFilterOn=true;
+		      }
+		      @Override
+		      public void onCancelled(FirebaseError firebaseError) {
+		          System.out.println("The read failed: " + firebaseError.getMessage());
+		      }
+		  });
+		
+		Firebase playModeRef = firebaseRef.child("controls").child("playMode");
+		playModeRef.addValueEventListener(new ValueEventListener() {
+		      @Override
+		      public void onDataChange(DataSnapshot snapshot) {
+		    	  playMode = (String)snapshot.getValue();
+		      }
+		      @Override
+		      public void onCancelled(FirebaseError firebaseError) {
+		          System.out.println("The read failed: " + firebaseError.getMessage());
+		      }
+		  });
+		
+		Firebase endSongRef = firebaseRef.child("controls").child("endSong");
+		endSongRef.addValueEventListener(new ValueEventListener() {
+		      @Override
+		      public void onDataChange(DataSnapshot snapshot) {
+		    	  boolean endSong = (Boolean)snapshot.getValue();
+		    	  if(endSong){
+		    		  curPlaying.playing=false; //should trigger the stop of the current song
+		    		  endSongRef.setValue(false);
 		    	  }
 		      }
 		      @Override
@@ -63,21 +88,6 @@ public class DJBot {
 		      }
 		  });
 		
-		Firebase nextSongRef = firebaseRef.child("nextSong");
-		nextSongRef.addValueEventListener(new ValueEventListener() {
-		      @Override
-		      public void onDataChange(DataSnapshot snapshot) {
-		    	  boolean nextSong = (Boolean)snapshot.getValue();
-		    	  if(nextSong){
-		    		  curPlaying.playing=false; //should trigger the stop of the current song
-		    		  nextSongRef.setValue(false);
-		    	  }
-		      }
-		      @Override
-		      public void onCancelled(FirebaseError firebaseError) {
-		          System.out.println("The read failed: " + firebaseError.getMessage());
-		      }
-		  });
 	}
 	
 	public ArrayList<String> addGenresToFirebase(Map<String, ArrayList<Song>> genreMap){
