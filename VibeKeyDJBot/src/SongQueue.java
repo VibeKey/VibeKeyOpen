@@ -1,23 +1,16 @@
 import java.util.LinkedList;
 
-import com.firebase.client.Firebase;
-
 public class SongQueue {
 	LinkedList<Song> queue = new LinkedList<Song>();
-	Firebase rootRef;
+	FirebaseCommunicator fbc;
 	
-	public SongQueue(Firebase rootRef){
-		this.rootRef = rootRef;
+	public SongQueue(FirebaseCommunicator fbc){
+		this.fbc = fbc;
 	}
 	
-	private void pushToFirebase(){
-		Firebase queueRef = rootRef.child("queue");
-		LinkedList<SimplifiedSong> queueSimplified = new LinkedList<SimplifiedSong>();
-		for(Song song : queue){
-			queueSimplified.add(song.simplifiedSong);
-		}
-		queueRef.setValue(queueSimplified);
-		
+	
+	public void pushToFirebase(){
+		fbc.updateQueue(queue);
 	}
 	
 	public void addToQueue(Song song){
