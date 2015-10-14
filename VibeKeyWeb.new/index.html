@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>WMHD Radio</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/songStyle.css">
+	<link rel="stylesheet" href="css/tabStyle.css">
+	<link rel="stylesheet" href="css/animations.css">
+	<link rel="stylesheet" href="css/jquery.sidr.dark.css">
+	<script src="https://cdn.firebase.com/js/client/2.3.0/firebase.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="js/frequencyAnimator.js"></script>
+	<script type="text/javascript" src="js/tabScript.js"></script>
+	<script type="text/javascript" src="js/hover.js"></script>
+	<script type="text/javascript" src="js/songObj.js"></script>
+	<script type="text/javascript" src="js/streamScript.js"></script>
+	<script type="text/javascript" src="js/buttonScript.js"></script>
+	<script type="text/javascript" src="js/jquery.sidr.min.js"></script>
+	<script type="text/javascript" src="js/amplitude.min.js"></script>
+
+</head>
+
+<body>
+	<script> var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
+      var npRef = fireRef.child("nowPlaying");
+      npRef.on("value", function(snapshot) {
+        var main = snapshot.val();
+        document.getElementById("nowPlaying").innerHTML=main.compiledPlayString;
+      }, function (errorObject) {
+        console.log("The read failed: " + errorObject.code);
+      });
+
+      Amplitude.init({
+          "songs": [
+              {
+                      "call_sign": "WHMD",
+                      "station_name": "WHMD Online Radio",
+                      "location": "Terre Haute, IN",
+                      "url": "http://137.112.138.229:8000/wmhd",
+                      "live": true
+              }
+          ],
+        "autoplay": true
+      });
+
+      var nextSongRef = fireRef.child("nextSong");
+      function nextSong(){
+        nextSongRef.set(true);
+      }
+    </script>
+	<script>	
+	function process(data, textStatus, jqXHR) {
+		var succ = document.createElement('p');
+		succ.innerHTML = "SUCCESS" + data;
+		document.body.appendChild(succ);
+	}
+	
+	//initially creates some songs on the website using methods in songObj.js
+	$(document).ready(function() {
+	});
+	</script>
+
+	<div id="stuffBody" class="stuffBody">
+		<div class="playlist">
+			<div class="playlistBody">
+				<div class="playhead" id="playhead">
+					<canvas class="bounce" id="bounceAnimation">
+						
+					</canvas>
+					<div class="playHeadInfo">
+						<span class="genre">Genre:Rock</span>
+						<span class="tags">Tags: Bouncey, Fun, Male Singer</span>
+					</div>
+				</div>
+				
+				<div class="playsongs" id="playSongs">
+					<div class="playsongsBorder"></div>
+					<ul id="playlist" class="sortable"></ul>
+					<div class="otherLists" id="up" style="display:none;">
+						I am the upload.
+					</div>
+					<div class="otherLists" id="list" style="display:none;">
+						I am the list of playlists.
+						<p class="lead" id="nowPlaying"></p>
+					</div>
+				</div>
+				<div class="playbottom">
+					<div class="button" style="float:none; height:auto;">
+						<div onclick="clickBottomButton(this)" id="list" class="circle">
+							<img id="listImg" style="width:30px; height:30px;" 
+								src="images/list.png">
+							<img id="listDownArrow" style="width:30px; height:30px; display:none;" 
+								src="images/down_arrow.png">
+						</div>
+						<!--
+						<div onclick="pressPlayerButton()" class="play" 
+							id="player">
+							<img id="pauseButton" 
+								src="images/pausebutton.png" 
+								alt='Pause Stream' style='width:50px; height:50px;'>
+							<img id="playButton" 
+								src="images/playbutton.png" 
+								alt='Play Stream' style='width:50px; height:50px;'>
+						</div>
+						<div onclick="clickBottomButton(this)" id="up" class="circle">
+							<img id="upImg" style="width:30px; height:30px;" 
+								src="images/up.png">
+							<img id="upDownArrow" style="width:30px; height:30px; display:none;" 
+								src="images/down_arrow.png">
+						</div>
+						-->
+						<div onclick="pressPlayerButton()" class="amplitude-play-pause amplitude-paused" class="play" id="player">
+							<img id="pauseButton" 
+								src="images/pausebutton.png" 
+								alt='Pause Stream' style='width:50px; height:50px;'>
+							<img id="playButton" 
+								src="images/playbutton.png" 
+								alt='Play Stream' style='width:50px; height:50px;'>
+						</div>
+						<div onclick="nextSong()" id="up" class="circle">
+							<img id="upImg" style="width:30px; height:30px;" 
+								src="images/up.png">
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<!-- creates all the tabs on the side that can be clicked -->
+		<div id="container" class="tabContainer"></div>
+	</div>
+
+	<!-- This is the part where we create what's inside the actual tabs that pull out on the left side -->
+	<div id="searchTab" class="sidr">
+	</div>
+	
+	<div id="newsTab" class="sidr">
+		<iframe class="sideArea" src="news.html"></iframe>
+	</div>
+	
+	<div id="soundboardTab" class="sidr">
+		<h1>I am a soundboard tab!</h1>
+	</div>
+
+	<div id="calendarTab" class="sidr">
+		<h1>I am a calendar tab!</h1>
+	</div>
+
+	<div id="djChatTab" class="sidr">
+		<h1>I am a DJ Chat tab!</h1>
+	</div>
+
+	<div id="audienceTab" class="sidr">
+		<h1>I am an audience tab!</h1>
+	</div>
+
+	<div id="settingsTab" class="sidr">
+		<h1>I am a settings tab!</h1>
+	</div>
+
+	</body>
+</html>
+
