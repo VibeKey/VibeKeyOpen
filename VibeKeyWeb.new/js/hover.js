@@ -51,7 +51,7 @@ function buildTab(tabName) {
 	// Make the image.
 	var img = document.createElement('img');
 	img.className = "tabLinkImg";
-	img.src = "/images/" + tabName + ".png";
+	img.src = "images/" + tabName + ".png";
 	imgContain.appendChild(img);
 	
 	// Create the arrow.
