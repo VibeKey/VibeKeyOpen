@@ -18,7 +18,7 @@
 	<script type="text/javascript" src="js/streamScript.js"></script>
 	<script type="text/javascript" src="js/buttonScript.js"></script>
 	<script type="text/javascript" src="js/jquery.sidr.min.js"></script>
-	<script type="text/javascript" src="js/amplitude.min.js"></script>
+	<script type="text/javascript" src="js/amplitude.js"></script>
 	<script type="text/javascript" src="js/playmusic.js"></script>
 
 </head>
@@ -45,7 +45,7 @@
 					</canvas>
 					<div class="playHeadInfo">
 						<span id="curPlayingTitle" class="title">Song Title</span>
-						<span id="curPlayingGenre" class="genre">Genre:Rock</span>
+						<span id="curPlayingGenre" class="genre">Song Genre</span>
 					</div>
 				</div>
 				
@@ -57,7 +57,6 @@
 					</div>
 					<div class="otherLists" id="list" style="display:none;">
 						I am the list of playlists.
-						<p class="lead" id="nowPlaying"></p>
 					</div>
 				</div>
 				<div class="playbottom">
@@ -85,7 +84,12 @@
 								src="images/down_arrow.png">
 						</div>
 						-->
-						<div class="amplitude-play-pause amplitude-paused"></div>
+						<div onclick="pressPlayerButton(this)" class="circle amplitude-play-pause amplitude-playing" amplitude-song-index="0">
+							<img id="playButton" style="width:30px; height:30px; display:none;" 
+								src="images/playbutton.png">
+							<img id="pauseButton" style="width:30px; height:30px;" 
+								src="images/pausebutton.png">
+						</div>
 						<div onclick="nextSong()" id="up" class="circle">
 							<img id="upImg" style="width:30px; height:30px;" 
 								src="images/up.png">

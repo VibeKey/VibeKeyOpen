@@ -100,12 +100,11 @@ a:active {color:white; text-decoration: none;}
 	bottom:0;
 	left:0;
 	width:100%;
-	padding:10px 10px 10px 10px;
 }
 
 .playHeadInfo .genre {
 	color:rgb(153, 000, 000);
-	font-size:30px;
+	font-size:25px;
 	display:block;
 	line-height:30px;
 	font-family:Ganon;
@@ -113,7 +112,7 @@ a:active {color:white; text-decoration: none;}
 }
 
 .playHeadInfo .title{
-	font-size:35px;
+	font-size:25px;
 	display:block;
 	line-height:50px;
 	color:rgb(0,0,0);
@@ -170,15 +169,4 @@ table.dummyCalendar td{
 @font-face {
     font-family: Ganon;
     src: url(../fonts/retganon.ttf);
-}
-
-.amplitude-play-pause {
-	width:96px;
-	height:96px;
-}
-.amplitude-playing {
-	background-image:url(../images/pausebutton.png);
-}
-.amplitude-paused {
-	background-image: url(../images/playbutton.png);
 }
