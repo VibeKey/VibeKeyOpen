@@ -19,8 +19,8 @@
 	<script type="text/javascript" src="js/buttonScript.js"></script>
 	<script type="text/javascript" src="js/jquery.sidr.min.js"></script>
 	<script type="text/javascript" src="js/amplitude.js"></script>
-	<script type="text/javascript" src="js/playmusic.js"></script>
-
+	<script type="text/javascript" src="js/playMusic.js"></script>
+	<script type="text/javascript" src="js/scheduleGenre.js"></script>
 </head>
 
 <body>
@@ -117,6 +117,16 @@
 
 	<div id="calendarTab" class="sidr">
 		<h1>I am a calendar tab!</h1>
+		<fieldset>
+		    <legend>Schedule a Genre</legend>
+		    	Seclect a genre:
+			    <select class="genresList" id="genresList">
+			    	<option value="none">No genre selected</option>
+				</select>
+				<br></br>
+				<input type="submit" value="Submit" onClick="genreClicked()">
+			</form>
+		</fieldset>
 	</div>
 
 	<div id="djChatTab" class="sidr">
