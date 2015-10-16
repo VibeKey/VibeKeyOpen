@@ -9,12 +9,10 @@ public class StreamController {
 	Song curPlaying;
 	Random rand;
 	SongDatabase songDB;
-	FirebaseCommunicator fbc;
 	Libshout icecast;
 	
-	public StreamController(SongDatabase songDB, FirebaseCommunicator fbc){
+	public StreamController(SongDatabase songDB){
 		this.songDB = songDB;
-		this.fbc = fbc;
 		rand = new Random(System.currentTimeMillis());
 		icecast = initializeIcecast();
 	}
@@ -23,7 +21,7 @@ public class StreamController {
 		Song song;
 		int songNum;
 		
-		if(playMode.equals("forceGenre")){
+		if(playMode != null && genreFilter != null && playMode.equals("forceGenre")){
 			songNum = rand.nextInt(songDB.genreMap.get(genreFilter).size());
 			song = songDB.genreMap.get(genreFilter).get(songNum);
 		}else{
@@ -33,7 +31,7 @@ public class StreamController {
 		
 		String nowPlaying = "Now playing:  \"" + song.getTitle() + "\" by " + song.getArtist() + "   (" + song.getGenre() + ")";
 		System.out.println(nowPlaying);
-		fbc.setFirebaseNowPlaying(song);
+		FirebaseCommunicator.setFirebaseNowPlaying(song);
 		curPlaying = song;
 		//boolean finishedSucessfully = song.streamSong(icecast);
 		song.streamSong(icecast);

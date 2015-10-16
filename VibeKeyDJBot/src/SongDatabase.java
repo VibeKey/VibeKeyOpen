@@ -9,11 +9,9 @@ public class SongDatabase {
 	Map<String, ArrayList<Song>> genreMap;
 	Map<String, ArrayList<Song>> artistMap;
 	ArrayList<String> genres;
-	FirebaseCommunicator fbc;
 	
-	public SongDatabase(String musicPath, FirebaseCommunicator fbc){
+	public SongDatabase(String musicPath){
 		this.musicPath = musicPath;
-		this.fbc = fbc;
 		loadDatabase();
 	}
 	
@@ -27,10 +25,11 @@ public class SongDatabase {
 	}
 	
 	public void pushToFirebase(){
-		fbc.addSongsToFirebase(songs);
-		fbc.addSongsToFirebaseByGenre(genreMap);
-		fbc.addSongsToFirebaseByArtistMap(artistMap);
-		fbc.addGenresToFirebase(genres);
+		FirebaseCommunicator.clearSongsList();
+		FirebaseCommunicator.addSongsToFirebase(songs);
+		FirebaseCommunicator.addSongsToFirebaseByGenre(genreMap);
+		FirebaseCommunicator.addSongsToFirebaseByArtistMap(artistMap);
+		FirebaseCommunicator.addGenresToFirebase(genres);
 	}
 
 	private void loadAllSongs(String directoryName, ArrayList<Song> songs) {

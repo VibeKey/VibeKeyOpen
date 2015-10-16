@@ -1,17 +1,18 @@
+import com.firebase.client.Firebase;
+
 public class DJBot {
 	SongQueue queue;
 	SongDatabase songDB;
-	FirebaseCommunicator fbc;
 	StreamController streamController;
 	
 	public DJBot() {
-		fbc = new FirebaseCommunicator("https://vibekey-open.firebaseio.com/");
-		songDB = new SongDatabase("/home/radio3/Music", fbc);
-		queue = new SongQueue(fbc);
+		FirebaseCommunicator.rootRef = new Firebase("https://vibekey-open.firebaseio.com/");
+		songDB = new SongDatabase("/home/radio3/MusicDev");
+		queue = new SongQueue();
 
 		
-		streamController = new StreamController(songDB, fbc);
-		fbc.setupFirebaseListeners(streamController);
+		streamController = new StreamController(songDB);
+		FirebaseCommunicator.setupFirebaseListeners(streamController);
 	}
 	
 	
