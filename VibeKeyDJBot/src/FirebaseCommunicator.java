@@ -18,56 +18,17 @@ public class FirebaseCommunicator {
 		rootRef.child("nowPlaying").setValue(song.simplifiedSong);
 		rootRef.child("nowPlaying").child("compiledPlayString").setValue(nowPlaying);
 	}
-	public static void setupFirebaseListeners(StreamController streamController){
-		Firebase genreFilterRef = rootRef.child("controls").child("forceGenre");
-		genreFilterRef.addValueEventListener(new ValueEventListener() {
-		      @Override
-		      public void onDataChange(DataSnapshot snapshot) {
-		    	  streamController.genreFilter = (String)snapshot.getValue();
-		      }
-		      @Override
-		      public void onCancelled(FirebaseError firebaseError) {
-		          System.out.println("The read failed: " + firebaseError.getMessage());
-		      }
-		  });
-		
-		Firebase playModeRef = rootRef.child("controls").child("playMode");
-		playModeRef.addValueEventListener(new ValueEventListener() {
-		      @Override
-		      public void onDataChange(DataSnapshot snapshot) {
-		    	  streamController.playMode = (String)snapshot.getValue();
-		      }
-		      @Override
-		      public void onCancelled(FirebaseError firebaseError) {
-		          System.out.println("The read failed: " + firebaseError.getMessage());
-		      }
-		  });
-		
-		Firebase endSongRef = rootRef.child("controls").child("endSong");
-		endSongRef.addValueEventListener(new ValueEventListener() {
-		      @Override
-		      public void onDataChange(DataSnapshot snapshot) {
-		    	  if(snapshot.getValue() != null){
-			    	  boolean endSong = (Boolean)snapshot.getValue();
-			    	  if(endSong){
-			    		  streamController.curPlaying.playing=false; //should trigger the stop of the current song
-			    		  endSongRef.setValue(false);
-			    	  }
-		    	  }
-		      }
-		      @Override
-		      public void onCancelled(FirebaseError firebaseError) {
-		          System.out.println("The read failed: " + firebaseError.getMessage());
-		      }
-		  });
-		
-		
+	public static void setupFirebaseListeners(FirebaseCommandParser fbCommandParser){
 		Firebase commandRef = rootRef.child("controls").child("command");
 		commandRef.addValueEventListener(new ValueEventListener() {
 		      @Override
 		      public void onDataChange(DataSnapshot snapshot) {
-		    	  String cmdString = (String) snapshot.child("cmdString").getValue();
-		    	  FirebaseCommandParser.parseCommand(cmdString, snapshot.child("params").getChildren());
+		    	  boolean doCmd = (boolean) snapshot.child("doCmd").getValue();
+		    	  if(doCmd){
+			    	  String cmdString = (String) snapshot.child("cmdString").getValue();
+			    	  fbCommandParser.parseCommand(cmdString, snapshot.child("params").getChildren());
+			    	  commandRef.child("doCmd").setValue(false);
+		    	  }
 		      }
 		      @Override
 		      public void onCancelled(FirebaseError firebaseError) {

@@ -16,6 +16,10 @@ public class SongQueue {
 		pushToFirebase();
 	}
 	
+	public int size(){
+		return queue.size();
+	}
+	
 	public Song popFromQueue(){
 		Song nextSong = queue.poll();
 		pushToFirebase();
