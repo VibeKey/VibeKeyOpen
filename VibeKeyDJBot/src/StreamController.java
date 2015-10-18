@@ -1,6 +1,5 @@
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Random;
 
 import com.gmail.kunicins.olegs.libshout.Libshout;
 
@@ -8,44 +7,74 @@ public class StreamController {
 	String genreFilter;
 	String playMode;
 	Song curPlaying;
-	Random rand;
 	Libshout icecast;
 	SongQueue queue;
+	PlaylistController playlistController;
+	String playlistName;
 	
-	public StreamController(SongQueue queue){
-		rand = new Random(System.currentTimeMillis());
+	public StreamController(){
 		icecast = initializeIcecast();
-		this.queue = queue;
+		this.queue = new SongQueue();
+		this.playlistController = new PlaylistController();
+	}
+	
+	private boolean isInGenreMode(){
+		return playMode != null && genreFilter != null && playMode.equals("genre");
+	}
+
+	private boolean isInPlaylistMode(){
+		return playMode != null && playlistName != null && playMode.equals("playlist");
 	}
 	
 	public void fillQueue(){
 		while(queue.size() < 5){
-			if(playMode != null && genreFilter != null && playMode.equals("genre")){ //if in genre mode, play random song from that genre
+			if(isInGenreMode()){
 				ArrayList<Song> genreSongList = SongDatabase.genreMap.get(genreFilter);
 				if(genreSongList != null){
-					int songNum = rand.nextInt(genreSongList.size());
+					int songNum = RandomWrapper.nextInt(genreSongList.size());
 					queue.addToQueue(genreSongList.get(songNum));
 					continue;
 				}
 			}
 			
+			if(isInPlaylistMode()){
+				boolean foundSong = false;
+				for(Playlist playlist : playlistController.allPlaylists){
+					if(playlist.name.equals(playlistName)){
+						if(playlist.songs.size() > 0){
+							int songNum = RandomWrapper.nextInt(playlist.songs.size());
+							foundSong=true;
+							queue.addToQueue(playlist.songs.get(songNum));
+							break;
+						}
+					}
+				}
+				if(foundSong){
+					continue;
+				}
+			}
 			
-			
-			
-			int songNum = rand.nextInt(SongDatabase.songs.size()); //TODO: add more than random songs
+			int songNum = RandomWrapper.nextInt(SongDatabase.songs.size()); //TODO: add more than random songs
 			queue.addToQueue(SongDatabase.songs.get(songNum));
 		}
 	}
 	
-	public void playNextSong(){
+	public Song getNextSong(){
 		fillQueue();
 		Song song = queue.popFromQueue();
+		fillQueue();
+		return song;
+	}
+	
+	public void playNextSong(){
+		Song song = getNextSong();
 		
 		String nowPlaying = "Now playing:  \"" + song.getTitle() + "\" by " + song.getArtist() + "   (" + song.getGenre() + ")";
 		System.out.println(nowPlaying);
 		FirebaseCommunicator.setFirebaseNowPlaying(song);
 		curPlaying = song;
 		//boolean finishedSucessfully = song.streamSong(icecast);
+		
 		song.streamSong(icecast);
 	}
 	

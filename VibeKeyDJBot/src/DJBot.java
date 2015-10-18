@@ -1,7 +1,6 @@
 import com.firebase.client.Firebase;
 
 public class DJBot {
-	SongQueue queue;
 	StreamController streamController;
 	FirebaseCommandParser fbCommandParser;
 	
@@ -9,11 +8,10 @@ public class DJBot {
 		FirebaseCommunicator.rootRef = new Firebase("https://vibekey-open.firebaseio.com/");
 		SongDatabase.musicPath = "/home/radio3/MusicDev";
 		SongDatabase.loadDatabase();
-		queue = new SongQueue();
 
 		
-		streamController = new StreamController(queue);
-		fbCommandParser = new FirebaseCommandParser(queue, streamController);
+		streamController = new StreamController();
+		fbCommandParser = new FirebaseCommandParser(streamController);
 		FirebaseCommunicator.setupFirebaseListeners(fbCommandParser);
 	}
 	
