@@ -43,7 +43,7 @@ public class SimplifiedSong {
 		return artist;
 	}
 	
-	public String getAblum(){
+	public String getAlbum(){
 		return album;
 	}
 	
