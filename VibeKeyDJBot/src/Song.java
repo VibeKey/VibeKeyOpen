@@ -38,7 +38,7 @@ public class Song {
 				metadatav1 = songMetaDataFile.getId3v1Tag();
 			}
 			
-			simplifiedSong = new SimplifiedSong(getTitle(), getArtist(), getAlbum(), getGenre(), getPath());
+			simplifiedSong = new SimplifiedSong(getTitle(), getArtist(), getAlbum(), getGenre(), getPath(), getLength());
 		} catch (UnsupportedTagException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -100,6 +100,11 @@ public class Song {
 			return metadatav1.getAlbum();
 		}
 		return "";
+	}
+	
+
+	long getLength(){
+		return songMetaDataFile.getLengthInSeconds();
 	}
 	
 	String getPath(){

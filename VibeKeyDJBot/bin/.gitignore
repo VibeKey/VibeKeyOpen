@@ -1,11 +1,5 @@
-/SongQueue.class
-/DJBot$1.class
-/DJBot$2.class
-/DJBot$3.class
-/SongDatabase.class
-/FirebaseCommunicator.class
+/FirebaseCommandParser.class
 /FirebaseCommunicator$1.class
 /FirebaseCommunicator$2.class
 /FirebaseCommunicator$3.class
-/MusicControls.class
-/StreamController.class
+/FirebaseCommunicator$4.class

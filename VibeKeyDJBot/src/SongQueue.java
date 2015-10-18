@@ -2,20 +2,22 @@ import java.util.LinkedList;
 
 public class SongQueue {
 	LinkedList<Song> queue = new LinkedList<Song>();
-	FirebaseCommunicator fbc;
 	
-	public SongQueue(FirebaseCommunicator fbc){
-		this.fbc = fbc;
+	public SongQueue(){
 	}
 	
 	
 	public void pushToFirebase(){
-		fbc.updateQueue(queue);
+		FirebaseCommunicator.updateQueue(queue);
 	}
 	
 	public void addToQueue(Song song){
 		queue.offer(song);
 		pushToFirebase();
+	}
+	
+	public int size(){
+		return queue.size();
 	}
 	
 	public Song popFromQueue(){

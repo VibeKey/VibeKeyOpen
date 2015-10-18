@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Random;
 
 import com.gmail.kunicins.olegs.libshout.Libshout;
@@ -8,32 +9,41 @@ public class StreamController {
 	String playMode;
 	Song curPlaying;
 	Random rand;
-	SongDatabase songDB;
-	FirebaseCommunicator fbc;
 	Libshout icecast;
+	SongQueue queue;
 	
-	public StreamController(SongDatabase songDB, FirebaseCommunicator fbc){
-		this.songDB = songDB;
-		this.fbc = fbc;
+	public StreamController(SongQueue queue){
 		rand = new Random(System.currentTimeMillis());
 		icecast = initializeIcecast();
+		this.queue = queue;
+	}
+	
+	public void fillQueue(){
+		while(queue.size() < 5){
+			if(playMode != null && genreFilter != null && playMode.equals("genre")){ //if in genre mode, play random song from that genre
+				ArrayList<Song> genreSongList = SongDatabase.genreMap.get(genreFilter);
+				if(genreSongList != null){
+					int songNum = rand.nextInt(genreSongList.size());
+					queue.addToQueue(genreSongList.get(songNum));
+					continue;
+				}
+			}
+			
+			
+			
+			
+			int songNum = rand.nextInt(SongDatabase.songs.size()); //TODO: add more than random songs
+			queue.addToQueue(SongDatabase.songs.get(songNum));
+		}
 	}
 	
 	public void playNextSong(){
-		Song song;
-		int songNum;
-		
-		if(playMode.equals("forceGenre")){
-			songNum = rand.nextInt(songDB.genreMap.get(genreFilter).size());
-			song = songDB.genreMap.get(genreFilter).get(songNum);
-		}else{
-			songNum = rand.nextInt(songDB.songs.size());
-			song = songDB.songs.get(songNum);
-		}
+		fillQueue();
+		Song song = queue.popFromQueue();
 		
 		String nowPlaying = "Now playing:  \"" + song.getTitle() + "\" by " + song.getArtist() + "   (" + song.getGenre() + ")";
 		System.out.println(nowPlaying);
-		fbc.setFirebaseNowPlaying(song);
+		FirebaseCommunicator.setFirebaseNowPlaying(song);
 		curPlaying = song;
 		//boolean finishedSucessfully = song.streamSong(icecast);
 		song.streamSong(icecast);

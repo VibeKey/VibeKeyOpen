@@ -11,17 +11,19 @@ public class SimplifiedSong {
 	private String album;
 	private String genre;
 	private String path;
+	private long length;
 	
 	public SimplifiedSong(){
 		
 	}
 	
-	public SimplifiedSong(String title, String artist, String album, String genre, String path){
+	public SimplifiedSong(String title, String artist, String album, String genre, String path, long length){
 		this.title = title;
 		this.artist = artist;
 		this.album = album;
 		this.genre = genre;
 		this.path = path;
+		this.length = length;
 	}
 	
 	public String getTitle(){
@@ -42,6 +44,11 @@ public class SimplifiedSong {
 	
 	public String getPath(){
 		return path;
+	}
+	
+
+	public long getLength(){
+		return length;
 	}
 	
 	public Song getSong(ArrayList<Song> songs){ //expensive, but considering we're saving to firebase, can't rely on song reference
