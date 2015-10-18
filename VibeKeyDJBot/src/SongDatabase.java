@@ -9,6 +9,7 @@ public class SongDatabase {
 	static Map<String, ArrayList<Song>> genreMap;
 	static Map<String, ArrayList<Song>> artistMap;
 	static ArrayList<String> genres;
+	static HashMap<String, Song> pathToSongMap;
 	
 	
 	static public void loadDatabase(){
@@ -17,6 +18,7 @@ public class SongDatabase {
 		artistMap = getSongArtistMap();
 		genreMap = getSongGenreMap();
 		genres = getGenres();
+		pathToSongMap = buildPathToSongMap();
 		pushToFirebase();
 	}
 	
@@ -40,6 +42,16 @@ public class SongDatabase {
 	        	loadAllSongs(file.getAbsolutePath(), songs);
 	        }
 	    }
+	}
+	
+	static private HashMap<String, Song> buildPathToSongMap(){
+		HashMap<String, Song> ret = new HashMap<String, Song>();
+		
+		for(Song song : songs){
+			ret.put(song.getPath(), song);
+		}
+		
+		return ret;
 	}
 	
 	static private String getFileExtension(File file) {
@@ -94,12 +106,9 @@ public class SongDatabase {
 		return genreMap;
 	}
 	
+	
+	
 	static public Song getSongFromPath(String path){
-		for(Song song : songs){
-			if(song.getPath().equals(path)){
-				return song;
-			}
-		}
-		return null;
+		return pathToSongMap.get(path);
 	}
 }

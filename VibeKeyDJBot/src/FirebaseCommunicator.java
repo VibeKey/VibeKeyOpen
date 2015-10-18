@@ -23,8 +23,8 @@ public class FirebaseCommunicator {
 		commandRef.addValueEventListener(new ValueEventListener() {
 		      @Override
 		      public void onDataChange(DataSnapshot snapshot) {
-		    	  boolean doCmd = (boolean) snapshot.child("doCmd").getValue();
-		    	  if(doCmd){
+		    	  Boolean doCmd = (Boolean) snapshot.child("doCmd").getValue();
+		    	  if(doCmd != null && doCmd){
 			    	  String cmdString = (String) snapshot.child("cmdString").getValue();
 			    	  fbCommandParser.parseCommand(cmdString, snapshot.child("params").getChildren());
 			    	  commandRef.child("doCmd").setValue(false);
@@ -55,11 +55,28 @@ public class FirebaseCommunicator {
 	
 	public static void updateQueue(LinkedList<Song> queue){
 		Firebase queueRef = rootRef.child("queue");
+		queueRef.setValue(null);
 		LinkedList<SimplifiedSong> queueSimplified = new LinkedList<SimplifiedSong>();
 		for(Song song : queue){
 			queueSimplified.add(song.simplifiedSong);
 		}
 		queueRef.setValue(queueSimplified);
+	}
+	
+	
+	public static void setPlaylists(ArrayList<Playlist> playlists){
+		Firebase allPlaylistsRef = rootRef.child("playlists");
+		allPlaylistsRef.setValue(null);
+		for(Playlist playlist : playlists){
+			Firebase playlistRef = allPlaylistsRef.push();
+			playlistRef.child("name").setValue(playlist.name);
+			Firebase songsRef = playlistRef.child("songs");
+			for(Song song : playlist.getSongs()){
+				Firebase songRef = songsRef.push();
+				songRef.setValue(song.simplifiedSong);
+			}
+			
+		}
 	}
 	
 	public static void addSongsToFirebaseByArtistMap(Map<String, ArrayList<Song>> artistMap){

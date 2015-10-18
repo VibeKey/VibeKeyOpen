@@ -13,6 +13,7 @@ public class SimplifiedSong {
 	private String path;
 	private long length;
 	
+	
 	public SimplifiedSong(){
 		
 	}
@@ -24,7 +25,15 @@ public class SimplifiedSong {
 		this.genre = genre;
 		this.path = path;
 		this.length = length;
+		
 	}
+	
+	/*
+	@Override
+	public int hashCode(){
+		return title.hashCode() ^ artist.hashCode() ^ album.hashCode() ^ genre.hashCode() ^ path.hashCode();
+	}
+	*/
 	
 	public String getTitle(){
 		return title;
