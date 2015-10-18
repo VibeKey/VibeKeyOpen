@@ -3,66 +3,6 @@
 //Its main purpose is to create all elements related to songs displayed on the website and to append them wherever they need to be
 
 $(document).ready(function() {
-		//initial setup of songs for playlist
-		// var json = [
-		// 	  '{"_id": "555b8fb8b19ac49446fe688c",' +
-		// 		'"id": 0,' + 
-		// 		'"name": "Uptown Funk!",' + 
-		// 		'"artist": "Mark Ronson ft Bruno Mars",' + 
-		// 		'"votes": 18}',
-		// 	  '{"_id": "555b8fb80a2cec66533106e2",' +
-		// 		'"id": 1,' +
-		// 		'"name": "Shut Up and Dance",' +
-		// 		'"artist": "Walk the Moon",' +
-		// 		'"votes": 25}',
-		// 	  '{"_id": "555b8fb828732abf48b4c26e",' +
-		// 		'"id": 2,' +
-		// 		'"name": "Sugar",' +
-		// 		'"artist": "Maroon 5",' +
-		// 		'"votes": 62}',
-		// 	  '{"_id": "555b8fb8f27e2e130ed12b99",'+
-		// 		'"id": 3,'+
-		// 		'"name": "Love Me Like You Do",'+
-		// 		'"artist": "Ellie Goulding",'+
-		// 		'"votes": 84}',
-		// 	  '{"_id": "555b8fb85692e14fb0de6ee9",'+
-		// 		'"id": 4,'+
-		// 		'"name": "Hey Mama",'+
-		// 		'"artist": "David Guetta ft. Nicki Minaj & Afrojack",'+
-		// 		'"votes": 56}',
-		// 	  '{"_id": "555b8fb85692e14fb0de6ee9",'+
-		// 		'"id": 5,'+
-		// 		'"name": "Talking Body",'+
-		// 		'"artist": "Tove Lo",'+
-		// 		'"votes": 34}',
-		// 	  '{"_id": "555b8fb85692e14fb0de6ee9",'+
-		// 		'"id": 6,'+
-		// 		'"name": "Style",'+
-		// 		'"artist": "Taylor Swift",'+
-		// 		'"votes": 78}',
-		// 	  '{"_id": "555b8fb85692e14fb0de6ee9",'+
-		// 		'"id": 7,'+
-		// 		'"name": "Honey, I\'m Good.",'+
-		// 		'"artist": "Andy Grammer",'+
-		// 		'"votes": 35}',
-		// 		'{"_id": "555b8fb85692e14fb0de6ee9",'+
-		// 		'"id": 8,'+
-		// 		'"name": "One Last Time",'+
-		// 		'"artist": "Ariana Grande",'+
-		// 		'"votes": 76}',
-		// 		'{"_id": "555b8fb85692e14fb0de6ee9",'+
-		// 		'"id": 9,'+
-		// 		'"name": "Blank Space",'+
-		// 		'"artist": "Taylor Swift",'+
-		// 		'"votes": 32}',
-		// 		'{"_id": "555b8fb85692e14fb0de6ee9",'+
-		// 		'"id": 10,'+
-		// 		'"name": "Take Me To Church",'+
-		// 		'"artist": "Hozier",'+
-		// 		'"votes": 64}'
-				
-		// 	];
-		
 		var searchTab = document.createElement('div');
 		searchTab.id = "searchSongs";
 		searchTab.className = "sortable";
@@ -73,33 +13,26 @@ $(document).ready(function() {
 		//load firebase songs and create song obj on wbsite
 		var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
 		var songsRef = fireRef.child("songs");
-		var count = 1;
-		songsRef.once("value", function(snapshot) {
+		var allsongsRef = songsRef.child("allSongs");
+		allsongsRef.once("value", function(snapshot) {
 		  var main = snapshot.val();
 		  snapshot.forEach(function(childSnapshot) {
-		  	childSnapshot.forEach(function(childchildSnapshot) {
-		  	var childchildData = childchildSnapshot.val();
-		  	var songName = childchildData.title;
-		  	var songBand = childchildData.artist;
+		  	var id = childSnapshot.key();
+		  	var childData = childSnapshot.val();
+		  	var songName = childData.title;
+		  	var songBand = childData.artist;
 		  	var song = {
-		  		"id" : [count],
+		  		"id" : [id],
 		  		"name" : [songName],
 		  		"artist" : [songBand],
 		  		"votes" : 0
 		  	};
 		  	addSongToTab(song, searchTab);
-		  	});
-		  	count++;
 		  });
 		}, function (errorObject) {
 		  console.log("The read failed: " + errorObject.code);
 		});
-		// var arr = [];
-		// console.log(json.length);
-		// for (i = 0; i < json.length; i++) {
-		// 	arr[i] = JSON.parse(json[i]);
-		// 	addSongToTab(arr[i], searchTab);
-		// }
+
 		
 		var playlistHeader = document.getElementById("playhead");
 		var buttonSpan = document.createElement('span');

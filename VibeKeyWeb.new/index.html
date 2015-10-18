@@ -20,7 +20,8 @@
 	<script type="text/javascript" src="js/jquery.sidr.min.js"></script>
 	<script type="text/javascript" src="js/amplitude.js"></script>
 	<script type="text/javascript" src="js/playMusic.js"></script>
-	<script type="text/javascript" src="js/scheduleGenre.js"></script>
+	<script type="text/javascript" src="js/createCommand.js"></script>
+	<script type="text/javascript" src="js/scheduleMusic.js"></script>
 </head>
 
 <body>
@@ -120,12 +121,21 @@
 		<fieldset>
 		    <legend>Schedule a Genre</legend>
 		    	Seclect a genre:
-			    <select class="genresList" id="genresList">
+			    <select class="genresList" id="genresList" onchange="scheduleGenre(this)">
 			    	<option value="none">No genre selected</option>
 				</select>
 				<br></br>
-				<input type="submit" value="Submit" onClick="genreClicked()">
-			</form>
+				<input type="submit" value="Submit" onclick="scheduleGenre()">
+		</fieldset>
+		<br></br>
+		<fieldset>
+			<legend>Schedule a Song</legend>
+		    	Seclect a song:
+			    <select class="songsList" id="songsList" onchange="scheduleSong(this)">
+			    	<option value="none">No song selected</option>
+				</select>
+				<br></br>
+				<input type="submit" value="Submit" onclick="scheduleSong()">
 		</fieldset>
 	</div>
 

@@ -23,7 +23,8 @@ npRef.on("value", function(snapshot) {
   console.log("The read failed: " + errorObject.code);
 });
 
-var nextSongRef = fireRef.child("nextSong");
+var controls = fireRef.child("controls");
 function nextSong(){
-  nextSongRef.set(true);
+  var command = createCommand(false, "nextSong", {});
+  controls.set(command);
 }
