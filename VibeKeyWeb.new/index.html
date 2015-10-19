@@ -125,7 +125,7 @@
 			    	<option value="none">No genre selected</option>
 				</select>
 				<br></br>
-				<input type="submit" value="Submit" onclick="scheduleGenre()">
+				<!-- <input type="submit" value="Submit" onclick="scheduleGenre()"> -->
 		</fieldset>
 		<br></br>
 		<fieldset>
@@ -135,7 +135,17 @@
 			    	<option value="none">No song selected</option>
 				</select>
 				<br></br>
-				<input type="submit" value="Submit" onclick="scheduleSong()">
+				<!-- <input type="submit" value="Submit" onclick="scheduleSong()"> -->
+		</fieldset>
+		<br></br>
+		<fieldset>
+			<legend>Schedule a Playlist</legend>
+		    	Seclect a playlist:
+			    <select class="playsList" id="playsList" onchange="scheduleList(this)">
+			    	<option value="none">No list selected</option>
+				</select>
+				<br></br>
+				<!-- <input type="submit" value="Submit" onclick="scheduleSong()"> -->
 		</fieldset>
 	</div>
 
