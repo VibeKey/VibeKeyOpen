@@ -1,5 +1,6 @@
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 
 import com.firebase.client.DataSnapshot;
@@ -11,48 +12,20 @@ public class FirebaseCommandParser {
 	public FirebaseCommandParser(StreamController streamController){
 		this.streamController = streamController;
 	}
-	
+
+	@SuppressWarnings("rawtypes")
 	public void parseCommand(String cmdString, Iterable<DataSnapshot> params) {
 		if (cmdString != null) {
-			switch (cmdString) {
-			case "addToQueue":
-				addToQueue(params);
-				break;
-
-			case "addToFrontOfQueue":
-				addToFrontOfQueue(params);
-				break;
-
-			case "nextSong":
-				nextSong(params);
-				break;
-
-			case "setPlayMode":
-				setPlayMode(params);
-				break;
-
-			case "setGenre":
-				setGenre(params);
-				break;
-				
-			case "setPlaylist":
-				setPlaylist(params);
-				break;
-
-			default:
-				break;
-			}
-			/*
+			
 			try {
 				Class[] classes = new Class[1];
-				classes[0]= Iterable.class;
+				classes[0]=Iterable.class;
 				
 				System.out.println(classes[0].getName());
-				Method method = this.getClass().getMethod(cmdString, classes);
+				Method method = this.getClass().getDeclaredMethod(cmdString, classes);	
 				method.invoke(this, params);
 			} catch (NoSuchMethodException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println("ERROR: Invalid command \"" + cmdString + "\" from Firebase.");
 			} catch (SecurityException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -65,7 +38,7 @@ public class FirebaseCommandParser {
 			} catch (InvocationTargetException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}*/
+			}
 			
 		}
 		
