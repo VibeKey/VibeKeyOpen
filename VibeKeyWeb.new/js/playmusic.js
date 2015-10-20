@@ -25,6 +25,6 @@ npRef.on("value", function(snapshot) {
 
 var controls = fireRef.child("controls");
 function nextSong(){
-  var command = createCommand(false, "nextSong", {});
+  var command = createCommand(true, "nextSong", {});
   controls.set(command);
 }

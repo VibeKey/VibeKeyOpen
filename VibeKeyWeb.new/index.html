@@ -19,6 +19,7 @@
 	<script type="text/javascript" src="js/buttonScript.js"></script>
 	<script type="text/javascript" src="js/jquery.sidr.min.js"></script>
 	<script type="text/javascript" src="js/amplitude.js"></script>
+	<script type="text/javascript" src="js/createPlaylist.js"></script>
 	<script type="text/javascript" src="js/playMusic.js"></script>
 	<script type="text/javascript" src="js/createCommand.js"></script>
 	<script type="text/javascript" src="js/scheduleMusic.js"></script>
@@ -62,6 +63,10 @@
 				</div>
 				<div class="playbottom">
 					<div class="button" style="float:none; height:auto;">
+						<div onclick="createPlaylist()" id="createPlaylist" class="circle">
+							<img id="upImg" style="width:30px; height:30px;" 
+								src="images/up.png">
+						</div>
 						<div onclick="clickBottomButton(this)" id="list" class="circle">
 							<img id="listImg" style="width:30px; height:30px;" 
 								src="images/list.png">
@@ -91,9 +96,9 @@
 							<img id="pauseButton" style="width:30px; height:30px;" 
 								src="images/pausebutton.png">
 						</div>
-						<div onclick="nextSong()" id="up" class="circle">
-							<img id="upImg" style="width:30px; height:30px;" 
-								src="images/up.png">
+						<div onclick="nextSong()" id="next" class="circle">
+							<img id="nextImg" style="width:30px; height:30px;" 
+								src="images/next.png">
 						</div>
 					</div>
 				</div>

@@ -48,19 +48,19 @@ function scheduleGenre(list){
   // console.log(list.selectedIndex);
   // console.log(list.value);
   var selectedGenre = list.value;
-  var command = createCommand(false, "setGenre", {"genre" : selectedGenre});
+  var command = createCommand(true, "setGenre", {"genre" : selectedGenre});
   controls.set(command);
 }
 
 function scheduleSong(list){
   var selectedSongName = list.options[list.selectedIndex].text;
   var selectedSongPath = list.value;
-  var command = createCommand(false, "addToFrontOfQueue", {"songPath" : selectedSongPath, "song" : selectedSongName});
+  var command = createCommand(true, "addToFrontOfQueue", {"songPath" : selectedSongPath, "song" : selectedSongName});
   controls.set(command);
 }
 
 function scheduleList(list) {
   var selectedList = list.options[list.selectedIndex].text;
-  var command = createCommand(false, "setPlaylist", {"playlist" : selectedList});
+  var command = createCommand(true, "setPlaylist", {"playlist" : selectedList});
   controls.set(command);
 }
