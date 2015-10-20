@@ -47,9 +47,11 @@ function scheduleGenre(list){
   // var selectedGenre = genresDropdown.options[genresDropdown.selectedIndex].value;
   // console.log(list.selectedIndex);
   // console.log(list.value);
+  // var command1 = createCommand(true, "setPlayMode", {"playMode" : "genre"});
+  // controls.set(command1);
   var selectedGenre = list.value;
-  var command = createCommand(true, "setGenre", {"genre" : selectedGenre});
-  controls.set(command);
+  var command2 = createCommand(true, "setGenre", {"genre" : selectedGenre});
+  controls.set(command2);
 }
 
 function scheduleSong(list){
@@ -60,7 +62,9 @@ function scheduleSong(list){
 }
 
 function scheduleList(list) {
+  // var command1 = createCommand(true, "setPlayMode", {"playMode" : "playlist"});
+  // controls.set(command1);
   var selectedList = list.options[list.selectedIndex].text;
-  var command = createCommand(true, "setPlaylist", {"playlist" : selectedList});
-  controls.set(command);
+  var command2 = createCommand(true, "setPlaylist", {"playlist" : selectedList});
+  controls.set(command2);
 }
