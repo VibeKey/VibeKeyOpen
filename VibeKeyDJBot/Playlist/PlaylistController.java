@@ -13,7 +13,7 @@ public class PlaylistController {
 			}
 			Playlist newPlaylist = new Playlist();
 			
-			newPlaylist.name = "playlist " + (i + 1);
+			newPlaylist.name = "Playlist " + (i + 1);
 			
 			newPlaylist.setSongs(playlistSongs);
 			allPlaylists.add(newPlaylist);

@@ -1,7 +1,6 @@
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.lang.reflect.ParameterizedType;
-import java.util.ArrayList;
+import java.util.Date;
 
 import com.firebase.client.DataSnapshot;
 
@@ -93,5 +92,40 @@ public class FirebaseCommandParser {
 		}
 		Song song = SongDatabase.getSongFromPath(path);
 		streamController.queue.addToQueue(song);
+	}
+	
+	private void addToSchedule(Iterable<DataSnapshot> params){
+		int playMode = 0;
+		int repeatMode = 0;
+		Date startTime = new Date();
+		Date endTime = new Date();
+		String DJName = "";
+		String genre = ""; //ignored if not in genre play mode
+		String playlist = ""; //ignored if not in playlist play mode
+		
+		for (DataSnapshot param : params) {
+			if (param.getKey().equals("playMode")) {
+				playMode = (int) param.getValue();
+			}
+			if (param.getKey().equals("repeatMode")) {
+				repeatMode = (int) param.getValue();
+			}
+			if (param.getKey().equals("startTime")) {
+				startTime = (Date) param.getValue();
+			}
+			if (param.getKey().equals("endTime")) {
+				endTime = (Date) param.getValue();
+			}
+			if (param.getKey().equals("DJName")) {
+				DJName = (String) param.getValue();
+			}
+			if (param.getKey().equals("genre")) {
+				genre = (String) param.getValue();
+			}
+			if (param.getKey().equals("playlist")) {
+				playlist = (String) param.getValue();
+			}
+		}
+		ScheduleItem newScheduleItem = new ScheduleItem(playMode, repeatMode, startTime, endTime, DJName, genre, playlist);
 	}
 }
