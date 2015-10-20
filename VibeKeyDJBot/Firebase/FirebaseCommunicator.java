@@ -109,6 +109,23 @@ public class FirebaseCommunicator {
 		}
 	}
 	
+	public static void loadSchedule(ArrayList<ScheduleItem> scheduleItems){
+		Firebase scheduleRef = rootRef.child("schedule");
+		scheduleItems.clear();
+		scheduleRef.addListenerForSingleValueEvent(new ValueEventListener() {
+		    @Override
+		    public void onDataChange(DataSnapshot scheduleSnapshot) {
+		    	for(DataSnapshot scheduleItemSnapshot : scheduleSnapshot.getChildren()){
+		    		ScheduleItem scheduleItem = scheduleItemSnapshot.getValue(ScheduleItem.class);
+		    		scheduleItems.add(scheduleItem);
+		    	}
+		    }
+		    @Override
+		    public void onCancelled(FirebaseError firebaseError) {
+		    }
+		});
+	}
+	
 	
 	
 	public static boolean addSongsToFirebase(ArrayList<Song> songs){
