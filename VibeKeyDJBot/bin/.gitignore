@@ -1,5 +1,14 @@
-/GenreScheduleItem.class
-/PlaylistScheduleItem.class
-/PlaySchedule.class
+/FirebaseCommandParser.class
 /FirebaseCommunicator$1.class
 /FirebaseCommunicator$2.class
+/FirebaseCommunicator.class
+/PlaySchedule.class
+/Playlist.class
+/PlaylistController.class
+/RandomWrapper.class
+/ScheduleItem.class
+/SimplifiedSong.class
+/Song.class
+/SongDatabase.class
+/SongQueue.class
+/StreamController.class
