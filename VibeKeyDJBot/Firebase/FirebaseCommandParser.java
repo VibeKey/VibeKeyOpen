@@ -1,5 +1,6 @@
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Date;
 
 import com.firebase.client.DataSnapshot;
@@ -50,6 +51,7 @@ public class FirebaseCommandParser {
 				streamController.genreFilter = (String) param.getValue();
 			}
 		}
+		streamController.refillQueue();
 	}
 
 	private void setPlaylist(Iterable<DataSnapshot> params) {
@@ -58,6 +60,7 @@ public class FirebaseCommandParser {
 				streamController.playlistName = (String) param.getValue();
 			}
 		}
+		streamController.refillQueue();
 	}
 
 	private void setPlayMode(Iterable<DataSnapshot> params) {
@@ -66,6 +69,7 @@ public class FirebaseCommandParser {
 				streamController.playMode = (String) param.getValue();
 			}
 		}
+		streamController.refillQueue();
 	}
 
 	private void nextSong(Iterable<DataSnapshot> params) {
@@ -128,5 +132,23 @@ public class FirebaseCommandParser {
 		}
 		ScheduleItem newScheduleItem = new ScheduleItem(playMode, repeatMode, startTime, endTime, DJName, genre, playlist);
 		streamController.playSchedule.addToSchedule(newScheduleItem);
+	}
+	
+	private void addPlaylist(Iterable<DataSnapshot> params){
+		Playlist newPlaylist = new Playlist();
+		for (DataSnapshot param : params) {
+			if (param.getKey().equals("name")) {
+				newPlaylist.setName(param.getValue(String.class));
+			}
+			if (param.getKey().equals("songs")) {
+		    	for(DataSnapshot songSnapshot : param.getChildren()){
+		    		String songPath = songSnapshot.getValue(String.class);
+		    		newPlaylist.addSong(SongDatabase.getSongFromPath(songPath));
+		    	}
+			}
+		}
+		streamController.playlistController.allPlaylists.add(newPlaylist);
+		
+		
 	}
 }

@@ -69,7 +69,7 @@ public class FirebaseCommunicator {
 		allPlaylistsRef.setValue(null);
 		for(Playlist playlist : playlists){
 			Firebase playlistRef = allPlaylistsRef.push();
-			playlistRef.child("name").setValue(playlist.name);
+			playlistRef.child("name").setValue(playlist.getName());
 			Firebase songsRef = playlistRef.child("songs");
 			for(Song song : playlist.getSongs()){
 				Firebase songRef = songsRef.push();

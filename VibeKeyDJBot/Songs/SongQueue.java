@@ -11,6 +11,14 @@ public class SongQueue {
 		FirebaseCommunicator.updateQueue(queue);
 	}
 	
+	public int getTotalTime(){
+		int totalTime = 0;
+		for(Song song : queue){
+			totalTime+= song.getLength();
+		}
+		return totalTime;
+	}
+	
 	public void addToQueue(Song song){
 		queue.offer(song);
 		pushToFirebase();

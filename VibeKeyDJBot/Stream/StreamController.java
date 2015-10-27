@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import com.gmail.kunicins.olegs.libshout.Libshout;
 
@@ -28,11 +29,13 @@ public class StreamController {
 		return playMode != null && playlistName != null && playMode.equals("playlist");
 	}
 	
+	public void refillQueue(){
+		queue.emptyQueue();
+		this.fillQueue();
+	}
+	
 	public void fillQueue(){
 		while(queue.size() < 5){
-			
-			int playMode = playSchedule.getCurPlayMode();
-			//if(playMode == ScheduleItem.PLAYMODE_NONE)
 			if(isInGenreMode()){
 				ArrayList<Song> genreSongList = SongDatabase.genreMap.get(genreFilter);
 				if(genreSongList != null){
@@ -40,16 +43,14 @@ public class StreamController {
 					queue.addToQueue(genreSongList.get(songNum));
 					continue;
 				}
-			}
-			
-			if(isInPlaylistMode()){
+			} else if(isInPlaylistMode()){
 				boolean foundSong = false;
 				for(Playlist playlist : playlistController.allPlaylists){
-					if(playlist.name.equals(playlistName)){
-						if(playlist.songs.size() > 0){
-							int songNum = RandomWrapper.nextInt(playlist.songs.size());
+					if(playlist.getName().equals(playlistName)){
+						if(playlist.getSongs().size() > 0){
+							int songNum = RandomWrapper.nextInt(playlist.getSongs().size());
 							foundSong=true;
-							queue.addToQueue(playlist.songs.get(songNum));
+							queue.addToQueue(playlist.getSongs().get(songNum));
 							break;
 						}
 					}
@@ -57,6 +58,10 @@ public class StreamController {
 				if(foundSong){
 					continue;
 				}
+			} else { //else, check the schedule if not in a forced mode
+				Calendar calendar = Calendar.getInstance();
+				calendar.add(Calendar.SECOND, queue.getTotalTime());
+				ScheduleItem curSched = playSchedule.getScheduleItemAtTime(calendar.getTime()); //TODO: Flush this out
 			}
 			
 			int songNum = RandomWrapper.nextInt(SongDatabase.songs.size()); //TODO: add more than random songs
