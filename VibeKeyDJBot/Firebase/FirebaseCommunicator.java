@@ -26,7 +26,7 @@ public class FirebaseCommunicator {
 		    	  Boolean doCmd = (Boolean) snapshot.child("doCmd").getValue();
 		    	  if(doCmd != null && doCmd){
 			    	  String cmdString = (String) snapshot.child("cmdString").getValue();
-			    	  fbCommandParser.parseCommand(cmdString, snapshot.child("params").getChildren());
+			    	  fbCommandParser.parseCommand(cmdString, snapshot.child("params"));
 			    	  commandRef.child("doCmd").setValue(false);
 		    	  }
 		      }
