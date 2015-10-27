@@ -21,10 +21,12 @@ $(document).ready(function() {
 		  	var childData = childSnapshot.val();
 		  	var songName = childData.title;
 		  	var songBand = childData.artist;
+		  	var songPath = childData.path;
 		  	var song = {
 		  		"id" : [id],
 		  		"name" : [songName],
 		  		"artist" : [songBand],
+		  		"path" : [songPath],
 		  		"votes" : 0
 		  	};
 		  	addSongToTab(song, searchTab);
@@ -151,15 +153,21 @@ function addSongToTab(song, tab) {
 	// Create all basic song items.
 	var name = document.createElement('div');
 	var band = document.createElement('div');
+	var path = document.createElement('div');
 	
 	name.className = "name";
 	band.className = "band";
+	path.className = "path";
 	
 	name.innerHTML = song["name"];
 	band.innerHTML = song["artist"];
+	path.innerHTML = song["path"];
+
+	path.style["display"] = "none";
 	
 	basicItem.appendChild(name);
 	basicItem.appendChild(band);
+	basicItem.appendChild(path);
 	
 	// Add all the buttons.
 	var info = document.createElement('span');
