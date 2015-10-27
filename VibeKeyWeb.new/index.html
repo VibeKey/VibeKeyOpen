@@ -24,9 +24,11 @@
 	<script type="text/javascript" src="js/playMusic.js"></script>
 	<script type="text/javascript" src="js/createCommand.js"></script>
 	<script type="text/javascript" src="js/scheduleMusic.js"></script>
+	<script type="text/javascript" src="js/addNews.js"></script>
 </head>
 
 <body>
+	<!--
 	<script>	
 	function process(data, textStatus, jqXHR) {
 		var succ = document.createElement('p');
@@ -38,6 +40,7 @@
 	$(document).ready(function() {
 	});
 	</script>
+	-->
 
 	<div id="stuffBody" class="stuffBody">
 		<div class="WMHD">
@@ -119,6 +122,19 @@
 	
 	<div id="newsTab" class="sidr">
 		<iframe class="sideArea" src="news.html"></iframe>
+		<fieldset>
+			<legend>Add a news</legend>
+				News title:<br>
+  				<input type="text" id="newsTitle">
+				<br>
+				News Description:<br>
+				<input type="text" id="newsDescription">
+				<br>
+				News Date:<br>
+				<input type="date" id="newsDate">
+				<br></br>
+				<button onclick="addNews()">Submit</button>
+		</fieldset>
 	</div>
 	
 	<div id="soundboardTab" class="sidr">
@@ -178,7 +194,6 @@
 	<div id="settingsTab" class="sidr">
 		<h1>I am a settings tab!</h1>
 	</div>
-
 	</body>
 </html>
 

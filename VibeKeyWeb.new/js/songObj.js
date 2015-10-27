@@ -200,7 +200,6 @@ function addSongToTab(song, tab) {
 	
 	del.appendChild(delButton);
 	del.appendChild(xButton);
-		
 	
 	buttonItem.appendChild(info);
 	buttonItem.appendChild(add);
