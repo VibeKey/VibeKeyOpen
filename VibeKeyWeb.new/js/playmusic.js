@@ -1,24 +1,3 @@
-var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
-var npRef = fireRef.child("nowPlaying");
-npRef.on("value", function(snapshot) {
-  var main = snapshot.val();
-  document.getElementById("curPlayingTitle").innerHTML="Now playing: " + main.title + " by " + main.artist;
-  document.getElementById("curPlayingGenre").innerHTML="Genre: " + main.genre;
-  //document.getElementById("curPlayingTags").innerHTML="Tags: ";
-}, function (errorObject) {
-  console.log("The read failed: " + errorObject.code);
-});
-var genresRef = fireRef.child("genres");
-var curGenreRef = fireRef.child("curGenre");
-var nextSongRef = fireRef.child("nextSong");
-/*
-genresRef.on("value", function(snapshot) {
-  document.getElementById("genresList").innerHTML="";
-  snapshot.forEach(function(data) {
-    document.getElementById("genresList").innerHTML = document.getElementById("genresList").innerHTML + "<button type='button' class='btn btn-default' onclick='genreClicked(this)' id='" + data.val() + "'>" + data.val() + "</button>";
-  });
-});
-*/
 Amplitude.init({
     "songs": [
         {
@@ -31,12 +10,21 @@ Amplitude.init({
     ],
   "autoplay": true
 });
-function genreClicked(elmnt){
-  curGenreRef.set(elmnt.id);
-}
-function clearGenre(){
-  curGenreRef.set("none");
-}
+
+var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
+
+var npRef = fireRef.child("nowPlaying");
+npRef.on("value", function(snapshot) {
+  var main = snapshot.val();
+  document.getElementById("curPlayingTitle").innerHTML=" Now playing: " + main.title + " by " + main.artist;
+  document.getElementById("curPlayingGenre").innerHTML=" Genre: " + main.genre;
+  //document.getElementById("curPlayingTags").innerHTML="Tags: ";
+}, function (errorObject) {
+  console.log("The read failed: " + errorObject.code);
+});
+
+var controls = fireRef.child("controls");
 function nextSong(){
-  nextSongRef.set(true);
+  var command = createCommand(true, "nextSong", {});
+  controls.set(command);
 }
