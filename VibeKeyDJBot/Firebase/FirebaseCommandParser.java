@@ -127,5 +127,6 @@ public class FirebaseCommandParser {
 			}
 		}
 		ScheduleItem newScheduleItem = new ScheduleItem(playMode, repeatMode, startTime, endTime, DJName, genre, playlist);
+		streamController.playSchedule.addToSchedule(newScheduleItem);
 	}
 }

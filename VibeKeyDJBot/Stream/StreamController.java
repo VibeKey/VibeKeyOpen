@@ -10,12 +10,14 @@ public class StreamController {
 	Libshout icecast;
 	SongQueue queue;
 	PlaylistController playlistController;
+	PlaySchedule playSchedule;
 	String playlistName;
 	
 	public StreamController(){
 		icecast = initializeIcecast();
 		this.queue = new SongQueue();
 		this.playlistController = new PlaylistController();
+		this.playSchedule = new PlaySchedule();
 	}
 	
 	private boolean isInGenreMode(){
@@ -28,6 +30,9 @@ public class StreamController {
 	
 	public void fillQueue(){
 		while(queue.size() < 5){
+			
+			int playMode = playSchedule.getCurPlayMode();
+			//if(playMode == ScheduleItem.PLAYMODE_NONE)
 			if(isInGenreMode()){
 				ArrayList<Song> genreSongList = SongDatabase.genreMap.get(genreFilter);
 				if(genreSongList != null){
