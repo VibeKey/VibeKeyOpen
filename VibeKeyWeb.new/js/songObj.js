@@ -165,15 +165,21 @@ function addSongToTab(song, tab) {
 	var info = document.createElement('span');
 	var add = document.createElement('span');
 	var del = document.createElement('span');
+	var request = document.createElement('span');
 	
 	info.className = "circle";
 	add.className = "circle";
 	del.className = "circle";
+	request.className = "circle";
 	
 	info.innerHTML = "<img id='" + song["name"]
 		+ "InfoButton' src='images/info_circle.png' style='width:24px;height:24px;'>";
 	add.innerHTML = "<img id='" + song["name"]
 		+ "PlusButton' src='images/add_circle.png' style='width:24px;height:24px;'>";
+	request.innerHTML = "<img id='" + song["name"] + "RequestButton'" 
+		+ "title='" + song["name"] + " by " + song["artist"] + "'"
+		+ "onclick='requestSong(this)'"
+		+ "src='images/radio.png' style='width:24px;height:24px;'>";
 	
 	var delButton = document.createElement('img');
 	delButton.className = "img";
@@ -199,6 +205,7 @@ function addSongToTab(song, tab) {
 	buttonItem.appendChild(info);
 	buttonItem.appendChild(add);
 	buttonItem.appendChild(del);
+	buttonItem.appendChild(request);
 	
 	var play = document.getElementById("playlist");
 	// Create functionality.
