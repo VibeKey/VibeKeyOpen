@@ -125,13 +125,13 @@
 		<fieldset>
 			<legend>Add a news</legend>
 				News title:<br>
-  				<input type="text" id="newsTitle">
+  				<input type="text" id="newsTitle" value="news title">
 				<br>
 				News Description:<br>
-				<input type="text" id="newsDescription">
+				<input type="text" id="newsDescription" value="news desc">
 				<br>
 				News Date:<br>
-				<input type="datetime-local" id="newsDateTime">
+				<input type="date" id="newsDate" value="2015-10-27">
 				<br></br>
 				<button onclick="addNews()">Submit</button>
 		</fieldset>
@@ -153,7 +153,7 @@
 	<div id="calendarTab" class="sidr">
 		<h1>I am a calendar tab!</h1>
 		<fieldset>
-		    <legend>Schedule a Genre</legend>
+		    <legend>Set Genre</legend>
 		    	Seclect a genre:
 			    <select class="genresList" id="genresList" onchange="scheduleGenre(this)">
 			    	<option value="none">No genre selected</option>
@@ -163,20 +163,20 @@
 		</fieldset>
 		<br></br>
 		<fieldset>
-			<legend>Schedule a Song</legend>
-		    	Seclect a song:
-			    <select class="songsList" id="songsList" onchange="scheduleSong(this)">
-			    	<option value="none">No song selected</option>
+			<legend>Schedule a Playlist</legend>
+		    	Seclect a playlist:
+			    <select class="playsList" id="playsList" onchange="scheduleList(this)">
+			    	<option value="none">No list selected</option>
 				</select>
 				<br></br>
 				<!-- <input type="submit" value="Submit" onclick="scheduleSong()"> -->
 		</fieldset>
 		<br></br>
 		<fieldset>
-			<legend>Schedule a Playlist</legend>
-		    	Seclect a playlist:
-			    <select class="playsList" id="playsList" onchange="scheduleList(this)">
-			    	<option value="none">No list selected</option>
+			<legend>Schedule a Song</legend>
+		    	Seclect a song:
+			    <select class="songsList" id="songsList" onchange="scheduleSong(this)">
+			    	<option value="none">No song selected</option>
 				</select>
 				<br></br>
 				<!-- <input type="submit" value="Submit" onclick="scheduleSong()"> -->
