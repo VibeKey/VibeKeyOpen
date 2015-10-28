@@ -96,6 +96,25 @@ public class FirebaseCommandParser {
 		    newPlaylist.addSong(SongDatabase.getSongFromPath(songPath));
 		}
 		streamController.playlistController.allPlaylists.add(newPlaylist);
+	}
+	
+	private void requestSong(DataSnapshot params){
+		String songPath = params.child("songPath").getValue(String.class);
+		Song song = SongDatabase.getSongFromPath(songPath);
+		streamController.queue.addToQueue(song); //TODO: add limits for user requests
+	}
+	
+	private void upvoteSong(DataSnapshot params){
+		String songPath = params.child("songPath").getValue(String.class);
+		Song song = SongDatabase.getSongFromPath(songPath);
+		song.totalVotes++;
+		song.netVotes++;
+	}
 		
+	private void downvoteSong(DataSnapshot params){
+		String songPath = params.child("songPath").getValue(String.class);
+		Song song = SongDatabase.getSongFromPath(songPath);
+		song.totalVotes++;
+		song.netVotes--;
 	}
 }

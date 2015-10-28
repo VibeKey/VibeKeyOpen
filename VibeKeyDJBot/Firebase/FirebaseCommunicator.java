@@ -3,6 +3,7 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
 
+import com.firebase.client.AuthData;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -15,7 +16,7 @@ public class FirebaseCommunicator {
 	
 	public static void setFirebaseNowPlaying(Song song){
 		String nowPlaying = "Now playing:  \"" + song.getTitle() + "\" by " + song.getArtist() + "   (" + song.getGenre() + ")";
-		rootRef.child("nowPlaying").setValue(song.simplifiedSong);
+		rootRef.child("nowPlaying").setValue(song.getSimplifiedSong());
 		rootRef.child("nowPlaying").child("compiledPlayString").setValue(nowPlaying);
 	}
 	public static void setupFirebaseListeners(FirebaseCommandParser fbCommandParser){
@@ -38,6 +39,19 @@ public class FirebaseCommunicator {
 		
 	}
 	
+	public static void authenticateServer(String FIREBASE_SECRET){
+		rootRef.authWithCustomToken(FIREBASE_SECRET, new Firebase.AuthResultHandler() {
+		    @Override
+		    public void onAuthenticationError(FirebaseError error) {
+		        System.err.println("Login Failed! " + error.getMessage());
+		    }
+		    @Override
+		    public void onAuthenticated(AuthData authData) {
+		        System.out.println("Login Succeeded!");
+		    }
+		});
+	}
+	
 	public static void clearSongsList(){
 		Firebase songsRef = rootRef.child("songs");
 		songsRef.setValue(null);
@@ -58,7 +72,7 @@ public class FirebaseCommunicator {
 		queueRef.setValue(null);
 		LinkedList<SimplifiedSong> queueSimplified = new LinkedList<SimplifiedSong>();
 		for(Song song : queue){
-			queueSimplified.add(song.simplifiedSong);
+			queueSimplified.add(song.getSimplifiedSong());
 		}
 		queueRef.setValue(queueSimplified);
 	}
@@ -73,7 +87,7 @@ public class FirebaseCommunicator {
 			Firebase songsRef = playlistRef.child("songs");
 			for(Song song : playlist.getSongs()){
 				Firebase songRef = songsRef.push();
-				songRef.setValue(song.simplifiedSong);
+				songRef.setValue(song.getSimplifiedSong());
 			}
 			
 		}
@@ -89,7 +103,7 @@ public class FirebaseCommunicator {
 			ArrayList<Song> songsForArtist = artistMap.get(artist);
 			for(Song song : songsForArtist){
 				Firebase songRef = artistRef.push();
-				songRef.setValue(song.simplifiedSong);
+				songRef.setValue(song.getSimplifiedSong());
 			}
 		}
 	}
@@ -104,7 +118,7 @@ public class FirebaseCommunicator {
 			ArrayList<Song> songsForGenre = genreMap.get(genre);
 			for(Song song : songsForGenre){
 				Firebase songRef = genreRef.push();
-				songRef.setValue(song.simplifiedSong);
+				songRef.setValue(song.getSimplifiedSong());
 			}
 		}
 	}
@@ -133,7 +147,7 @@ public class FirebaseCommunicator {
 		allSongsRef.setValue(null);
 		for(Song song : songs){
 			
-			SimplifiedSong simplifiedSong = song.simplifiedSong;
+			SimplifiedSong simplifiedSong = song.getSimplifiedSong();
 			allSongsRef.push().setValue(simplifiedSong);
 		}
 		return true;
