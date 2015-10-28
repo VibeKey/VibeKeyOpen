@@ -18,6 +18,10 @@ public class PlaylistController {
 			newPlaylist.setSongs(playlistSongs);
 			allPlaylists.add(newPlaylist);
 		}
+		updateFirebase();
+	}
+	
+	public void updateFirebase(){
 		FirebaseCommunicator.setPlaylists(allPlaylists);
 	}
 }

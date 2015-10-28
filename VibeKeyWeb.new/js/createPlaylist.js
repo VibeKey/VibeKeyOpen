@@ -8,6 +8,6 @@ function createPlaylist(){
 		songPath = songs[i].getElementsByClassName("path")[0].textContent;
 		thesongs = thesongs.concat([songPath]);
 	};
-	var command = createCommand(false, "addPlaylist", {"name" : "playlist", "songs" : thesongs});
+	var command = createCommand(true, "addPlaylist", {"name" : "playlist", "songs" : thesongs});
 	controls.set(command);
 }

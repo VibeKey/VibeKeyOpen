@@ -96,6 +96,7 @@ public class FirebaseCommandParser {
 		    newPlaylist.addSong(SongDatabase.getSongFromPath(songPath));
 		}
 		streamController.playlistController.allPlaylists.add(newPlaylist);
+		streamController.playlistController.updateFirebase();
 	}
 	
 	private void requestSong(DataSnapshot params){
