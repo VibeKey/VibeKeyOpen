@@ -16,7 +16,7 @@ genreListRef.on("value", function(snapshot) {
   });
 });
 
-//populate song drop down in schedule song
+//populate song drop down in schedule from all songs
 songListRef.once("value", function(snapshot) {
   //var playsDropdown = document.getElementById("playsList");
   snapshot.forEach(function(childSnapshot) {
@@ -26,7 +26,7 @@ songListRef.once("value", function(snapshot) {
     var option = document.createElement("option");
     option.text = songName;
     option.value = songPath;
-    $('.songsList').append(option);
+    $('.allSongsList').append(option);
   });
 });
 

@@ -121,7 +121,7 @@ function addSongToTab(song, tab) {
 	listItem.className = "sortableli";
 	songItem.className = "song";
 	containBox.className = "containBox";
-	votingItem.className = "voting";
+	//votingItem.className = "voting";
 	basicItem.className = "basic";
 	buttonItem.className = "button";
 	
@@ -136,19 +136,19 @@ function addSongToTab(song, tab) {
 	containInfo.appendChild(buttonItem);
 	
 	// Create all voting items.
-	var up = document.createElement('div');
-	var number = document.createElement('div');
-	var down = document.createElement('div');
+	// var up = document.createElement('div');
+	// var number = document.createElement('div');
+	// var down = document.createElement('div');
 	
-	up.className = "upArrow";
-	number.className = "number";
-	down.className = "downArrow";
+	// up.className = "upArrow";
+	// number.className = "number";
+	// down.className = "downArrow";
 	
-	number.innerHTML = song["votes"];
+	// number.innerHTML = song["votes"];
 	
-	votingItem.appendChild(up);
-	votingItem.appendChild(number);
-	votingItem.appendChild(down);
+	// votingItem.appendChild(up);
+	// votingItem.appendChild(number);
+	// votingItem.appendChild(down);
 	
 	// Create all basic song items.
 	var name = document.createElement('div');
@@ -185,7 +185,7 @@ function addSongToTab(song, tab) {
 	add.innerHTML = "<img id='" + song["name"]
 		+ "PlusButton' src='images/add_circle.png' style='width:24px;height:24px;'>";
 	request.innerHTML = "<img id='" + song["name"] + "RequestButton'" 
-		+ "title='" + song["name"] + " by " + song["artist"] + "'"
+		+ "value='" + song["path"] + "'"
 		+ "onclick='requestSong(this)'"
 		+ "src='images/radio.png' style='width:24px;height:24px;'>";
 	
