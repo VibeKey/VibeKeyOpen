@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="Firebase"/>
+	<classpathentry kind="src" path="Songs"/>
+	<classpathentry kind="src" path="Helpers"/>
+	<classpathentry kind="src" path="Schedule"/>
+	<classpathentry kind="src" path="Playlist"/>
+	<classpathentry kind="src" path="Stream"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Libshout"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Mp3agic"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MP3agic"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Firebase"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

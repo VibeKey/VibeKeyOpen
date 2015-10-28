@@ -4,12 +4,7 @@
     <title>HTML5 Event Calendar</title>
 	<!-- demo stylesheet -->
     	<link type="text/css" rel="stylesheet" href="media/layout.css" />    
-
-        <link type="text/css" rel="stylesheet" href="themes/calendar_g.css" />    
-        <link type="text/css" rel="stylesheet" href="themes/calendar_green.css" />    
-        <link type="text/css" rel="stylesheet" href="themes/calendar_traditional.css" />    
-        <link type="text/css" rel="stylesheet" href="themes/calendar_transparent.css" />    
-        <link type="text/css" rel="stylesheet" href="themes/calendar_white.css" />    
+        <link type="text/css" rel="stylesheet" href="themes/calendar_traditional.css" />      
 
 	<!-- helper libraries -->
 	<script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
@@ -19,18 +14,6 @@
 	
 </head>
 <body>
-        <div id="header">
-			<div class="bg-help">
-				<div class="inBox">
-					<h1 id="logo"><a href='http://code.daypilot.org/17910/html5-event-calendar-open-source'>HTML5 Event Calendar</a></h1>
-					<p id="claim"><a href="http://javascript.daypilot.org/">DayPilot for JavaScript</a> - AJAX Calendar/Scheduling Widgets for JavaScript/HTML5/jQuery</p>
-					<hr class="hidden" />
-				</div>
-			</div>
-        </div>
-        <div class="shadow"></div>
-        <div class="hideSkipLink">
-        </div>
         <div class="main">
             
             <div style="float:left; width: 160px;">
@@ -39,12 +22,40 @@
             <div style="margin-left: 160px;">
                 <div id="dp"></div>
             </div>
+            
+<!--            
+		<form method="POST" action="publish.php">
+            	<div id="dialog">
+  					Username: <input type="text" name="username" /><br />
+  					Description: <input type="text" name="description" />
+  					<input name="Submit"  type="submit" value="Update" />
+				</div>
+			</form>
+-->
 
             <script type="text/javascript">
-                
+            
+        		var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
+        		var controls = fireRef.child("controls");
+/*            
+            	var username;
+            
+            	$(document).ready(function(){
+            		$("#dialog").dialog({
+    					autoOpen: false,
+    					position: 'center',
+    					buttons: {
+            				"Ok": function() {
+               					username =  $('input[name=username]').val();
+								var description =  $('input[name=description]').val();
+                				$(this).dialog("close");
+            			}}
+            		});
+            	});
+*/                
                 var nav = new DayPilot.Navigator("nav");
-                nav.showMonths = 3;
-                nav.skipMonths = 3;
+                nav.showMonths = 2;
+                nav.skipMonths = 2;
                 nav.selectMode = "week";
                 nav.onTimeRangeSelected = function(args) {
                     dp.startDate = args.day;
@@ -82,15 +93,19 @@
 
                 // event creating
                 dp.onTimeRangeSelected = function (args) {
-                    var name = prompt("New event name:", "Event");
+                    var text = prompt("New event name (; description):", "Event ; Description");
+                    var event = text.split(/;(.+)?/)[0];
+                    var description = text.split(/;(.+)?/)[1];
+                    //$("#dialog").dialog('open');
+                    
                     dp.clearSelection();
-                    if (!name) return;
+                    if (!event) return;
                     var e = new DayPilot.Event({
                         start: args.start,
                         end: args.end,
                         id: DayPilot.guid(),
                         resource: args.resource,
-                        text: name
+                        text: event + "\n" + description
                     });
                     dp.events.add(e);
 
@@ -98,7 +113,7 @@
                             {
                                 start: args.start.toString(),
                                 end: args.end.toString(),
-                                name: name
+                                name: username
                             }, 
                             function() {
                                 console.log("Created.");
@@ -140,11 +155,24 @@
                 });
             });  
             </script>
-
-        </div>
-        <div class="clear">
         </div>
         
+        <br />
+        
+        <div class="clear">
+        	Show schedules from: 
+            <input type="radio" name="size" value="all" />All
+            <input type="radio" name="size" value="me" checked />Me
+            <input type="radio" name="size" value="dj" checked />DJs
+            <input type="radio" name="size" value="manager" />Manager
+        </div>
+        <div class="clear">
+
+        	<p> Show the schedule of 
+        		<select id="type" style= "display:inline">
+					<option value="all">All Kinds of</option>
+				</select>
+			Music</p>
 </body>
 </html>
 

@@ -19,6 +19,7 @@ public class Song {
 	ID3v1 metadatav1;
 	boolean hasv2Data;
 	boolean hasv1Data;
+	SimplifiedSong simplifiedSong;
 	boolean playing = false; //used to force it to stop
 	
 	Song(File songFile){
@@ -36,6 +37,8 @@ public class Song {
 			}else if(hasv1Data){
 				metadatav1 = songMetaDataFile.getId3v1Tag();
 			}
+			
+			simplifiedSong = new SimplifiedSong(getTitle(), getArtist(), getAlbum(), getGenre(), getPath(), getLength());
 		} catch (UnsupportedTagException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -97,6 +100,15 @@ public class Song {
 			return metadatav1.getAlbum();
 		}
 		return "";
+	}
+	
+
+	long getLength(){
+		return songMetaDataFile.getLengthInSeconds();
+	}
+	
+	String getPath(){
+		return songFile.getAbsolutePath();
 	}
 	
 	boolean streamSong(Libshout cast){
