@@ -5,10 +5,12 @@ public class DJBot {
 	FirebaseCommandParser fbCommandParser;
 	
 	static final String FIREBASE_SECRET = "1a67VqyArJO54DIBBDe1T4W3V7Rhb7XrXLylVTAE";
+	static final String FIREBASE_ROOT_URL = "https://vibekey-open.firebaseio.com/";
+	static final String MUSIC_PATH = "/home/radio3/MusicDev";
 	
 	public DJBot() {
-		FirebaseCommunicator.rootRef = new Firebase("https://vibekey-open.firebaseio.com/");
-		SongDatabase.musicPath = "/home/radio3/MusicDev";
+		FirebaseCommunicator.rootRef = new Firebase(FIREBASE_ROOT_URL);
+		SongDatabase.musicPath = MUSIC_PATH;
 		SongDatabase.loadDatabase();
 
 		
@@ -20,7 +22,7 @@ public class DJBot {
 	
 	
 	public void play(){
-		streamController.playNextSong();
+		streamController.play();
 	}
 	
 	public void close(){

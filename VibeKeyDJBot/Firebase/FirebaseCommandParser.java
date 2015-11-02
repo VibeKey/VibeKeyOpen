@@ -118,4 +118,8 @@ public class FirebaseCommandParser {
 		song.totalVotes++;
 		song.netVotes--;
 	}
+	
+	private void stopServer(DataSnapshot params){
+		streamController.stopServer();
+	}
 }

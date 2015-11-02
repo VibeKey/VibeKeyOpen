@@ -13,6 +13,7 @@ public class StreamController {
 	PlaylistController playlistController;
 	PlaySchedule playSchedule;
 	String playlistName;
+	Boolean stopServer = false; //easy way to stop the server, turn it to true
 	
 	public StreamController(){
 		icecast = initializeIcecast();
@@ -101,16 +102,18 @@ public class StreamController {
 		return song;
 	}
 	
-	public void playNextSong(){
-		Song song = getNextSong();
-		
-		String nowPlaying = "Now playing:  \"" + song.getTitle() + "\" by " + song.getArtist() + "   (" + song.getGenre() + ")";
-		System.out.println(nowPlaying);
-		FirebaseCommunicator.setFirebaseNowPlaying(song);
-		curPlaying = song;
-		//boolean finishedSucessfully = song.streamSong(icecast);
-		
-		song.streamSong(icecast);
+	public void play(){
+		while(!this.stopServer){
+			Song song = getNextSong();
+			
+			String nowPlaying = "Now playing:  \"" + song.getTitle() + "\" by " + song.getArtist() + "   (" + song.getGenre() + ")";
+			System.out.println(nowPlaying);
+			FirebaseCommunicator.setFirebaseNowPlaying(song);
+			curPlaying = song;
+			//boolean finishedSucessfully = song.streamSong(icecast);
+			
+			song.streamSong(icecast);
+		}
 	}
 	
 	
@@ -135,5 +138,10 @@ public class StreamController {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	public void stopServer(){
+		this.stopServer = true; //tell stream controller to throw stop exception
+		this.curPlaying.playing = false; //stop immediate song
 	}
 }
