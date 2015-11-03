@@ -22,35 +22,19 @@ $(document).ready(function() {
 		  	var songName = childData.title;
 		  	var songBand = childData.artist;
 		  	var songPath = childData.path;
+		  	var votes = childData.netVotes;
 		  	var song = {
 		  		"id" : [id],
 		  		"name" : [songName],
 		  		"artist" : [songBand],
 		  		"path" : [songPath],
-		  		"votes" : 0
+		  		"votes" : [votes]
 		  	};
 		  	addSongToTab(song, searchTab);
 		  });
 		}, function (errorObject) {
 		  console.log("The read failed: " + errorObject.code);
 		});
-
-		
-		var playlistHeader = document.getElementById("playhead");
-		var buttonSpan = document.createElement('span');
-		buttonSpan.className = "button";
-		
-		var refreshButton = document.createElement('span');
-		refreshButton.className = "circle";
-		refreshButton.innerHTML = "<img id='refreshButton' src='images/mic_mute.png' style='width:24px;height:24px;'>";
-		buttonSpan.appendChild(refreshButton);
-		
-		var micButton = document.createElement('span');
-		micButton.className="circle";
-		micButton.innerHTML = "<img id='micButton' src='images/sync.png' style='width:24px;height:24px;'>";
-		buttonSpan.appendChild(micButton);
-		
-		playlistHeader.appendChild(buttonSpan);
 		
 		// Does the dragging.
 	$('.sortable').sortable({
@@ -121,7 +105,7 @@ function addSongToTab(song, tab) {
 	listItem.className = "sortableli";
 	songItem.className = "song";
 	containBox.className = "containBox";
-	//votingItem.className = "voting";
+	votingItem.className = "voting";
 	basicItem.className = "basic";
 	buttonItem.className = "button";
 	
@@ -137,17 +121,17 @@ function addSongToTab(song, tab) {
 	
 	// Create all voting items.
 	// var up = document.createElement('div');
-	// var number = document.createElement('div');
+	var number = document.createElement('div');
 	// var down = document.createElement('div');
 	
 	// up.className = "upArrow";
-	// number.className = "number";
+	number.className = "number";
 	// down.className = "downArrow";
 	
-	// number.innerHTML = song["votes"];
+	number.innerHTML = song["votes"];
 	
 	// votingItem.appendChild(up);
-	// votingItem.appendChild(number);
+	votingItem.appendChild(number);
 	// votingItem.appendChild(down);
 	
 	// Create all basic song items.
@@ -184,8 +168,8 @@ function addSongToTab(song, tab) {
 		+ "InfoButton' src='images/info_circle.png' style='width:24px;height:24px;'>";
 	add.innerHTML = "<img id='" + song["name"]
 		+ "PlusButton' src='images/add_circle.png' style='width:24px;height:24px;'>";
-	request.innerHTML = "<img id='" + song["name"] + "RequestButton'" 
-		+ "value='" + song["path"] + "'"
+	request.innerHTML = "<img value='" + song["name"] + "RequestButton'" 
+		+ "id='" + song["path"] + "'"
 		+ "onclick='requestSong(this)'"
 		+ "src='images/radio.png' style='width:24px;height:24px;'>";
 	

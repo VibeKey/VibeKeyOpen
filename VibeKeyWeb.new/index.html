@@ -25,6 +25,7 @@
 	<script type="text/javascript" src="js/createCommand.js"></script>
 	<script type="text/javascript" src="js/scheduleMusic.js"></script>
 	<script type="text/javascript" src="js/addNews.js"></script>
+	<script type="text/javascript" src="js/vote.js"></script>
 </head>
 
 <body>
@@ -56,17 +57,17 @@
 						<span id="curPlayingTitle" class="title">Song Title</span>
 						<span id="curPlayingGenre" class="genre">Song Genre</span>
 					</div>
-					<div class="button" style="float:none; height:auto;">
-						<div onclick="upVote()" id="upVote" class="circle">
-								<img id="upImg" style="width:30px; height:30px;" 
+					<span class="button">
+						<span onclick="upVote()" id="upVote" class="circle">
+								<img id="upImg" style="width:24px;height:24px;" 
 									src="images/up_arrow.png">
-						</div>
+						</span>
 
-						<div onclick="downVote()" id="downVote" class="circle">
-								<img id="downImg" style="width:30px; height:30px;" 
+						<span onclick="downVote()" id="downVote" class="circle">
+								<img id="downImg" style="width:24px;height:24px;" 
 									src="images/down_arrow.png">
-						</div>
-					</div>
+						</span>
+					</span>
 				</div>
 				
 				<div class="playsongs" id="playSongs">
