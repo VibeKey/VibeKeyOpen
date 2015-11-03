@@ -1,7 +1,6 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Map;
-import java.util.Set;
 
 import com.firebase.client.AuthData;
 import com.firebase.client.DataSnapshot;
@@ -93,6 +92,7 @@ public class FirebaseCommunicator {
 		}
 	}
 	
+	/*
 	public static void addSongsToFirebaseByArtistMap(Map<String, ArrayList<Song>> artistMap){
 		Firebase songsByArtistRef = rootRef.child("songs").child("byArtist");
 		songsByArtistRef.setValue(null);
@@ -122,6 +122,7 @@ public class FirebaseCommunicator {
 			}
 		}
 	}
+	*/
 	
 	public static void loadSchedule(ArrayList<ScheduleItem> scheduleItems){
 		Firebase scheduleRef = rootRef.child("schedule");
@@ -142,14 +143,35 @@ public class FirebaseCommunicator {
 	
 	
 	
-	public static boolean addSongsToFirebase(ArrayList<Song> songs){
+	public static void syncSongsWithFirebase(ArrayList<Song> songs, HashMap<String, Song> pathToSongMap){
 		Firebase allSongsRef = rootRef.child("songs").child("allSongs");
-		allSongsRef.setValue(null);
-		for(Song song : songs){
-			
-			SimplifiedSong simplifiedSong = song.getSimplifiedSong();
-			allSongsRef.push().setValue(simplifiedSong);
-		}
-		return true;
+		allSongsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+		    @Override
+		    public void onDataChange(DataSnapshot snapshot) {
+		    	for(DataSnapshot songSnapshot : snapshot.getChildren()){
+		    		Song fbSong = songSnapshot.getValue(Song.class);
+		    		Song dbSong = pathToSongMap.get(fbSong.getPath());
+		    		if(dbSong != null){
+		    			dbSong.netVotes = fbSong.netVotes;
+		    			dbSong.totalVotes = fbSong.totalVotes;
+		    		}
+		    	}
+				allSongsRef.setValue(null);
+				for(Song song : songs){
+					SimplifiedSong simplifiedSong = song.getSimplifiedSong();
+					Firebase songRef = allSongsRef.push();
+					song.UUID = songRef.getKey();
+					songRef.setValue(simplifiedSong);
+				}
+		    }
+		    @Override
+		    public void onCancelled(FirebaseError firebaseError) {
+		    }
+		});
+	}
+	
+	public static void updateSong(Song song){
+		Firebase songRef = rootRef.child("songs").child("allSongs").child(song.UUID);
+		songRef.setValue(song);
 	}
 }

@@ -108,15 +108,13 @@ public class FirebaseCommandParser {
 	private void upvoteSong(DataSnapshot params){
 		String songPath = params.child("songPath").getValue(String.class);
 		Song song = SongDatabase.getSongFromPath(songPath);
-		song.totalVotes++;
-		song.netVotes++;
+		song.upvote();
 	}
 		
 	private void downvoteSong(DataSnapshot params){
 		String songPath = params.child("songPath").getValue(String.class);
 		Song song = SongDatabase.getSongFromPath(songPath);
-		song.totalVotes++;
-		song.netVotes--;
+		song.downvote();
 	}
 	
 	private void stopServer(DataSnapshot params){

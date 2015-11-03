@@ -21,6 +21,7 @@ public class Song {
 	boolean hasv1Data;
 	public int netVotes;
 	public int totalVotes;
+	public String UUID; //used to access the song in the Firebase song list
 	boolean playing = false; //used to force it to stop
 	
 	Song(File songFile){
@@ -142,5 +143,17 @@ public class Song {
 		}
 		playing=false;
 		return false;
+	}
+	
+	public void upvote(){
+		netVotes++;
+		totalVotes++;
+		FirebaseCommunicator.updateSong(this);
+	}
+	
+	public void downvote(){
+		netVotes--;
+		totalVotes++;
+		FirebaseCommunicator.updateSong(this);
 	}
 }
