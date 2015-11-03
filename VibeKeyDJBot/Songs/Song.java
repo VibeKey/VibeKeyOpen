@@ -19,15 +19,15 @@ public class Song {
 	ID3v1 metadatav1;
 	boolean hasv2Data;
 	boolean hasv1Data;
-	public int netVotes;
-	public int totalVotes;
+	public int netVotes = 0;
+	public int totalVotes = 0;
 	public String UUID; //used to access the song in the Firebase song list
 	boolean playing = false; //used to force it to stop
 	
 	Song(File songFile){
 		this.songFile = songFile;
-		this.netVotes = RandomWrapper.random.nextInt(6)-3; //TODO: Load these from firebase instead of random
-		this.totalVotes = RandomWrapper.random.nextInt(10)+5;
+//		this.netVotes = RandomWrapper.random.nextInt(6)-3; //TODO: Load these from firebase instead of random
+//		this.totalVotes = RandomWrapper.random.nextInt(10)+5;
 		loadMetaData();
 	}
 	
