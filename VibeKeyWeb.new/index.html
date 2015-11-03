@@ -26,6 +26,7 @@
 	<script type="text/javascript" src="js/scheduleMusic.js"></script>
 	<script type="text/javascript" src="js/addNews.js"></script>
 	<script type="text/javascript" src="js/vote.js"></script>
+	<script type="text/javascript" src="js/searchSongs.js"></script>
 </head>
 
 <body>
@@ -130,6 +131,22 @@
 
 	<!-- This is the part where we create what's inside the actual tabs that pull out on the left side -->
 	<div id="searchTab" class="sidr">
+		Search By name:<br>
+		<input type="text" id="searchByName" value="Colorway">
+		<button onclick="search()">Search</button>
+		<br>
+		Search By artist:<br>
+		<select class="searchByArtistList" id="searchByArtistList" onchange="searchByArtist(this)">
+			<option value="none">No artist selected</option>
+		</select>
+		<br>
+		Search By genre:<br>
+		<select class="searchByGenreList" id="searchByGenreList" onchange="searchByGenre(this)">
+			<option value="none">No genre selected</option>
+		</select>
+		<br><br>
+		<button onclick="showAllSongs()">Show All Songs</button>
+		<br><br>
 	</div>
 	
 	<div id="newsTab" class="sidr">

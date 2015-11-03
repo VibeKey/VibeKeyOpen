@@ -10,32 +10,6 @@ $(document).ready(function() {
 		document.getElementById("searchFunc").appendChild(searchTab);
 		var play = document.getElementById("playlist");
 		
-		//load firebase songs and create song obj on wbsite
-		var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
-		var songsRef = fireRef.child("songs");
-		var allsongsRef = songsRef.child("allSongs");
-		allsongsRef.once("value", function(snapshot) {
-		  var main = snapshot.val();
-		  snapshot.forEach(function(childSnapshot) {
-		  	var id = childSnapshot.key();
-		  	var childData = childSnapshot.val();
-		  	var songName = childData.title;
-		  	var songBand = childData.artist;
-		  	var songPath = childData.path;
-		  	var votes = childData.netVotes;
-		  	var song = {
-		  		"id" : [id],
-		  		"name" : [songName],
-		  		"artist" : [songBand],
-		  		"path" : [songPath],
-		  		"votes" : [votes]
-		  	};
-		  	addSongToTab(song, searchTab);
-		  });
-		}, function (errorObject) {
-		  console.log("The read failed: " + errorObject.code);
-		});
-		
 		// Does the dragging.
 	$('.sortable').sortable({
 		connectWith: $('.sortable'),
