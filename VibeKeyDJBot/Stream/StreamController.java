@@ -90,6 +90,14 @@ public class StreamController {
 				}
 			}
 			
+			/*int totalNet = 0;
+			for(Song song : SongDatabase.songs){
+				totalNet+=song.netVotes;
+			}
+			for(Song song : SongDatabase.songs){
+				if(RandomWrapper.nextDouble() < ((Double) song.netVotes)
+			}
+			*/
 			int songNum = RandomWrapper.nextInt(SongDatabase.songs.size()); //TODO: add more than random songs
 			queue.addToQueue(SongDatabase.songs.get(songNum));
 		}

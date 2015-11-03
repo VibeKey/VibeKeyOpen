@@ -6,4 +6,8 @@ public class RandomWrapper {
 	static int nextInt(int upper){
 		return random.nextInt(upper);
 	}
+	
+	static double nextDouble(){
+		return random.nextDouble();
+	}
 }
