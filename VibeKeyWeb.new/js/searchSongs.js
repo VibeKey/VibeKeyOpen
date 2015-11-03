@@ -1,28 +1,33 @@
-var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
-var byArtistRef = fireRef.child("songs").child("byArtist");
-var byGenreRef = fireRef.child("songs").child("byGenre");
+function populateSearchLists() {
+	var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
+	var byArtistRef = fireRef.child("songs").child("byArtist");
+	var byGenreRef = fireRef.child("songs").child("byGenre");
 
-//populate genre drop down in search by genre
-byGenreRef.on("value", function(snapshot) {
-  snapshot.forEach(function(data) {
-    var genre = data.child('genre').val();
-    var option = document.createElement("option");
-    option.text = option.value = genre;
-    $('.searchByGenreList').append(option);
-  });
-});
+	//populate genre drop down in search by genre
+	byGenreRef.on("value", function(snapshot) {
+	  snapshot.forEach(function(data) {
+	    var genre = data.child('genre').val();
+	    var option = document.createElement("option");
+	    option.text = option.value = genre;
+	    $('.searchByGenreList').append(option);
+	  });
+	});
 
-//populate artist drop down in search by artist
-byArtistRef.on("value", function(snapshot) {
-  snapshot.forEach(function(data) {
-    var artist = data.child('artist').val();
-    var option = document.createElement("option");
-    option.text = option.value = artist;
-    $('.searchByArtistList').append(option);
-  });
-});
+	//populate artist drop down in search by artist
+	byArtistRef.on("value", function(snapshot) {
+	  snapshot.forEach(function(data) {
+	    var artist = data.child('artist').val();
+	    var option = document.createElement("option");
+	    option.text = option.value = artist;
+	    $('.searchByArtistList').append(option);
+	  });
+	});
+}
+
 
 function searchByArtist(list) {
+	var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
+	var byArtistRef = fireRef.child("songs").child("byArtist");
 	var selectedArtist = list.value;
 	var searchTab = document.getElementById('searchSongs');
 	searchTab.innerHTML = "";
@@ -54,6 +59,8 @@ function searchByArtist(list) {
 }
 
 function searchByGenre(list) {
+	var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
+	var byGenreRef = fireRef.child("songs").child("byGenre");
 	var selectedGenre = list.value;
 	var searchTab = document.getElementById('searchSongs');
 	searchTab.innerHTML = "";
@@ -114,9 +121,8 @@ function showAllSongs() {
 	});
 }
 
-$(document).ready(function() {
-	$(".searchByNameButton").click(function search() {
-	var searchWord = document.getElementById('searchByName').value;
+function search() {
+	var searchWord = document.getElementsByClassName('searchByName')[1].value;
 	console.log(searchWord);
 	var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
 	var songsRef = fireRef.child("songs");
@@ -149,5 +155,4 @@ $(document).ready(function() {
 	}, function (errorObject) {
 		console.log("The read failed: " + errorObject.code);
 	});
-});
-});
+}

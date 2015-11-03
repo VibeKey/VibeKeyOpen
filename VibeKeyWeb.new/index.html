@@ -12,36 +12,9 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="js/tabScript.js"></script>
-	<script type="text/javascript" src="js/hover.js"></script>
-	<script type="text/javascript" src="js/requestSong.js"></script>
-	<script type="text/javascript" src="js/songObj.js"></script>
-	<script type="text/javascript" src="js/streamScript.js"></script>
-	<script type="text/javascript" src="js/buttonScript.js"></script>
-	<script type="text/javascript" src="js/jquery.sidr.min.js"></script>
-	<script type="text/javascript" src="js/amplitude.js"></script>
-	<script type="text/javascript" src="js/createPlaylist.js"></script>
-	<script type="text/javascript" src="js/playMusic.js"></script>
-	<script type="text/javascript" src="js/createCommand.js"></script>
-	<script type="text/javascript" src="js/scheduleMusic.js"></script>
-	<script type="text/javascript" src="js/news.js"></script>
-	<script type="text/javascript" src="js/vote.js"></script>
-	<script type="text/javascript" src="js/searchSongs.js"></script>
 </head>
 
-<body>	
-	<script>	
-	function process(data, textStatus, jqXHR) {
-		var succ = document.createElement('p');
-		succ.innerHTML = "SUCCESS" + data;
-		document.body.appendChild(succ);
-	}
-	$(document).ready(function() {
-		populateNewsList();
-	});
-	</script>
-
-
+<body>
 	<div id="stuffBody" class="stuffBody">
 		<div class="WMHD">
 			<h1 style="position:absolute;top:0%;left:40%"> WMHD Radio </h1>
@@ -113,8 +86,8 @@
 	<!-- This is the part where we create what's inside the actual tabs that pull out on the left side -->
 	<div id="searchTab" class="sidr">
 		Search By name:<br>
-		<input type="text" id="searchByName" value="Colorway">
-		<button class="searchByNameButton" id="searchByNameButton">Search</button>
+		<input type="text" class="searchByName" id="searchByName" value="Colorway">
+		<button class="searchByNameButton" id="searchByNameButton" onclick="search()">Search</button>
 		<br>
 		Search By artist:<br>
 		<select class="searchByArtistList" id="searchByArtistList" onchange="searchByArtist(this)">
@@ -135,13 +108,13 @@
 		<fieldset>
 			<legend>Add a news</legend>
 				News title:<br>
-  				<input type="text" id="newsTitle" value="news title">
+  				<input type="text" class="newsTitle" id="newsTitle" value="news title">
 				<br>
 				News Description:<br>
-				<input type="text" id="newsDescription" value="news desc">
+				<input type="text" class="newsDescription" id="newsDescription" value="news desc">
 				<br>
 				News Date:<br>
-				<input type="date" id="newsDate" value="2015-10-27">
+				<input type="date" class="newsDate" id="newsDate" value="2015-10-27">
 				<br></br>
 				<button onclick="addNews()">Add</button>
 		</fieldset>
@@ -149,7 +122,7 @@
 		<fieldset>
 			<legend>Delete a news</legend>
 				Select a news:<br>
-				<select class="newsList" id="newsList" onchange="deleteNews(this)">
+				<select class="newsList" id="newsList">
 			    	<option value="none">No news selected</option>
 				</select>
 				<br></br>
@@ -214,6 +187,29 @@
 	<div id="settingsTab" class="sidr">
 		<h1>I am a settings tab!</h1>
 	</div>
+
+	<script type="text/javascript" src="js/tabScript.js"></script>
+	<script type="text/javascript" src="js/hover.js"></script>
+	<script type="text/javascript" src="js/requestSong.js"></script>
+	<script type="text/javascript" src="js/songObj.js"></script>
+	<script type="text/javascript" src="js/streamScript.js"></script>
+	<script type="text/javascript" src="js/buttonScript.js"></script>
+	<script type="text/javascript" src="js/jquery.sidr.min.js"></script>
+	<script type="text/javascript" src="js/amplitude.js"></script>
+	<script type="text/javascript" src="js/createPlaylist.js"></script>
+	<script type="text/javascript" src="js/playMusic.js"></script>
+	<script type="text/javascript" src="js/createCommand.js"></script>
+	<script type="text/javascript" src="js/scheduleMusic.js"></script>
+	<script type="text/javascript" src="js/news.js"></script>
+	<script type="text/javascript" src="js/vote.js"></script>
+	<script type="text/javascript" src="js/searchSongs.js"></script>
+	<script>
+		$(document).ready(function() {
+    		populateNewsList();
+    		populateSearchLists();
+    		populateCalenderLists();
+		});
+	</script>
 	</body>
 </html>
 
