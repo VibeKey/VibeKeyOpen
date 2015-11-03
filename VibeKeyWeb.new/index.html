@@ -8,10 +8,10 @@
 	<link rel="stylesheet" href="css/tabStyle.css">
 	<link rel="stylesheet" href="css/animations.css">
 	<link rel="stylesheet" href="css/jquery.sidr.dark.css">
-	<script src="https://cdn.firebase.com/js/client/2.3.0/firebase.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="js/frequencyAnimator.js"></script>
+	<script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="js/tabScript.js"></script>
 	<script type="text/javascript" src="js/hover.js"></script>
 	<script type="text/javascript" src="js/requestSong.js"></script>
@@ -36,7 +36,6 @@
 		succ.innerHTML = "SUCCESS" + data;
 		document.body.appendChild(succ);
 	}
-		-->
 	$(document).ready(function() {
 		populateNewsList();
 	});
@@ -92,23 +91,6 @@
 							<img id="listDownArrow" style="width:30px; height:30px; display:none;" 
 								src="images/down_arrow.png">
 						</div>
-						<!--
-						<div onclick="pressPlayerButton()" class="play" 
-							id="player">
-							<img id="pauseButton" 
-								src="images/pausebutton.png" 
-								alt='Pause Stream' style='width:50px; height:50px;'>
-							<img id="playButton" 
-								src="images/playbutton.png" 
-								alt='Play Stream' style='width:50px; height:50px;'>
-						</div>
-						<div onclick="clickBottomButton(this)" id="up" class="circle">
-							<img id="upImg" style="width:30px; height:30px;" 
-								src="images/up.png">
-							<img id="upDownArrow" style="width:30px; height:30px; display:none;" 
-								src="images/down_arrow.png">
-						</div>
-						-->
 						<div onclick="pressPlayerButton(this)" class="circle amplitude-play-pause amplitude-playing" amplitude-song-index="0">
 							<img id="playButton" style="width:30px; height:30px; display:none;" 
 								src="images/playbutton.png">
