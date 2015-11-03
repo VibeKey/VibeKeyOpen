@@ -114,8 +114,10 @@ function showAllSongs() {
 	});
 }
 
-function search() {
+$(document).ready(function() {
+	$(".searchByNameButton").click(function search() {
 	var searchWord = document.getElementById('searchByName').value;
+	console.log(searchWord);
 	var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
 	var songsRef = fireRef.child("songs");
 	var allsongsRef = songsRef.child("allSongs");
@@ -147,4 +149,5 @@ function search() {
 	}, function (errorObject) {
 		console.log("The read failed: " + errorObject.code);
 	});
-}
+});
+});

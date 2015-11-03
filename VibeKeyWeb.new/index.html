@@ -24,25 +24,24 @@
 	<script type="text/javascript" src="js/playMusic.js"></script>
 	<script type="text/javascript" src="js/createCommand.js"></script>
 	<script type="text/javascript" src="js/scheduleMusic.js"></script>
-	<script type="text/javascript" src="js/addNews.js"></script>
+	<script type="text/javascript" src="js/news.js"></script>
 	<script type="text/javascript" src="js/vote.js"></script>
 	<script type="text/javascript" src="js/searchSongs.js"></script>
 </head>
 
-<body>
-	<!--
+<body>	
 	<script>	
 	function process(data, textStatus, jqXHR) {
 		var succ = document.createElement('p');
 		succ.innerHTML = "SUCCESS" + data;
 		document.body.appendChild(succ);
 	}
-	
-	//initially creates some songs on the website using methods in songObj.js
+		-->
 	$(document).ready(function() {
+		populateNewsList();
 	});
 	</script>
-	-->
+
 
 	<div id="stuffBody" class="stuffBody">
 		<div class="WMHD">
@@ -133,7 +132,7 @@
 	<div id="searchTab" class="sidr">
 		Search By name:<br>
 		<input type="text" id="searchByName" value="Colorway">
-		<button onclick="search()">Search</button>
+		<button class="searchByNameButton" id="searchByNameButton">Search</button>
 		<br>
 		Search By artist:<br>
 		<select class="searchByArtistList" id="searchByArtistList" onchange="searchByArtist(this)">
@@ -162,7 +161,17 @@
 				News Date:<br>
 				<input type="date" id="newsDate" value="2015-10-27">
 				<br></br>
-				<button onclick="addNews()">Submit</button>
+				<button onclick="addNews()">Add</button>
+		</fieldset>
+		<br><br>
+		<fieldset>
+			<legend>Delete a news</legend>
+				Select a news:<br>
+				<select class="newsList" id="newsList" onchange="deleteNews(this)">
+			    	<option value="none">No news selected</option>
+				</select>
+				<br></br>
+				<button onclick="deleteNews()">Delete</button>
 		</fieldset>
 	</div>
 	
