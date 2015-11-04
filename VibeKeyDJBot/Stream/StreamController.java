@@ -89,8 +89,9 @@ public class StreamController {
 					}
 				}
 			}
+			/*
+			int totalNetVotes = 0;
 			
-			/*int totalNet = 0;
 			for(Song song : SongDatabase.songs){
 				totalNet+=song.netVotes;
 			}

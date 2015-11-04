@@ -23,10 +23,10 @@ public class SongDatabase {
 	}
 	
 	static public void pushToFirebase(){
-		//FirebaseCommunicator.clearSongsList();
+		FirebaseCommunicator.clearSongsList();
 		FirebaseCommunicator.syncSongsWithFirebase(songs, pathToSongMap);
-//		FirebaseCommunicator.addSongsToFirebaseByGenre(genreMap);
-//		FirebaseCommunicator.addSongsToFirebaseByArtistMap(artistMap);
+		FirebaseCommunicator.addSongsToFirebaseByGenre(genreMap);
+		FirebaseCommunicator.addSongsToFirebaseByArtistMap(artistMap);
 		FirebaseCommunicator.addGenresToFirebase(genres);
 	}
 

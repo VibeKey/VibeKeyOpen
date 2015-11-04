@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
+import java.util.Set;
 
 import com.firebase.client.AuthData;
 import com.firebase.client.DataSnapshot;
@@ -52,7 +54,9 @@ public class FirebaseCommunicator {
 	}
 	
 	public static void clearSongsList(){
-		Firebase songsRef = rootRef.child("songs");
+		Firebase songsRef = rootRef.child("songs").child("byGenre");
+		songsRef.setValue(null);
+		songsRef = rootRef.child("songs").child("byArtist");
 		songsRef.setValue(null);
 	}
 
@@ -92,7 +96,6 @@ public class FirebaseCommunicator {
 		}
 	}
 	
-	/*
 	public static void addSongsToFirebaseByArtistMap(Map<String, ArrayList<Song>> artistMap){
 		Firebase songsByArtistRef = rootRef.child("songs").child("byArtist");
 		songsByArtistRef.setValue(null);
@@ -122,7 +125,6 @@ public class FirebaseCommunicator {
 			}
 		}
 	}
-	*/
 	
 	public static void loadSchedule(ArrayList<ScheduleItem> scheduleItems){
 		Firebase scheduleRef = rootRef.child("schedule");
