@@ -114,7 +114,7 @@
 				<input type="text" class="newsDescription" id="newsDescription" value="news desc">
 				<br>
 				News Date:<br>
-				<input type="date" class="newsDate" id="newsDate" value="2015-10-27">
+				<input type="date" class="newsDate" id="newsDate">
 				<br></br>
 				<button onclick="addNews()">Add</button>
 		</fieldset>
@@ -173,6 +173,51 @@
 				</select>
 				<br></br>
 				<!-- <input type="submit" value="Submit" onclick="scheduleSong()"> -->
+		</fieldset>
+		<br></br>
+		<fieldset>
+			<legend>Schedule</legend>
+		    	Seclect a play mode:
+			    <select class="playModeList" id="playModeList">
+			    	<option value="0">None</option>
+			    	<option value="1">Genre</option>
+			    	<option value="2">Playlist</option>
+			    	<option value="3">LiveDJ</option>
+				</select>
+				<br></br>
+				Seletc a repeat mode:
+				<select class="repeatModeList" id="repeatModeList">
+			    	<option value="0">None</option>
+			    	<option value="1">Daily</option>
+			    	<option value="2">Weekly</option>
+			    	<option value="3">Monthly</option>
+				</select>
+				<br></br>
+				Select a start time:
+				<input type="datetime-local" class="startTime">
+				<br></br>
+				Select an end time:
+				<input type="datetime-local" class="endTime">
+				<br></br>
+				Select a DJ name (Optional):
+				<select class="djNameList" id="djNameList">
+					<option value="DJ0">No DJ</option>
+			    	<option value="DJ1">DJ1</option>
+			    	<option value="DJ2">DJ2</option>
+			    	<option value="DJ3">DJ3</option>
+				</select>
+				<br></br>
+				Select a Genre OR
+				<select class="scheduleGenresList" id="scheduleGenresList">
+			    	<option value="none">No genre selected</option>
+				</select>
+				<br></br>
+				Select a playlist
+				<select class="schedulePLList" id="schedulePLList">
+			    	<option value="none">No playlist selected</option>
+				</select>
+				<br></br>
+				<button onclick="schedule()">Schedule</button>
 		</fieldset>
 	</div>
 

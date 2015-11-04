@@ -51,9 +51,8 @@ function scheduleGenre(list){
 function scheduleSong(list){
   var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
   var controls = fireRef.child("controls");
-  var selectedSongName = list.options[list.selectedIndex].text;
   var selectedSongPath = list.value;
-  var command = createCommand(true, "addToFrontOfQueue", {"songPath" : selectedSongPath, "song" : selectedSongName});
+  var command = createCommand(true, "addToFrontOfQueue", {"songPath" : selectedSongPath});
   controls.set(command);
 }
 
@@ -63,4 +62,20 @@ function scheduleList(list) {
   var selectedList = list.options[list.selectedIndex].text;
   var command2 = createCommand(true, "setPlaylist", {"playlist" : selectedList});
   controls.set(command2);
+}
+
+function schedule() {
+  var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
+  var controls = fireRef.child("controls");
+  var playMode = document.getElementsByClassName('playModeList')[1].value;
+  var repeatMode = document.getElementsByClassName('repeatModeList')[1].value;
+  var startTime = document.getElementsByClassName('startTime')[1].value;
+  var endTime = document.getElementsByClassName('endTime')[1].value;
+  var DJName = document.getElementsByClassName('djNameList')[1].value;
+  var genre = document.getElementsByClassName('scheduleGenresList')[1].value;
+  var playlist = document.getElementsByClassName('schedulePLList')[1].value;
+
+  var command = createCommand(false, "addToSchedule", {"playMode":playMode, "repeatMode":repeatMode, 
+    "startTime":startTime, "endTime":endTime, "DJName":DJName, "genre":genre, "playlist":playlist});
+  controls.set(command);
 }
