@@ -197,7 +197,7 @@
 	<script type="text/javascript" src="js/jquery.sidr.min.js"></script>
 	<script type="text/javascript" src="js/amplitude.js"></script>
 	<script type="text/javascript" src="js/createPlaylist.js"></script>
-	<script type="text/javascript" src="js/playMusic.js"></script>
+	<script type="text/javascript" src="js/streamMusic.js"></script>
 	<script type="text/javascript" src="js/createCommand.js"></script>
 	<script type="text/javascript" src="js/scheduleMusic.js"></script>
 	<script type="text/javascript" src="js/news.js"></script>
@@ -205,6 +205,8 @@
 	<script type="text/javascript" src="js/searchSongs.js"></script>
 	<script>
 		$(document).ready(function() {
+			streamMusic();
+			updateNowPlaying();
     		populateNewsList();
     		populateSearchLists();
     		populateCalenderLists();
