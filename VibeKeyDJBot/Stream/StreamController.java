@@ -97,7 +97,7 @@ public class StreamController {
 			for(Song song : SongDatabase.songs){
 				if(RandomWrapper.nextDouble() < ((Double) song.netVotes)
 			}
-			*/
+			*/	
 			int songNum = RandomWrapper.nextInt(SongDatabase.songs.size()); //TODO: add more than random songs
 			queue.addToQueue(SongDatabase.songs.get(songNum));
 		}

@@ -149,11 +149,11 @@ public class FirebaseCommunicator {
 		    @Override
 		    public void onDataChange(DataSnapshot snapshot) {
 		    	for(DataSnapshot songSnapshot : snapshot.getChildren()){
-		    		Song fbSong = songSnapshot.getValue(Song.class);
+		    		SimplifiedSong fbSong = songSnapshot.getValue(SimplifiedSong.class);
 		    		Song dbSong = pathToSongMap.get(fbSong.getPath());
 		    		if(dbSong != null){
-		    			dbSong.netVotes = fbSong.netVotes;
-		    			dbSong.totalVotes = fbSong.totalVotes;
+		    			dbSong.netVotes = fbSong.getNetVotes();
+		    			dbSong.totalVotes = fbSong.getTotalVotes();
 		    		}
 		    	}
 				allSongsRef.setValue(null);
@@ -172,6 +172,6 @@ public class FirebaseCommunicator {
 	
 	public static void updateSong(Song song){
 		Firebase songRef = rootRef.child("songs").child("allSongs").child(song.UUID);
-		songRef.setValue(song);
+		songRef.setValue(song.getSimplifiedSong());
 	}
 }
