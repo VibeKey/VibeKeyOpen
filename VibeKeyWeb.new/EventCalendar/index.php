@@ -9,6 +9,7 @@
 	
 	<!-- helper libraries -->
 	<script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
+	<script src="../js/createCommand.js" type="text/javascript"></script>
 	
 	<!-- daypilot libraries -->
     <script src="js/daypilot/daypilot-all.min.js" type="text/javascript"></script>	
@@ -173,20 +174,22 @@
             </script>
             
             <script type="text/javascript">
-            	var sName;
-				var sDescrip;
-				var sRepeat;
-				var sType;
-				//var isPaused;
-
-				$(function () {  
+   				$(function () {  
 					$("#create-Schedule").click(
 					function() {	
-						sName = document.getElementById("sName").value;
-						sDescrip = document.getElementById("sDescrip").value;
-						//var sRepeat = document.getElementsByName("sRepeat").value;
-						sRepeat = $('input[name="sRepeat"]:checked').val();
-						sType = document.getElementById("sType").value;
+						var sName = document.getElementById("sName").value;
+						var sDescrip = document.getElementById("sDescrip").value;
+						var sPlaylist = $('input[name="sPlaylist"]:checked').val();
+						
+						var playlistSource;
+						if (sPlaylist) {
+							playlistSource = "TEST";
+						} else {
+							playlistSource = "no";
+						}
+						
+						var sRepeat = $('input[name="sRepeat"]:checked').val();
+						var sType = document.getElementById("sType").value;
 		
 						console.log(sName + "-" + sDescrip + "-" + sRepeat + "-" + sType);
 						
@@ -205,14 +208,14 @@
 	        			var schedule = fireRef.child("schedule");
 	        			var DJName = "testUser";
 	        			var playMode = "testplayMode";
-                   	// 	var command = createCommand(false, "addToSchedule", {"playMode":playMode, "repeatMode":sRepeat, "startTime":args.start, "endTime":args.end, "DJName":DJName, "genre":sType, "playlist":playlist});
-//   					controls.set(command);
+                   		var command = createCommand(false, "addToSchedule", {"playMode":playMode, "repeatMode":sRepeat, "startTime":args_start, "endTime":args_end, "DJName":DJName, "genre":sType, "playlist":playlistSource});
+  						controls.set(command);
 
                     	$.post("backend_create.php", 
                             {
                                 start: args_start.toString(),
-                                end: args_end.toString()//,
-                                //name: username
+                                end: args_end.toString(),
+                                name: sName
                             }, 
                             function() {
                                 console.log("Created.");
@@ -295,8 +298,8 @@
 				  
 				  	<div class="other-fld">
 				  		<label for="">Use Playlist</label>
-				  		<input type="radio" name="sPlaylist" value="no" onclick="" checked/> No
-						<input type="radio" name="sPlaylist" value="yes" onclick=""/> Yes
+				  		<input type="radio" name="sPlaylist" value=false onclick="" checked/> No
+						<input type="radio" name="sPlaylist" value=true onclick=""/> Yes
 			 		</div>
 				  
 				  	<div class="other-fld">
