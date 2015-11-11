@@ -122,9 +122,8 @@
 	        		var schedule = fireRef.child("schedule");
 	        		var DJName = "testUser";
 	        		var playMode = "testplayMode";
-                   	var command = createCommand(false, "addToSchedule", {"playMode":playMode, "repeatMode":sRepeat, 
-    "startTime":args.start, "endTime":args.end, "DJName":DJName, "genre":sType, "playlist":playlist});
-  controls.set(command);
+                   // 	var command = createCommand(false, "addToSchedule", {"playMode":playMode, "repeatMode":sRepeat, "startTime":args.start, "endTime":args.end, "DJName":DJName, "genre":sType, "playlist":playlist});
+//   					controls.set(command);
 
                     $.post("backend_create.php", 
                             {
@@ -211,7 +210,7 @@
 		</div>
 		
 		<div>
-			<a id="go" rel="popup" name="signup" href="#signup">CREAT!</a>
+			<a id="go" rel="popup" name="signup" href="#signup" hidden>CREAT!</a>
 		</div>
 		
 		<div id="signup">
@@ -235,6 +234,12 @@
 				    	<label for="">Description</label>
 				    	<input id="sDescrip" name="" type="text" />
 				  	</div>
+				  
+				  	<div class="other-fld">
+				  		<label for="">Use Playlist</label>
+				  		<input type="radio" name="sPlaylist" value="no" onclick="" checked/> No
+						<input type="radio" name="sPlaylist" value="yes" onclick=""/> Yes
+			 		</div>
 				  
 				  	<div class="other-fld">
 				  		<label for="">Repeat Mode</label>
