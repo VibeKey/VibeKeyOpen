@@ -9,8 +9,14 @@ function streamMusic() {
                 "live": true
         }
     ],
-    "autoplay": true
+    "autoplay": true,
+    //"use_visualizations": true
   });
+
+  // Amplitude.registerVisualization( MichaelBromleyVisualization, {
+  //   width: '314',
+  //   height: '314'
+  // });
 }
 
 function updateNowPlaying() {

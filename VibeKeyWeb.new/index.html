@@ -8,120 +8,119 @@
 	<link rel="stylesheet" href="css/tabStyle.css">
 	<link rel="stylesheet" href="css/animations.css">
 	<link rel="stylesheet" href="css/jquery.sidr.dark.css">
-	<link rel="stylesheet" href="css/login.css"><link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
-	<script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="css/login.css">
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
 </head>
 
 <body>
 	<div id="stuffBody" class="stuffBody">
 		<div class="WMHD">
-			<h1 style="position:absolute;top:0%;left:40%"> WMHD Radio </h1>
+			<h1 style="position:absolute;top:0%;left:45%"> WMHD Radio </h1>
 		</div>
 		
 		<div class="container">
-        <a style="position:absolute;top:0%;right:0%" id="modal_trigger" href="#modal">Login or register</a>
+	        <a style="position:absolute;top:0%;right:0%" id="modal_trigger" href="#modal">Login or register</a>
 
-        <div id="modal" class="popupContainer" style="display:none;">
-        	<div class="loginPop">
-                <header class="popupHeader">
-                        <span class="header_title">Login</span>
-                        <span class="modal_close"><i class="fa fa-times"></i></span>
-                </header>
+	        <div id="modal" class="popupContainer" style="display:none;">
+	        	<div class="loginPop">
+	                <header class="popupHeader">
+	                        <span class="header_title">Login</span>
+	                        <span class="modal_close"><i class="fa fa-times"></i></span>
+	                </header>
 
-                <section class="popupBody">
-                        <!-- Social Login -->
-                        <div class="social_login">
-                                <div class="">
-                                        <a href="#" class="social_box fb">
-                                                <span class="icon"><i class="fa fa-facebook"></i></span>
-                                                <span class="icon_title">Connect with Facebook</span>
+	                <section class="popupBody">
+	                        <!-- Social Login -->
+	                        <div class="social_login">
+	                                <div class="">
+	                                        <a href="#" class="social_box fb">
+	                                                <span class="icon"><i class="fa fa-facebook"></i></span>
+	                                                <span class="icon_title">Connect with Facebook</span>
 
-                                        </a>
+	                                        </a>
 
-                                        <a href="#" class="social_box google">
-                                                <span class="icon"><i class="fa fa-google-plus"></i></span>
-                                                <span class="icon_title">Connect with Google</span>
-                                        </a>
-                                </div>
+	                                        <a href="#" class="social_box google">
+	                                                <span class="icon"><i class="fa fa-google-plus"></i></span>
+	                                                <span class="icon_title">Connect with Google</span>
+	                                        </a>
+	                                </div>
 
-                                <div class="centeredText">
-                                        <span>Or use your Email address</span>
-                                </div>
+	                                <div class="centeredText">
+	                                        <span>Or use your Email address</span>
+	                                </div>
 
-                                <div class="action_btns">
-                                        <div class="one_half"><a href="#" id="login_form" class="btn">Login</a></div>
-                                        <div class="one_half last"><a href="#" id="register_form" class="btn">Sign up</a></div>
-                                </div>
-                        </div>
+	                                <div class="action_btns">
+	                                        <div class="one_half"><a href="#" id="login_form" class="btn">Email Login</a></div>
+	                                        <div class="one_half last"><a href="#" id="register_form" class="btn">Sign up</a></div>
+	                                </div>
+	                        </div>
 
-                        <!-- Username & Password Login form -->
-                        <div class="user_login">
-                                <form>
-                                        <label>Email / Username</label>
-                                        <input id="email" type="text" />
-                                        <br />
+	                        <!-- Username & Password Login form -->
+	                        <div class="user_login">
+	                                <form>
+	                                        <label>Email / Username</label>
+	                                        <input id="email" type="text" />
+	                                        <br />
 
-                                        <label>Password</label>
-                                        <input id="password" type="password" />
-                                        <br />
+	                                        <label>Password</label>
+	                                        <input id="password" type="password" />
+	                                        <br />
 
-                                        <div class="checkbox">
-                                                <input id="remember" type="checkbox" />
-                                                <label for="remember">Remember me on this computer</label>
-                                        </div>
+	                                        <div class="checkbox">
+	                                                <input id="remember" type="checkbox" />
+	                                                <label for="remember">Remember me on this computer</label>
+	                                        </div>
 
-                                        <div class="action_btns">
-                                                <div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
-                                                <div class="one_half last"><a onclick="login()" class="btn btn_red">Login</a></div>
-                                        </div>
-                                </form>
+	                                        <div class="action_btns">
+	                                                <div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
+	                                                <div class="one_half last"><a onclick="login()" class="btn btn_red">Login</a></div>
+	                                        </div>
+	                                </form>
 
-                                <a href="#" class="forgot_password">Forgot password?</a>
-                        </div>
+	                                <a href="#" class="forgot_password">Forgot password?</a>
+	                        </div>
 
-                        <!-- Register Form -->
-                        <div class="user_register">
-                                <form>
-                                        <label>Full Name</label>
-                                        <input type="text" />
-                                        <br />
+	                        <!-- Register Form -->
+	                        <div class="user_register">
+	                                <form>
+	                                        <label>Full Name</label>
+	                                        <input type="text" />
+	                                        <br />
 
-                                        <label>Email Address</label>
-                                        <input type="email" />
-                                        <br />
+	                                        <label>Email Address</label>
+	                                        <input type="email" />
+	                                        <br />
 
-                                        <label>Password</label>
-                                        <input type="password" />
-                                        <br />
+	                                        <label>Password</label>
+	                                        <input type="password" />
+	                                        <br />
 
-                                        <div class="checkbox">
-                                                <input id="send_updates" type="checkbox" />
-                                                <label for="send_updates">Send me occasional email updates</label>
-                                        </div>
+	                                        <div class="checkbox">
+	                                                <input id="send_updates" type="checkbox" />
+	                                                <label for="send_updates">Send me occasional email updates</label>
+	                                        </div>
 
-                                        <div class="action_btns">
-                                                <div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
-                                                <div class="one_half last"><a href="#" class="btn btn_red">Register</a></div>
-                                        </div>
-                                </form>
-                        </div>
-                </section>
-        </div>
+	                                        <div class="action_btns">
+	                                                <div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
+	                                                <div class="one_half last"><a href="#" class="btn btn_red">Register</a></div>
+	                                        </div>
+	                                </form>
+	                        </div>
+	                </section>
+	        </div>
 
-        <div class="logoutPop" style="display:none;">
-        	<header class="popupHeader">
-                        <span class="header_title">Logout</span>
-                        <span class="modal_close"><i class="fa fa-times"></i></span>
-            </header>
-            <div class="action_btns">
-                <div class="one_half last"><a onclick="logout()" class="btn btn_red">Logout</a></div>
-            </div>
-        </div>
-    	</div>
-	</div>
+	        <div class="logoutPop" style="display:none;">
+	        	<header class="popupHeader">
+	                        <span class="header_title">Logout</span>
+	                        <span class="modal_close"><i class="fa fa-times"></i></span>
+	            </header>
+	            <div class="user_logout">
+		            <div class="action_btns">
+		                <div class="one_half last"><a onclick="logout()" class="btn btn_red">Logout</a></div>
+		            </div>
+	            </div>
+	        </div>
+
+		</div>
 
 		<div class="playlist">
 			<div class="playlistBody">
@@ -147,7 +146,10 @@
 				</div>
 				
 				<div class="playsongs" id="playSongs">
-					<div class="playsongsBorder"></div>
+					<div class="playsongsImg UserView">
+						<img src="images/record-player.gif" alt="WMHD">
+					</div>
+					<div class="playsongsBorder DjView" style="display:none;">
 					<ul id="playlist" class="sortable"></ul>
 					<div class="otherLists" id="up" style="display:none;">
 						I am the upload.
@@ -155,14 +157,16 @@
 					<div class="otherLists" id="list" style="display:none;">
 						I am the list of playlists.
 					</div>
+					</div>
 				</div>
+
 				<div class="playbottom">
 					<div class="button" style="float:none; height:auto;">
-						<div onclick="createPlaylist()" id="createPlaylist" class="circle">
+						<div onclick="createPlaylist()" id="createPlaylist" class="circle DjView" style="display:none;">
 							<img id="upImg" style="width:30px; height:30px;" 
 								src="images/up.png">
 						</div>
-						<div onclick="clickBottomButton(this)" id="list" class="circle">
+						<div onclick="clickBottomButton(this)" id="list" class="circle DjView" style="display:none;">
 							<img id="listImg" style="width:30px; height:30px;" 
 								src="images/list.png">
 							<img id="listDownArrow" style="width:30px; height:30px; display:none;" 
@@ -181,16 +185,20 @@
 					</div>
 				</div>
 			</div>
-			
 		</div>
+
+
+		<!-- <div id="amplitude-visualization"></div> -->
+
 		<!-- creates all the tabs on the side that can be clicked -->
 		<div id="container" class="tabContainer"></div>
 	</div>
 
 	<!-- This is the part where we create what's inside the actual tabs that pull out on the left side -->
 	<div id="searchTab" class="sidr">
+		<h1>Explore our song database</h1>
 		Search By name:<br>
-		<input type="text" class="searchByName" id="searchByName" value="Colorway">
+		<input type="text" class="searchByName" id="searchByName">
 		<button class="searchByNameButton" id="searchByNameButton" onclick="search()">Search</button>
 		<br>
 		Search By artist:<br>
@@ -208,34 +216,36 @@
 	</div>
 	
 	<div id="newsTab" class="sidr">
-		<iframe class="sideArea" src="news.html"></iframe>
-		<fieldset>
-			<legend>Add a news</legend>
-				News title:<br>
-  				<input type="text" class="newsTitle" id="newsTitle" value="news title">
-				<br>
-				News Description:<br>
-				<input type="text" class="newsDescription" id="newsDescription" value="news desc">
-				<br>
-				News Date:<br>
-				<input type="date" class="newsDate" id="newsDate">
-				<br></br>
-				<button onclick="addNews()">Add</button>
-		</fieldset>
-		<br><br>
-		<fieldset>
-			<legend>Delete a news</legend>
-				Select a news:<br>
-				<select class="newsList" id="newsList">
-			    	<option value="none">No news selected</option>
-				</select>
-				<br></br>
-				<button onclick="deleteNews()">Delete</button>
-		</fieldset>
+		<h1>News</h1>
+		<div class="addNewsOp DjView" style="display:none;">
+			<fieldset>
+				<legend>Add a news</legend>
+					News title:<br>
+	  				<input type="text" class="newsTitle" id="newsTitle" value="news title">
+					<br>
+					News Description:<br>
+					<input type="text" class="newsDescription" id="newsDescription" value="news desc">
+					<br>
+					News Date:<br>
+					<input type="date" class="newsDate" id="newsDate">
+					<br></br>
+					<button onclick="addNews()">Add</button>
+			</fieldset>
+			<br><br>
+			<fieldset>
+				<legend>Delete a news</legend>
+					Select a news:<br>
+					<select class="newsList" id="newsList">
+				    	<option value="none">No news selected</option>
+					</select>
+					<br></br>
+					<button onclick="deleteNews()">Delete</button>
+			</fieldset>
+		</div>
 	</div>
 	
 	<div id="soundboardTab" class="sidr">
-		<h1>I am a soundboard tab!</h1>
+		<h1>Equilizer Setting</h1>
 		<fieldset>
 			<legend>Volume</legend>
 				<div>
@@ -248,95 +258,101 @@
 	</div>
 
 	<div id="calendarTab" class="sidr">
-		<h1>I am a calendar tab!</h1>
-		<fieldset>
-		    <legend>Set Genre</legend>
-		    	Seclect a genre:
-			    <select class="genresList" id="genresList" onchange="scheduleGenre(this)">
-			    	<option value="none">No genre selected</option>
-				</select>
-				<br></br>
-				<!-- <input type="submit" value="Submit" onclick="scheduleGenre()"> -->
-		</fieldset>
-		<br></br>
-		<fieldset>
-			<legend>Schedule a Playlist</legend>
-		    	Seclect a playlist:
-			    <select class="playsList" id="playsList" onchange="scheduleList(this)">
-			    	<option value="none">No list selected</option>
-				</select>
-				<br></br>
-				<!-- <input type="submit" value="Submit" onclick="scheduleSong()"> -->
-		</fieldset>
-		<br></br>
-		<fieldset>
-			<legend>Schedule a Song</legend>
-		    	Seclect a song (All songs):
-			    <select class="allSongsList" id="allSongsList" onchange="scheduleSong(this)">
-			    	<option value="none">No song selected</option>
-				</select>
-				<br></br>
-				<!-- <input type="submit" value="Submit" onclick="scheduleSong()"> -->
-		</fieldset>
-		<br></br>
-		<fieldset>
-			<legend>Schedule</legend>
-		    	Seclect a play mode:
-			    <select class="playModeList" id="playModeList">
-			    	<option value="0">None</option>
-			    	<option value="1">Genre</option>
-			    	<option value="2">Playlist</option>
-			    	<option value="3">LiveDJ</option>
-				</select>
-				<br></br>
-				Seletc a repeat mode:
-				<select class="repeatModeList" id="repeatModeList">
-			    	<option value="0">None</option>
-			    	<option value="1">Daily</option>
-			    	<option value="2">Weekly</option>
-			    	<option value="3">Monthly</option>
-				</select>
-				<br></br>
-				Select a start time:
-				<input type="datetime-local" class="startTime">
-				<br></br>
-				Select an end time:
-				<input type="datetime-local" class="endTime">
-				<br></br>
-				Select a DJ name (Optional):
-				<select class="djNameList" id="djNameList">
-					<option value="DJ0">No DJ</option>
-			    	<option value="DJ1">DJ1</option>
-			    	<option value="DJ2">DJ2</option>
-			    	<option value="DJ3">DJ3</option>
-				</select>
-				<br></br>
-				Select a Genre OR
-				<select class="scheduleGenresList" id="scheduleGenresList">
-			    	<option value="none">No genre selected</option>
-				</select>
-				<br></br>
-				Select a playlist
-				<select class="schedulePLList" id="schedulePLList">
-			    	<option value="none">No playlist selected</option>
-				</select>
-				<br></br>
-				<button onclick="schedule()">Schedule</button>
-		</fieldset>
+		<h1>Scheduled Programs</h1>
+		<div class="scheduleOp DjView" style="display:none;">
+			<fieldset>
+			    <legend>Set Genre</legend>
+			    	Seclect a genre:
+				    <select class="genresList" id="genresList" onchange="scheduleGenre(this)">
+				    	<option value="none">No genre selected</option>
+					</select>
+					<br></br>
+					<!-- <input type="submit" value="Submit" onclick="scheduleGenre()"> -->
+			</fieldset>
+			<br></br>
+			<fieldset>
+				<legend>Schedule a Playlist</legend>
+			    	Seclect a playlist:
+				    <select class="playsList" id="playsList" onchange="scheduleList(this)">
+				    	<option value="none">No list selected</option>
+					</select>
+					<br></br>
+					<!-- <input type="submit" value="Submit" onclick="scheduleSong()"> -->
+			</fieldset>
+			<br></br>
+			<fieldset>
+				<legend>Schedule a Song</legend>
+			    	Seclect a song (All songs):
+				    <select class="allSongsList" id="allSongsList" onchange="scheduleSong(this)">
+				    	<option value="none">No song selected</option>
+					</select>
+					<br></br>
+					<!-- <input type="submit" value="Submit" onclick="scheduleSong()"> -->
+			</fieldset>
+			<br></br>
+			<fieldset>
+				<legend>Schedule</legend>
+			    	Seclect a play mode:
+				    <select class="playModeList" id="playModeList">
+				    	<option value="0">None</option>
+				    	<option value="1">Genre</option>
+				    	<option value="2">Playlist</option>
+				    	<option value="3">LiveDJ</option>
+					</select>
+					<br></br>
+					Seletc a repeat mode:
+					<select class="repeatModeList" id="repeatModeList">
+				    	<option value="0">None</option>
+				    	<option value="1">Daily</option>
+				    	<option value="2">Weekly</option>
+				    	<option value="3">Monthly</option>
+					</select>
+					<br></br>
+					Select a start time:
+					<input type="datetime-local" class="startTime">
+					<br></br>
+					Select an end time:
+					<input type="datetime-local" class="endTime">
+					<br></br>
+					Select a DJ name (Optional):
+					<select class="djNameList" id="djNameList">
+						<option value="DJ0">No DJ</option>
+				    	<option value="DJ1">DJ1</option>
+				    	<option value="DJ2">DJ2</option>
+				    	<option value="DJ3">DJ3</option>
+					</select>
+					<br></br>
+					Select a Genre OR
+					<select class="scheduleGenresList" id="scheduleGenresList">
+				    	<option value="none">No genre selected</option>
+					</select>
+					<br></br>
+					Select a playlist
+					<select class="schedulePLList" id="schedulePLList">
+				    	<option value="none">No playlist selected</option>
+					</select>
+					<br></br>
+					<button onclick="schedule()">Schedule</button>
+			</fieldset>
+		</div>
 	</div>
 
 	<div id="djChatTab" class="sidr">
-		<h1>I am a DJ Chat tab!</h1>
+		<h1>DJ Chat coming!</h1>
 	</div>
 
 	<div id="audienceTab" class="sidr">
-		<h1>I am an audience tab!</h1>
+		<h1>Audience</h1>
 	</div>
 
 	<div id="settingsTab" class="sidr">
-		<h1>I am a settings tab!</h1>
+		<h1>Setting</h1>
 	</div>
 
+	<script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="js/tabScript.js"></script>
 	<script type="text/javascript" src="js/hover.js"></script>
 	<script type="text/javascript" src="js/requestSong.js"></script>
@@ -345,6 +361,7 @@
 	<script type="text/javascript" src="js/buttonScript.js"></script>
 	<script type="text/javascript" src="js/jquery.sidr.min.js"></script>
 	<script type="text/javascript" src="js/amplitude.js"></script>
+	<script type="text/javascript" src="js/michaelbromley.js"></script>
 	<script type="text/javascript" src="js/createPlaylist.js"></script>
 	<script type="text/javascript" src="js/streamMusic.js"></script>
 	<script type="text/javascript" src="js/createCommand.js"></script>
