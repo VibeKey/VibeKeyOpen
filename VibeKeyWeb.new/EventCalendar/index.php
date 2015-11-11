@@ -18,7 +18,9 @@
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
 
 	<script type="text/javascript" src="js/jquery.popup.min.js"></script>
+<!--	
 	<script type="text/javascript" src="js/popup-data.js"></script>
+-->
 	
 	<script type="text/javascript">
 			$(function() {
@@ -93,7 +95,14 @@
                 };
 
                 // event creating
+                var args_start;
+                var args_end;
+                var args_resource;
                 dp.onTimeRangeSelected = function (args) {
+                
+                	args_start = args.start;
+                	args_end = args.end;
+                	args_resource = args.resource;
                 
                 	/*
                     var text = prompt("New event name (; description):", "Event ; Description");
@@ -104,36 +113,36 @@
 					//alert("start from " + args.start + " to " + args.end);
 					$('#time').html("start from " + args.start + " to " + args.end);
 					document.getElementById("go").click()       
-                    console.log("Done");
+                    //console.log("Done");
                     
-                    dp.clearSelection();
-                    if (!event) return;
-                    var e = new DayPilot.Event({
-                        start: args.start,
-                        end: args.end,
-                        id: DayPilot.guid(),
-                        resource: args.resource,
-                        text: sName + " (" + sDescrip + ")"
-                    });
-                    dp.events.add(e);
-                    
-                    var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
-	        		var controls = fireRef.child("controls");
-	        		var schedule = fireRef.child("schedule");
-	        		var DJName = "testUser";
-	        		var playMode = "testplayMode";
-                   // 	var command = createCommand(false, "addToSchedule", {"playMode":playMode, "repeatMode":sRepeat, "startTime":args.start, "endTime":args.end, "DJName":DJName, "genre":sType, "playlist":playlist});
-//   					controls.set(command);
-
-                    $.post("backend_create.php", 
-                            {
-                                start: args.start.toString(),
-                                end: args.end.toString()//,
-                                //name: username
-                            }, 
-                            function() {
-                                console.log("Created.");
-                            });
+                    // dp.clearSelection();
+//                     if (!event) return;
+//                     var e = new DayPilot.Event({
+//                         start: args.start,
+//                         end: args.end,
+//                         id: DayPilot.guid(),
+//                         resource: args.resource,
+//                         text: sName + " (" + sDescrip + ")"
+//                     });
+//                     dp.events.add(e);
+//                     
+//                     var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
+// 	        		var controls = fireRef.child("controls");
+// 	        		var schedule = fireRef.child("schedule");
+// 	        		var DJName = "testUser";
+// 	        		var playMode = "testplayMode";
+//                    // 	var command = createCommand(false, "addToSchedule", {"playMode":playMode, "repeatMode":sRepeat, "startTime":args.start, "endTime":args.end, "DJName":DJName, "genre":sType, "playlist":playlist});
+// //   					controls.set(command);
+// 
+//                     $.post("backend_create.php", 
+//                             {
+//                                 start: args.start.toString(),
+//                                 end: args.end.toString()//,
+//                                 //name: username
+//                             }, 
+//                             function() {
+//                                 console.log("Created.");
+//                             });
 
                 };
 
@@ -161,6 +170,55 @@
                     });
                 }
 
+            </script>
+            
+            <script type="text/javascript">
+            	var sName;
+				var sDescrip;
+				var sRepeat;
+				var sType;
+				//var isPaused;
+
+				$(function () {  
+					$("#create-Schedule").click(
+					function() {	
+						sName = document.getElementById("sName").value;
+						sDescrip = document.getElementById("sDescrip").value;
+						//var sRepeat = document.getElementsByName("sRepeat").value;
+						sRepeat = $('input[name="sRepeat"]:checked').val();
+						sType = document.getElementById("sType").value;
+		
+						console.log(sName + "-" + sDescrip + "-" + sRepeat + "-" + sType);
+						
+						if (!event) return;
+                    	var e = new DayPilot.Event({
+                        	start: args_start,
+                        	end: args_end,
+                       	 	id: DayPilot.guid(),
+                        	resource: args_resource,
+                        	text: sName + " (" + sDescrip + ")"
+                    	});
+                    	dp.events.add(e);
+                    
+                    	var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
+	        			var controls = fireRef.child("controls");
+	        			var schedule = fireRef.child("schedule");
+	        			var DJName = "testUser";
+	        			var playMode = "testplayMode";
+                   	// 	var command = createCommand(false, "addToSchedule", {"playMode":playMode, "repeatMode":sRepeat, "startTime":args.start, "endTime":args.end, "DJName":DJName, "genre":sType, "playlist":playlist});
+//   					controls.set(command);
+
+                    	$.post("backend_create.php", 
+                            {
+                                start: args_start.toString(),
+                                end: args_end.toString()//,
+                                //name: username
+                            }, 
+                            function() {
+                                console.log("Created.");
+                            });
+					});
+ 				});
             </script>
             
             <script type="text/javascript">
