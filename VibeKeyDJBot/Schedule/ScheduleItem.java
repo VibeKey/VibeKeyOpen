@@ -19,6 +19,8 @@ public class ScheduleItem {
 	private Date startTime;
 	private Date endTime;
 	private String DJName;
+	private String eventName;
+	private String description;
 	private String genre; //ignored if not in genre play mode
 	private String playlist; //ignored if not in playlist play mode
 	
@@ -26,7 +28,6 @@ public class ScheduleItem {
 		
 	}
 
-	
 	public ScheduleItem(int playMode, int repeatMode, Date startTime, Date endTime, String DJName, String genre, String playlist) {
 		super();
 		this.playMode = playMode;
@@ -37,6 +38,22 @@ public class ScheduleItem {
 		this.genre = genre;
 		this.playlist = playlist;
 	}
+	
+	/* with eventName and description for further development
+		
+	public ScheduleItem(int playMode, int repeatMode, Date startTime, Date endTime, String DJName, String eventName, String description, String genre, String playlist) {
+		super();
+		this.playMode = playMode;
+		this.repeatMode = repeatMode;
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.DJName = DJName;
+		this.eventName = eventName;
+		this.description = description;
+		this.genre = genre;
+		this.playlist = playlist;
+	}
+	*/
 
 
 	public int getPlayMode() {
@@ -74,9 +91,26 @@ public class ScheduleItem {
 	public String getDJName() {
 		return DJName;
 	}
-
+	
+	//I think we should delete a event instead of allowed to setDJName
 	public void setDJName(String DJName) {
 		this.DJName = DJName;
+	}
+	
+	public String getEventName() {
+		return eventName;
+	}
+
+	public void setEventName(String eventName) {
+		this.eventNamee = eventName;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getGenre() {
