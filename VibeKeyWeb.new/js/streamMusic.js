@@ -24,8 +24,8 @@ function updateNowPlaying() {
   var npRef = fireRef.child("nowPlaying");
   npRef.on("value", function(snapshot) {
     var main = snapshot.val();
-    document.getElementById("curPlayingTitle").innerHTML=" Now playing: " + main.title + " by " + main.artist;
-    document.getElementById("curPlayingGenre").innerHTML=" Genre: " + main.genre;
+    document.getElementById("curPlayingTitle").innerHTML = main.title;
+    document.getElementById("curPlayingArtist").innerHTML = main.artist;
     //document.getElementById("curPlayingTags").innerHTML="Tags: ";
   }, function (errorObject) {
     console.log("The read failed: " + errorObject.code);

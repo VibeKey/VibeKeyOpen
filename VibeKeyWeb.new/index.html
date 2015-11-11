@@ -130,24 +130,24 @@
 					</canvas>
 					<div class="playHeadInfo">
 						<span id="curPlayingTitle" class="title">Song Title</span>
-						<span id="curPlayingGenre" class="genre">Song Genre</span>
+						<span id="curPlayingArtist" class="artist">Song Artist</span>
 					</div>
-					<span class="button">
+					<div class="button">
 						<span onclick="upVote()" id="upVote" class="circle">
 								<img id="upImg" style="width:24px;height:24px;" 
 									src="images/up_arrow.png">
 						</span>
-
 						<span onclick="downVote()" id="downVote" class="circle">
 								<img id="downImg" style="width:24px;height:24px;" 
 									src="images/down_arrow.png">
 						</span>
-					</span>
+					</div>
 				</div>
 				
 				<div class="playsongs" id="playSongs">
 					<div class="playsongsImg UserView">
-						<img src="images/record-player.gif" alt="WMHD">
+						<img id="playImage" src="images/record-player.gif">
+						<img id="pauseImage" src="images/record-player-paused.png" style="display:none">
 					</div>
 					<div class="playsongsBorder DjView" style="display:none;">
 					<ul id="playlist" class="sortable"></ul>
@@ -217,6 +217,9 @@
 	
 	<div id="newsTab" class="sidr">
 		<h1>News</h1>
+		<div class="newsContainer">
+			<dl class="newsList" style="list-style-type:none"></dl>
+		</div>
 		<div class="addNewsOp DjView" style="display:none;">
 			<fieldset>
 				<legend>Add a news</legend>
@@ -259,6 +262,7 @@
 
 	<div id="calendarTab" class="sidr">
 		<h1>Scheduled Programs</h1>
+		<ul class="scheduleList" style="list-style-type:none"></ul>
 		<div class="scheduleOp DjView" style="display:none;">
 			<fieldset>
 			    <legend>Set Genre</legend>
@@ -267,7 +271,6 @@
 				    	<option value="none">No genre selected</option>
 					</select>
 					<br></br>
-					<!-- <input type="submit" value="Submit" onclick="scheduleGenre()"> -->
 			</fieldset>
 			<br></br>
 			<fieldset>
@@ -277,7 +280,6 @@
 				    	<option value="none">No list selected</option>
 					</select>
 					<br></br>
-					<!-- <input type="submit" value="Submit" onclick="scheduleSong()"> -->
 			</fieldset>
 			<br></br>
 			<fieldset>
@@ -287,7 +289,6 @@
 				    	<option value="none">No song selected</option>
 					</select>
 					<br></br>
-					<!-- <input type="submit" value="Submit" onclick="scheduleSong()"> -->
 			</fieldset>
 			<br></br>
 			<fieldset>
@@ -338,7 +339,7 @@
 	</div>
 
 	<div id="djChatTab" class="sidr">
-		<h1>DJ Chat coming!</h1>
+		<h1>DJ Chat</h1>
 	</div>
 
 	<div id="audienceTab" class="sidr">
@@ -358,7 +359,6 @@
 	<script type="text/javascript" src="js/requestSong.js"></script>
 	<script type="text/javascript" src="js/songObj.js"></script>
 	<script type="text/javascript" src="js/streamScript.js"></script>
-	<script type="text/javascript" src="js/buttonScript.js"></script>
 	<script type="text/javascript" src="js/jquery.sidr.min.js"></script>
 	<script type="text/javascript" src="js/amplitude.js"></script>
 	<script type="text/javascript" src="js/michaelbromley.js"></script>
@@ -372,11 +372,14 @@
 	<script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
 	<script type="text/javascript" src="js/showLoginForm.js"></script>
 	<script type="text/javascript" src="js/login.js"></script>
-
+	<script type="text/javascript" src="js/pullNews.js"></script>
+	<script type="text/javascript" src="js/pullSchedule.js"></script>
 	<script>
 		$(document).ready(function() {
 			streamMusic();
 			updateNowPlaying();
+			populateNews();
+			populateSchedule();
     		populateNewsList();
     		populateSearchLists();
     		populateCalenderLists();

@@ -36,7 +36,7 @@ a:active {color:white; text-decoration: none;}
 .stuffBody {
 	height:100%;
 	width:100%;
-	position:relative;
+	position:absolute;
 	float:left;
 }
 
@@ -46,7 +46,7 @@ a:active {color:white; text-decoration: none;}
 	height:70%;
 	width:62%;
 	left:35%;
-	top:15%;
+	top:12%;
 	min-height:300px;
 	min-width:400px;
 	max-width:700px;
@@ -59,7 +59,8 @@ a:active {color:white; text-decoration: none;}
 }
 
 .playsongs {
-	height:70%;
+	position:relative;
+	height:57%;
 	width:100%;
 	overflow-y:auto;
 	overflow-x:hidden;
@@ -94,9 +95,9 @@ a:active {color:white; text-decoration: none;}
 }
 
 .playhead {
-	background-color:white;
+	background-color: rgb(166, 166, 166);
 	position:relative;
-	height:20%;
+	height:12%;
 	width:100%;
 	z-index:100;
 }
@@ -108,13 +109,13 @@ a:active {color:white; text-decoration: none;}
 	width:100%;
 }
 
-.playHeadInfo .genre {
-	color:rgb(153, 000, 000);
+.playHeadInfo .artist {
+	color:rgb(0,0,0);
 	font-size:25px;
 	display:block;
 	line-height:30px;
 	font-family:Ganon;
-	font-weight: bold;
+	text-align: center;
 }
 
 .playHeadInfo .title{
@@ -123,15 +124,8 @@ a:active {color:white; text-decoration: none;}
 	line-height:50px;
 	color:rgb(0,0,0);
 	font-family:Ganon;
-}
-
-.playHeadInfo .tags{
-	font-size:25px;
-	display:block;
-	line-height:25px;
-	margin-left:30px;
-	color:rgb(194,194,194);
-	font-family:Ganon;
+	font-weight: bold;
+	text-align: center;
 }
 
 .bounce {
@@ -146,8 +140,8 @@ a:active {color:white; text-decoration: none;}
 .playbottom {
 	position:relative;
 	z-index:3;
-	height:15%;
-	width:100%;
+	height:13%;
+	width:99%;
 	background-color:rgb(100,100,100);
 	box-shadow: 0 -10px 5px -5px rgb(048,048,048);
 	vertical-align:middle;

@@ -19,6 +19,9 @@ function pressPlayerButton(){
 		// Removes the play button and adds the pause button.
 		document.getElementById("playButton").style["display"] = "none";
 		document.getElementById("pauseButton").style["display"] = null;
+
+		document.getElementById("playImage").style["display"] = null;
+		document.getElementById("pauseImage").style["display"] = "none";
 	} else {
 		// Pauses audio.
 		// audio.pause();
@@ -34,6 +37,9 @@ function pressPlayerButton(){
 		// Removes the play button and adds the pause button.
 		document.getElementById("pauseButton").style["display"] = "none";
 		document.getElementById("playButton").style["display"] = null;
+
+		document.getElementById("pauseImage").style["display"] = null;
+		document.getElementById("playImage").style["display"] = "none";
 	}
 }
 
