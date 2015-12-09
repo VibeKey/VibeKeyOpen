@@ -13,11 +13,15 @@ public class PlaylistController {
 			}
 			Playlist newPlaylist = new Playlist();
 			
-			newPlaylist.name = "Playlist " + (i + 1);
+			newPlaylist.setName("Playlist " + (i + 1));
 			
 			newPlaylist.setSongs(playlistSongs);
 			allPlaylists.add(newPlaylist);
 		}
+		updateFirebase();
+	}
+	
+	public void updateFirebase(){
 		FirebaseCommunicator.setPlaylists(allPlaylists);
 	}
 }

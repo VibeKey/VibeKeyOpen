@@ -24,9 +24,9 @@ public class SongDatabase {
 	
 	static public void pushToFirebase(){
 		FirebaseCommunicator.clearSongsList();
-		FirebaseCommunicator.addSongsToFirebase(songs);
-		FirebaseCommunicator.addSongsToFirebaseByGenre(genreMap);
-		FirebaseCommunicator.addSongsToFirebaseByArtistMap(artistMap);
+		FirebaseCommunicator.syncSongsWithFirebase(songs, pathToSongMap);
+//		FirebaseCommunicator.addSongsToFirebaseByGenre(genreMap);
+//		FirebaseCommunicator.addSongsToFirebaseByArtistMap(artistMap);
 		FirebaseCommunicator.addGenresToFirebase(genres);
 	}
 

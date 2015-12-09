@@ -19,11 +19,15 @@ public class Song {
 	ID3v1 metadatav1;
 	boolean hasv2Data;
 	boolean hasv1Data;
-	SimplifiedSong simplifiedSong;
+	public int netVotes = 0;
+	public int totalVotes = 0;
+	public String UUID; //used to access the song in the Firebase song list
 	boolean playing = false; //used to force it to stop
 	
 	Song(File songFile){
 		this.songFile = songFile;
+//		this.netVotes = RandomWrapper.random.nextInt(6)-3; //TODO: Load these from firebase instead of random
+//		this.totalVotes = RandomWrapper.random.nextInt(10)+5;
 		loadMetaData();
 	}
 	
@@ -37,8 +41,6 @@ public class Song {
 			}else if(hasv1Data){
 				metadatav1 = songMetaDataFile.getId3v1Tag();
 			}
-			
-			simplifiedSong = new SimplifiedSong(getTitle(), getArtist(), getAlbum(), getGenre(), getPath(), getLength());
 		} catch (UnsupportedTagException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -50,6 +52,10 @@ public class Song {
 			e.printStackTrace();
 		}
 		return hasv2Data || hasv1Data;
+	}
+	
+	public SimplifiedSong getSimplifiedSong(){
+		return new SimplifiedSong(getTitle(), getArtist(), getAlbum(), getGenre(), getPath(), netVotes, totalVotes, getLength());
 	}
 	
 	ID3v2 getv2Metadata(){
@@ -137,5 +143,17 @@ public class Song {
 		}
 		playing=false;
 		return false;
+	}
+	
+	public void upvote(){
+		netVotes++;
+		totalVotes++;
+		FirebaseCommunicator.updateSong(this);
+	}
+	
+	public void downvote(){
+		netVotes--;
+		totalVotes++;
+		FirebaseCommunicator.updateSong(this);
 	}
 }

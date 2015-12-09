@@ -24,19 +24,17 @@ body {
 	padding: 0;
 	margin: 0;
 	background: rgb(0, 0, 0);
-	color:white;
 	overflow:hidden;
 }
 
 a:link {color:white; text-decoration: none;}
-a:visited {color:white; text-decoration: none;}
 a:hover {color:rgb(243,221,187); text-decoration: none;}
 a:active {color:white; text-decoration: none;} 
 
 .stuffBody {
 	height:100%;
 	width:100%;
-	position:relative;
+	position:absolute;
 	float:left;
 }
 
@@ -44,9 +42,9 @@ a:active {color:white; text-decoration: none;}
 	display:inline-block;
 	position:absolute;
 	height:70%;
-	width:50%;
-	left:25%;
-	top:10%;
+	width:62%;
+	left:35%;
+	top:12%;
 	min-height:300px;
 	min-width:400px;
 	max-width:700px;
@@ -54,17 +52,24 @@ a:active {color:white; text-decoration: none;}
 
 .playlistBody {
 	display:inline-block;
-	width:100%;
-	height:100%;
+	width:75%;
+	height:98%;
 }
 
 .playsongs {
-	height:65%;
+	position:relative;
+	height:57%;
 	width:100%;
 	overflow-y:auto;
 	overflow-x:hidden;
 	-webkit-animation-duration:950ms;
 	animation-duration:950ms;
+}
+
+.playsongsImg > img{
+	display: block;
+   	margin: auto auto;
+   	top: 2%;
 }
 
 .playsongs .otherLists {
@@ -88,9 +93,9 @@ a:active {color:white; text-decoration: none;}
 }
 
 .playhead {
-	background-color:white;
+	background-color: rgb(166, 166, 166);
 	position:relative;
-	height:20%;
+	height:12%;
 	width:100%;
 	z-index:100;
 }
@@ -98,17 +103,17 @@ a:active {color:white; text-decoration: none;}
 .playHeadInfo {
 	position:absolute;
 	bottom:0;
-	left:0;
+	left: 5%;
 	width:100%;
 }
 
-.playHeadInfo .genre {
-	color:rgb(153, 000, 000);
+.playHeadInfo .artist {
+	color:rgb(0,0,0);
 	font-size:25px;
 	display:block;
 	line-height:30px;
 	font-family:Ganon;
-	font-weight: bold;
+	text-align: center;
 }
 
 .playHeadInfo .title{
@@ -117,15 +122,8 @@ a:active {color:white; text-decoration: none;}
 	line-height:50px;
 	color:rgb(0,0,0);
 	font-family:Ganon;
-}
-
-.playHeadInfo .tags{
-	font-size:25px;
-	display:block;
-	line-height:25px;
-	margin-left:30px;
-	color:rgb(194,194,194);
-	font-family:Ganon;
+	font-weight: bold;
+	text-align: center;
 }
 
 .bounce {
@@ -140,8 +138,8 @@ a:active {color:white; text-decoration: none;}
 .playbottom {
 	position:relative;
 	z-index:3;
-	height:15%;
-	width:100%;
+	height:13%;
+	width:99%;
 	background-color:rgb(100,100,100);
 	box-shadow: 0 -10px 5px -5px rgb(048,048,048);
 	vertical-align:middle;
