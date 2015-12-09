@@ -11,8 +11,6 @@ public class SimplifiedSong {
 	private String album;
 	private String genre;
 	private String path;
-	private int netVotes;
-	private int totalVotes;
 	private long length;
 	
 	
@@ -20,14 +18,12 @@ public class SimplifiedSong {
 		
 	}
 	
-	public SimplifiedSong(String title, String artist, String album, String genre, String path, int netVotes, int totalVotes, long length){
+	public SimplifiedSong(String title, String artist, String album, String genre, String path, long length){
 		this.title = title;
 		this.artist = artist;
 		this.album = album;
 		this.genre = genre;
 		this.path = path;
-		this.netVotes = netVotes;
-		this.totalVotes = totalVotes;
 		this.length = length;
 		
 	}
@@ -62,13 +58,6 @@ public class SimplifiedSong {
 
 	public long getLength(){
 		return length;
-	}
-	
-	public int getTotalVotes(){
-		return totalVotes;
-	}
-	public int getNetVotes(){
-		return netVotes;
 	}
 	
 	public Song getSong(ArrayList<Song> songs){ //expensive, but considering we're saving to firebase, can't rely on song reference

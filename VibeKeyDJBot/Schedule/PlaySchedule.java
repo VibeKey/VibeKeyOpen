@@ -12,14 +12,14 @@ public class PlaySchedule {
 	
 	public void addToSchedule(ScheduleItem newScheduleItem){
 		for(ScheduleItem scheduleItem : scheduleItems){
-			if(((newScheduleItem.getStartTime().after(scheduleItem.getStartTime()) &&
+			if(!((newScheduleItem.getStartTime().after(scheduleItem.getStartTime()) &&
 					newScheduleItem.getStartTime().before(scheduleItem.getEndTime())) ||
 					(newScheduleItem.getEndTime().after(scheduleItem.getStartTime()) &&
-					newScheduleItem.getEndTime().before(scheduleItem.getEndTime())))){ //if times are overlapping
+					newScheduleItem.getEndTime().before(scheduleItem.getEndTime())))){ //if times are not overlapping
+				scheduleItems.add(newScheduleItem);
 				break;
 			}
 		}
-		scheduleItems.add(newScheduleItem);
 	}
 	
 
@@ -57,43 +57,6 @@ public class PlaySchedule {
 			return "";
 		}else{
 			return curScheduleItem.getPlaylist();
-		}
-	}
-	
-
-	public ScheduleItem getScheduleItemAtTime(Date time){
-		for(ScheduleItem scheduleItem : scheduleItems){
-			if(scheduleItem.getStartTime().before(time) && scheduleItem.getEndTime().after(time)){ //if this schedule item is happening now
-				return scheduleItem;
-			}
-		}
-		return null;
-	}
-	
-	public int getPlayModeAtTime(Date time){
-		ScheduleItem scheduleItem = getScheduleItemAtTime(time);
-		if(scheduleItem == null){
-			return 0;
-		}else{
-			return scheduleItem.getPlayMode();
-		}
-	}
-	
-	public String getGenreAtTime(Date time){
-		ScheduleItem scheduleItem = getScheduleItemAtTime(time);
-		if(scheduleItem == null){
-			return "";
-		}else{
-			return scheduleItem.getGenre();
-		}
-	}
-	
-	public String getPlaylistAtTime(Date time){
-		ScheduleItem scheduleItem = getScheduleItemAtTime(time);
-		if(scheduleItem == null){
-			return "";
-		}else{
-			return scheduleItem.getPlaylist();
 		}
 	}
 }

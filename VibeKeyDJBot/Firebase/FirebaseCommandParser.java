@@ -1,6 +1,5 @@
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.Date;
 
 import com.firebase.client.DataSnapshot;
@@ -14,12 +13,12 @@ public class FirebaseCommandParser {
 	}
 
 	@SuppressWarnings("rawtypes")
-	public void parseCommand(String cmdString, DataSnapshot params) {
+	public void parseCommand(String cmdString, Iterable<DataSnapshot> params) {
 		if (cmdString != null) {
 			
 			try {
 				Class[] classes = new Class[1];
-				classes[0]=DataSnapshot.class;
+				classes[0]=Iterable.class;
 				
 				System.out.println(classes[0].getName());
 				Method method = this.getClass().getDeclaredMethod(cmdString, classes);	
@@ -45,79 +44,89 @@ public class FirebaseCommandParser {
 		FirebaseCommunicator.clearCommand();
 	}
 
-	private void setGenre(DataSnapshot params) {
-		streamController.genreFilter = params.child("genre").getValue(String.class);
-		streamController.refillQueue();
+	private void setGenre(Iterable<DataSnapshot> params) {
+		for(DataSnapshot param : params){
+			if(param.getKey().equals("genre")){
+				streamController.genreFilter = (String) param.getValue();
+			}
+		}
 	}
 
-	private void setPlaylist(DataSnapshot params) {
-		streamController.playlistName = params.child("playlist").getValue(String.class);
-		streamController.refillQueue();
+	private void setPlaylist(Iterable<DataSnapshot> params) {
+		for(DataSnapshot param : params){
+			if(param.getKey().equals("playlist")){
+				streamController.playlistName = (String) param.getValue();
+			}
+		}
 	}
 
-	private void setPlayMode(DataSnapshot params) {
-		streamController.playMode = params.child("playMode").getValue(String.class);
-		streamController.refillQueue();
+	private void setPlayMode(Iterable<DataSnapshot> params) {
+		for(DataSnapshot param : params){
+			if(param.getKey().equals("playMode")){
+				streamController.playMode = (String) param.getValue();
+			}
+		}
 	}
 
-	private void nextSong(DataSnapshot params) {
+	private void nextSong(Iterable<DataSnapshot> params) {
 		streamController.curPlaying.playing = false; //force current song to stop
 	}
 
-	private void addToFrontOfQueue(DataSnapshot params) {
-		String path = params.child("songPath").getValue(String.class);
+	private void addToFrontOfQueue(Iterable<DataSnapshot> params) {
+		String path = "";
+		for(DataSnapshot param : params){
+			if(param.getKey().equals("songPath")){
+				path = (String) param.getValue();
+			}
+		}
 		Song song = SongDatabase.getSongFromPath(path);
 		streamController.queue.addToQueueAt(0, song);
 	}
 
-	private void addToQueue(DataSnapshot params) {
-		String path = params.child("songPath").getValue(String.class);
+	private void addToQueue(Iterable<DataSnapshot> params) {
+		String path = "";
+		for (DataSnapshot param : params) {
+			if (param.getKey().equals("songPath")) {
+				path = (String) param.getValue();
+			}
+		}
 		Song song = SongDatabase.getSongFromPath(path);
 		streamController.queue.addToQueue(song);
 	}
 	
-	private void addToSchedule(DataSnapshot params){
-		int playMode = params.child("playMode").getValue(Integer.class);
-		int repeatMode = params.child("repeatMode").getValue(Integer.class);
-		Date startTime = params.child("startTime").getValue(Date.class);
-		Date endTime = params.child("endTime").getValue(Date.class);
-		String DJName = params.child("DJName").getValue(String.class);
-		String genre = params.child("genre").getValue(String.class);
-		String playlist = params.child("playlist").getValue(String.class);
+	private void addToSchedule(Iterable<DataSnapshot> params){
+		int playMode = 0;
+		int repeatMode = 0;
+		Date startTime = new Date();
+		Date endTime = new Date();
+		String DJName = "";
+		String genre = ""; //ignored if not in genre play mode
+		String playlist = ""; //ignored if not in playlist play mode
+		
+		for (DataSnapshot param : params) {
+			if (param.getKey().equals("playMode")) {
+				playMode = (int) param.getValue();
+			}
+			if (param.getKey().equals("repeatMode")) {
+				repeatMode = (int) param.getValue();
+			}
+			if (param.getKey().equals("startTime")) {
+				startTime = (Date) param.getValue();
+			}
+			if (param.getKey().equals("endTime")) {
+				endTime = (Date) param.getValue();
+			}
+			if (param.getKey().equals("DJName")) {
+				DJName = (String) param.getValue();
+			}
+			if (param.getKey().equals("genre")) {
+				genre = (String) param.getValue();
+			}
+			if (param.getKey().equals("playlist")) {
+				playlist = (String) param.getValue();
+			}
+		}
 		ScheduleItem newScheduleItem = new ScheduleItem(playMode, repeatMode, startTime, endTime, DJName, genre, playlist);
 		streamController.playSchedule.addToSchedule(newScheduleItem);
-	}
-	
-	private void addPlaylist(DataSnapshot params){
-		Playlist newPlaylist = new Playlist();
-		newPlaylist.setName(params.child("name").getValue(String.class));
-		for(DataSnapshot songSnapshot : params.child("songs").getChildren()){
-			String songPath = songSnapshot.getValue(String.class);
-		    newPlaylist.addSong(SongDatabase.getSongFromPath(songPath));
-		}
-		streamController.playlistController.allPlaylists.add(newPlaylist);
-		streamController.playlistController.updateFirebase();
-	}
-	
-	private void requestSong(DataSnapshot params){
-		String songPath = params.child("songPath").getValue(String.class);
-		Song song = SongDatabase.getSongFromPath(songPath);
-		streamController.queue.addToQueue(song); //TODO: add limits for user requests
-	}
-	
-	private void upvoteSong(DataSnapshot params){
-		String songPath = params.child("songPath").getValue(String.class);
-		Song song = SongDatabase.getSongFromPath(songPath);
-		song.upvote();
-	}
-		
-	private void downvoteSong(DataSnapshot params){
-		String songPath = params.child("songPath").getValue(String.class);
-		Song song = SongDatabase.getSongFromPath(songPath);
-		song.downvote();
-	}
-	
-	private void stopServer(DataSnapshot params){
-		streamController.stopServer();
 	}
 }

@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
 public class Playlist {
-	private String name;
-	private ArrayList<Song> songs = new ArrayList<Song>();
+	String name;
+	ArrayList<Song> songs = new ArrayList<Song>();
 	
 	
 	
@@ -21,14 +21,6 @@ public class Playlist {
 	
 	public void removeSongAtIndex(int index){
 		songs.remove(index);
-	}
-	
-	public void setName(String name){
-		this.name = name;
-	}
-	
-	public String getName(){
-		return name;
 	}
 	
 	public ArrayList<Song> getSongs(){

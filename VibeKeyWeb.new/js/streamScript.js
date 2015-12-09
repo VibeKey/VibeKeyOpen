@@ -2,11 +2,11 @@ var isPlaying = true;
 var firstPlay = true;
 	
 function pressPlayerButton(){
-	// var player = document.getElementById("player");
-	// var audio = document.getElementById("audioStream");
+	var player = document.getElementById("player");
+	var audio = document.getElementById("audioStream");
 	if (!isPlaying){
 		// Resumes audio.
-		// audio.play();
+		audio.play();
 		isPlaying = true;
 		
 		// Resumes animations.
@@ -19,12 +19,9 @@ function pressPlayerButton(){
 		// Removes the play button and adds the pause button.
 		document.getElementById("playButton").style["display"] = "none";
 		document.getElementById("pauseButton").style["display"] = null;
-
-		document.getElementById("playImage").style["display"] = null;
-		document.getElementById("pauseImage").style["display"] = "none";
 	} else {
 		// Pauses audio.
-		// audio.pause();
+		audio.pause();
 		isPlaying = false;
 		
 		// Pauses Animations
@@ -37,9 +34,6 @@ function pressPlayerButton(){
 		// Removes the play button and adds the pause button.
 		document.getElementById("pauseButton").style["display"] = "none";
 		document.getElementById("playButton").style["display"] = null;
-
-		document.getElementById("pauseImage").style["display"] = null;
-		document.getElementById("playImage").style["display"] = "none";
 	}
 }
 

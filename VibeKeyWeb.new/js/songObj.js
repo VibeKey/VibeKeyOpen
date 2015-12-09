@@ -10,6 +10,46 @@ $(document).ready(function() {
 		document.getElementById("searchFunc").appendChild(searchTab);
 		var play = document.getElementById("playlist");
 		
+		//load firebase songs and create song obj on wbsite
+		var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
+		var songsRef = fireRef.child("songs");
+		var allsongsRef = songsRef.child("allSongs");
+		allsongsRef.once("value", function(snapshot) {
+		  var main = snapshot.val();
+		  snapshot.forEach(function(childSnapshot) {
+		  	var id = childSnapshot.key();
+		  	var childData = childSnapshot.val();
+		  	var songName = childData.title;
+		  	var songBand = childData.artist;
+		  	var song = {
+		  		"id" : [id],
+		  		"name" : [songName],
+		  		"artist" : [songBand],
+		  		"votes" : 0
+		  	};
+		  	addSongToTab(song, searchTab);
+		  });
+		}, function (errorObject) {
+		  console.log("The read failed: " + errorObject.code);
+		});
+
+		
+		var playlistHeader = document.getElementById("playhead");
+		var buttonSpan = document.createElement('span');
+		buttonSpan.className = "button";
+		
+		var refreshButton = document.createElement('span');
+		refreshButton.className = "circle";
+		refreshButton.innerHTML = "<img id='refreshButton' src='images/mic_mute.png' style='width:24px;height:24px;'>";
+		buttonSpan.appendChild(refreshButton);
+		
+		var micButton = document.createElement('span');
+		micButton.className="circle";
+		micButton.innerHTML = "<img id='micButton' src='images/sync.png' style='width:24px;height:24px;'>";
+		buttonSpan.appendChild(micButton);
+		
+		playlistHeader.appendChild(buttonSpan);
+		
 		// Does the dragging.
 	$('.sortable').sortable({
 		connectWith: $('.sortable'),
@@ -94,38 +134,32 @@ function addSongToTab(song, tab) {
 	containInfo.appendChild(buttonItem);
 	
 	// Create all voting items.
-	// var up = document.createElement('div');
+	var up = document.createElement('div');
 	var number = document.createElement('div');
-	// var down = document.createElement('div');
+	var down = document.createElement('div');
 	
-	// up.className = "upArrow";
+	up.className = "upArrow";
 	number.className = "number";
-	// down.className = "downArrow";
+	down.className = "downArrow";
 	
 	number.innerHTML = song["votes"];
 	
-	// votingItem.appendChild(up);
+	votingItem.appendChild(up);
 	votingItem.appendChild(number);
-	// votingItem.appendChild(down);
+	votingItem.appendChild(down);
 	
 	// Create all basic song items.
 	var name = document.createElement('div');
 	var band = document.createElement('div');
-	var path = document.createElement('div');
 	
 	name.className = "name";
 	band.className = "band";
-	path.className = "path";
 	
 	name.innerHTML = song["name"];
 	band.innerHTML = song["artist"];
-	path.innerHTML = song["path"];
-
-	path.style["display"] = "none";
 	
 	basicItem.appendChild(name);
 	basicItem.appendChild(band);
-	basicItem.appendChild(path);
 	
 	// Add all the buttons.
 	var info = document.createElement('span');
@@ -142,8 +176,8 @@ function addSongToTab(song, tab) {
 		+ "InfoButton' src='images/info_circle.png' style='width:24px;height:24px;'>";
 	add.innerHTML = "<img id='" + song["name"]
 		+ "PlusButton' src='images/add_circle.png' style='width:24px;height:24px;'>";
-	request.innerHTML = "<img value='" + song["name"] + "RequestButton'" 
-		+ "id='" + song["path"] + "'"
+	request.innerHTML = "<img id='" + song["name"] + "RequestButton'" 
+		+ "title='" + song["name"] + " by " + song["artist"] + "'"
 		+ "onclick='requestSong(this)'"
 		+ "src='images/radio.png' style='width:24px;height:24px;'>";
 	

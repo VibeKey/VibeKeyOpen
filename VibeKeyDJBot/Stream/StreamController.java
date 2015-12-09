@@ -1,6 +1,5 @@
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import com.gmail.kunicins.olegs.libshout.Libshout;
 
@@ -13,7 +12,6 @@ public class StreamController {
 	PlaylistController playlistController;
 	PlaySchedule playSchedule;
 	String playlistName;
-	Boolean stopServer = false; //easy way to stop the server, turn it to true
 	
 	public StreamController(){
 		icecast = initializeIcecast();
@@ -30,13 +28,11 @@ public class StreamController {
 		return playMode != null && playlistName != null && playMode.equals("playlist");
 	}
 	
-	public void refillQueue(){
-		queue.emptyQueue();
-		this.fillQueue();
-	}
-	
 	public void fillQueue(){
 		while(queue.size() < 5){
+			
+			int playMode = playSchedule.getCurPlayMode();
+			//if(playMode == ScheduleItem.PLAYMODE_NONE)
 			if(isInGenreMode()){
 				ArrayList<Song> genreSongList = SongDatabase.genreMap.get(genreFilter);
 				if(genreSongList != null){
@@ -44,49 +40,22 @@ public class StreamController {
 					queue.addToQueue(genreSongList.get(songNum));
 					continue;
 				}
-			} else if(isInPlaylistMode()){
+			}
+			
+			if(isInPlaylistMode()){
 				boolean foundSong = false;
 				for(Playlist playlist : playlistController.allPlaylists){
-					if(playlist.getName().equals(playlistName)){
-						if(playlist.getSongs().size() > 0){
-							int songNum = RandomWrapper.nextInt(playlist.getSongs().size());
+					if(playlist.name.equals(playlistName)){
+						if(playlist.songs.size() > 0){
+							int songNum = RandomWrapper.nextInt(playlist.songs.size());
 							foundSong=true;
-							queue.addToQueue(playlist.getSongs().get(songNum));
+							queue.addToQueue(playlist.songs.get(songNum));
 							break;
 						}
 					}
 				}
 				if(foundSong){
 					continue;
-				}
-			} else { //else, check the schedule if not in a forced mode
-				Calendar calendar = Calendar.getInstance();
-				calendar.add(Calendar.SECOND, queue.getTotalTime());
-				ScheduleItem curSched = playSchedule.getScheduleItemAtTime(calendar.getTime());
-				if(curSched != null){
-					if(curSched.getPlayMode() == ScheduleItem.PLAYMODE_GENRE && curSched.getGenre() != null && !curSched.getGenre().equals("")){
-						ArrayList<Song> genreSongList = SongDatabase.genreMap.get(curSched.getGenre());
-						if(genreSongList != null){
-							int songNum = RandomWrapper.nextInt(genreSongList.size());
-							queue.addToQueue(genreSongList.get(songNum));
-							continue;
-						}
-					} else if(curSched.getPlayMode() == ScheduleItem.PLAYMODE_PLAYLIST && curSched.getPlaylist() != null && !curSched.getPlaylist().equals("")){
-						boolean foundSong = false;
-						for(Playlist playlist : playlistController.allPlaylists){
-							if(playlist.getName().equals(curSched.getPlaylist())){
-								if(playlist.getSongs().size() > 0){
-									int songNum = RandomWrapper.nextInt(playlist.getSongs().size());
-									foundSong=true;
-									queue.addToQueue(playlist.getSongs().get(songNum));
-									break;
-								}
-							}
-						}
-						if(foundSong){
-							continue;
-						}
-					}
 				}
 			}
 			
@@ -102,18 +71,16 @@ public class StreamController {
 		return song;
 	}
 	
-	public void play(){
-		while(!this.stopServer){
-			Song song = getNextSong();
-			
-			String nowPlaying = "Now playing:  \"" + song.getTitle() + "\" by " + song.getArtist() + "   (" + song.getGenre() + ")";
-			System.out.println(nowPlaying);
-			FirebaseCommunicator.setFirebaseNowPlaying(song);
-			curPlaying = song;
-			//boolean finishedSucessfully = song.streamSong(icecast);
-			
-			song.streamSong(icecast);
-		}
+	public void playNextSong(){
+		Song song = getNextSong();
+		
+		String nowPlaying = "Now playing:  \"" + song.getTitle() + "\" by " + song.getArtist() + "   (" + song.getGenre() + ")";
+		System.out.println(nowPlaying);
+		FirebaseCommunicator.setFirebaseNowPlaying(song);
+		curPlaying = song;
+		//boolean finishedSucessfully = song.streamSong(icecast);
+		
+		song.streamSong(icecast);
 	}
 	
 	
@@ -138,10 +105,5 @@ public class StreamController {
 			e.printStackTrace();
 			return null;
 		}
-	}
-	
-	public void stopServer(){
-		this.stopServer = true; //tell stream controller to throw stop exception
-		this.curPlaying.playing = false; //stop immediate song
 	}
 }
