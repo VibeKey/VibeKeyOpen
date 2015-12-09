@@ -19,8 +19,8 @@
 }
 
 #modal_trigger {
-        margin: 40px auto;
-        width: 200px;
+        margin: 50px auto;
+        width: 120px;
         display: block;
         border: 1px solid #DDD;
         border-radius: 4px;
@@ -90,56 +90,8 @@ a.btn_red {
         font-size: 16px;
 }
 
-.popupHeader .header_title {
-        color: black;
-}
-
 .popupBody {
         padding: 20px;
-}
-/* Social Login Form */
-
-.social_login {}
-
-.social_login .social_box {
-        display: block;
-        clear: both;
-        padding: 10px;
-        margin-bottom: 10px;
-        background: #F4F4F2;
-        overflow: hidden;
-}
-
-.social_login .icon {
-        display: block;
-        width: 10px;
-        padding: 5px 10px;
-        margin-right: 10px;
-        float: left;
-        color: #FFF;
-        font-size: 16px;
-        text-align: center;
-}
-
-.social_login .fb .icon {
-        background: #3B5998;
-}
-
-.social_login .google .icon {
-        background: #DD4B39;
-}
-
-.social_login .icon_title {
-        display: block;
-        padding: 5px 0;
-        float: left;
-        font-weight: bold;
-        font-size: 16px;
-        color: #777;
-}
-
-.social_login .social_box:hover {
-        background: #E4E4E2;
 }
 
 .centeredText {
@@ -148,9 +100,6 @@ a.btn_red {
         clear: both;
         overflow: hidden;
         text-transform: uppercase;
-        font-family: 'Source Sans Pro', sans-serif;
-        font-size: 14px;
-        color: #666;
 }
 
 .action_btns {
@@ -162,17 +111,9 @@ a.btn_red {
         display: block;
 }
 /* User Login Form */
-
-.user_login {
-        display: none;
-}
-
 .user_login label {
         display: block;
         margin-bottom: 5px;
-        font-family: 'Source Sans Pro', sans-serif;
-        font-size: 14px;
-        color: #666;
 }
 
 .user_login input[type="text"],
@@ -198,10 +139,6 @@ a.btn_red {
         margin-bottom: 10px;
         clear: both;
         overflow: hidden;
-}
-
-.user_login a {
-        color: black;
 }
 
 .forgot_password {
