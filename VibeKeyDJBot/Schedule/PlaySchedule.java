@@ -22,6 +22,19 @@ public class PlaySchedule {
 		scheduleItems.add(newScheduleItem);
 	}
 	
+	// public void addToSchedule_return(ScheduleItem newScheduleItem){
+	// 	for(ScheduleItem scheduleItem : scheduleItems){
+	// 		if(((newScheduleItem.getStartTime().after(scheduleItem.getStartTime()) &&
+	// 				newScheduleItem.getStartTime().before(scheduleItem.getEndTime())) ||
+	// 				(newScheduleItem.getEndTime().after(scheduleItem.getStartTime()) &&
+	// 				newScheduleItem.getEndTime().before(scheduleItem.getEndTime())))){ //if times are overlapping
+	// 			break;
+	// 		}
+	// 	}
+	// 	scheduleItems.add(newScheduleItem);
+	// 	return(newScheduleItem);
+	// }
+	
 
 	public ScheduleItem getCurScheduleItem(){
 		Date curTime = new Date();
