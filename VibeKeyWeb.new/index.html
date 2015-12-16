@@ -20,7 +20,7 @@
 		</div>
 		
 		<div class="container">
-	        <a style="position:absolute;top:0%;right:0%" id="modal_trigger" href="#modal">Login or register</a>
+	        <a style="position:absolute;top:0%;right:0%" id="modal_trigger" href="#modal">Login or Register</a>
 
 	        <div id="modal" class="popupContainer" style="display:none;">
 	        	<div class="loginPop">
@@ -47,39 +47,12 @@
 	                                        </div>
 
 	                                        <div class="action_btns">
-	                                                <div class="one_half"><a onclick="login()" class="btn btn_red">Sign in</a></div>
-	                                                <div class="one_half last"><a href="#" id="register_form" class="btn">Sign up</a></div>
+	                                                <div class="one_half"><a onclick="login()" class="btn btn_red">Login</a></div>
+	                                                <div class="one_half last"><a onclick="openregister()" class="btn">Register</a></div>
 	                                        </div>
 	                                </form>
 
 	                                <a href="#" class="forgot_password">Forgot password?</a>
-	                        </div>
-
-	                        <!-- Register Form -->
-	                        <div class="user_register">
-	                                <form>
-	                                        <label>Full Name</label>
-	                                        <input type="text" />
-	                                        <br />
-
-	                                        <label>Email Address</label>
-	                                        <input type="email" />
-	                                        <br />
-
-	                                        <label>Password</label>
-	                                        <input type="password" />
-	                                        <br />
-
-	                                        <div class="checkbox">
-	                                                <input id="send_updates" type="checkbox" />
-	                                                <label for="send_updates">Send me occasional email updates</label>
-	                                        </div>
-
-	                                        <div class="action_btns">
-	                                                <div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
-	                                                <div class="one_half last"><a href="#" class="btn btn_red">Register</a></div>
-	                                        </div>
-	                                </form>
 	                        </div>
 	                </section>
 	        </div>
@@ -91,7 +64,7 @@
 	            </header>
 	            <div class="user_logout">
 		            <div class="action_btns">
-		                <div class="one_half last"><a onclick="logout()" class="btn btn_red">Logout</a></div>
+		                <div class="one_half"><a onclick="logout()" class="btn btn_red">Logout</a></div>
 		            </div>
 	            </div>
 	        </div>

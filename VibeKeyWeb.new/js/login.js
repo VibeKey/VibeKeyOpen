@@ -38,16 +38,6 @@ function changeToUserView() {
 	$(".UserView").show();
 }
 
-// function register() {
-// 	var ref = new Firebase("https://vibekey-open.firebaseio.com/");
-// 	ref.createUser({
-//   		email    : "bobtony@firebase.com",
-// 	  	password : "correcthorsebatterystaple"
-// 	}, function(error, userData) {
-// 	  if (error) {
-// 	    console.log("Error creating user:", error);
-// 	  } else {
-// 	    console.log("Successfully created user account with uid:", userData.uid);
-// 	  }
-// 	});
-// }
+function openregister() {
+	window.open("webpage/register.html","Kerberos Authentication");
+}

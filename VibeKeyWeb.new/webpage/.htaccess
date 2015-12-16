@@ -1,0 +1,3 @@
+AuthType Kerberos
+AuthName "Use your Rose account"
+Require valid-user
