@@ -19,9 +19,9 @@
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
 
 	<script type="text/javascript" src="js/jquery.popup.min.js"></script>
-<!--	
+	
 	<script type="text/javascript" src="js/popup-data.js"></script>
--->
+
 	
 	<script type="text/javascript">
 			$(function() {
@@ -99,24 +99,31 @@
                 var args_start;
                 var args_end;
                 var args_resource;
+                
                 dp.onTimeRangeSelected = function (args) {
                 
                 	args_start = args.start;
                 	args_end = args.end;
                 	args_resource = args.resource;
                 
-                	/*
-                    var text = prompt("New event name (; description):", "Event ; Description");
-                    var event = text.split(/;(.+)?/)[0];
-                    var description = text.split(/;(.+)?/)[1];
-                    */
-
-					//alert("start from " + args.start + " to " + args.end);
 					$('#time').html("start from " + args.start + " to " + args.end);
-					document.getElementById("go").click()       
+					document.getElementById("go").click();    
                     //console.log("Done");
                     
-                    // dp.clearSelection();
+                    var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
+	        		var controls = fireRef.child("controls");
+	        		//var schedule = fireRef.child("schedule");
+	        		
+// 	        		var playMode = 'No';
+//   				var repeatMode = document.getElementsByClassName('repeatModeList')[1].value;
+// 	        		var DJName = document.getElementsByClassName('djNameList')[1].value;
+// 				var genre = document.getElementsByClassName('scheduleGenresList')[1].value;
+// 					var DJName = "dj";
+// 					var playlist = null;
+					
+             	 	//var command = createCommand(true, "addToSchedule", {"playMode":playMode, "repeatMode":sRepeat, "startTime":args.start, "endTime":args.end, "DJName":DJName, "genre":sType, "playlist":playlist});
+
+//                     dp.clearSelection();
 //                     if (!event) return;
 //                     var e = new DayPilot.Event({
 //                         start: args.start,
@@ -126,29 +133,24 @@
 //                         text: sName + " (" + sDescrip + ")"
 //                     });
 //                     dp.events.add(e);
-//                     
-//                     var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
-// 	        		var controls = fireRef.child("controls");
-// 	        		var schedule = fireRef.child("schedule");
-// 	        		var DJName = "testUser";
-// 	        		var playMode = "testplayMode";
-//                    // 	var command = createCommand(false, "addToSchedule", {"playMode":playMode, "repeatMode":sRepeat, "startTime":args.start, "endTime":args.end, "DJName":DJName, "genre":sType, "playlist":playlist});
-// //   					controls.set(command);
-// 
-//                     $.post("backend_create.php", 
-//                             {
-//                                 start: args.start.toString(),
-//                                 end: args.end.toString()//,
-//                                 //name: username
-//                             }, 
-//                             function() {
-//                                 console.log("Created.");
-//                             });
+                    
+                   
+
+                    $.post("backend_create.php", 
+                            {
+                                start: args.start.toString(),
+                                end: args.end.toString()//,
+                                //name: username
+                            }, 
+                            function() {
+                                console.log("Created.");
+                            });
 
                 };
 
                 dp.onEventClick = function(args) {
-                    alert("clicked: " + args.e.id());
+                    //alert("clicked: " + args.e.id());
+                    document.getElementById("go-details").click(); 
                 };
 
                 dp.init();
@@ -169,6 +171,14 @@
                         dp.events.list = data;
                         dp.update();
                     });
+                    
+                    var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
+                    
+                    fireRef.on("value", function(snapshot) {
+ 					 	console.log(snapshot.val());
+					}, function (errorObject) {
+  						console.log("The read failed: " + errorObject.code);
+					});
                 }
 
             </script>
@@ -322,6 +332,62 @@
 				</form>
 			</div>
 		</div>
+		
+		
+		<div>
+			<a id="go-details" rel="popup" name="detailInfo" href="#detailInfo" hidden>detailInfo!</a>
+		</div>
+		
+		<div id="detailInfo">
+			<div id="signup-ct">
+				<div id="signup-header">
+					<h2>View this event</h2>
+					<p id="time"></p>
+					<a class="modal_close" href="#"></a>
+				</div>
+				
+				<form action="">
+     
+     				<!-- Event Name is not in ScheduleItem now -->
+				  	<div class="txt-fld">
+				    	<label for="">Event Name</label>
+				    	<input id="sName" class="good_input" name="" type="text" />
+				  	</div>
+				  
+				    <!-- Description is not in ScheduleItem now -->
+				  	<div class="txt-fld">
+				    	<label for="">Description</label>
+				    	<input id="sDescrip" name="" type="text" />
+				  	</div>
+				  
+				  	<div class="other-fld">
+				  		<label for="">Use Playlist</label>
+				  		<input type="radio" name="sPlaylist" value=false onclick=""/> No
+						<input type="radio" name="sPlaylist" value=true onclick=""/> Yes
+			 		</div>
+				  
+				  	<div class="other-fld">
+				  		<label for="">Repeat Mode</label>
+				  		<input type="radio" name="sRepeat" value="only_once" onclick=""/> Only once
+						<input type="radio" name="sRepeat" value="every_week" onclick=""/> Every Week
+			 		</div>
+			 		
+			 		<div class="other-fld">
+			 			<label for="">Music Type </label>
+			 			<select id="sType">
+		  					<option value="none">None</option>
+		  				</select>
+		  			</div>
+				  
+				  	<div class="btn-fld">
+				  		<button type="detele" id="delete-Schedule">Delete &raquo;</button>
+				  		<button type="edit" id="edit-Schedule">Edit &raquo;</button>
+					</div>
+					
+				</form>
+			</div>
+		</div>
+		
 		
 		
 </body>
