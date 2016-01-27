@@ -9,7 +9,6 @@ function login() {
 	  if (error) {
 	    alert("Login Failed!", error);
 	  } else {
-	    console.log("Authenticated successfully with payload:", authData);
 	    var username = authData.password.email;
 	    $("#modal_trigger").text("Login as " + username + "Click to log out");
 	    $(".loginPop").hide();

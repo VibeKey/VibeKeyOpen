@@ -229,8 +229,8 @@ function addSongToTab(song, tab) {
 	function listenForResize(){
 		changeText(basicItem, name, band, song, tab);
 	}
-	registerEventListener(window, {event: "resize", callback: listenForResize});
-	registerEventListener(songItem, {event: "onload", callback: listenForResize});
+	//registerEventListener(window, {event: "resize", callback: listenForResize});
+	//registerEventListener(songItem, {event: "onload", callback: listenForResize});
 }
 
 function changeText(basicItem, name, band, song, tab) {
