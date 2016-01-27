@@ -288,11 +288,16 @@
 	</div>
 
 	<div id="djChatTab" class="sidr">
-		<h1>DJ Chat</h1>
+		<h1>Welcome to Chat</h1>
+		<ul id='chat_messages' class="chat_messages"></ul>
+		<div>
+    		<input style="height:100px;width:300px;position:absolute;bottom:50px;" type='text' class='messageInput' id='messageInput' placeholder='Type a message...'>
+    		<button style="height:50px;width:300px;position:absolute;bottom:0%;"class="sendChatButton" id="sendChatButton" onclick="chat()">Send</button>
+  		</div>
 	</div>
 
 	<div id="audienceTab" class="sidr">
-		<h1>Audience</h1>
+		
 	</div>
 
 	<div id="settingsTab" class="sidr">
@@ -322,6 +327,7 @@
 	<script type="text/javascript" src="js/login.js"></script>
 	<script type="text/javascript" src="js/pullNews.js"></script>
 	<script type="text/javascript" src="js/pullSchedule.js"></script>
+	<script type="text/javascript" src="js/chat.js"></script>
 	<script>
 		$(document).ready(function() {
 			streamMusic();
