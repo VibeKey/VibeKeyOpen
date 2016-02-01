@@ -45,15 +45,15 @@ public class FirebaseCommandParser {
 		FirebaseCommunicator.clearCommand();
 	}
 
-	private void setGenre(DataSnapshot params) {
-		streamController.genreFilter = params.child("genre").getValue(String.class);
-		streamController.refillQueue();
-	}
-
-	private void setPlaylist(DataSnapshot params) {
-		streamController.playlistName = params.child("playlist").getValue(String.class);
-		streamController.refillQueue();
-	}
+//	private void setGenre(DataSnapshot params) {
+//		streamController.genreFilter = params.child("genre").getValue(String.class);
+//		streamController.refillQueue();
+//	}
+//
+//	private void setPlaylist(DataSnapshot params) {
+//		streamController.playlistName = params.child("playlist").getValue(String.class);
+//		streamController.refillQueue();
+//	}
 
 	private void setPlayMode(DataSnapshot params) {
 		streamController.playMode = params.child("playMode").getValue(String.class);
