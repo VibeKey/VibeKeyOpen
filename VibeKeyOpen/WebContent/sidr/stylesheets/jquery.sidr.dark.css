@@ -1,9 +1,11 @@
 .sidr{
 	display:none;
 	background:rgb(068,068,068);
+	position:absolute;
 	position:fixed;
 	top:0;
 	height:100%;
+	z-index:999999;
 	width:25%;
 	overflow-x:hidden;
 	overflow-y:auto;
@@ -11,6 +13,6 @@
 
 .sidr.left{
 	left:-260px;
-	right:auto;
+	right:auto
 }
 

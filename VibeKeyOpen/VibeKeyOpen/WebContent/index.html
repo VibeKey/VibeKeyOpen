@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>WMHD Radio</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="songStyle.css">
+	<link rel="stylesheet" href="tabStyle.css">
+	<link rel="stylesheet" href="animations.css">
+	<link rel="stylesheet" href="sidr/stylesheets/jquery.sidr.dark.css">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="frequencyAnimator.js"></script>
+	<script type="text/javascript" src="tabScript.js"></script>
+	<script type="text/javascript" src="hover.js"></script>
+	<script type="text/javascript" src="songObj.js"></script>
+	<script type="text/javascript" src="streamScript.js"></script>
+	<script type="text/javascript" src="buttonScript.js"></script>
+	
+</head>
+
+<body>
+	<script>	
+	function process(data, textStatus, jqXHR) {
+		var succ = document.createElement('p');
+		succ.innerHTML = "SUCCESS" + data;
+		document.body.appendChild(succ);
+	}
+	
+	//initially creates some songs on the website using methods in songObj.js
+	$(document).ready(function() {
+	});
+	</script>
+	<div id="stuffBody" class="stuffBody">
+		<div class="playlist">
+			<div class="playlistBody">
+				<div class="playhead" id="playhead">
+					<canvas class="bounce" id="bounceAnimation">
+						
+					</canvas>
+					<div class="playHeadInfo">
+						<span class="genre">Genre:Rock</span>
+						<span class="tags">Tags: Bouncey, Fun, Male Singer</span>
+					</div>
+				</div>
+				
+				<div class="playsongs" id="playSongs">
+					<div class="playsongsBorder"></div>
+					<ul id="playlist" class="sortable"></ul>
+					<div class="otherLists" id="up" style="display:none;">
+						I am the upload.
+					</div>
+					<div class="otherLists" id="list" style="display:none;">
+						I am the list of playlists.
+					</div>
+				</div>
+				<div class="playbottom">
+					<div class="button" style="float:none; height:auto;">
+						<div onclick="clickBottomButton(this)" id="list" class="circle">
+							<img id="listImg" style="width:30px; height:30px;" 
+								src="/images/list.png">
+							<img id="listDownArrow" style="width:30px; height:30px; display:none;" 
+								src="/images/down_arrow.png">
+						</div>
+						<div onclick="pressPlayerButton()" class="play" 
+							id="player">
+							<img id="pauseButton" 
+								src="/images/pausebutton.png" 
+								alt='Pause Stream' style='width:50px; height:50px;'>
+							<img id="playButton" 
+								src="/images/playbutton.png" 
+								alt='Play Stream' style='width:50px; height:50px;'>
+						</div>
+						<div onclick="clickBottomButton(this)" id="up" class="circle">
+							<img id="upImg" style="width:30px; height:30px;" 
+								src="/images/up.png">
+							<img id="upDownArrow" style="width:30px; height:30px; display:none;" 
+								src="/images/down_arrow.png">
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<!-- creates all the tabs on the side that can be clicked -->
+		<div id="container" class="tabContainer"></div>
+	</div>
+	<!-- This is the part where we create what's inside the actual tabs that pull out on the left side -->
+	<div id="searchTab" class="sidr">
+	</div>
+	
+	<div id="newsTab" class="sidr">
+		<iframe class="sideArea" src="news.html">
+		</iframe>
+	</div>
+	
+	<div id="soundboardTab" class="sidr">
+		<h1>I am a soundboard tab!</h1>
+	</div>
+	<div id="calendarTab" class="sidr">
+		<h1>I am a calendar tab!</h1>
+		
+		
+		<!-- creates static calendar for quick fix. Has to manually be changed on month change -->
+		<TABLE class="dummyCalendar"BORDER=3 CELLSPACING=3 CELLPADDING=3> 
+<TR>
+<TD COLSPAN="7" ALIGN=center><B>April 2015</B></TD> 
+</TR>
+<TR> 
+<TD COLSPAN="7" ALIGN=center><I>Play all of the music!</I></TD>
+</TR>
+<TR> 
+<TD ALIGN=center>Sun</TD>
+<TD ALIGN=center>Mon</TD>
+<TD ALIGN=center>Tue</TD>
+<TD ALIGN=center>Wed</TD>
+<TD ALIGN=center>Thu</TD>
+<TD ALIGN=center>Fri</TD>
+<TD ALIGN=center>Sat</TD>
+</TR>
+<TR> 
+<TD ALIGN=center></TD>
+<TD ALIGN=center></TD>
+<TD ALIGN=center></TD>
+<TD ALIGN=center><a href="https://youtu.be/dQw4w9WgXcQ">1</TD>
+<TD ALIGN=center>2</TD>
+<TD ALIGN=center>3</TD>
+<TD ALIGN=center>4</TD>
+</TR>
+<TR> 
+<TD ALIGN=center>5</TD>
+<TD ALIGN=center>6</TD>
+<TD ALIGN=center>7</TD>
+<TD ALIGN=center>8</TD>
+<TD ALIGN=center>9</TD>
+<TD ALIGN=center>10</TD>
+<TD ALIGN=center>11</TD>
+</TR>
+<TR> 
+<TD ALIGN=center>12</TD>
+<TD ALIGN=center>13</TD>
+<TD ALIGN=center>14</TD>
+<TD ALIGN=center>15</TD>
+<TD ALIGN=center>16</TD>
+<TD ALIGN=center>17</TD>
+<TD ALIGN=center>18</TD>
+</TR>
+<TR> 
+<TD ALIGN=center>19</TD>
+<TD ALIGN=center>20</TD>
+<TD ALIGN=center>21</TD>
+<TD ALIGN=center>22</TD>
+<TD ALIGN=center>23</TD>
+<TD ALIGN=center>24</TD>
+<TD ALIGN=center>25</TD>
+</TR>
+<TR> 
+<TD ALIGN=center>26</TD>
+<TD ALIGN=center>27</TD>
+<TD ALIGN=center>28</TD>
+<TD ALIGN=center>29</TD>
+<TD ALIGN=center>30</TD>
+<TD ALIGN=center></TD>
+<TD ALIGN=center></TD>
+</TR>
+
+</TABLE>
+
+
+	</div>
+	<div id="djChatTab" class="sidr">
+		<h1>I am a DJ Chat tab!</h1>
+	</div>
+	<div id="audienceTab" class="sidr">
+		<h1>I am an audience tab!</h1>
+	</div>
+	<div id="settingsTab" class="sidr">
+		<h1>I am a settings tab!</h1>
+	</div>
+	
+	
+    <!-- Include the Sidr JS -->
+    <script src="sidr/jquery.sidr.min.js"></script>
+	<script type="text/javascript" src="tabScript.js"></script>
+	</body>
+</html>
+

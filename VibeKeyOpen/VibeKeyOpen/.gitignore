@@ -1,0 +1,10 @@
+/bin/
+.metadata
+.plugins
+.mylyn
+.log
+.classpath
+*.project
+.project
+.settings
+/target/

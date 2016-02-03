@@ -1,0 +1,859 @@
+Apr 27, 2015 10:24:21 PM org.apache.coyote.AbstractProtocol pause
+INFO: Pausing ProtocolHandler ["http-bio-127.0.0.1-8080"]
+Apr 27, 2015 10:24:21 PM org.apache.coyote.AbstractProtocol pause
+INFO: Pausing ProtocolHandler ["ajp-bio-127.0.0.1-8009"]
+Apr 27, 2015 10:24:21 PM org.apache.catalina.core.StandardService stopInternal
+INFO: Stopping service Catalina
+Apr 27, 2015 10:24:22 PM org.apache.coyote.AbstractProtocol stop
+INFO: Stopping ProtocolHandler ["http-bio-127.0.0.1-8080"]
+Apr 27, 2015 10:24:22 PM org.apache.coyote.AbstractProtocol stop
+INFO: Stopping ProtocolHandler ["ajp-bio-127.0.0.1-8009"]
+Apr 27, 2015 10:24:22 PM org.apache.coyote.AbstractProtocol destroy
+INFO: Destroying ProtocolHandler ["http-bio-127.0.0.1-8080"]
+Apr 27, 2015 10:24:22 PM org.apache.coyote.AbstractProtocol destroy
+INFO: Destroying ProtocolHandler ["ajp-bio-127.0.0.1-8009"]
+Apr 27, 2015 10:25:12 PM org.apache.catalina.startup.ClassLoaderFactory validateFile
+WARNING: Problem with directory [/usr/share/tomcat7/common/classes], exists: [false], isDirectory: [false], canRead: [false]
+Apr 27, 2015 10:25:12 PM org.apache.catalina.startup.ClassLoaderFactory validateFile
+WARNING: Problem with directory [/usr/share/tomcat7/common], exists: [false], isDirectory: [false], canRead: [false]
+Apr 27, 2015 10:25:13 PM org.apache.catalina.startup.ClassLoaderFactory validateFile
+WARNING: Problem with directory [/usr/share/tomcat7/server/classes], exists: [false], isDirectory: [false], canRead: [false]
+Apr 27, 2015 10:25:13 PM org.apache.catalina.startup.ClassLoaderFactory validateFile
+WARNING: Problem with directory [/usr/share/tomcat7/server], exists: [false], isDirectory: [false], canRead: [false]
+Apr 27, 2015 10:25:13 PM org.apache.catalina.startup.ClassLoaderFactory validateFile
+WARNING: Problem with directory [/usr/share/tomcat7/shared/classes], exists: [false], isDirectory: [false], canRead: [false]
+Apr 27, 2015 10:25:13 PM org.apache.catalina.startup.ClassLoaderFactory validateFile
+WARNING: Problem with directory [/usr/share/tomcat7/shared], exists: [false], isDirectory: [false], canRead: [false]
+Apr 27, 2015 10:25:17 PM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["http-bio-127.0.0.1-8080"]
+Apr 27, 2015 10:25:17 PM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["ajp-bio-127.0.0.1-8009"]
+Apr 27, 2015 10:25:17 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 3847 ms
+Apr 27, 2015 10:25:18 PM org.apache.catalina.core.StandardService startInternal
+INFO: Starting service Catalina
+Apr 27, 2015 10:25:18 PM org.apache.catalina.core.StandardEngine startInternal
+INFO: Starting Servlet Engine: Apache Tomcat/7.0.56 (Debian)
+Apr 27, 2015 10:25:18 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /var/lib/tomcat7/webapps/VibeKey
+Apr 27, 2015 10:25:20 PM org.apache.catalina.util.SessionIdGenerator createSecureRandom
+INFO: Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [152] milliseconds.
+Apr 27, 2015 10:25:20 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /var/lib/tomcat7/webapps/VibeKey has finished in 2,103 ms
+Apr 27, 2015 10:25:20 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /var/lib/tomcat7/webapps/ROOT
+Apr 27, 2015 10:25:20 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /var/lib/tomcat7/webapps/ROOT has finished in 751 ms
+Apr 27, 2015 10:25:20 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /var/lib/tomcat7/webapps/helloworld
+Apr 27, 2015 10:25:21 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /var/lib/tomcat7/webapps/helloworld has finished in 624 ms
+Apr 27, 2015 10:25:21 PM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["http-bio-127.0.0.1-8080"]
+Apr 27, 2015 10:25:21 PM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["ajp-bio-127.0.0.1-8009"]
+Apr 27, 2015 10:25:21 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 3799 ms
+Apr 27, 2015 10:50:21 PM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context []
+Apr 27, 2015 10:50:22 PM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/ROOT.war
+Apr 27, 2015 10:50:23 PM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/ROOT.war has finished in 851 ms
+Apr 27, 2015 10:53:23 PM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context []
+Apr 27, 2015 10:53:23 PM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/test.war
+Apr 27, 2015 10:53:24 PM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/test.war has finished in 834 ms
+Apr 27, 2015 10:53:55 PM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/test]
+Apr 27, 2015 10:54:05 PM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/foo.war
+Apr 27, 2015 10:54:05 PM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/foo.war has finished in 564 ms
+Apr 27, 2015 11:01:33 PM org.apache.coyote.AbstractProtocol pause
+INFO: Pausing ProtocolHandler ["http-bio-127.0.0.1-8080"]
+Apr 27, 2015 11:01:33 PM org.apache.coyote.AbstractProtocol pause
+INFO: Pausing ProtocolHandler ["ajp-bio-127.0.0.1-8009"]
+Apr 27, 2015 11:01:33 PM org.apache.catalina.core.StandardService stopInternal
+INFO: Stopping service Catalina
+Apr 27, 2015 11:01:33 PM org.apache.coyote.AbstractProtocol stop
+INFO: Stopping ProtocolHandler ["http-bio-127.0.0.1-8080"]
+Apr 27, 2015 11:01:33 PM org.apache.coyote.AbstractProtocol stop
+INFO: Stopping ProtocolHandler ["ajp-bio-127.0.0.1-8009"]
+Apr 27, 2015 11:01:33 PM org.apache.coyote.AbstractProtocol destroy
+INFO: Destroying ProtocolHandler ["http-bio-127.0.0.1-8080"]
+Apr 27, 2015 11:01:33 PM org.apache.coyote.AbstractProtocol destroy
+INFO: Destroying ProtocolHandler ["ajp-bio-127.0.0.1-8009"]
+Apr 27, 2015 11:01:35 PM org.apache.catalina.startup.ClassLoaderFactory validateFile
+WARNING: Problem with directory [/usr/share/tomcat7/common/classes], exists: [false], isDirectory: [false], canRead: [false]
+Apr 27, 2015 11:01:35 PM org.apache.catalina.startup.ClassLoaderFactory validateFile
+WARNING: Problem with directory [/usr/share/tomcat7/common], exists: [false], isDirectory: [false], canRead: [false]
+Apr 27, 2015 11:01:35 PM org.apache.catalina.startup.ClassLoaderFactory validateFile
+WARNING: Problem with directory [/usr/share/tomcat7/server/classes], exists: [false], isDirectory: [false], canRead: [false]
+Apr 27, 2015 11:01:35 PM org.apache.catalina.startup.ClassLoaderFactory validateFile
+WARNING: Problem with directory [/usr/share/tomcat7/server], exists: [false], isDirectory: [false], canRead: [false]
+Apr 27, 2015 11:01:35 PM org.apache.catalina.startup.ClassLoaderFactory validateFile
+WARNING: Problem with directory [/usr/share/tomcat7/shared/classes], exists: [false], isDirectory: [false], canRead: [false]
+Apr 27, 2015 11:01:35 PM org.apache.catalina.startup.ClassLoaderFactory validateFile
+WARNING: Problem with directory [/usr/share/tomcat7/shared], exists: [false], isDirectory: [false], canRead: [false]
+Apr 27, 2015 11:01:37 PM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["http-bio-127.0.0.1-8080"]
+Apr 27, 2015 11:01:37 PM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["ajp-bio-127.0.0.1-8009"]
+Apr 27, 2015 11:01:37 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 1964 ms
+Apr 27, 2015 11:01:37 PM org.apache.catalina.core.StandardService startInternal
+INFO: Starting service Catalina
+Apr 27, 2015 11:01:37 PM org.apache.catalina.core.StandardEngine startInternal
+INFO: Starting Servlet Engine: Apache Tomcat/7.0.56 (Debian)
+Apr 27, 2015 11:01:37 PM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/foo.war
+Apr 27, 2015 11:01:39 PM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/foo.war has finished in 1,978 ms
+Apr 27, 2015 11:01:39 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /var/lib/tomcat7/webapps/VibeKey
+Apr 27, 2015 11:01:40 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /var/lib/tomcat7/webapps/VibeKey has finished in 758 ms
+Apr 27, 2015 11:01:40 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /var/lib/tomcat7/webapps/helloworld
+Apr 27, 2015 11:01:41 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /var/lib/tomcat7/webapps/helloworld has finished in 612 ms
+Apr 27, 2015 11:01:41 PM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["http-bio-127.0.0.1-8080"]
+Apr 27, 2015 11:01:41 PM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["ajp-bio-127.0.0.1-8009"]
+Apr 27, 2015 11:01:41 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 3616 ms
+Apr 27, 2015 11:03:03 PM org.apache.coyote.AbstractProtocol pause
+INFO: Pausing ProtocolHandler ["http-bio-127.0.0.1-8080"]
+Apr 27, 2015 11:03:03 PM org.apache.coyote.AbstractProtocol pause
+INFO: Pausing ProtocolHandler ["ajp-bio-127.0.0.1-8009"]
+Apr 27, 2015 11:03:03 PM org.apache.catalina.core.StandardService stopInternal
+INFO: Stopping service Catalina
+Apr 27, 2015 11:03:03 PM org.apache.coyote.AbstractProtocol stop
+INFO: Stopping ProtocolHandler ["http-bio-127.0.0.1-8080"]
+Apr 27, 2015 11:03:03 PM org.apache.coyote.AbstractProtocol stop
+INFO: Stopping ProtocolHandler ["ajp-bio-127.0.0.1-8009"]
+Apr 27, 2015 11:03:03 PM org.apache.coyote.AbstractProtocol destroy
+INFO: Destroying ProtocolHandler ["http-bio-127.0.0.1-8080"]
+Apr 27, 2015 11:03:03 PM org.apache.coyote.AbstractProtocol destroy
+INFO: Destroying ProtocolHandler ["ajp-bio-127.0.0.1-8009"]
+Apr 27, 2015 11:03:05 PM org.apache.catalina.startup.ClassLoaderFactory validateFile
+WARNING: Problem with directory [/usr/share/tomcat7/common/classes], exists: [false], isDirectory: [false], canRead: [false]
+Apr 27, 2015 11:03:05 PM org.apache.catalina.startup.ClassLoaderFactory validateFile
+WARNING: Problem with directory [/usr/share/tomcat7/common], exists: [false], isDirectory: [false], canRead: [false]
+Apr 27, 2015 11:03:05 PM org.apache.catalina.startup.ClassLoaderFactory validateFile
+WARNING: Problem with directory [/usr/share/tomcat7/server/classes], exists: [false], isDirectory: [false], canRead: [false]
+Apr 27, 2015 11:03:05 PM org.apache.catalina.startup.ClassLoaderFactory validateFile
+WARNING: Problem with directory [/usr/share/tomcat7/server], exists: [false], isDirectory: [false], canRead: [false]
+Apr 27, 2015 11:03:05 PM org.apache.catalina.startup.ClassLoaderFactory validateFile
+WARNING: Problem with directory [/usr/share/tomcat7/shared/classes], exists: [false], isDirectory: [false], canRead: [false]
+Apr 27, 2015 11:03:05 PM org.apache.catalina.startup.ClassLoaderFactory validateFile
+WARNING: Problem with directory [/usr/share/tomcat7/shared], exists: [false], isDirectory: [false], canRead: [false]
+Apr 27, 2015 11:03:07 PM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["http-bio-127.0.0.1-8080"]
+Apr 27, 2015 11:03:07 PM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["ajp-bio-127.0.0.1-8009"]
+Apr 27, 2015 11:03:07 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 1976 ms
+Apr 27, 2015 11:03:07 PM org.apache.catalina.core.StandardService startInternal
+INFO: Starting service Catalina
+Apr 27, 2015 11:03:07 PM org.apache.catalina.core.StandardEngine startInternal
+INFO: Starting Servlet Engine: Apache Tomcat/7.0.56 (Debian)
+Apr 27, 2015 11:03:07 PM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/foo.war
+Apr 27, 2015 11:03:34 PM org.apache.catalina.util.SessionIdGenerator createSecureRandom
+INFO: Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [24,482] milliseconds.
+Apr 27, 2015 11:03:34 PM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/foo.war has finished in 26,428 ms
+Apr 27, 2015 11:03:34 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /var/lib/tomcat7/webapps/VibeKey
+Apr 27, 2015 11:03:35 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /var/lib/tomcat7/webapps/VibeKey has finished in 732 ms
+Apr 27, 2015 11:03:35 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /var/lib/tomcat7/webapps/helloworld
+Apr 27, 2015 11:03:35 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /var/lib/tomcat7/webapps/helloworld has finished in 612 ms
+Apr 27, 2015 11:03:35 PM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["http-bio-127.0.0.1-8080"]
+Apr 27, 2015 11:03:35 PM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["ajp-bio-127.0.0.1-8009"]
+Apr 27, 2015 11:03:35 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 28059 ms
+Apr 27, 2015 11:06:55 PM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/foo]
+Apr 27, 2015 11:06:55 PM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/foo.war
+Apr 27, 2015 11:06:56 PM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/foo.war has finished in 796 ms
+Apr 27, 2015 11:07:00 PM org.apache.coyote.AbstractProtocol pause
+INFO: Pausing ProtocolHandler ["http-bio-127.0.0.1-8080"]
+Apr 27, 2015 11:07:00 PM org.apache.coyote.AbstractProtocol pause
+INFO: Pausing ProtocolHandler ["ajp-bio-127.0.0.1-8009"]
+Apr 27, 2015 11:07:00 PM org.apache.catalina.core.StandardService stopInternal
+INFO: Stopping service Catalina
+Apr 27, 2015 11:07:00 PM org.apache.coyote.AbstractProtocol stop
+INFO: Stopping ProtocolHandler ["http-bio-127.0.0.1-8080"]
+Apr 27, 2015 11:07:00 PM org.apache.coyote.AbstractProtocol stop
+INFO: Stopping ProtocolHandler ["ajp-bio-127.0.0.1-8009"]
+Apr 27, 2015 11:07:00 PM org.apache.coyote.AbstractProtocol destroy
+INFO: Destroying ProtocolHandler ["http-bio-127.0.0.1-8080"]
+Apr 27, 2015 11:07:00 PM org.apache.coyote.AbstractProtocol destroy
+INFO: Destroying ProtocolHandler ["ajp-bio-127.0.0.1-8009"]
+Apr 27, 2015 11:07:02 PM org.apache.catalina.startup.ClassLoaderFactory validateFile
+WARNING: Problem with directory [/usr/share/tomcat7/common/classes], exists: [false], isDirectory: [false], canRead: [false]
+Apr 27, 2015 11:07:02 PM org.apache.catalina.startup.ClassLoaderFactory validateFile
+WARNING: Problem with directory [/usr/share/tomcat7/common], exists: [false], isDirectory: [false], canRead: [false]
+Apr 27, 2015 11:07:02 PM org.apache.catalina.startup.ClassLoaderFactory validateFile
+WARNING: Problem with directory [/usr/share/tomcat7/server/classes], exists: [false], isDirectory: [false], canRead: [false]
+Apr 27, 2015 11:07:02 PM org.apache.catalina.startup.ClassLoaderFactory validateFile
+WARNING: Problem with directory [/usr/share/tomcat7/server], exists: [false], isDirectory: [false], canRead: [false]
+Apr 27, 2015 11:07:02 PM org.apache.catalina.startup.ClassLoaderFactory validateFile
+WARNING: Problem with directory [/usr/share/tomcat7/shared/classes], exists: [false], isDirectory: [false], canRead: [false]
+Apr 27, 2015 11:07:02 PM org.apache.catalina.startup.ClassLoaderFactory validateFile
+WARNING: Problem with directory [/usr/share/tomcat7/shared], exists: [false], isDirectory: [false], canRead: [false]
+Apr 27, 2015 11:07:04 PM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["http-bio-127.0.0.1-8080"]
+Apr 27, 2015 11:07:05 PM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["ajp-bio-127.0.0.1-8009"]
+Apr 27, 2015 11:07:05 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 1996 ms
+Apr 27, 2015 11:07:05 PM org.apache.catalina.core.StandardService startInternal
+INFO: Starting service Catalina
+Apr 27, 2015 11:07:05 PM org.apache.catalina.core.StandardEngine startInternal
+INFO: Starting Servlet Engine: Apache Tomcat/7.0.56 (Debian)
+Apr 27, 2015 11:07:05 PM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/foo.war
+Apr 27, 2015 11:07:07 PM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/foo.war has finished in 2,011 ms
+Apr 27, 2015 11:07:07 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /var/lib/tomcat7/webapps/VibeKey
+Apr 27, 2015 11:07:08 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /var/lib/tomcat7/webapps/VibeKey has finished in 774 ms
+Apr 27, 2015 11:07:08 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /var/lib/tomcat7/webapps/helloworld
+Apr 27, 2015 11:07:08 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /var/lib/tomcat7/webapps/helloworld has finished in 587 ms
+Apr 27, 2015 11:07:08 PM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["http-bio-127.0.0.1-8080"]
+Apr 27, 2015 11:07:08 PM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["ajp-bio-127.0.0.1-8009"]
+Apr 27, 2015 11:07:08 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 3652 ms
+Apr 27, 2015 11:10:35 PM org.apache.coyote.AbstractProtocol pause
+INFO: Pausing ProtocolHandler ["http-bio-127.0.0.1-8080"]
+Apr 27, 2015 11:10:35 PM org.apache.coyote.AbstractProtocol pause
+INFO: Pausing ProtocolHandler ["ajp-bio-127.0.0.1-8009"]
+Apr 27, 2015 11:10:35 PM org.apache.catalina.core.StandardService stopInternal
+INFO: Stopping service Catalina
+Apr 27, 2015 11:10:35 PM org.apache.coyote.AbstractProtocol stop
+INFO: Stopping ProtocolHandler ["http-bio-127.0.0.1-8080"]
+Apr 27, 2015 11:10:35 PM org.apache.coyote.AbstractProtocol stop
+INFO: Stopping ProtocolHandler ["ajp-bio-127.0.0.1-8009"]
+Apr 27, 2015 11:10:35 PM org.apache.coyote.AbstractProtocol destroy
+INFO: Destroying ProtocolHandler ["http-bio-127.0.0.1-8080"]
+Apr 27, 2015 11:10:35 PM org.apache.coyote.AbstractProtocol destroy
+INFO: Destroying ProtocolHandler ["ajp-bio-127.0.0.1-8009"]
+Apr 27, 2015 11:10:37 PM org.apache.catalina.startup.ClassLoaderFactory validateFile
+WARNING: Problem with directory [/usr/share/tomcat7/common/classes], exists: [false], isDirectory: [false], canRead: [false]
+Apr 27, 2015 11:10:37 PM org.apache.catalina.startup.ClassLoaderFactory validateFile
+WARNING: Problem with directory [/usr/share/tomcat7/common], exists: [false], isDirectory: [false], canRead: [false]
+Apr 27, 2015 11:10:37 PM org.apache.catalina.startup.ClassLoaderFactory validateFile
+WARNING: Problem with directory [/usr/share/tomcat7/server/classes], exists: [false], isDirectory: [false], canRead: [false]
+Apr 27, 2015 11:10:37 PM org.apache.catalina.startup.ClassLoaderFactory validateFile
+WARNING: Problem with directory [/usr/share/tomcat7/server], exists: [false], isDirectory: [false], canRead: [false]
+Apr 27, 2015 11:10:37 PM org.apache.catalina.startup.ClassLoaderFactory validateFile
+WARNING: Problem with directory [/usr/share/tomcat7/shared/classes], exists: [false], isDirectory: [false], canRead: [false]
+Apr 27, 2015 11:10:37 PM org.apache.catalina.startup.ClassLoaderFactory validateFile
+WARNING: Problem with directory [/usr/share/tomcat7/shared], exists: [false], isDirectory: [false], canRead: [false]
+Apr 27, 2015 11:10:39 PM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["http-bio-127.0.0.1-8080"]
+Apr 27, 2015 11:10:39 PM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["ajp-bio-127.0.0.1-8009"]
+Apr 27, 2015 11:10:39 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 2000 ms
+Apr 27, 2015 11:10:39 PM org.apache.catalina.core.StandardService startInternal
+INFO: Starting service Catalina
+Apr 27, 2015 11:10:39 PM org.apache.catalina.core.StandardEngine startInternal
+INFO: Starting Servlet Engine: Apache Tomcat/7.0.56 (Debian)
+Apr 27, 2015 11:10:40 PM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/foo.war
+Apr 27, 2015 11:10:42 PM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/foo.war has finished in 1,981 ms
+Apr 27, 2015 11:10:42 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /var/lib/tomcat7/webapps/VibeKey
+Apr 27, 2015 11:10:42 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /var/lib/tomcat7/webapps/VibeKey has finished in 775 ms
+Apr 27, 2015 11:10:42 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /var/lib/tomcat7/webapps/helloworld
+Apr 27, 2015 11:10:43 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /var/lib/tomcat7/webapps/helloworld has finished in 590 ms
+Apr 27, 2015 11:10:43 PM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["http-bio-127.0.0.1-8080"]
+Apr 27, 2015 11:10:43 PM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["ajp-bio-127.0.0.1-8009"]
+Apr 27, 2015 11:10:43 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 3601 ms
+0
+I am running a search, song list is size: 0
+I am running a search, song list is size: 1
+I am running a search, song list is size: 2
+I am running a search, song list is size: 3
+I am running a search, song list is size: 4
+I am running a search, song list is size: 5
+I am running a search, song list is size: 6
+I am running a search, song list is size: 7
+I am running a search, song list is size: 8
+I am running a search, song list is size: 9
+Apr 27, 2015 11:26:33 PM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/bar.war
+Apr 27, 2015 11:26:35 PM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/bar.war has finished in 1,392 ms
+Apr 27, 2015 11:31:25 PM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/baz.war
+Apr 27, 2015 11:31:26 PM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/baz.war has finished in 1,791 ms
+Apr 27, 2015 11:34:56 PM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/foo]
+Apr 27, 2015 11:34:57 PM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/foo.war
+Apr 27, 2015 11:34:57 PM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/foo.war has finished in 705 ms
+0
+I am running a search, song list is size: 0
+I am running a search, song list is size: 1
+I am running a search, song list is size: 2
+I am running a search, song list is size: 3
+I am running a search, song list is size: 4
+I am running a search, song list is size: 5
+I am running a search, song list is size: 6
+I am running a search, song list is size: 7
+I am running a search, song list is size: 8
+I am running a search, song list is size: 9
+Apr 27, 2015 11:59:08 PM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/foo]
+Apr 27, 2015 11:59:09 PM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/bar]
+Apr 27, 2015 11:59:09 PM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/baz]
+Apr 27, 2015 11:59:19 PM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/foo.war
+Apr 27, 2015 11:59:20 PM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/foo.war has finished in 600 ms
+0
+I am running a search, song list is size: 0
+I am running a search, song list is size: 1
+I am running a search, song list is size: 2
+I am running a search, song list is size: 3
+I am running a search, song list is size: 4
+I am running a search, song list is size: 5
+I am running a search, song list is size: 6
+I am running a search, song list is size: 7
+I am running a search, song list is size: 8
+I am running a search, song list is size: 9
+Apr 28, 2015 12:01:00 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/foo]
+Apr 28, 2015 12:01:20 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/foo.war
+Apr 28, 2015 12:01:21 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/foo.war has finished in 708 ms
+0
+Apr 28, 2015 12:04:41 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/foo]
+Apr 28, 2015 12:04:42 AM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/foo] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 28, 2015 12:04:42 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/foo] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak.
+Apr 28, 2015 12:04:52 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/foo.war
+Apr 28, 2015 12:04:52 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/foo.war has finished in 745 ms
+0
+Apr 28, 2015 12:06:23 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/foo]
+Apr 28, 2015 12:06:23 AM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/foo] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 28, 2015 12:06:23 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/foo] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak.
+Apr 28, 2015 12:06:23 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/VBO04.27.15.war
+Apr 28, 2015 12:06:23 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/VBO04.27.15.war has finished in 504 ms
+Apr 28, 2015 12:07:03 AM org.apache.catalina.startup.HostConfig reload
+INFO: Reloading context [/VBO04.27.15]
+Apr 28, 2015 12:07:03 AM org.apache.catalina.core.StandardContext reload
+INFO: Reloading Context with name [/VBO04.27.15] has started
+Apr 28, 2015 12:07:04 AM org.apache.catalina.core.StandardContext reload
+SEVERE: Exception starting Context with name [/VBO04.27.15]
+org.apache.catalina.LifecycleException: Failed to start component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/VBO04.27.15]]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:154)
+	at org.apache.catalina.core.StandardContext.reload(StandardContext.java:4009)
+	at org.apache.catalina.startup.HostConfig.reload(HostConfig.java:1481)
+	at org.apache.catalina.startup.HostConfig.checkResources(HostConfig.java:1464)
+	at org.apache.catalina.startup.HostConfig.check(HostConfig.java:1648)
+	at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:328)
+	at org.apache.catalina.util.LifecycleSupport.fireLifecycleEvent(LifecycleSupport.java:117)
+	at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:90)
+	at org.apache.catalina.core.ContainerBase.backgroundProcess(ContainerBase.java:1374)
+	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1546)
+	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1556)
+	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.run(ContainerBase.java:1524)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.lang.NoClassDefFoundError: web/Response$FailResponse
+	at java.lang.Class.getDeclaredFields0(Native Method)
+	at java.lang.Class.privateGetDeclaredFields(Class.java:2583)
+	at java.lang.Class.getDeclaredFields(Class.java:1916)
+	at org.apache.catalina.util.Introspection.getDeclaredFields(Introspection.java:106)
+	at org.apache.catalina.startup.WebAnnotationSet.loadFieldsAnnotation(WebAnnotationSet.java:270)
+	at org.apache.catalina.startup.WebAnnotationSet.loadApplicationServletAnnotations(WebAnnotationSet.java:139)
+	at org.apache.catalina.startup.WebAnnotationSet.loadApplicationAnnotations(WebAnnotationSet.java:65)
+	at org.apache.catalina.startup.ContextConfig.applicationAnnotationsConfig(ContextConfig.java:415)
+	at org.apache.catalina.startup.ContextConfig.configureStart(ContextConfig.java:892)
+	at org.apache.catalina.startup.ContextConfig.lifecycleEvent(ContextConfig.java:386)
+	at org.apache.catalina.util.LifecycleSupport.fireLifecycleEvent(LifecycleSupport.java:117)
+	at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:90)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5380)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	... 12 more
+Caused by: java.lang.ClassNotFoundException: web.Response$FailResponse
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1720)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1571)
+	... 26 more
+
+Apr 28, 2015 12:07:04 AM org.apache.catalina.core.StandardContext reload
+INFO: Reloading Context with name [/VBO04.27.15] is completed
+Apr 28, 2015 12:07:14 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/VBO04.27.15]
+Apr 28, 2015 12:07:14 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/foo.war
+Apr 28, 2015 12:07:15 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/foo.war has finished in 476 ms
+0
+Apr 28, 2015 12:09:15 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/foo]
+Apr 28, 2015 12:09:15 AM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/foo] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 28, 2015 12:09:15 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/foo] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak.
+Apr 28, 2015 12:09:25 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/foo.war
+Apr 28, 2015 12:09:26 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/foo.war has finished in 420 ms
+0
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+Apr 28, 2015 12:09:46 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/foo]
+Apr 28, 2015 12:09:46 AM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/foo] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 28, 2015 12:09:46 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/foo] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak.
+Apr 28, 2015 12:09:46 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/foo] appears to have started a thread named [pool-25-thread-1] but has failed to stop it. This is very likely to create a memory leak.
+Apr 28, 2015 12:10:16 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/foo.war
+Apr 28, 2015 12:10:17 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/foo.war has finished in 599 ms
+0
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+Apr 28, 2015 12:10:47 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/punttj.war
+Apr 28, 2015 12:10:47 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/punttj.war has finished in 450 ms
+0
+Apr 28, 2015 12:16:08 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/foo]
+Apr 28, 2015 12:16:08 AM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/foo] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 28, 2015 12:16:08 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/foo] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak.
+Apr 28, 2015 12:16:08 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/VBO04.27.15.war
+Apr 28, 2015 12:16:08 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/VBO04.27.15.war has finished in 554 ms
+Apr 28, 2015 12:16:19 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/VBO04.27.15]
+Apr 28, 2015 12:16:19 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/VBO04.27.15] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak.
+Apr 28, 2015 12:16:19 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/foo.war
+Apr 28, 2015 12:16:20 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/foo.war has finished in 528 ms
+0
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+Apr 28, 2015 12:17:20 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/foo]
+Apr 28, 2015 12:17:20 AM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/foo] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 28, 2015 12:17:20 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/foo] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak.
+Apr 28, 2015 12:17:20 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/foo] appears to have started a thread named [pool-37-thread-1] but has failed to stop it. This is very likely to create a memory leak.
+Apr 28, 2015 12:17:30 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/test.war
+Apr 28, 2015 12:17:31 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/test.war has finished in 455 ms
+Apr 28, 2015 12:19:21 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/sadlercr.war
+Apr 28, 2015 12:19:21 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/sadlercr.war has finished in 425 ms
+Apr 28, 2015 12:19:21 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/WongB.war
+Apr 28, 2015 12:19:21 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/WongB.war has finished in 526 ms
+0
+I am running a search, song list is size: 0
+I am running a search, song list is size: 1
+I am running a search, song list is size: 2
+I am running a search, song list is size: 3
+I am running a search, song list is size: 4
+I am running a search, song list is size: 5
+I am running a search, song list is size: 6
+I am running a search, song list is size: 7
+I am running a search, song list is size: 8
+I am running a search, song list is size: 9
+Apr 28, 2015 12:19:42 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/test]
+Apr 28, 2015 12:21:02 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/WongB]
+Apr 28, 2015 12:21:02 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/WongB.war
+Apr 28, 2015 12:21:03 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/WongB.war has finished in 536 ms
+Apr 28, 2015 12:21:53 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/WongB]
+Apr 28, 2015 12:21:53 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/WongB] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak.
+Apr 28, 2015 12:21:53 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/WongB.war
+Apr 28, 2015 12:21:53 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/WongB.war has finished in 399 ms
+0
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+Apr 28, 2015 12:24:13 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/sadlercr]
+Apr 28, 2015 12:24:13 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/sadlercr] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak.
+Apr 28, 2015 12:24:13 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/sadlercr.war
+Apr 28, 2015 12:24:14 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/sadlercr.war has finished in 590 ms
+Apr 28, 2015 12:24:34 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/sadlercr]
+Apr 28, 2015 12:24:34 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/sadlercr] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak.
+Apr 28, 2015 12:24:54 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/sadlercr.war
+Apr 28, 2015 12:24:55 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/sadlercr.war has finished in 656 ms
+0
+I am running a search, song list is size: 0
+I am running a search, song list is size: 1
+I am running a search, song list is size: 2
+I am running a search, song list is size: 3
+I am running a search, song list is size: 4
+I am running a search, song list is size: 5
+I am running a search, song list is size: 6
+I am running a search, song list is size: 7
+I am running a search, song list is size: 8
+I am running a search, song list is size: 9
+Apr 28, 2015 12:26:25 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/WongB]
+Apr 28, 2015 12:26:25 AM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/WongB] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 28, 2015 12:26:25 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/WongB] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak.
+Apr 28, 2015 12:26:25 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/WongB.war
+Apr 28, 2015 12:26:25 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/WongB.war has finished in 412 ms
+Apr 28, 2015 12:30:15 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/sadlercr]
+Apr 28, 2015 12:30:16 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/sadlercr] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak.
+Apr 28, 2015 12:30:16 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/sadlercr.war
+Apr 28, 2015 12:30:16 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/sadlercr.war has finished in 384 ms
+Apr 28, 2015 12:30:26 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/sadlercr]
+Apr 28, 2015 12:30:26 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/sadlercr.war
+Apr 28, 2015 12:30:27 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/sadlercr.war has finished in 407 ms
+0
+I am running a search, song list is size: 0
+I am running a search, song list is size: 1
+I am running a search, song list is size: 2
+I am running a search, song list is size: 3
+I am running a search, song list is size: 4
+I am running a search, song list is size: 5
+I am running a search, song list is size: 6
+I am running a search, song list is size: 7
+I am running a search, song list is size: 8
+I am running a search, song list is size: 9
+Apr 28, 2015 12:40:07 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/WongB]
+Apr 28, 2015 12:40:17 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/WongB.war
+Apr 28, 2015 12:40:18 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/WongB.war has finished in 452 ms
+Apr 28, 2015 12:58:49 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/WongB]
+Apr 28, 2015 12:58:49 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/WongB] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak.
+Apr 28, 2015 12:58:59 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/WongB.war
+Apr 28, 2015 12:58:59 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/WongB.war has finished in 395 ms
+Apr 28, 2015 12:59:49 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/WongB]
+Apr 28, 2015 12:59:49 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/WongB] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak.
+Apr 28, 2015 12:59:49 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/WongB.war
+Apr 28, 2015 12:59:49 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/WongB.war has finished in 371 ms
+Apr 28, 2015 1:02:49 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/WongB]
+Apr 28, 2015 1:02:49 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/WongB.war
+Apr 28, 2015 1:02:50 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/WongB.war has finished in 379 ms
+Apr 28, 2015 1:04:00 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/WongB]
+Apr 28, 2015 1:04:00 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/WongB] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak.
+Apr 28, 2015 1:04:00 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/WongB.war
+Apr 28, 2015 1:04:00 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/WongB.war has finished in 402 ms
+Apr 28, 2015 1:07:21 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/WongB]
+Apr 28, 2015 1:07:21 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/WongB.war
+Apr 28, 2015 1:07:22 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/WongB.war has finished in 507 ms
+Apr 28, 2015 1:09:12 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/WongB]
+Apr 28, 2015 1:09:12 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/WongB.war
+Apr 28, 2015 1:09:12 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/WongB.war has finished in 422 ms
+Apr 28, 2015 1:13:42 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/WongB]
+Apr 28, 2015 1:13:42 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/WongB.war
+Apr 28, 2015 1:13:43 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/WongB.war has finished in 572 ms
+Apr 28, 2015 1:14:33 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/WongB]
+Apr 28, 2015 1:14:33 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/WongB] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak.
+Apr 28, 2015 1:14:33 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/WongB.war
+Apr 28, 2015 1:14:33 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/WongB.war has finished in 441 ms
+Apr 28, 2015 1:17:23 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/WongB]
+Apr 28, 2015 1:17:23 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/WongB.war
+Apr 28, 2015 1:17:24 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/WongB.war has finished in 401 ms
+Apr 28, 2015 1:18:24 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/WongB]
+Apr 28, 2015 1:18:24 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/WongB] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak.
+Apr 28, 2015 1:18:34 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/WongB.war
+Apr 28, 2015 1:18:35 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/WongB.war has finished in 436 ms
+Apr 28, 2015 1:19:55 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/WongB]
+Apr 28, 2015 1:19:55 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/WongB] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak.
+Apr 28, 2015 1:20:05 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/WongB.war
+Apr 28, 2015 1:20:06 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/WongB.war has finished in 523 ms
+Apr 28, 2015 1:52:47 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/WongB]
+Apr 28, 2015 1:52:47 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/WongB.war
+Apr 28, 2015 1:52:48 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/WongB.war has finished in 408 ms
+0
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+user.dir: /var/lib/tomcat7
+Apr 28, 2015 1:59:18 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/WongB]
+Apr 28, 2015 1:59:18 AM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/WongB] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 28, 2015 1:59:18 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/WongB] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak.
+Apr 28, 2015 1:59:18 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/WongB.war
+Apr 28, 2015 1:59:18 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/WongB.war has finished in 401 ms
+0
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+user.dir: /var/lib/tomcat7
+Apr 28, 2015 1:59:39 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/WongB]
+Apr 28, 2015 1:59:39 AM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/WongB] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 28, 2015 1:59:39 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/WongB] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak.
+Apr 28, 2015 1:59:39 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/WongB] appears to have started a thread named [pool-61-thread-1] but has failed to stop it. This is very likely to create a memory leak.
+Apr 28, 2015 2:02:49 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/WongB.war
+Apr 28, 2015 2:02:49 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/WongB.war has finished in 486 ms
+0
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+user.dir: /var/lib/tomcat7
+Apr 28, 2015 2:08:59 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/WongB]
+Apr 28, 2015 2:08:59 AM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/WongB] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 28, 2015 2:08:59 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/WongB] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak.
+Apr 28, 2015 2:08:59 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/WongB.war
+Apr 28, 2015 2:09:00 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/WongB.war has finished in 386 ms
+0
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+ID: 4, NAME: Test Song 4
+ID: 5, NAME: Test Song 5
+user.dir: /var/lib/tomcat7
+Apr 28, 2015 2:20:50 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/WongB]
+Apr 28, 2015 2:20:50 AM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [/WongB] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Apr 28, 2015 2:20:50 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/WongB] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak.
+Apr 28, 2015 2:20:50 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/WongB.war
+Apr 28, 2015 2:20:50 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/WongB.war has finished in 381 ms
+Apr 28, 2015 2:22:50 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/WongB]
+Apr 28, 2015 2:22:50 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/WongB.war
+Apr 28, 2015 2:22:51 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/WongB.war has finished in 638 ms
+Apr 28, 2015 2:24:11 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/WongB]
+Apr 28, 2015 2:24:11 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/WongB.war
+Apr 28, 2015 2:24:11 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/WongB.war has finished in 555 ms
+TEST
+/var/lib/tomcat7/webapps/WongB/WEB-INF/lib/libshout-java.so
+/var/lib/tomcat7/webapps/WongB/WEB-INF/lib/libshout-java.so
+/var/lib/tomcat7/webapps/WongB/WEB-INF/lib/libshout-java.so
+Apr 28, 2015 2:25:02 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/WongB]
+Apr 28, 2015 2:25:02 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/WongB] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak.
+Apr 28, 2015 2:25:12 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/WongB.war
+Apr 28, 2015 2:25:13 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/WongB.war has finished in 455 ms
+Apr 28, 2015 2:25:23 AM org.apache.catalina.startup.HostConfig reload
+INFO: Reloading context [/WongB]
+Apr 28, 2015 2:25:23 AM org.apache.catalina.core.StandardContext reload
+INFO: Reloading Context with name [/WongB] has started
+Apr 28, 2015 2:25:23 AM org.apache.catalina.core.StandardContext reload
+INFO: Reloading Context with name [/WongB] is completed
+Apr 28, 2015 2:25:33 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/WongB]
+Apr 28, 2015 2:25:33 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/WongB] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak.
+Apr 28, 2015 2:25:33 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/WongB.war
+Apr 28, 2015 2:25:34 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/WongB.war has finished in 710 ms
+TEST
+Apr 28, 2015 2:25:44 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/WongB]
+Apr 28, 2015 2:25:44 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /var/lib/tomcat7/webapps/WongB.war
+Apr 28, 2015 2:25:44 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /var/lib/tomcat7/webapps/WongB.war has finished in 692 ms
+TEST
+/var/lib/tomcat7/webapps/WongB/WEB-INF/lib/libshout-java.so
+/var/lib/tomcat7/webapps/WongB/WEB-INF/lib/libshout-java.so

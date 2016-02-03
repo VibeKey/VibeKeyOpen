@@ -1,6 +1,3 @@
-
-/*css for the song objects on the screen*/
-
 .song {
 	position:relative;
 	width:100%;
@@ -112,7 +109,6 @@
 	overflow:hidden;
 	float:right;
 	vertical-align:middle;
-	flex-wrap: wrap;
 }
 
 .button .circle {

@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>WMHD Radio</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/songStyle.css">
+	<link rel="stylesheet" href="css/tabStyle.css">
+	<link rel="stylesheet" href="css/animations.css">
+	<link rel="stylesheet" href="css/jquery.sidr.dark.css">
+	<script src="https://cdn.firebase.com/js/client/2.3.0/firebase.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="js/frequencyAnimator.js"></script>
+	<script type="text/javascript" src="js/tabScript.js"></script>
+	<script type="text/javascript" src="js/hover.js"></script>
+	<script type="text/javascript" src="js/requestSong.js"></script>
+	<script type="text/javascript" src="js/songObj.js"></script>
+	<script type="text/javascript" src="js/streamScript.js"></script>
+	<script type="text/javascript" src="js/buttonScript.js"></script>
+	<script type="text/javascript" src="js/jquery.sidr.min.js"></script>
+	<script type="text/javascript" src="js/amplitude.js"></script>
+	<script type="text/javascript" src="js/createPlaylist.js"></script>
+	<script type="text/javascript" src="js/playMusic.js"></script>
+	<script type="text/javascript" src="js/createCommand.js"></script>
+	<script type="text/javascript" src="js/scheduleMusic.js"></script>
+	<script type="text/javascript" src="js/addNews.js"></script>
+	<script type="text/javascript" src="js/vote.js"></script>
+</head>
+
+<body>
+	<!--
+	<script>	
+	function process(data, textStatus, jqXHR) {
+		var succ = document.createElement('p');
+		succ.innerHTML = "SUCCESS" + data;
+		document.body.appendChild(succ);
+	}
+	
+	//initially creates some songs on the website using methods in songObj.js
+	$(document).ready(function() {
+	});
+	</script>
+	-->
+
+	<div id="stuffBody" class="stuffBody">
+		<div class="WMHD">
+			<h1 style="position:absolute;top:0%;left:40%"> WMHD Radio </h1>
+		</div>
+		<div class="playlist">
+			<div class="playlistBody">
+				<div class="playhead" id="playhead">
+					<canvas class="bounce" id="bounceAnimation">
+						
+					</canvas>
+					<div class="playHeadInfo">
+						<span id="curPlayingTitle" class="title">Song Title</span>
+						<span id="curPlayingGenre" class="genre">Song Genre</span>
+					</div>
+					<span class="button">
+						<span onclick="upVote()" id="upVote" class="circle">
+								<img id="upImg" style="width:24px;height:24px;" 
+									src="images/up_arrow.png">
+						</span>
+
+						<span onclick="downVote()" id="downVote" class="circle">
+								<img id="downImg" style="width:24px;height:24px;" 
+									src="images/down_arrow.png">
+						</span>
+					</span>
+				</div>
+				
+				<div class="playsongs" id="playSongs">
+					<div class="playsongsBorder"></div>
+					<ul id="playlist" class="sortable"></ul>
+					<div class="otherLists" id="up" style="display:none;">
+						I am the upload.
+					</div>
+					<div class="otherLists" id="list" style="display:none;">
+						I am the list of playlists.
+					</div>
+				</div>
+				<div class="playbottom">
+					<div class="button" style="float:none; height:auto;">
+						<div onclick="createPlaylist()" id="createPlaylist" class="circle">
+							<img id="upImg" style="width:30px; height:30px;" 
+								src="images/up.png">
+						</div>
+						<div onclick="clickBottomButton(this)" id="list" class="circle">
+							<img id="listImg" style="width:30px; height:30px;" 
+								src="images/list.png">
+							<img id="listDownArrow" style="width:30px; height:30px; display:none;" 
+								src="images/down_arrow.png">
+						</div>
+						<!--
+						<div onclick="pressPlayerButton()" class="play" 
+							id="player">
+							<img id="pauseButton" 
+								src="images/pausebutton.png" 
+								alt='Pause Stream' style='width:50px; height:50px;'>
+							<img id="playButton" 
+								src="images/playbutton.png" 
+								alt='Play Stream' style='width:50px; height:50px;'>
+						</div>
+						<div onclick="clickBottomButton(this)" id="up" class="circle">
+							<img id="upImg" style="width:30px; height:30px;" 
+								src="images/up.png">
+							<img id="upDownArrow" style="width:30px; height:30px; display:none;" 
+								src="images/down_arrow.png">
+						</div>
+						-->
+						<div onclick="pressPlayerButton(this)" class="circle amplitude-play-pause amplitude-playing" amplitude-song-index="0">
+							<img id="playButton" style="width:30px; height:30px; display:none;" 
+								src="images/playbutton.png">
+							<img id="pauseButton" style="width:30px; height:30px;" 
+								src="images/pausebutton.png">
+						</div>
+						<div onclick="nextSong()" id="next" class="circle">
+							<img id="nextImg" style="width:30px; height:30px;" 
+								src="images/next.png">
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<!-- creates all the tabs on the side that can be clicked -->
+		<div id="container" class="tabContainer"></div>
+	</div>
+
+	<!-- This is the part where we create what's inside the actual tabs that pull out on the left side -->
+	<div id="searchTab" class="sidr">
+	</div>
+	
+	<div id="newsTab" class="sidr">
+		<iframe class="sideArea" src="news.html"></iframe>
+		<fieldset>
+			<legend>Add a news</legend>
+				News title:<br>
+  				<input type="text" id="newsTitle" value="news title">
+				<br>
+				News Description:<br>
+				<input type="text" id="newsDescription" value="news desc">
+				<br>
+				News Date:<br>
+				<input type="date" id="newsDate" value="2015-10-27">
+				<br></br>
+				<button onclick="addNews()">Submit</button>
+		</fieldset>
+	</div>
+	
+	<div id="soundboardTab" class="sidr">
+		<h1>I am a soundboard tab!</h1>
+		<fieldset>
+			<legend>Volume</legend>
+				<div>
+				<input type="range" class="amplitude-volume-slider"/>
+	 			<button type="button" class="amplitude-volume-up">+</button>
+				<button type="button" class="amplitude-volume-down">-</button>
+				</div>
+				<button type="button" class="amplitude-mute">X</button>
+		</fieldset>
+	</div>
+
+	<div id="calendarTab" class="sidr">
+		<h1>I am a calendar tab!</h1>
+		<fieldset>
+		    <legend>Set Genre</legend>
+		    	Seclect a genre:
+			    <select class="genresList" id="genresList" onchange="scheduleGenre(this)">
+			    	<option value="none">No genre selected</option>
+				</select>
+				<br></br>
+				<!-- <input type="submit" value="Submit" onclick="scheduleGenre()"> -->
+		</fieldset>
+		<br></br>
+		<fieldset>
+			<legend>Schedule a Playlist</legend>
+		    	Seclect a playlist:
+			    <select class="playsList" id="playsList" onchange="scheduleList(this)">
+			    	<option value="none">No list selected</option>
+				</select>
+				<br></br>
+				<!-- <input type="submit" value="Submit" onclick="scheduleSong()"> -->
+		</fieldset>
+		<br></br>
+		<fieldset>
+			<legend>Schedule a Song</legend>
+		    	Seclect a song (All songs):
+			    <select class="allSongsList" id="allSongsList" onchange="scheduleSong(this)">
+			    	<option value="none">No song selected</option>
+				</select>
+				<br></br>
+				<!-- <input type="submit" value="Submit" onclick="scheduleSong()"> -->
+		</fieldset>
+	</div>
+
+	<div id="djChatTab" class="sidr">
+		<h1>I am a DJ Chat tab!</h1>
+	</div>
+
+	<div id="audienceTab" class="sidr">
+		<h1>I am an audience tab!</h1>
+	</div>
+
+	<div id="settingsTab" class="sidr">
+		<h1>I am a settings tab!</h1>
+	</div>
+	</body>
+</html>
+

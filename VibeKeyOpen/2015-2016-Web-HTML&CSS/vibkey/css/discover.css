@@ -1,0 +1,266 @@
+body {
+	font-family:Helvetica Neue;
+	background-color:#8f0912;
+	min-width: 1000px;
+}
+
+hr {
+	margin-top: 5px;
+	margin-bottom: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	border-style: inset;
+	border-top: 3px solid gray;
+}
+
+.fillall {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.fillwidth {
+    min-width: 100%;
+    height: auto;
+}
+
+.fillheight {
+    min-height: 100%; 
+    width: auto;
+}
+
+.resize_fit_center {
+    min-width:100%;
+    min-height:100%;
+    vertical-align: middle;
+}
+
+nav {
+	display:inline-block;
+	padding:20px 0 20px 0;
+}
+
+a {
+	text-decoration:none;
+}
+
+footer {
+	margin-top:30;
+	padding:10px;
+	background-color:#8f0912;
+	border-top:3px solid gray;
+}
+
+.headerBar {
+	height:80px;
+	 background-color:#8f0912;
+	border-bottom:3px solid gray;
+}
+
+.currentPage {
+	margin:20px;
+	position:relative;
+	top:-20px;
+	font-size:18pt;
+	font-weight:bold;
+	color:white;
+}
+
+.otherPages {
+    margin:10px;
+    position:relative;
+    top:-20px;
+    font-size:13pt;
+    font-weight:normal;
+    color:lightgray;
+}
+
+.iconButton {
+    margin:10px;
+    position:relative;
+	display:inline;
+	width:30px; 
+	height:30px
+}
+
+/*.leftBlock, .leftBlock:before{
+	width: 66%;
+}*/
+
+.leftBlock {
+	width: 66%;
+	float: left;
+	margin:10px;
+//	margin-right: 300px;
+	padding:10px;
+}
+
+/*.leftBlock:before{
+	content: '';
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	z-index: -1;
+	left: 0%;
+}*/
+
+/*.rightBlock, .rightBlock:before {
+	width: 25%;
+}*/
+
+.rightBlock {
+//	width: 25%;
+	width: 250px;
+	float:right;
+	border-left:3px solid gray;
+	margin:10px;
+	margin-left:0px;
+	padding:10px;
+	padding-left:20px;
+}
+
+/*.rightBlock:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	z-index: -1;
+	left: 66%;
+}*/
+
+.adsBlock{ 
+	position: relative;
+	height:300px;
+	width:100%;
+	overflow: hidden;
+}
+
+.adsBlock img{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	height: 100%;
+	width: auto;
+	-webkit-transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+
+h1 {
+	font-size:16pt;
+	color: lightgray; 
+	display: inline;
+}
+
+.newsBlock {
+	height:280px;
+	margin-top:30px;
+	width:100%
+}
+
+.seeMore {
+	font-size:10pt; 
+	color: gray; 
+	float:right; 
+	display: inline;
+	position: relative; 
+	top: 8px;
+}
+
+.singleNews {
+	position: relative;
+ 	display: inline-block;
+	margin: 10px;
+	height: 230px;
+	width:158px;
+	overflow: hidden;
+}
+.singleNews img{
+	position: absolute;
+	left: 50%;
+	top: 34%;
+	height: 70%;
+	width: auto;
+	-webkit-transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
+           transform: translate(-50%,-50%);
+	display: block;
+}
+.singleNews span.title {
+	position: relative;
+	top: 160px;
+	padding:5px; 
+	font-size:13pt; 
+	font-weight:normal; 
+	color:lightgray;
+	display: block;
+}
+.singleNews span.description{
+	position: relative;
+	top: 160px;
+	padding:5px; 
+	font-size:10pt; 
+	font-weight:normal; 
+	color:lightgray;
+	display: block;
+}
+
+.side-schedule {
+	width:77%;
+  	margin: 20px 2px;
+  	padding: 15px 25px;
+  	background-clip: padding-box;
+  	border: 4px solid gray;
+  	border-radius: 5px;
+	
+}	
+
+.scheduleTitle {
+  width: 160px;
+	text-align:center;
+  margin: -15px auto 15px;
+  line-height: 30px;
+  font-size: 15px;
+  color: white;
+  text-shadow: 0 1px rgba(black, .05);
+  background: gray;
+  border-radius: 0 0 4px 4px;
+}
+
+.singleSchedule {
+	margin: 15px;
+	text-align:left;
+}
+
+.singleSchedule img {
+	float: left;
+	margin: 5px 10px 10px -20px;
+	position:relative;
+	display:inline;
+	width:30px; 
+	height:30px;
+	border:0px; 
+	border-radius: 20px; 
+}
+
+.singleSchedule span.DJ{
+	font-size:13pt; 
+	font-weight:normal; 
+	color:lightgray;
+	display: inline;
+}
+
+.singleSchedule span.time{
+	margin-top:3px;
+	font-size:10pt; 
+	font-weight:nornal; 
+	color:white;
+	display: block;
+}
+
+.singleSchedule span.description{
+	margin-top:3px;
+	font-size:10pt; 
+	font-weight:normal; 
+	color:lightgray;
+	display: block;
+}

@@ -1,10 +1,8 @@
-
-/*This css file contains all the animation css that the page uses*/
-
 .lineDance {
 	display:inline-block;
 	position:absolute; 
 	bottom:0;
+	width:20%;
 	background-color:rgb(153, 000, 000);
 	opacity:.05;
 	

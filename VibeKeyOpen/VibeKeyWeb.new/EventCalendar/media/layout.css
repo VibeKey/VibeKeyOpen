@@ -1,0 +1,118 @@
+﻿p, body, td { font-family: Tahoma, Arial, Sans-Serif; font-size: 10pt; }
+body { padding: 0px; margin: 0px; background-color: #ffffff; }
+a { color: #1155a3; }
+
+/* COMMON */
+.hidden { display: none; }
+.padded { padding: 10px; }
+.space { margin: 10px 0px 10px 0px; }
+
+/* form */
+#f input[type="text"] { width: 270px; }
+
+/* COLUMNS */
+#container { width:100% }
+#left { float:left; width: 180px; margin-left: 2px; }
+#content { margin-left: 200px;}
+#content > div { width:99% }
+
+/* LAYOUT */
+#header { background: #001328 url('layout/header.png') 0 0 repeat-x; padding-left: 10px;}
+#header .bg-help { background: url('layout/header-in.png') 50% 0 no-repeat; padding:1px 0; width:100%; min-height:80px;}
+#main { padding: 0px 5px 0px 5px; xbackground: url('layout/shadow.png') repeat-x;  }
+#download { padding: 10px 0px 0px 20px; color: #666666; background: url('layout/main.png') 0 0 repeat-x; }
+	
+/* LOGO & CLAIM */
+#logo { font-size:200%; color:#fff; margin:10px 0 0; font-weight:bold; line-height:1.3;}
+#logo a { color:#fff; text-decoration:none; }
+#claim { color:#fff; margin:0;}
+#claim a { color: #fff; }
+
+/* toolbar */
+
+.shadow { background: url('layout/main.png') 0 0 repeat-x; height: 5px; }
+
+.toolbar {margin-top: -10px; margin-bottom: 10px; }
+.toolbar ul { list-style:none; margin: 0px; padding: 0px; width: auto; }
+.toolbar ul li {  }
+.toolbar ul li a { padding: 5px; text-decoration: none; color: #000;}
+.toolbar ul li a:hover { background-color: #666; color: #fff; }
+.toolbar .selected { background-color: #333; color: #fff; }
+
+.main { padding: 5px; }
+
+/* MENU */
+.menu a { font-weight: normal; display: block; text-align: left; text-decoration: none; font-size: 10pt; color: #333333; padding: 1px 0px 1px 2px; border: 1px solid #fff; }
+.menu .selected { padding: 0px 0px 0px 10px; background: url('layout/li.png') 2px 50% no-repeat; }
+.menu a:hover  { border: 1px solid #aaaaaa; background-color: #eeeeee; }
+.menu .header { font-weight: bold; padding: 1px 0px 1px 2px; }
+
+#container { padding-top: 20px; }
+
+/* inner */
+.daypilot-left { float: left; width: 160px; margin-bottom: 20px; }
+.daypilot-main { margin-left:160px; }
+
+/* button */
+.css3button {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	color: #ffffff;
+	padding: 6px 15px;
+	background: #a8dc18;
+	background: -moz-linear-gradient(
+		top,
+		#a8dc18 0%,
+		#8fc300);
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(#a8dc18),
+		to(#8fc300));
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 1px solid #7cb316;
+	-moz-box-shadow:
+		0px 2px 3px rgba(000,000,000,0.3),
+		inset 0px 0px 2px rgba(255,255,255,0.8);
+	-webkit-box-shadow:
+		0px 2px 3px rgba(000,000,000,0.3),
+		inset 0px 0px 2px rgba(255,255,255,0.8);
+	xtext-shadow:
+		0px -1px 0px rgba(000,000,000,0.2),
+		0px 1px 0px rgba(255,255,255,1);
+	display:inline-block;
+	text-decoration: none;
+}
+
+html, body { margin: 0px; padding: 0px; } 
+html.fullheight, html.fullheight body { height:100%;  overflow:hidden; }
+
+/*.main { height: 500px;}*/
+
+/* task queue */
+.left { position:relative; width: 150px; float:left; margin-left:5px;}
+.right { position:relative; margin-left: 160px; }
+
+body#fullheight .left { height: 100%; }
+body#fullheight .right { height: 100%; }
+
+#toolbar_right { float:right; margin-right: 10px; }
+#toolbar_right a { color: gray; }
+
+#tasks { overflow:auto; position: absolute; top: 30px; left: 0px; right: 0px; bottom: 0px; }
+.toolbar_left { height:30px; width: 200px; position: absolute; top: 0px; left: 0px; right: 0px; }
+.toolbar_right { margin-left: 210px; height: 30px; padding: 5px; }
+
+.task { height: 25px; line-height: 25px; padding-left: 5px; display: block; text-decoration:none; background-color:white; border: 1px solid #cccccc; cursor: pointer; background: url(bg/gray30.gif) repeat-x; margin-bottom: 1px; }
+.new { font-weight: bold; cursor: pointer; color: black; }
+
+.task span { color: gray;}
+
+#filter { margin-bottom: 5px; font-family: Segoe UI Light,Segoe UI,Arial,Helvetica,Verdana,Sans Serif; height: 30px;}
+#filter span.filter { background-color: #6abc49; color: White; cursor: pointer; border-radius: 5px; display: inline-block; padding: 5px; margin-right: 3px; }
+#filter span.all { background-color: #6a6a6a; }
+
+#places { font-family: Segoe UI Light,Segoe UI,Arial,Helvetica,Verdana,Sans Serif;  font-size: 15px;}
+
