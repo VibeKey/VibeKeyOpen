@@ -172,6 +172,29 @@ public class FirebaseCommunicator {
 		});
 	}
 	
+	public static void syncScheduleWithFirebase(PlaySchedule schedule){
+		Firebase scheduleRef = rootRef.child("schedule");
+		scheduleRef.addListenerForSingleValueEvent(new ValueEventListener() {
+		    @Override
+		    public void onDataChange(DataSnapshot snapshot) {
+		    	for(DataSnapshot songSnapshot : snapshot.getChildren()){
+		    		ScheduleItem scheduleItem = songSnapshot.getValue(ScheduleItem .class);
+		    		if (!schedule.scheduleItems.contains(scheduleItem)) {
+		    			schedule.addToSchedule(scheduleItem);
+		    		}
+		    	}
+		    	scheduleRef.setValue(null);
+				for(ScheduleItem scheduleItem : schedule.scheduleItems){
+					Firebase scheduleItemRef = scheduleRef.push();
+					scheduleItemRef.setValue(scheduleItem);
+				}
+		    }
+		    @Override
+		    public void onCancelled(FirebaseError firebaseError) {
+		    }
+		});
+	}
+	
 	public static void updateSong(Song song){
 		Firebase songRef = rootRef.child("songs").child("allSongs").child(song.UUID);
 		songRef.setValue(song.getSimplifiedSong());
