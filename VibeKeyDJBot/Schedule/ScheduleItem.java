@@ -102,7 +102,7 @@ public class ScheduleItem {
 	}
 
 	public void setEventName(String eventName) {
-		this.eventNamee = eventName;
+		this.eventName = eventName;
 	}
 	
 	public String getDescription() {
