@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 public class RandomWrapper {
@@ -9,5 +10,10 @@ public class RandomWrapper {
 	
 	static double nextDouble(){
 		return random.nextDouble();
+	}
+	
+	static Song nextSongWeighted(ArrayList<Song> songs){
+		int songNum = random.nextInt(songs.size());
+		return songs.get(songNum);
 	}
 }

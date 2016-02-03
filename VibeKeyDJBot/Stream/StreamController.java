@@ -34,8 +34,8 @@ public class StreamController {
 				if(curSched.getPlayMode() == ScheduleItem.PLAYMODE_GENRE && curSched.getGenre() != null && !curSched.getGenre().equals("")){
 					ArrayList<Song> genreSongList = SongDatabase.getSongsInGenre(curSched.getGenre());
 					if(genreSongList != null){
-						int songNum = RandomWrapper.nextInt(genreSongList.size());
-						queue.addToQueue(genreSongList.get(songNum));
+						Song song = RandomWrapper.nextSongWeighted(genreSongList);
+						queue.addToQueue(song);
 						continue;
 					}
 				} else if(curSched.getPlayMode() == ScheduleItem.PLAYMODE_PLAYLIST && curSched.getPlaylist() != null && !curSched.getPlaylist().equals("")){
@@ -43,9 +43,9 @@ public class StreamController {
 					for(Playlist playlist : playlistController.allPlaylists){
 						if(playlist.getName().equals(curSched.getPlaylist())){
 							if(playlist.getSongs().size() > 0){
-								int songNum = RandomWrapper.nextInt(playlist.getSongs().size());
+								Song song = RandomWrapper.nextSongWeighted(playlist.getSongs());
 								foundSong=true;
-								queue.addToQueue(playlist.getSongs().get(songNum));
+								queue.addToQueue(song);
 								break;
 							}
 						}
@@ -65,8 +65,8 @@ public class StreamController {
 				if(RandomWrapper.nextDouble() < ((Double) song.netVotes)
 			}
 			*/	
-			int songNum = RandomWrapper.nextInt(SongDatabase.songs.size()); //TODO: add more than random songs
-			queue.addToQueue(SongDatabase.songs.get(songNum));
+			Song song = RandomWrapper.nextSongWeighted(SongDatabase.songs); //TODO: add more than random songs
+			queue.addToQueue(song);
 		}
 	}
 	
