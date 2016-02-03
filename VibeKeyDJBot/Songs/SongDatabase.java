@@ -1,13 +1,10 @@
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class SongDatabase {
 	static ArrayList<Song> songs = new ArrayList<Song>();
 	static String musicPath;
-	static Map<String, ArrayList<Song>> genreMap;
-	static Map<String, ArrayList<Song>> artistMap;
 	static ArrayList<String> genres;
 	static HashMap<String, Song> pathToSongMap;
 	
@@ -15,8 +12,6 @@ public class SongDatabase {
 	static public void loadDatabase(){
 		songs.clear();
 		loadAllSongs(musicPath ,songs);
-		artistMap = getSongArtistMap();
-		genreMap = getSongGenreMap();
 		genres = getGenres();
 		pathToSongMap = buildPathToSongMap();
 		pushToFirebase();
@@ -25,8 +20,6 @@ public class SongDatabase {
 	static public void pushToFirebase(){
 		FirebaseCommunicator.clearSongsList();
 		FirebaseCommunicator.syncSongsWithFirebase(songs, pathToSongMap);
-//		FirebaseCommunicator.addSongsToFirebaseByGenre(genreMap);
-//		FirebaseCommunicator.addSongsToFirebaseByArtistMap(artistMap);
 		FirebaseCommunicator.addGenresToFirebase(genres);
 	}
 
@@ -64,7 +57,7 @@ public class SongDatabase {
 	}
 	
 	static private ArrayList<String> getGenres(){
-		ArrayList<String> genres = new ArrayList<String>(genreMap.keySet());
+		ArrayList<String> genres = new ArrayList<String>();
 		
 		for(Song song : songs){
 			String genre = song.getGenre();
@@ -75,35 +68,17 @@ public class SongDatabase {
 		return genres;
 	}
 	
-	static private Map<String, ArrayList<Song>> getSongArtistMap(){
-		Map<String, ArrayList<Song>> artistMap = new HashMap<String, ArrayList<Song>>();
+	static public ArrayList<Song> getSongsInGenre(String genreFilter){
+		ArrayList<Song> genreSongs = new ArrayList<Song>();
+		
 		for(Song song : songs){
-			if(artistMap.containsKey(song.getArtist())){
-				ArrayList<Song> artistSongList = artistMap.get(song.getArtist());
-				artistSongList.add(song);
-			}else{
-				ArrayList<Song> artistSongList = new ArrayList<Song>();
-				artistSongList.add(song);
-				artistMap.put(song.getArtist(), artistSongList);
+			String genre = song.getGenre();
+			if(genre.equals(genreFilter)){
+				genreSongs.add(song);
 			}
 		}
-		return artistMap;
-	}
-	
-	
-	static private Map<String, ArrayList<Song>> getSongGenreMap(){
-		Map<String, ArrayList<Song>> genreMap = new HashMap<String, ArrayList<Song>>();
-		for(Song song : songs){
-			if(genreMap.containsKey(song.getGenre())){
-				ArrayList<Song> genreSongList = genreMap.get(song.getGenre());
-				genreSongList.add(song);
-			}else{
-				ArrayList<Song> genreSongList = new ArrayList<Song>();
-				genreSongList.add(song);
-				genreMap.put(song.getGenre(), genreSongList);
-			}
-		}
-		return genreMap;
+		
+		return genreSongs;
 	}
 	
 	

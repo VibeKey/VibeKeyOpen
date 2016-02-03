@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
+import java.util.Set;
 
 import com.firebase.client.AuthData;
 import com.firebase.client.DataSnapshot;
@@ -52,7 +54,9 @@ public class FirebaseCommunicator {
 	}
 	
 	public static void clearSongsList(){
-		Firebase songsRef = rootRef.child("songs");
+		Firebase songsRef = rootRef.child("songs").child("byGenre");
+		songsRef.setValue(null);
+		songsRef = rootRef.child("songs").child("byArtist");
 		songsRef.setValue(null);
 	}
 
@@ -92,7 +96,6 @@ public class FirebaseCommunicator {
 		}
 	}
 	
-	/*
 	public static void addSongsToFirebaseByArtistMap(Map<String, ArrayList<Song>> artistMap){
 		Firebase songsByArtistRef = rootRef.child("songs").child("byArtist");
 		songsByArtistRef.setValue(null);
@@ -122,7 +125,6 @@ public class FirebaseCommunicator {
 			}
 		}
 	}
-	*/
 	
 	public static void loadSchedule(ArrayList<ScheduleItem> scheduleItems){
 		Firebase scheduleRef = rootRef.child("schedule");
@@ -149,11 +151,11 @@ public class FirebaseCommunicator {
 		    @Override
 		    public void onDataChange(DataSnapshot snapshot) {
 		    	for(DataSnapshot songSnapshot : snapshot.getChildren()){
-		    		Song fbSong = songSnapshot.getValue(Song.class);
+		    		SimplifiedSong fbSong = songSnapshot.getValue(SimplifiedSong.class);
 		    		Song dbSong = pathToSongMap.get(fbSong.getPath());
 		    		if(dbSong != null){
-		    			dbSong.netVotes = fbSong.netVotes;
-		    			dbSong.totalVotes = fbSong.totalVotes;
+		    			dbSong.netVotes = fbSong.getNetVotes();
+		    			dbSong.totalVotes = fbSong.getTotalVotes();
 		    		}
 		    	}
 				allSongsRef.setValue(null);
@@ -170,8 +172,31 @@ public class FirebaseCommunicator {
 		});
 	}
 	
+	public static void syncScheduleWithFirebase(PlaySchedule schedule){
+		Firebase scheduleRef = rootRef.child("schedule");
+		scheduleRef.addListenerForSingleValueEvent(new ValueEventListener() {
+		    @Override
+		    public void onDataChange(DataSnapshot snapshot) {
+		    	for(DataSnapshot songSnapshot : snapshot.getChildren()){
+		    		ScheduleItem scheduleItem = songSnapshot.getValue(ScheduleItem .class);
+		    		if (!schedule.scheduleItems.contains(scheduleItem)) {
+		    			schedule.addToSchedule(scheduleItem);
+		    		}
+		    	}
+		    	scheduleRef.setValue(null);
+				for(ScheduleItem scheduleItem : schedule.scheduleItems){
+					Firebase scheduleItemRef = scheduleRef.push();
+					scheduleItemRef.setValue(scheduleItem);
+				}
+		    }
+		    @Override
+		    public void onCancelled(FirebaseError firebaseError) {
+		    }
+		});
+	}
+	
 	public static void updateSong(Song song){
 		Firebase songRef = rootRef.child("songs").child("allSongs").child(song.UUID);
-		songRef.setValue(song);
+		songRef.setValue(song.getSimplifiedSong());
 	}
 }

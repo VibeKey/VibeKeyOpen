@@ -156,4 +156,8 @@ public class Song {
 		totalVotes++;
 		FirebaseCommunicator.updateSong(this);
 	}
+	
+	public void stop(){
+		this.playing = false;
+	}
 }

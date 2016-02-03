@@ -5,14 +5,12 @@ import java.util.Calendar;
 import com.gmail.kunicins.olegs.libshout.Libshout;
 
 public class StreamController {
-	String genreFilter;
 	String playMode;
 	Song curPlaying;
 	Libshout icecast;
 	SongQueue queue;
 	PlaylistController playlistController;
 	PlaySchedule playSchedule;
-	String playlistName;
 	Boolean stopServer = false; //easy way to stop the server, turn it to true
 	
 	public StreamController(){
@@ -22,76 +20,53 @@ public class StreamController {
 		this.playSchedule = new PlaySchedule();
 	}
 	
-	private boolean isInGenreMode(){
-		return playMode != null && genreFilter != null && playMode.equals("genre");
-	}
-
-	private boolean isInPlaylistMode(){
-		return playMode != null && playlistName != null && playMode.equals("playlist");
-	}
-	
 	public void refillQueue(){
 		queue.emptyQueue();
 		this.fillQueue();
 	}
 	
 	public void fillQueue(){
-		while(queue.size() < 5){
-			if(isInGenreMode()){
-				ArrayList<Song> genreSongList = SongDatabase.genreMap.get(genreFilter);
-				if(genreSongList != null){
-					int songNum = RandomWrapper.nextInt(genreSongList.size());
-					queue.addToQueue(genreSongList.get(songNum));
-					continue;
-				}
-			} else if(isInPlaylistMode()){
-				boolean foundSong = false;
-				for(Playlist playlist : playlistController.allPlaylists){
-					if(playlist.getName().equals(playlistName)){
-						if(playlist.getSongs().size() > 0){
-							int songNum = RandomWrapper.nextInt(playlist.getSongs().size());
-							foundSong=true;
-							queue.addToQueue(playlist.getSongs().get(songNum));
-							break;
-						}
+		while(queue.size() < SongQueue.FILL_SIZE){
+			Calendar calendar = Calendar.getInstance();
+			calendar.add(Calendar.SECOND, queue.getTotalTime());
+			ScheduleItem curSched = playSchedule.getScheduleItemAtTime(calendar.getTime());
+			if(curSched != null){
+				if(curSched.getPlayMode() == ScheduleItem.PLAYMODE_GENRE && curSched.getGenre() != null && !curSched.getGenre().equals("")){
+					ArrayList<Song> genreSongList = SongDatabase.getSongsInGenre(curSched.getGenre());
+					if(genreSongList != null){
+						Song song = RandomWrapper.nextSongWeighted(genreSongList);
+						queue.addToQueue(song);
+						continue;
 					}
-				}
-				if(foundSong){
-					continue;
-				}
-			} else { //else, check the schedule if not in a forced mode
-				Calendar calendar = Calendar.getInstance();
-				calendar.add(Calendar.SECOND, queue.getTotalTime());
-				ScheduleItem curSched = playSchedule.getScheduleItemAtTime(calendar.getTime());
-				if(curSched != null){
-					if(curSched.getPlayMode() == ScheduleItem.PLAYMODE_GENRE && curSched.getGenre() != null && !curSched.getGenre().equals("")){
-						ArrayList<Song> genreSongList = SongDatabase.genreMap.get(curSched.getGenre());
-						if(genreSongList != null){
-							int songNum = RandomWrapper.nextInt(genreSongList.size());
-							queue.addToQueue(genreSongList.get(songNum));
-							continue;
-						}
-					} else if(curSched.getPlayMode() == ScheduleItem.PLAYMODE_PLAYLIST && curSched.getPlaylist() != null && !curSched.getPlaylist().equals("")){
-						boolean foundSong = false;
-						for(Playlist playlist : playlistController.allPlaylists){
-							if(playlist.getName().equals(curSched.getPlaylist())){
-								if(playlist.getSongs().size() > 0){
-									int songNum = RandomWrapper.nextInt(playlist.getSongs().size());
-									foundSong=true;
-									queue.addToQueue(playlist.getSongs().get(songNum));
-									break;
-								}
+				} else if(curSched.getPlayMode() == ScheduleItem.PLAYMODE_PLAYLIST && curSched.getPlaylist() != null && !curSched.getPlaylist().equals("")){
+					boolean foundSong = false;
+					for(Playlist playlist : playlistController.allPlaylists){
+						if(playlist.getName().equals(curSched.getPlaylist())){
+							if(playlist.getSongs().size() > 0){
+								Song song = RandomWrapper.nextSongWeighted(playlist.getSongs());
+								foundSong=true;
+								queue.addToQueue(song);
+								break;
 							}
 						}
-						if(foundSong){
-							continue;
-						}
+					}
+					if(foundSong){
+						continue;
 					}
 				}
 			}
+			/*
+			int totalNetVotes = 0;
 			
-			int songNum = RandomWrapper.nextInt(SongDatabase.songs.size()); //TODO: add more than random songs
-			queue.addToQueue(SongDatabase.songs.get(songNum));
+			for(Song song : SongDatabase.songs){
+				totalNet+=song.netVotes;
+			}
+			for(Song song : SongDatabase.songs){
+				if(RandomWrapper.nextDouble() < ((Double) song.netVotes)
+			}
+			*/	
+			Song song = RandomWrapper.nextSongWeighted(SongDatabase.songs); //TODO: add more than random songs
+			queue.addToQueue(song);
 		}
 	}
 	
@@ -121,7 +96,7 @@ public class StreamController {
 		icecast.close();
 	}
 	
-	Libshout initializeIcecast(){
+	public Libshout initializeIcecast(){
 		try {
 			Libshout icecast;
 			icecast = new Libshout();
@@ -142,6 +117,6 @@ public class StreamController {
 	
 	public void stopServer(){
 		this.stopServer = true; //tell stream controller to throw stop exception
-		this.curPlaying.playing = false; //stop immediate song
+		this.curPlaying.stop();
 	}
 }

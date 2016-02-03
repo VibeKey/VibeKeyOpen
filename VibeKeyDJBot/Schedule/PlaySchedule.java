@@ -20,6 +20,7 @@ public class PlaySchedule {
 			}
 		}
 		scheduleItems.add(newScheduleItem);
+		this.pushToFirebase();
 	}
 	
 	// public void addToSchedule_return(ScheduleItem newScheduleItem){
@@ -108,5 +109,9 @@ public class PlaySchedule {
 		}else{
 			return scheduleItem.getPlaylist();
 		}
+	}
+	
+	public void pushToFirebase(){
+		FirebaseCommunicator.syncScheduleWithFirebase(this);
 	}
 }

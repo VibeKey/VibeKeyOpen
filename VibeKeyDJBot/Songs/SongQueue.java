@@ -1,6 +1,9 @@
 import java.util.LinkedList;
 
 public class SongQueue {
+	
+	static final public int FILL_SIZE = 5;
+	
 	LinkedList<Song> queue = new LinkedList<Song>();
 	
 	public SongQueue(){
