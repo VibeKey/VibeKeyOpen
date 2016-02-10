@@ -21,7 +21,7 @@ function streamMusic() {
 
 function updateNowPlaying() {
   var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
-  var npRef = fireRef.child("nowPlaying");
+  var npRef = fireRef.child('prod').child("nowPlaying");
   npRef.on("value", function(snapshot) {
     var main = snapshot.val();
     document.getElementById("curPlayingTitle").innerHTML = main.title;
