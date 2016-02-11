@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Set;
 
 import com.firebase.client.AuthData;
+import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -22,20 +23,40 @@ public class FirebaseCommunicator {
 	}
 	public static void setupFirebaseListeners(FirebaseCommandParser fbCommandParser){
 		Firebase commandRef = rootRef.child("controls").child("command");
-		commandRef.addValueEventListener(new ValueEventListener() {
+		commandRef.addChildEventListener(new ChildEventListener() {
 		      @Override
-		      public void onDataChange(DataSnapshot snapshot) {
+		      public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
 		    	  Boolean doCmd = (Boolean) snapshot.child("doCmd").getValue();
 		    	  if(doCmd != null && doCmd){
-			    	  String cmdString = (String) snapshot.child("cmdString").getValue();
-			    	  fbCommandParser.parseCommand(cmdString, snapshot.child("params"));
+			    	  Object ret = fbCommandParser.parseCommand(snapshot);
 			    	  commandRef.child("doCmd").setValue(false);
+			    	  commandRef.child("return").setValue(ret);
 		    	  }
 		      }
 		      @Override
 		      public void onCancelled(FirebaseError firebaseError) {
 		          System.out.println("The read failed: " + firebaseError.getMessage());
 		      }
+			@Override
+			public void onChildChanged(DataSnapshot snapshot, String previousChildKey) {
+		    	  Boolean doCmd = (Boolean) snapshot.child("doCmd").getValue();
+		    	  if(doCmd != null && doCmd){
+			    	  Object ret = fbCommandParser.parseCommand(snapshot);
+			    	  commandRef.child("doCmd").setValue(false);
+			    	  commandRef.child("return").setValue(ret);
+		    	  }
+				
+			}
+			@Override
+			public void onChildMoved(DataSnapshot arg0, String arg1) {
+				//Do nothing
+				
+			}
+			@Override
+			public void onChildRemoved(DataSnapshot arg0) {
+				//Do nothing
+				
+			}
 		  });
 		
 	}
@@ -60,9 +81,8 @@ public class FirebaseCommunicator {
 		songsRef.setValue(null);
 	}
 
-	public static void clearCommand(){
-		Firebase commandRef = rootRef.child("controls").child("command");
-		commandRef.setValue(null);
+	public static void clearCommand(DataSnapshot snapshot){
+		snapshot.getRef().removeValue();
 	}
 	
 	public static void addGenresToFirebase(ArrayList<String> genres){

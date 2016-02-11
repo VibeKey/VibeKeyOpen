@@ -14,6 +14,9 @@ public class RandomWrapper {
 	}
 	
 	static Song nextSongWeighted(ArrayList<Song> songs){
+		if (songs.size() == 0) {
+			return null;
+		}
 		int minNetVote = Integer.MAX_VALUE;
 		int maxNetVote = Integer.MIN_VALUE;
 		for (Song song : songs){
@@ -23,10 +26,12 @@ public class RandomWrapper {
 		int totalVoteCount = 0;
 		HashMap<Song, Integer> songVoteMap = new HashMap<Song, Integer>();
 		for (Song song : songs){
-			int voteCount = song.netVotes - 2*minNetVote + maxNetVote;
+			int voteCount = song.netVotes - 2*minNetVote + maxNetVote + 1;
 			songVoteMap.put(song, totalVoteCount);
 			totalVoteCount += voteCount;
 		}
+		
+		
 
 		int voteNum = random.nextInt(totalVoteCount);
 		

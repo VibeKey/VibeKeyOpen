@@ -1,6 +1,5 @@
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.Date;
 
 import com.firebase.client.DataSnapshot;
@@ -14,7 +13,9 @@ public class FirebaseCommandParser {
 	}
 
 	@SuppressWarnings("rawtypes")
-	public void parseCommand(String cmdString, DataSnapshot params) {
+	public Object parseCommand(DataSnapshot snapshot) {
+  	  	String cmdString = (String) snapshot.child("cmdString").getValue();
+  	  	DataSnapshot params = snapshot.child("params");
 		if (cmdString != null) {
 			
 			try {
@@ -23,7 +24,7 @@ public class FirebaseCommandParser {
 				
 				System.out.println(classes[0].getName());
 				Method method = this.getClass().getDeclaredMethod(cmdString, classes);	
-				method.invoke(this, params);
+				return method.invoke(this, params);
 			} catch (NoSuchMethodException e) {
 				System.out.println("ERROR: Invalid command \"" + cmdString + "\" from Firebase.");
 			} catch (SecurityException e) {
@@ -41,8 +42,8 @@ public class FirebaseCommandParser {
 			}
 			
 		}
-		
-		FirebaseCommunicator.clearCommand();
+		FirebaseCommunicator.clearCommand(snapshot);
+		return null;
 	}
 
 //	private void setGenre(DataSnapshot params) {
