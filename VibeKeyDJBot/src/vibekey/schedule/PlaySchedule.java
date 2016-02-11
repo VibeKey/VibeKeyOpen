@@ -5,7 +5,7 @@ import java.util.Date;
 import vibekey.firebase.FirebaseCommunicator;
 
 public class PlaySchedule {
-	ArrayList<ScheduleItem> scheduleItems = new ArrayList<ScheduleItem>();
+	public ArrayList<ScheduleItem> scheduleItems = new ArrayList<ScheduleItem>();
 	
 	public PlaySchedule(){
 		FirebaseCommunicator.loadSchedule(scheduleItems);
