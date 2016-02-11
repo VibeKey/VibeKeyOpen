@@ -1,19 +1,22 @@
+package vibekey.util;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
+import vibekey.song.Song;
+
 public class RandomWrapper {
 	static Random random = new Random(System.currentTimeMillis());
 	
-	static int nextInt(int upper){
+	public static int nextInt(int upper){
 		return random.nextInt(upper);
 	}
 	
-	static double nextDouble(){
+	public static double nextDouble(){
 		return random.nextDouble();
 	}
 	
-	static Song nextSongWeighted(ArrayList<Song> songs){
+	public static Song nextSongWeighted(ArrayList<Song> songs){
 		if (songs.size() == 0) {
 			return null;
 		}

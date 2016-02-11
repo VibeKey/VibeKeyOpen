@@ -1,3 +1,4 @@
+package vibekey.schedule;
 import java.util.Date;
 
 public class ScheduleItem {

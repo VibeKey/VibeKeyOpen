@@ -1,4 +1,8 @@
+package vibekey.playlist;
 import java.util.ArrayList;
+
+import vibekey.song.Song;
+import vibekey.util.RandomWrapper;
 
 public class Playlist {
 	private String name;

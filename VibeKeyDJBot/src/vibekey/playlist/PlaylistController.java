@@ -1,7 +1,13 @@
+package vibekey.playlist;
 import java.util.ArrayList;
 
+import vibekey.firebase.FirebaseCommunicator;
+import vibekey.song.Song;
+import vibekey.song.SongDatabase;
+import vibekey.util.RandomWrapper;
+
 public class PlaylistController {
-	ArrayList<Playlist> allPlaylists = new ArrayList<Playlist>();
+	public ArrayList<Playlist> allPlaylists = new ArrayList<Playlist>();
 	
 	
 	

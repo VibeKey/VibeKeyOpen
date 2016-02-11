@@ -1,4 +1,10 @@
+package vibekey;
 import com.firebase.client.Firebase;
+
+import vibekey.firebase.FirebaseCommandParser;
+import vibekey.firebase.FirebaseCommunicator;
+import vibekey.song.SongDatabase;
+import vibekey.stream.StreamController;
 
 public class DJBot {
 	StreamController streamController;

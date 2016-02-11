@@ -1,17 +1,28 @@
+package vibekey.stream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
 import com.gmail.kunicins.olegs.libshout.Libshout;
 
+import vibekey.firebase.FirebaseCommunicator;
+import vibekey.playlist.Playlist;
+import vibekey.playlist.PlaylistController;
+import vibekey.schedule.PlaySchedule;
+import vibekey.schedule.ScheduleItem;
+import vibekey.song.Song;
+import vibekey.song.SongDatabase;
+import vibekey.song.SongQueue;
+import vibekey.util.RandomWrapper;
+
 public class StreamController {
-	String playMode;
-	Song curPlaying;
-	Libshout icecast;
-	SongQueue queue;
-	PlaylistController playlistController;
-	PlaySchedule playSchedule;
-	Boolean stopServer = false; //easy way to stop the server, turn it to true
+	public String playMode;
+	public Song curPlaying;
+	public Libshout icecast;
+	public SongQueue queue;
+	public PlaylistController playlistController;
+	public PlaySchedule playSchedule;
+	public Boolean stopServer = false; //easy way to stop the server, turn it to true
 	
 	public StreamController(){
 		icecast = initializeIcecast();

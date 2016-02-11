@@ -1,5 +1,8 @@
+package vibekey.schedule;
 import java.util.ArrayList;
 import java.util.Date;
+
+import vibekey.firebase.FirebaseCommunicator;
 
 public class PlaySchedule {
 	ArrayList<ScheduleItem> scheduleItems = new ArrayList<ScheduleItem>();

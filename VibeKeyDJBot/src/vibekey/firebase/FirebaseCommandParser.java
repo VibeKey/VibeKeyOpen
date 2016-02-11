@@ -1,8 +1,15 @@
+package vibekey.firebase;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Date;
 
 import com.firebase.client.DataSnapshot;
+
+import vibekey.playlist.Playlist;
+import vibekey.schedule.ScheduleItem;
+import vibekey.song.Song;
+import vibekey.song.SongDatabase;
+import vibekey.stream.StreamController;
 
 @SuppressWarnings("unused")
 public class FirebaseCommandParser {

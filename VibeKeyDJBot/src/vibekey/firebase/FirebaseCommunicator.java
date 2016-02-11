@@ -1,3 +1,4 @@
+package vibekey.firebase;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -11,9 +12,15 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
+import vibekey.playlist.Playlist;
+import vibekey.schedule.PlaySchedule;
+import vibekey.schedule.ScheduleItem;
+import vibekey.song.SimplifiedSong;
+import vibekey.song.Song;
+
 public class FirebaseCommunicator {
 	
-	static Firebase rootRef;
+	static public Firebase rootRef;
 	
 	
 	public static void setFirebaseNowPlaying(Song song){

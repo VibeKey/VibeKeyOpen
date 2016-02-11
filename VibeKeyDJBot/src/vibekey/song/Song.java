@@ -1,3 +1,4 @@
+package vibekey.song;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -12,6 +13,8 @@ import com.mpatric.mp3agic.InvalidDataException;
 import com.mpatric.mp3agic.Mp3File;
 import com.mpatric.mp3agic.UnsupportedTagException;
 
+import vibekey.firebase.FirebaseCommunicator;
+
 public class Song {
 	File songFile;
 	Mp3File songMetaDataFile;
@@ -22,16 +25,16 @@ public class Song {
 	public int netVotes = 0;
 	public int totalVotes = 0;
 	public String UUID; //used to access the song in the Firebase song list
-	boolean playing = false; //used to force it to stop
+	public boolean playing = false; //used to force it to stop
 	
-	Song(File songFile){
+	public Song(File songFile){
 		this.songFile = songFile;
 //		this.netVotes = RandomWrapper.random.nextInt(6)-3; //TODO: Load these from firebase instead of random
 //		this.totalVotes = RandomWrapper.random.nextInt(10)+5;
 		loadMetaData();
 	}
 	
-	boolean loadMetaData(){
+	public boolean loadMetaData(){
 		try {
 			songMetaDataFile = new Mp3File(songFile.getAbsolutePath());
 			hasv2Data = songMetaDataFile.hasId3v2Tag();
@@ -58,21 +61,21 @@ public class Song {
 		return new SimplifiedSong(getTitle(), getArtist(), getAlbum(), getGenre(), getPath(), netVotes, totalVotes, getLength());
 	}
 	
-	ID3v2 getv2Metadata(){
+	public ID3v2 getv2Metadata(){
 		if(hasv2Data){
 			return metadatav2;
 		}
 		return null;
 	}
 	
-	ID3v1 getv1Metadata(){
+	public ID3v1 getv1Metadata(){
 		if(hasv1Data){
 			return metadatav1;
 		}
 		return null;
 	}
 	
-	String getGenre(){
+	public String getGenre(){
 		if(hasv2Data){
 			return metadatav2.getGenreDescription();
 		}else if(hasv1Data){
@@ -81,7 +84,7 @@ public class Song {
 		return "";
 	}
 	
-	String getTitle(){
+	public String getTitle(){
 		if(hasv2Data){
 			return metadatav2.getTitle();
 		}else if(hasv1Data){
@@ -90,7 +93,7 @@ public class Song {
 		return "";
 	}
 	
-	String getArtist(){
+	public String getArtist(){
 		if(hasv2Data){
 			return metadatav2.getArtist();
 		}else if(hasv1Data){
@@ -99,7 +102,7 @@ public class Song {
 		return "";
 	}
 	
-	String getAlbum(){
+	public String getAlbum(){
 		if(hasv2Data){
 			return metadatav2.getAlbum();
 		}else if(hasv1Data){
@@ -109,15 +112,15 @@ public class Song {
 	}
 	
 
-	long getLength(){
+	public long getLength(){
 		return songMetaDataFile.getLengthInSeconds();
 	}
 	
-	String getPath(){
+	public String getPath(){
 		return songFile.getAbsolutePath();
 	}
 	
-	boolean streamSong(Libshout cast){
+	public boolean streamSong(Libshout cast){
 		try {
 			InputStream mp3 = new BufferedInputStream(new FileInputStream(this.songFile));
 			byte[] buffer = new byte[1024];

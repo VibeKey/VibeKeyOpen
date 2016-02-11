@@ -1,12 +1,15 @@
+package vibekey.song;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import vibekey.firebase.FirebaseCommunicator;
+
 public class SongDatabase {
-	static ArrayList<Song> songs = new ArrayList<Song>();
-	static String musicPath;
-	static ArrayList<String> genres;
-	static HashMap<String, Song> pathToSongMap;
+	public static ArrayList<Song> songs = new ArrayList<Song>();
+	public static String musicPath;
+	public static ArrayList<String> genres;
+	public static HashMap<String, Song> pathToSongMap;
 	
 	
 	static public void loadDatabase(){

@@ -1,4 +1,7 @@
+package vibekey.song;
 import java.util.LinkedList;
+
+import vibekey.firebase.FirebaseCommunicator;
 
 public class SongQueue {
 	
