@@ -1,6 +1,5 @@
 /bin/
 .metadata
-.project
 .recommenders/*
 /GenreExclusion/.classpath
 *.class
