@@ -1,4 +1,4 @@
-/*this is the most general css file (index.html). 
+/*this is the most general css file (index.html).
 Deals with most basic css of the general site such as body, playlist*/
 
 
@@ -29,7 +29,7 @@ body {
 
 a:link {color:white; text-decoration: none;}
 a:hover {color:rgb(243,221,187); text-decoration: none;}
-a:active {color:white; text-decoration: none;} 
+a:active {color:white; text-decoration: none;}
 
 .stuffBody {
 	height:100%;
@@ -112,8 +112,8 @@ a:active {color:white; text-decoration: none;}
 	font-size:25px;
 	display:block;
 	line-height:30px;
-	font-family:Ganon;
 	text-align: center;
+	font-family:Arial, Helvetica, sans-serif;
 }
 
 .playHeadInfo .title{
@@ -121,9 +121,9 @@ a:active {color:white; text-decoration: none;}
 	display:block;
 	line-height:50px;
 	color:rgb(0,0,0);
-	font-family:Ganon;
 	font-weight: bold;
 	text-align: center;
+	font-family:Arial, Helvetica, sans-serif;
 }
 
 .bounce {
@@ -151,7 +151,7 @@ a:active {color:white; text-decoration: none;}
 }
 
 .playerButton {
-	width:50px; 
+	width:50px;
 	height:50px;
 }
 
@@ -167,4 +167,8 @@ table.dummyCalendar td{
 @font-face {
     font-family: Ganon;
     src: url(../fonts/retganon.ttf);
+}
+
+.newsContainer {
+	color:white;
 }
