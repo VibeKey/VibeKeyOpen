@@ -3,7 +3,4 @@
 .project
 .recommenders/*
 /GenreExclusion/.classpath
-/VibeKeyOpen/.classpath
-/VibeKeyOpen/.project
-/VibeKeyOpen/.log
 *.class
