@@ -1,6 +1,6 @@
 function upVote() {
 	var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
-	var npRef = fireRef.child("nowPlaying");
+	var npRef = fireRef.child("prod").child("nowPlaying");
 	var peopleVoteRef = npRef.child("peopleVote");
 	peopleVoteRef.onAuth(function(authData) {
 		if (authData) {
@@ -28,7 +28,7 @@ function upVote() {
 
 function downVote() {
 	var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
-	var npRef = fireRef.child("nowPlaying");
+	var npRef = fireRef.child("prod").child("nowPlaying");
 	var peopleVoteRef = npRef.child("peopleVote");
 	peopleVoteRef.onAuth(function(authData) {
 		if (authData) {
@@ -56,7 +56,7 @@ function downVote() {
 
 function containUser(uid) {
 	var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
-	var npRef = fireRef.child("nowPlaying");
+	var npRef = fireRef.child("prod").child("nowPlaying");
 	var peopleVoteRef = npRef.child("peopleVote");
 
 	var found = false;

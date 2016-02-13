@@ -34,7 +34,7 @@ function updateNowPlaying() {
 
 function nextSong() {
   var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
-  var controls = fireRef.child("controls");
+  var controls = fireRef.child("prod").child("controls");
   var command = createCommand(true, "nextSong", {});
   controls.set(command);
 }
