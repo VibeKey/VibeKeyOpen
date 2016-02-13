@@ -94,7 +94,7 @@
 				</div>
 
 				<div class="playsongs" id="playSongs">
-					<div class="playsongsImg UserView">
+					<div class="playsongsImg">
 						<img id="playImage" src="images/record-player.gif">
 						<img id="pauseImage" src="images/record-player-paused.png" style="display:none">
 					</div>
@@ -127,7 +127,7 @@
 							<img id="pauseButton" style="width:30px; height:30px;"
 								src="images/pausebutton.png">
 						</div>
-						<div onclick="nextSong()" id="next" class="circle">
+						<div onclick="nextSong()" id="next" class="circle DjView" style="display:none;">
 							<img id="nextImg" style="width:30px; height:30px;"
 								src="images/next.png">
 						</div>
@@ -331,6 +331,15 @@
 	<script type="text/javascript" src="js/chat.js"></script>
 	<script>
 		$(document).ready(function() {
+			var ref = new Firebase("https://vibekey-open.firebaseio.com/");
+			var auth = ref.getAuth();
+			if(auth) {
+				var username = auth.password.email;
+	   			$("#modal_trigger").text("Login as " + username + "Click to log out");
+	   			$(".loginPop").hide();
+	    		$(".logoutPop").show();
+				changeToDjView();
+			}
 			streamMusic();
 			updateNowPlaying();
 			populateNews();

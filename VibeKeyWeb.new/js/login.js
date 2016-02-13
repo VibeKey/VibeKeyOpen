@@ -13,6 +13,7 @@ function login() {
 	    $("#modal_trigger").text("Login as " + username + "Click to log out");
 	    $(".loginPop").hide();
 	    $(".logoutPop").show();
+	    $(".modal_close").click();
 	    changeToDjView();
 	  }
 	});
@@ -24,6 +25,7 @@ function logout() {
 	$("#modal_trigger").text("Login or register");
 	$(".logoutPop").hide();
 	$(".loginPop").show();
+	$(".modal_close").click();
 	changeToUserView();
 }
 
