@@ -1,5 +1,5 @@
 function populateSearchLists() {
-	var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
+	var fireRef = new Firebase(FIREBASE_REF);
 	var byArtistRef = fireRef.child("songs").child("byArtist");
 	var byGenreRef = fireRef.child("songs").child("byGenre");
 
@@ -26,7 +26,7 @@ function populateSearchLists() {
 
 
 function searchByArtist(list) {
-	var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
+	var fireRef = new Firebase(FIREBASE_REF);
 	var byArtistRef = fireRef.child("songs").child("byArtist");
 	var selectedArtist = list.value;
 	var searchTab = document.getElementById('searchSongs');
@@ -59,7 +59,7 @@ function searchByArtist(list) {
 }
 
 function searchByGenre(list) {
-	var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
+	var fireRef = new Firebase(FIREBASE_REF);
 	var byGenreRef = fireRef.child("songs").child("byGenre");
 	var selectedGenre = list.value;
 	var searchTab = document.getElementById('searchSongs');
@@ -92,7 +92,7 @@ function searchByGenre(list) {
 }
 
 function showAllSongs() {
-	var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
+	var fireRef = new Firebase(FIREBASE_REF);
 	var songsRef = fireRef.child("songs");
 	var allsongsRef = songsRef.child("allSongs");
 	var searchTab = document.getElementById('searchSongs');
@@ -124,7 +124,7 @@ function showAllSongs() {
 function search() {
 	var searchWord = document.getElementsByClassName('searchByName')[1].value;
 	console.log(searchWord);
-	var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
+	var fireRef = new Firebase(FIREBASE_REF);
 	var songsRef = fireRef.child("songs");
 	var allsongsRef = songsRef.child("allSongs");
 	var searchTab = document.getElementById('searchSongs');
