@@ -1,12 +1,12 @@
 function populateSearchLists() {
 	var fireRef = new Firebase(FIREBASE_REF);
-	var byArtistRef = fireRef.child("songs").child("byArtist");
-	var byGenreRef = fireRef.child("songs").child("byGenre");
+	var byArtistRef = fireRef.child("songs").child("artistList");
+	var byGenreRef = fireRef.child("songs").child("genreList");
 
 	//populate genre drop down in search by genre
 	byGenreRef.on("value", function(snapshot) {
 	  snapshot.forEach(function(data) {
-	    var genre = data.child('genre').val();
+	    var genre = data.val();
 	    var option = document.createElement("option");
 	    option.text = option.value = genre;
 	    $('.searchByGenreList').append(option);
@@ -16,7 +16,7 @@ function populateSearchLists() {
 	//populate artist drop down in search by artist
 	byArtistRef.on("value", function(snapshot) {
 	  snapshot.forEach(function(data) {
-	    var artist = data.child('artist').val();
+	    var artist = data.val();
 	    var option = document.createElement("option");
 	    option.text = option.value = artist;
 	    $('.searchByArtistList').append(option);
@@ -26,75 +26,64 @@ function populateSearchLists() {
 
 
 function searchByArtist(list) {
-	var fireRef = new Firebase(FIREBASE_REF);
-	var byArtistRef = fireRef.child("songs").child("byArtist");
+	var allsongsRef = new Firebase(FIREBASE_REF).child("songs").child("allSongs");
 	var selectedArtist = list.value;
 	var searchTab = document.getElementById('searchSongs');
 	searchTab.innerHTML = "";
 
-	byArtistRef.on("value", function(snapshot) {
-		snapshot.forEach(function(data) {
-			if(selectedArtist == data.child('artist').val()) {
-				data.forEach(function(selectedArtistData) {
-					var id = selectedArtistData.key();
-				 	var childData = selectedArtistData.val();
-				  	var songName = childData.title;
-				  	var songBand = childData.artist;
-				  	var songPath = childData.path;
-				  	var votes = childData.netVotes;
-				  	var song = {
-				  		"id" : [id],
-				 		"name" : [songName],
-				  		"artist" : [songBand],
-				 		"path" : [songPath],
-				  		"votes" : [votes]
-				  	};
-				  	if(songBand != null) {
-				  		addSongToTab(song, searchTab);
-					}
-				});
+	allsongsRef.on("value", function(snapshot) {
+		snapshot.forEach(function(selectedGenreData) {
+			var id = selectedGenreData.key();
+			var childData = selectedGenreData.val();
+			var songName = childData.title;
+			var songBand = childData.artist;
+			var songPath = childData.path;
+			var votes = childData.netVotes;
+			var song = {
+				"id" : [id],
+				"name" : [songName],
+				"artist" : [songBand],
+				"path" : [songPath],
+				"votes" : [votes]
+			};
+			if(songBand == selectedArtist) {
+				addSongToTab(song, searchTab);
 			}
 		});
 	});
 }
 
 function searchByGenre(list) {
-	var fireRef = new Firebase(FIREBASE_REF);
-	var byGenreRef = fireRef.child("songs").child("byGenre");
+	var allsongsRef = new Firebase(FIREBASE_REF).child("songs").child("allSongs");
 	var selectedGenre = list.value;
 	var searchTab = document.getElementById('searchSongs');
 	searchTab.innerHTML = "";
 
-	byGenreRef.on("value", function(snapshot) {
-		snapshot.forEach(function(data) {
-			if(selectedGenre == data.child('genre').val()) {
-				data.forEach(function(selectedGenreData) {
-					var id = selectedGenreData.key();
-				 	var childData = selectedGenreData.val();
-				  	var songName = childData.title;
-				  	var songBand = childData.artist;
-				  	var songPath = childData.path;
-				  	var votes = childData.netVotes;
-				  	var song = {
-				  		"id" : [id],
-				 		"name" : [songName],
-				  		"artist" : [songBand],
-				 		"path" : [songPath],
-				  		"votes" : [votes]
-				  	};
-				  	if(songBand != null) {
-				  		addSongToTab(song, searchTab);
-					}
-				});
+	allsongsRef.on("value", function(snapshot) {
+		snapshot.forEach(function(selectedGenreData) {
+			var id = selectedGenreData.key();
+			var childData = selectedGenreData.val();
+			var songGenre = childData.genre;
+			var songName = childData.title;
+			var songBand = childData.artist;
+			var songPath = childData.path;
+			var votes = childData.netVotes;
+			var song = {
+				"id" : [id],
+				"name" : [songName],
+				"artist" : [songBand],
+				"path" : [songPath],
+				"votes" : [votes]
+			};
+			if(songGenre == selectedGenre) {
+				addSongToTab(song, searchTab);
 			}
 		});
 	});
 }
 
 function showAllSongs() {
-	var fireRef = new Firebase(FIREBASE_REF);
-	var songsRef = fireRef.child("songs");
-	var allsongsRef = songsRef.child("allSongs");
+	var allsongsRef = new Firebase(FIREBASE_REF).child("songs").child("allSongs");
 	var searchTab = document.getElementById('searchSongs');
 	searchTab.innerHTML = "";
 
@@ -123,10 +112,7 @@ function showAllSongs() {
 
 function search() {
 	var searchWord = document.getElementsByClassName('searchByName')[1].value;
-	console.log(searchWord);
-	var fireRef = new Firebase(FIREBASE_REF);
-	var songsRef = fireRef.child("songs");
-	var allsongsRef = songsRef.child("allSongs");
+	var allsongsRef = new Firebase(FIREBASE_REF).child("songs").child("allSongs");
 	var searchTab = document.getElementById('searchSongs');
 	searchTab.innerHTML = "";
 

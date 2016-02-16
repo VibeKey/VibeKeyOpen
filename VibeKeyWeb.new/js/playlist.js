@@ -1,8 +1,7 @@
 function createPlaylist(){
 	var name = prompt("Please enter playlist name", "Default List");
 	if (name != null) {
-        var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
-		var controls = fireRef.child("controls");
+		var controls = new Firebase(FIREBASE_REF).child("controls");
 		var songs = document.getElementById("playlist").getElementsByClassName("song");
 		var songPath;
 		var thesongs = [];
@@ -13,4 +12,18 @@ function createPlaylist(){
 		var command = createCommand(true, "addPlaylist", {"name" : name, "songs" : thesongs});
 		controls.set(command);
     }
+}
+
+function clickBottomButton() {
+	var playsongsImg = document.getElementById("playsongsImg");
+	var playlist = document.getElementById("playsongsBorder");
+
+	if(playsongsImg.style["display"] != "none") {
+		console.log("hi");
+		playsongsImg.style["display"] = "none";
+		playlist.style["display"] = null;
+	} else {
+		playsongsImg.style["display"] = null;
+		playlist.style["display"] = "none";
+	}
 }

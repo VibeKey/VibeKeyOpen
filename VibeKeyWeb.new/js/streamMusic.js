@@ -9,19 +9,12 @@ function streamMusic() {
                 "live": true
         }
     ],
-    "autoplay": true,
-    //"use_visualizations": true
+    "autoplay": true
   });
-
-  // Amplitude.registerVisualization( MichaelBromleyVisualization, {
-  //   width: '314',
-  //   height: '314'
-  // });
 }
 
 function updateNowPlaying() {
-  var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
-  var npRef = fireRef.child('prod').child("nowPlaying");
+  var npRef = new Firebase(FIREBASE_REF).child("nowPlaying");
   npRef.on("value", function(snapshot) {
     var main = snapshot.val();
     document.getElementById("curPlayingTitle").innerHTML = main.title;
@@ -32,9 +25,25 @@ function updateNowPlaying() {
   });
 }
 
-function nextSong() {
-  var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
-  var controls = fireRef.child("prod").child("controls");
-  var command = createCommand(true, "nextSong", {});
-  controls.set(command);
+function pressPlayerButton(){
+  var playButton = document.getElementById("playButton");
+  var pauseButton = document.getElementById("pauseButton");
+  var playImage = document.getElementById("playImage");
+  var pauseImage = document.getElementById("pauseImage");
+
+  if (playButton.style["display"] != "none"){
+    // Removes the play button and adds the pause button.
+    playButton.style["display"] = "none";
+    pauseButton.style["display"] = null;
+
+    playImage.style["display"] = null;
+    pauseImage.style["display"] = "none";
+  } else {
+    // Removes the play button and adds the pause button.
+    pauseButton.style["display"] = "none";
+    playButton.style["display"] = null;
+
+    pauseImage.style["display"] = null;
+    playImage.style["display"] = "none";
+  }
 }

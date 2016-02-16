@@ -16,7 +16,7 @@
 <body>
 	<div id="stuffBody" class="stuffBody">
 		<div class="WMHD">
-			<h1 style="position:absolute;top:0%;left:45%"> WMHD Radio </h1>
+			<h1 style="color:white;position:absolute;top:0%;left:45%"> WMHD Radio </h1>
 		</div>
 
 		<div class="container">
@@ -94,18 +94,13 @@
 				</div>
 
 				<div class="playsongs" id="playSongs">
-					<div class="playsongsImg">
+					<div class="playsongsImg" id="playsongsImg">
 						<img id="playImage" src="images/record-player.gif">
 						<img id="pauseImage" src="images/record-player-paused.png" style="display:none">
 					</div>
-					<div class="playsongsBorder DjView" style="display:none;">
-					<ul id="playlist" class="sortable"></ul>
-					<div class="otherLists" id="up" style="display:none;">
-						I am the upload.
-					</div>
-					<div class="otherLists" id="list" style="display:none;">
-						I am the list of playlists.
-					</div>
+					<div class="playsongsBorder" id="playsongsBorder" style="display:none;">
+						<p style="color:white">create playlist</p>
+						<ul id="playlist" class="sortable"></ul>
 					</div>
 				</div>
 
@@ -187,7 +182,7 @@
 			<fieldset>
 				<legend>Delete a news</legend>
 					Select a news:<br>
-					<select class="newsList" id="newsList">
+					<select class="deletenewsList" id="deletenewsList">
 				    	<option value="none">No news selected</option>
 					</select>
 					<br></br>
@@ -211,7 +206,15 @@
 
 	<div id="calendarTab" class="sidr">
 		<h1 style="color:white">Scheduled Programs</h1>
-		<ul class="scheduleList" style="list-style-type:none; color:white"></ul>
+		<div class="upcomingPrograms" id="upcomingPrograms">
+			<h2 style="color:white">Upcoming programs</h2>
+			<ul class="upcomingProgramsList" style="list-style-type:none; color:white"></ul>
+		</div>
+		<div class="upcomingSongs" id="upcomingSongs">
+			<h2 style="color:white">Upcoming songs</h2>
+			<ul class="upcomingSongsList" style="list-style-type:none; color:white"></ul>
+		</div>
+
 		<div class="scheduleOp DjView" style="display:none;">
 			<fieldset>
 			    <legend>Set Genre</legend>
@@ -289,10 +292,11 @@
 
 	<div id="djChatTab" class="sidr">
 		<h1 style="color:white">Welcome to Chat</h1>
-		<ul id='chat_messages' class="chat_messages"></ul>
-		<div>
-    		<input style="height:100px;width:300px;position:absolute;bottom:50px;" type='text' class='messageInput' id='messageInput' placeholder='Type a message...'>
-    		<button style="height:50px;width:300px;position:absolute;bottom:0%;"class="sendChatButton" id="sendChatButton" onclick="chat()">Send</button>
+		<div id="chat_messages">
+			<ul id='message_list' class="message_list" ></ul>
+		</div>
+		<div id="chat_bottom" style="position:fixed;bottom:0%;">
+    		<input type='text' class='messageInput' id='messageInput' placeholder='Type a message...' onkeypress="ifEnterChat(event)">
   		</div>
 	</div>
 
@@ -304,33 +308,37 @@
 		<h1 style="color:white">Setting</h1>
 	</div>
 
+	<!-- public -->
 	<script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="js/jquery.sidr.min.js"></script>
+	<script type="text/javascript" src="js/amplitude.js"></script>
+	<script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
+	<!-- private -->
 	<script type="text/javascript" src="js/constants.js"></script>
 	<script type="text/javascript" src="js/tabScript.js"></script>
 	<script type="text/javascript" src="js/hover.js"></script>
 	<script type="text/javascript" src="js/requestSong.js"></script>
 	<script type="text/javascript" src="js/songObj.js"></script>
-	<script type="text/javascript" src="js/streamScript.js"></script>
-	<script type="text/javascript" src="js/jquery.sidr.min.js"></script>
-	<script type="text/javascript" src="js/amplitude.js"></script>
-	<script type="text/javascript" src="js/createPlaylist.js"></script>
+	<script type="text/javascript" src="js/playlist.js"></script>
 	<script type="text/javascript" src="js/streamMusic.js"></script>
 	<script type="text/javascript" src="js/createCommand.js"></script>
-	<script type="text/javascript" src="js/scheduleMusic.js"></script>
+	<script type="text/javascript" src="js/schedule.js"></script>
 	<script type="text/javascript" src="js/news.js"></script>
 	<script type="text/javascript" src="js/vote.js"></script>
-	<script type="text/javascript" src="js/searchSongs.js"></script>
-	<script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
-	<script type="text/javascript" src="js/showLoginForm.js"></script>
-	<script type="text/javascript" src="js/login.js"></script>
-	<script type="text/javascript" src="js/pullNews.js"></script>
-	<script type="text/javascript" src="js/pullSchedule.js"></script>
+	<script type="text/javascript" src="js/search.js"></script>
+	<script type="text/javascript" src="js/user.js"></script>
 	<script type="text/javascript" src="js/chat.js"></script>
 	<script>
 		$(document).ready(function() {
+			$("#modal_trigger").leanModal({
+		        top: 100,
+		        overlay: 0.6,
+		        closeButton: ".modal_close"
+			})
+
 			var ref = new Firebase("https://vibekey-open.firebaseio.com/");
 			var auth = ref.getAuth();
 			if(auth) {
@@ -338,15 +346,15 @@
 	   			$("#modal_trigger").text("Login as " + username + "Click to log out");
 	   			$(".loginPop").hide();
 	    		$(".logoutPop").show();
-				changeToDjView();
+				toDoAfterLogin();
 			}
+
 			streamMusic();
 			updateNowPlaying();
+			populateSearchLists();
 			populateNews();
 			populateSchedule();
-    		populateNewsList();
-    		populateSearchLists();
-    		populateCalenderLists();
+			syncChat();
 		});
 	</script>
 	</body>

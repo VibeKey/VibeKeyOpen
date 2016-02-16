@@ -14,9 +14,16 @@ function login() {
 	    $(".loginPop").hide();
 	    $(".logoutPop").show();
 	    $(".modal_close").click();
-	    changeToDjView();
+
+	    toDoAfterLogin();
 	  }
 	});
+}
+
+function toDoAfterLogin() {
+	changeToDjView();
+	populateDeleteNewsList();
+	populateCalenderLists();
 }
 
 function logout() {
