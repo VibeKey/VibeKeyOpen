@@ -82,11 +82,11 @@
 						<span id="curPlayingArtist" class="artist" >Song Artist</span>
 					</div>
 					<div class="button">
-						<span onclick="upVote()" id="upVote" class="circle">
+						<span onclick="upVote()" id="upVote" class="circle" data-toggle="tooltip" title="Like!">
 								<img id="upImg" style="width:24px;height:24px;"
 									src="images/up_arrow.png">
 						</span>
-						<span onclick="downVote()" id="downVote" class="circle">
+						<span onclick="downVote()" id="downVote" class="circle" data-toggle="tooltip" title="Dislike!">
 								<img id="downImg" style="width:24px;height:24px;"
 									src="images/down_arrow.png">
 						</span>
@@ -106,23 +106,23 @@
 
 				<div class="playbottom">
 					<div class="button" style="float:none; height:auto;">
-						<div onclick="createPlaylist()" id="createPlaylist" class="circle DjView" style="display:none;">
+						<div onclick="createPlaylist()" id="createPlaylist" class="circle DjView" style="display:none;" data-toggle="tooltip" title="Create List">
 							<img id="upImg" style="width:30px; height:30px;"
 								src="images/up.png">
 						</div>
-						<div onclick="clickBottomButton(this)" id="list" class="circle DjView" style="display:none;">
+						<div onclick="clickBottomButton(this)" id="list" class="circle DjView" style="display:none;" data-toggle="tooltip" title="MyList">
 							<img id="listImg" style="width:30px; height:30px;"
 								src="images/list.png">
 							<img id="listDownArrow" style="width:30px; height:30px; display:none;"
 								src="images/down_arrow.png">
 						</div>
-						<div onclick="pressPlayerButton(this)" class="circle amplitude-play-pause amplitude-playing" amplitude-song-index="0">
+						<div onclick="pressPlayerButton(this)" class="circle amplitude-play-pause amplitude-playing" amplitude-song-index="0" data-toggle="tooltip" title="Play/Pause">
 							<img id="playButton" style="width:30px; height:30px; display:none;"
 								src="images/playbutton.png">
 							<img id="pauseButton" style="width:30px; height:30px;"
 								src="images/pausebutton.png">
 						</div>
-						<div onclick="nextSong()" id="next" class="circle DjView" style="display:none;">
+						<div onclick="nextSong()" id="next" class="circle DjView" style="display:none;" data-toggle="tooltip" title="Next Song">
 							<img id="nextImg" style="width:30px; height:30px;"
 								src="images/next.png">
 						</div>
