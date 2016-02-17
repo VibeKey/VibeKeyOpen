@@ -2,7 +2,7 @@ function upVote() {
 	var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
 	var npRef = fireRef.child("prod").child("nowPlaying");
 	var peopleVoteRef = npRef.child("peopleVote");
-	var controls = new Firebase(FIREBASE_REF).child("controls");
+	var controls = new Firebase(FIREBASE_REF).child("controls").child("command");
 
 	peopleVoteRef.onAuth(function(authData) {
 		if (authData) {
@@ -31,6 +31,8 @@ function downVote() {
 	var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
 	var npRef = fireRef.child("prod").child("nowPlaying");
 	var peopleVoteRef = npRef.child("peopleVote");
+	var controls = new Firebase(FIREBASE_REF).child("controls").child("command");
+
 	peopleVoteRef.onAuth(function(authData) {
 		if (authData) {
 			if(!containUser(authData.uid)){

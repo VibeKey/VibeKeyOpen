@@ -80,34 +80,34 @@ function populateCalenderLists() {
 }
 
 function nextSong() {
-  var controls = new Firebase(FIREBASE_REF).child("controls");
+  var controls = new Firebase(FIREBASE_REF).child("controls").child("command");
   var command = createCommand(true, "nextSong", {});
   controls.push(command);
 }
 
 function scheduleGenre(list){
-  var controls = new Firebase(FIREBASE_REF).child("controls");
+  var controls = new Firebase(FIREBASE_REF).child("controls").child("command");
   var selectedGenre = list.value;
   var command2 = createCommand(true, "setGenre", {"genre" : selectedGenre});
   controls.push(command2);
 }
 
 function scheduleSong(list){
-  var controls = new Firebase(FIREBASE_REF).child("controls");
+  var controls = new Firebase(FIREBASE_REF).child("controls").child("command");
   var selectedSongPath = list.value;
   var command = createCommand(true, "addToFrontOfQueue", {"songPath" : selectedSongPath});
   controls.push(command);
 }
 
 function scheduleList(list) {
-  var controls = new Firebase(FIREBASE_REF).child("controls");
+  var controls = new Firebase(FIREBASE_REF).child("controls").child("command");
   var selectedList = list.options[list.selectedIndex].text;
   var command2 = createCommand(true, "setPlaylist", {"playlist" : selectedList});
   controls.push(command2);
 }
 
 function schedule() {
-  var controls = new Firebase(FIREBASE_REF).child("controls");
+  var controls = new Firebase(FIREBASE_REF).child("controls").child("command");
   var playMode = document.getElementsByClassName('playModeList')[1].value;
   var repeatMode = document.getElementsByClassName('repeatModeList')[1].value;
   var startTime = document.getElementsByClassName('startTime')[1].value;

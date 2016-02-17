@@ -1,7 +1,7 @@
 function createPlaylist(){
 	var name = prompt("Please enter playlist name", "Default List");
 	if (name != null) {
-		var controls = new Firebase(FIREBASE_REF).child("controls");
+		var controls = new Firebase(FIREBASE_REF).child("controls").child("command");
 		var songs = document.getElementById("playlist").getElementsByClassName("song");
 		var songPath;
 		var thesongs = [];
