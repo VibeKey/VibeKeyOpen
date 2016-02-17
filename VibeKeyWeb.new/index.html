@@ -295,8 +295,8 @@
 		<div id="chat_messages">
 			<ul id='message_list' class="message_list" ></ul>
 		</div>
-		<div id="chat_bottom" style="position:fixed;bottom:0%;">
-    		<input type='text' class='messageInput' id='messageInput' placeholder='Type a message...' onkeypress="ifEnterChat(event)">
+		<div id="chat_bottom" style="position:fixed;bottom:0%;width:100%;height:10%;background-color:black;overflow:auto;">
+    		<textarea type='text' class='messageInput' id='messageInput' placeholder='Type a message...' onkeypress="ifEnterChat(event)" style="margin:0px;width:100%;height:100%;" cols="50" rows="10"></textarea>
   		</div>
 	</div>
 
