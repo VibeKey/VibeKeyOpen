@@ -82,28 +82,28 @@ function populateCalenderLists() {
 function nextSong() {
   var controls = new Firebase(FIREBASE_REF).child("controls");
   var command = createCommand(true, "nextSong", {});
-  controls.set(command);
+  controls.push(command);
 }
 
 function scheduleGenre(list){
   var controls = new Firebase(FIREBASE_REF).child("controls");
   var selectedGenre = list.value;
   var command2 = createCommand(true, "setGenre", {"genre" : selectedGenre});
-  controls.set(command2);
+  controls.push(command2);
 }
 
 function scheduleSong(list){
   var controls = new Firebase(FIREBASE_REF).child("controls");
   var selectedSongPath = list.value;
   var command = createCommand(true, "addToFrontOfQueue", {"songPath" : selectedSongPath});
-  controls.set(command);
+  controls.push(command);
 }
 
 function scheduleList(list) {
   var controls = new Firebase(FIREBASE_REF).child("controls");
   var selectedList = list.options[list.selectedIndex].text;
   var command2 = createCommand(true, "setPlaylist", {"playlist" : selectedList});
-  controls.set(command2);
+  controls.push(command2);
 }
 
 function schedule() {
@@ -118,5 +118,5 @@ function schedule() {
 
   var command = createCommand(false, "addToSchedule", {"playMode":playMode, "repeatMode":repeatMode, 
     "startTime":startTime, "endTime":endTime, "DJName":DJName, "genre":genre, "playlist":playlist});
-  controls.set(command);
+  controls.push(command);
 }

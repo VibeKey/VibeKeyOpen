@@ -3,5 +3,5 @@ function requestSong(request) {
 		var controls = fireRef.child("controls");
 		var path = request.id;
 		var command = createCommand(true, "requestSong", {"songPath" : path});
-		controls.set(command);
+		controls.push(command);
 }

@@ -10,7 +10,7 @@ function createPlaylist(){
 			thesongs = thesongs.concat([songPath]);
 		};
 		var command = createCommand(true, "addPlaylist", {"name" : name, "songs" : thesongs});
-		controls.set(command);
+		controls.push(command);
     }
 }
 

@@ -16,7 +16,7 @@ function upVote() {
 					var main = snapshot.val();
 					var path = main.path;
 					var command = createCommand(true, "upvoteSong", {"songPath" : path});
-					controls.set(command);
+					controls.push(command);
 				});
 			} else {
 				alert("You have already voted.");
@@ -43,7 +43,7 @@ function downVote() {
 					var main = snapshot.val();
 					var path = main.path;
 					var command = createCommand(true, "downvoteSong", {"songPath" : path});
-					controls.set(command);
+					controls.push(command);
 				});
 			} else {
 				alert("You have already voted.");
