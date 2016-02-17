@@ -99,43 +99,40 @@
                 var args_start;
                 var args_end;
                 var args_resource;
+                
                 dp.onTimeRangeSelected = function (args) {
                 
                 	args_start = args.start;
                 	args_end = args.end;
                 	args_resource = args.resource;
                 
-                	/*
-                    var text = prompt("New event name (; description):", "Event ; Description");
-                    var event = text.split(/;(.+)?/)[0];
-                    var description = text.split(/;(.+)?/)[1];
-                    */
-
-					//alert("start from " + args.start + " to " + args.end);
 					$('#time').html("start from " + args.start + " to " + args.end);
 					document.getElementById("go").click();    
                     //console.log("Done");
                     
                     var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
-	        		var controls = fireRef.child("controls");
+	        		var controls = fireRef.child("prod").child("controls");
 	        		//var schedule = fireRef.child("schedule");
 	        		
-	        		 var playMode = 'No';
-//   					var repeatMode = document.getElementsByClassName('repeatModeList')[1].value;
+// 	        		var playMode = 'No';
+//   				var repeatMode = document.getElementsByClassName('repeatModeList')[1].value;
 // 	        		var DJName = document.getElementsByClassName('djNameList')[1].value;
-//   					var genre = document.getElementsByClassName('scheduleGenresList')[1].value;
-             	 	var command = createCommand(true, "addToSchedule", {"playMode":playMode, "repeatMode":sRepeat, "startTime":args.start, "endTime":args.end, "DJName":DJName, "genre":sType, "playlist":playlist});
+// 				var genre = document.getElementsByClassName('scheduleGenresList')[1].value;
+// 					var DJName = "dj";
+// 					var playlist = null;
+					
+             	 	//var command = createCommand(true, "addToSchedule", {"playMode":playMode, "repeatMode":sRepeat, "startTime":args.start, "endTime":args.end, "DJName":DJName, "genre":sType, "playlist":playlist});
 
-                    // dp.clearSelection();
-                    if (!event) return;
-                    var e = new DayPilot.Event({
-                        start: args.start,
-                        end: args.end,
-                        id: DayPilot.guid(),
-                        resource: args.resource,
-                        text: sName + " (" + sDescrip + ")"
-                    });
-                    dp.events.add(e);
+//                     dp.clearSelection();
+//                     if (!event) return;
+//                     var e = new DayPilot.Event({
+//                         start: args.start,
+//                         end: args.end,
+//                         id: DayPilot.guid(),
+//                         resource: args.resource,
+//                         text: sName + " (" + sDescrip + ")"
+//                     });
+//                     dp.events.add(e);
                     
                    
 
@@ -174,6 +171,14 @@
                         dp.events.list = data;
                         dp.update();
                     });
+                    
+                    var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
+                    
+                    fireRef.on("value", function(snapshot) {
+ 					 	console.log(snapshot.val());
+					}, function (errorObject) {
+  						console.log("The read failed: " + errorObject.code);
+					});
                 }
 
             </script>
@@ -209,8 +214,8 @@
                     	dp.events.add(e);
                     
                     	var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
-	        			var controls = fireRef.child("controls");
-	        			var schedule = fireRef.child("schedule");
+	        			var controls = fireRef.child("prod").child("controls");
+	        			//var schedule = fireRef.child("schedule");
 	        			var DJName = "testUser";
 	        			var playMode = "testplayMode";
                    		var command = createCommand(false, "addToSchedule", {"playMode":playMode, "repeatMode":sRepeat, "startTime":args_start, "endTime":args_end, "DJName":DJName, "genre":sType, "playlist":playlistSource});
@@ -258,7 +263,7 @@
 		
 			<script type="text/javascript">
 				var fireRef = new Firebase("https://vibekey-open.firebaseio.com/");
-				var genreListRef = fireRef.child("songs").child("genreList");
+				var genreListRef = fireRef.child("prod").child("songs").child("genreList");
 			
 				//populate genre drop down in schedule genre
 				genreListRef.on("value", function(snapshot) {
@@ -375,8 +380,8 @@
 		  			</div>
 				  
 				  	<div class="btn-fld">
-				  		<button type="edit" id="edit-Schedule">Edit &raquo;</button>
 				  		<button type="detele" id="delete-Schedule">Delete &raquo;</button>
+				  		<button type="edit" id="edit-Schedule">Edit &raquo;</button>
 					</div>
 					
 				</form>
