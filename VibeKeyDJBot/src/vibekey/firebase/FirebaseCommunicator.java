@@ -36,8 +36,8 @@ public class FirebaseCommunicator {
 		    	  Boolean doCmd = (Boolean) snapshot.child("doCmd").getValue();
 		    	  if(doCmd != null && doCmd){
 			    	  Object ret = fbCommandParser.parseCommand(snapshot);
-			    	  commandRef.child("doCmd").setValue(false);
-			    	  commandRef.child("return").setValue(ret);
+			    	  snapshot.getRef().child("doCmd").setValue(false);
+			    	  snapshot.getRef().child("return").setValue(ret);
 		    	  }
 		      }
 		      @Override
@@ -49,8 +49,8 @@ public class FirebaseCommunicator {
 		    	  Boolean doCmd = (Boolean) snapshot.child("doCmd").getValue();
 		    	  if(doCmd != null && doCmd){
 			    	  Object ret = fbCommandParser.parseCommand(snapshot);
-			    	  commandRef.child("doCmd").setValue(false);
-			    	  commandRef.child("return").setValue(ret);
+			    	  snapshot.getRef().child("doCmd").setValue(false);
+			    	  snapshot.getRef().child("return").setValue(ret);
 		    	  }
 				
 			}
