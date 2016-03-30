@@ -1,12 +1,15 @@
 package vibekey.playlist;
 import java.util.ArrayList;
 
+import com.firebase.client.Firebase;
+
 import vibekey.firebase.FirebaseCommunicator;
+import vibekey.firebase.Syncable;
 import vibekey.song.Song;
 import vibekey.song.SongDatabase;
 import vibekey.util.RandomWrapper;
 
-public class PlaylistController {
+public class PlaylistController implements Syncable {
 	public ArrayList<Playlist> allPlaylists = new ArrayList<Playlist>();
 	
 	
@@ -29,5 +32,11 @@ public class PlaylistController {
 	
 	public void updateFirebase(){
 		FirebaseCommunicator.setPlaylists(allPlaylists);
+	}
+
+	@Override
+	public void setupSyncable(Firebase ref) {
+		// TODO Auto-generated method stub
+		
 	}
 }

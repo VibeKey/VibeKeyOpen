@@ -2,9 +2,12 @@ package vibekey.schedule;
 import java.util.ArrayList;
 import java.util.Date;
 
-import vibekey.firebase.FirebaseCommunicator;
+import com.firebase.client.Firebase;
 
-public class PlaySchedule {
+import vibekey.firebase.FirebaseCommunicator;
+import vibekey.firebase.Syncable;
+
+public class PlaySchedule implements Syncable {
 	public ArrayList<ScheduleItem> scheduleItems = new ArrayList<ScheduleItem>();
 	
 	public PlaySchedule(){
@@ -116,5 +119,13 @@ public class PlaySchedule {
 	
 	public void pushToFirebase(){
 		FirebaseCommunicator.syncScheduleWithFirebase(this);
+	}
+
+
+
+	@Override
+	public void setupSyncable(Firebase ref) {
+		// TODO Auto-generated method stub
+		
 	}
 }

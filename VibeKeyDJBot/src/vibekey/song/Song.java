@@ -15,7 +15,7 @@ import com.mpatric.mp3agic.UnsupportedTagException;
 
 import vibekey.firebase.FirebaseCommunicator;
 
-public class Song {
+public class Song extends CompositeSong {
 	File songFile;
 	Mp3File songMetaDataFile;
 	ID3v2 metadatav2;

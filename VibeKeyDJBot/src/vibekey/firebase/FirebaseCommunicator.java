@@ -28,45 +28,6 @@ public class FirebaseCommunicator {
 		rootRef.child("nowPlaying").setValue(song.getSimplifiedSong());
 		rootRef.child("nowPlaying").child("compiledPlayString").setValue(nowPlaying);
 	}
-	public static void setupFirebaseListeners(FirebaseCommandParser fbCommandParser){
-		Firebase commandRef = rootRef.child("controls").child("command");
-		commandRef.addChildEventListener(new ChildEventListener() {
-		      @Override
-		      public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
-		    	  Boolean doCmd = (Boolean) snapshot.child("doCmd").getValue();
-		    	  if(doCmd != null && doCmd){
-			    	  Object ret = fbCommandParser.parseCommand(snapshot);
-			    	  snapshot.getRef().child("doCmd").setValue(false);
-			    	  snapshot.getRef().child("return").setValue(ret);
-		    	  }
-		      }
-		      @Override
-		      public void onCancelled(FirebaseError firebaseError) {
-		          System.out.println("The read failed: " + firebaseError.getMessage());
-		      }
-			@Override
-			public void onChildChanged(DataSnapshot snapshot, String previousChildKey) {
-		    	  Boolean doCmd = (Boolean) snapshot.child("doCmd").getValue();
-		    	  if(doCmd != null && doCmd){
-			    	  Object ret = fbCommandParser.parseCommand(snapshot);
-			    	  snapshot.getRef().child("doCmd").setValue(false);
-			    	  snapshot.getRef().child("return").setValue(ret);
-		    	  }
-				
-			}
-			@Override
-			public void onChildMoved(DataSnapshot arg0, String arg1) {
-				//Do nothing
-				
-			}
-			@Override
-			public void onChildRemoved(DataSnapshot arg0) {
-				//Do nothing
-				
-			}
-		  });
-		
-	}
 	
 	public static void authenticateServer(String FIREBASE_SECRET){
 		rootRef.authWithCustomToken(FIREBASE_SECRET, new Firebase.AuthResultHandler() {

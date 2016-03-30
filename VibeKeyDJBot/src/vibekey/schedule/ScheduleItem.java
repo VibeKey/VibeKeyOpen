@@ -1,7 +1,9 @@
 package vibekey.schedule;
 import java.util.Date;
 
-public class ScheduleItem {
+import vibekey.song.SongList;
+
+public class ScheduleItem extends SongList{
 	
 	
 	public static final int PLAYMODE_NONE = 0;

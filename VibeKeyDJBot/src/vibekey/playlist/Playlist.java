@@ -1,10 +1,14 @@
 package vibekey.playlist;
 import java.util.ArrayList;
 
+import com.firebase.client.Firebase;
+
+import vibekey.firebase.Syncable;
 import vibekey.song.Song;
+import vibekey.song.SongList;
 import vibekey.util.RandomWrapper;
 
-public class Playlist {
+public class Playlist extends SongList implements Syncable {
 	private String name;
 	private ArrayList<Song> songs = new ArrayList<Song>();
 	
@@ -45,6 +49,12 @@ public class Playlist {
 	
 	public Song getRandomSong(){
 		return songs.get(RandomWrapper.nextInt(songs.size()));
+	}
+
+	@Override
+	public void setupSyncable(Firebase ref) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

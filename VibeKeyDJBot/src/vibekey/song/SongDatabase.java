@@ -3,9 +3,12 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import vibekey.firebase.FirebaseCommunicator;
+import com.firebase.client.Firebase;
 
-public class SongDatabase {
+import vibekey.firebase.FirebaseCommunicator;
+import vibekey.firebase.Syncable;
+
+public class SongDatabase implements Syncable {
 	public static ArrayList<Song> songs = new ArrayList<Song>();
 	public static String musicPath;
 	public static ArrayList<String> genres;
@@ -88,5 +91,11 @@ public class SongDatabase {
 	
 	static public Song getSongFromPath(String path){
 		return pathToSongMap.get(path);
+	}
+
+	@Override
+	public void setupSyncable(Firebase ref) {
+		// TODO Auto-generated method stub
+		
 	}
 }

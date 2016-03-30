@@ -3,7 +3,7 @@ import java.util.LinkedList;
 
 import vibekey.firebase.FirebaseCommunicator;
 
-public class SongQueue {
+public class SongQueue extends SongList {
 	
 	static final public int FILL_SIZE = 5;
 	
