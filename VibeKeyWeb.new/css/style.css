@@ -155,6 +155,16 @@ a:active {color:white; text-decoration: none;}
 	height:50px;
 }
 
+.playhead .button img {
+	position: relative;
+}
+
+.playhead .button img:active {
+	top: 2px;
+}
+
+
+
 .dummyCalendar{
 	margin-left:auto;
 	margin-right:auto;
