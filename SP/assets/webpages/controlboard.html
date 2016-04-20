@@ -8,10 +8,182 @@
     
     <title>WMHD - Radio - Control</title>
     <!--style sheets -->
+    <!-- Bootstrap -->
+    <link href="assets/stylesheets/css/bootstrap.min.css" rel="stylesheet">
   </head>
 
   <body>
+    <div class="stream-control">
+      <fieldset>
+        <legend>Stream Control</legend>
+          <div>
+            <button type="button">Next Song</button>
+          </div>
+          <br></br>
+          <div>
+            <button type="button" class="amplitude-volume-up">+</button>
+            <input type="range" class="amplitude-volume-slider"/>
+            <button type="button" class="amplitude-volume-down">-</button>
+          </div>
+      </fieldset>  
+    </div>
+    <br></br>
+    <div class="event-control">
+      <fieldset>
+        <legend>Event Control</legend>
+        <div class="addEventOp">
+          <fieldset>
+            <legend>Add an event</legend>
+              Event title:<br>
+                <input type="text" class="eventTitle" id="eventTitle">
+              <br>
+              Event Description:<br>
+              <input type="text" class="eventDescription" id="eventDescription">
+              <br>
+              Event Date:<br>
+              <input type="date" class="eventDate" id="eventDate">
+              <br></br>
+              <button onclick="addevent()">Add</button>
+          </fieldset>
+          <br><br>
+          <fieldset>
+            <legend>Delete an event</legend>
+              Select a Event:<br>
+              <select class="deleteeventList" id="deleteeventList">
+                  <option value="none">No event selected</option>
+              </select>
+              <br></br>
+              <button onclick="deleteevent()">Delete</button>
+          </fieldset>
+        </div>
+      </fieldset>  
+    </div>
+    <br></br>
+    <div class="playlist-control">
+      <fieldset>
+        <legend>Playlist Control</legend>
+        Playlist title:<br>
+          <input type="text" class="playlistTitle" id="playlistTitle">
+        </br>
+        <br></br>
+        <fieldset>
+          <legend>Song search</legend>
+            Search by key word:<br>
+            <input type="text" class="playlistTitle" id="playlistTitle">
+            </br>
+            <br></br>
+            Search by artist:<br>
+            <select class="songselect" id="songselect">
+            </select>
+            </br>
+            <br></br>
+            Search by genre:<br>
+            <select class="songselect" id="songselect">
+            </select>
+            </br>
+            <br></br>
+            <button type="button">Refine</button>
+            <hr></hr>
+            Search Result:<br>
+            <select class="songselect" id="songselect">
+            </select>
+            <br></br>
+            <button type="button">Add to Playlist</button>
+        <br></br>
+        </fieldset>
+        <br></br>
+        <fieldset>
+          <legend>Playlist</legend>
+             <ol class=playlist>
+            </ol>
+        </fieldset>
+        <br></br>
+        <button type="button">Create Playlist</button>
+      </fieldset>  
+    </div>
+    <br></br>
+    <div class="schedule-control">
+      <fieldset>
+        <legend>Schedule Control</legend>
+          <div class="scheduleOp">
+            <fieldset>
+                <legend>Schedule Genre</legend>
+                  Seclect a genre:
+                  <select class="genresList" id="genresList" onchange="scheduleGenre(this)">
+                    <option value="none">No genre selected</option>
+                </select>
+                <br></br>
+            </fieldset>
+            <br></br>
+            <fieldset>
+              <legend>Schedule a Playlist</legend>
+                  Seclect a playlist:
+                  <select class="playsList" id="playsList" onchange="scheduleList(this)">
+                    <option value="none">No list selected</option>
+                </select>
+                <br></br>
+            </fieldset>
+            <br></br>
+            <fieldset>
+              <legend>Schedule a Song</legend>
+                  Seclect a song (All songs):
+                  <select class="allSongsList" id="allSongsList" onchange="scheduleSong(this)">
+                    <option value="none">No song selected</option>
+                </select>
+                <br></br>
+            </fieldset>
+            <br></br>
+            <fieldset>
+              <legend>Schedule</legend>
+                  Seclect a play mode:
+                  <select class="playModeList" id="playModeList">
+                    <option value="0">None</option>
+                    <option value="1">Genre</option>
+                    <option value="2">Playlist</option>
+                    <option value="3">LiveDJ</option>
+                </select>
+                <br></br>
+                Seletc a repeat mode:
+                <select class="repeatModeList" id="repeatModeList">
+                    <option value="0">None</option>
+                    <option value="1">Daily</option>
+                    <option value="2">Weekly</option>
+                    <option value="3">Monthly</option>
+                </select>
+                <br></br>
+                Select a start time:
+                <input type="datetime-local" class="startTime">
+                <br></br>
+                Select an end time:
+                <input type="datetime-local" class="endTime">
+                <br></br>
+                Select a DJ name (Optional):
+                <select class="djNameList" id="djNameList">
+                  <option value="DJ0">No DJ</option>
+                    <option value="DJ1">DJ1</option>
+                    <option value="DJ2">DJ2</option>
+                    <option value="DJ3">DJ3</option>
+                </select>
+                <br></br>
+                Select a Genre OR
+                <select class="scheduleGenresList" id="scheduleGenresList">
+                    <option value="none">No genre selected</option>
+                </select>
+                <br></br>
+                Select a playlist
+                <select class="schedulePLList" id="schedulePLList">
+                    <option value="none">No playlist selected</option>
+                </select>
+                <br></br>
+                <button onclick="schedule()">Schedule</button>
+            </fieldset>
+        </div>
+      </fieldset>  
+    </div>
+    <br></br>
+
 
   	<!-- Javascript Plugins -->
+    <script src="assets/javascripts/bootstrap.min.js"></script>
   </body>
 </html>
