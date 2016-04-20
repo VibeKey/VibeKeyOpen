@@ -1,0 +1,1 @@
+var FIREBASE_REF = "https://vibekey-open.firebaseio.com/prod";

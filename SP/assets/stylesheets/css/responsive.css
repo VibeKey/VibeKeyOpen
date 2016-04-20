@@ -1,0 +1,493 @@
+/* Color Schemes */
+.orange {
+  color: #800000;
+}
+@media (min-width: 1300px) {
+  .about .discography .jp-audio .jp-controls-holder .jp-progress {
+    width: 44%;
+  }
+  .album-single-wrap .right .jp-audio .jp-controls-holder .jp-progress {
+    width: 55%;
+  }
+}
+@media (max-width: 991px) {
+  .banner .jp-audio .jp-type-single .container .jp-controls {
+    width: 15%;
+  }
+  .banner .jp-audio .jp-type-single .container .jp-time-holder {
+    left: 14%;
+    width: 68%;
+  }
+  .banner .jp-audio .jp-type-single .container .jp-progress {
+    left: 14%;
+    width: 68%;
+  }
+  .banner .jp-audio .jp-type-single .container .jp-volume-controls {
+    width: 18%;
+  }
+  .banner .jp-audio .jp-type-single .container .jp-details .jp-title {
+    padding-left: 14%;
+  }
+  .latest-album .intro-wrap {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .latest-album .intro-wrap .intro p {
+    text-align: center;
+  }
+  .latest-album .album-card-wrap {
+    width: 33.333%;
+    float: left;
+  }
+  .latest-album .album-card-wrap .album-card {
+    float: none;
+    width: 100%;
+    padding-top: 20px;
+  }
+  .latest-album .album-card-wrap .album-card .image {
+    overflow: hidden;
+    width: 100%;
+  }
+  .schedule .content .schedrow,
+  .event-list .content .schedrow {
+    display: table;
+  }
+  .schedule .content .schedrow .event,
+  .event-list .content .schedrow .event,
+  .schedule .content .schedrow .description,
+  .event-list .content .schedrow .description,
+  .schedule .content .schedrow .date,
+  .event-list .content .schedrow .date {
+    height: 100%;
+    float: none;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 15px;
+  }
+  .schedule .content .schedrow .event,
+  .event-list .content .schedrow .event {
+    width: 25%;
+  }
+  .schedule .content .schedrow .description,
+  .event-list .content .schedrow .description {
+    width: 35%;
+  }
+  .schedule .content .schedrow .date,
+  .event-list .content .schedrow .date {
+    width: 25%;
+  }
+  .schedule .content .schedrow .button-wrap,
+  .event-list .content .schedrow .button-wrap {
+    width: 15%;
+    display: table-cell;
+    float: none;
+    vertical-align: middle;
+  }
+  .about .discography .jp-audio .jp-controls {
+    padding: 20px 10px 0 10px;
+    width: 120px;
+  }
+  .about .discography .jp-audio .jp-controls .jp-stop {
+    display: none;
+  }
+  .about .discography .jp-audio .jp-controls-holder .jp-progress {
+    width: 25%;
+  }
+  .album-single-wrap .right .jp-audio .jp-controls {
+    padding: 20px 10px 0 10px;
+    width: 120px;
+  }
+  .album-single-wrap .right .jp-audio .jp-controls .jp-stop {
+    display: none;
+  }
+  .album-single-wrap .right .jp-audio .jp-controls-holder .jp-progress {
+    width: 63%;
+  }
+  .gallery .content .diamond-grid .diamond-wrap {
+    margin-left: auto;
+    margin-top: auto;
+    display: inline-block;
+    width: 100%;
+  }
+  .gallery .content .diamond-grid .diamond-wrap:first-child {
+    margin-left: auto;
+  }
+  .gallery .content .diamond-grid .diamond-wrap:nth-child(9n+6) {
+    margin-left: auto;
+    margin-top: auto;
+  }
+  .gallery .content .diamond-grid .diamond-wrap:nth-child(5) {
+    margin-left: auto;
+  }
+  .gallery .content .diamond-grid .diamond-wrap:nth-child(n+5) {
+    margin-top: auto;
+  }
+  .gallery .content .diamond-grid .diamond-wrap .shape {
+    margin: 0 auto;
+    margin-bottom: 60px;
+  }
+  .gallery .content .diamond-grid .diamond-wrap .shape:first-child,
+  .gallery .content .diamond-grid .diamond-wrap .shape:last-child {
+    margin-top: 40px;
+  }
+  .gallery .content .bottom-text {
+    padding-top: 0px;
+  }
+  .event-single-wrap .right {
+    padding-left: 15px;
+    margin-top: 30px;
+  }
+}
+@media (min-width: 768px) {
+  .navbar-nav .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+}
+@media (max-width: 767px) {
+  .banner .carousel .carousel-inner .item .content .title h1 {
+    font-size: 24px;
+    line-height: 26px;
+  }
+  .banner .carousel .carousel-inner .item .content .subtitle h2 {
+    font-size: 18px;
+    line-height: 20px;
+  }
+  .navbar {
+    height: auto;
+  }
+  .navbar.small-navbar {
+    height: auto;
+  }
+  .navbar.small-navbar .navbar-nav li a {
+    padding: 15px;
+  }
+  .navbar .navbar-header .navbar-brand {
+    display: block;
+    padding: 13px 25px;
+  }
+  .navbar .navbar-nav li {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .navbar .navbar-nav li a.brand {
+    display: none;
+  }
+  .navbar .navbar-nav li a {
+    padding: 15px;
+  }
+  .navbar .navbar-nav .dropdown .dropdown-menu {
+    background: rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid #800000;
+  }
+  .navbar .navbar-nav .dropdown .dropdown-menu li a {
+    padding: 10px;
+    padding-left: 15px;
+  }
+  .navbar .navbar-nav .dropdown .dropdown-menu li a:hover {
+    background: #121212;
+    color: #ffffff;
+  }
+  .navbar-inverse .navbar-collapse {
+    border-width: 1px;
+    padding: 0px;
+  }
+  .banner-title .content {
+    padding: 120px 0px 60px;
+  }
+  .banner-title .overlay .content .main-title {
+    text-align: center;
+  }
+  .banner-title .overlay .content .page-breadcrumb {
+    float: none;
+    text-align: center;
+    margin: 20px 0px;
+  }
+  .banner .jp-audio .jp-type-single .container .jp-controls {
+    width: 15%;
+  }
+  .banner .jp-audio .jp-type-single .container .jp-time-holder {
+    left: 15%;
+    width: 80%;
+  }
+  .banner .jp-audio .jp-type-single .container .jp-details .jp-title {
+    padding-left: 15%;
+  }
+  .banner .jp-audio .jp-type-single .container .jp-progress {
+    left: 15%;
+    width: 80%;
+  }
+  .banner .jp-audio .jp-type-single .container .jp-volume-controls {
+    display: none;
+  }
+  .schedule .content .schedrow,
+  .event-list .content .schedrow {
+    font-size: 12px;
+    padding: 10px;
+  }
+  .schedule .content .schedrow .button-wrap .def-button,
+  .event-list .content .schedrow .button-wrap .def-button {
+    padding: 7px 10px;
+    font-size: 12px;
+  }
+  .schedule .content .schedrow .button-wrap .def-button.soldout,
+  .event-list .content .schedrow .button-wrap .def-button.soldout {
+    padding: 7px 10px;
+    font-size: 12px;
+  }
+  .about .personnel {
+    padding-bottom: 20px;
+  }
+  .about .personnel .title {
+    text-align: center;
+  }
+  .about .discography .title {
+    text-align: center;
+  }
+  .about .discography .jp-audio .jp-controls-holder .jp-progress {
+    width: 75%;
+    float: right;
+    right: 5%;
+  }
+  .about .discography .jp-audio .jp-volume-controls {
+    display: none;
+  }
+  .album-single-wrap .right .jp-audio .jp-controls-holder .jp-stop {
+    display: none;
+  }
+  .album-single-wrap .right .jp-audio .jp-controls-holder .jp-progress {
+    width: 75%;
+    float: right;
+    right: 5%;
+  }
+  .album-single-wrap .right .jp-audio .jp-volume-controls {
+    display: none;
+  }
+  .news .newsrow {
+    padding-bottom: 25px;
+  }
+  .footer .footer-row {
+    padding-bottom: 25px;
+    float: left;
+    width: 100%;
+  }
+  .about-wrap .personnel-wrap .personnel .description {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .album-list-wrap .album-card-wrap {
+    width: 100%;
+  }
+  .album-list-wrap .album-card {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+  .about-wrap .personnel-wrap .personnel .description {
+    padding-left: 15px;
+  }
+}
+@media (max-width: 640px) {
+  .banner .carousel .carousel-inner .item .content {
+    margin-top: 30%;
+  }
+  .banner .jp-audio .jp-type-single .container .jp-controls {
+    width: 20%;
+  }
+  .banner .jp-audio .jp-type-single .container .jp-time-holder {
+    left: 20%;
+    width: 75%;
+  }
+  .banner .jp-audio .jp-type-single .container .jp-details .jp-title {
+    padding-left: 20%;
+  }
+  .banner .jp-audio .jp-type-single .container .jp-progress {
+    left: 20%;
+    width: 75%;
+  }
+  .banner .jp-audio .jp-type-single .container .jp-volume-controls {
+    display: none;
+  }
+  .latest-album .album-card-wrap {
+    width: 100%;
+    float: left;
+    text-align: center;
+  }
+  .latest-album .album-card-wrap .album-card {
+    float: none;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+  .schedule .content .schedrow .event,
+  .event-list .content .schedrow .event,
+  .schedule .content .schedrow .description,
+  .event-list .content .schedrow .description,
+  .schedule .content .schedrow .date,
+  .event-list .content .schedrow .date,
+  .schedule .content .schedrow .button-wrap,
+  .event-list .content .schedrow .button-wrap {
+    width: 100%;
+    display: block;
+    border-right: 0px;
+    border-bottom: 1px solid #888;
+    padding: 10px;
+  }
+  .schedule .content .schedrow .button-wrap,
+  .event-list .content .schedrow .button-wrap {
+    text-align: center;
+    padding: 20px 0px 10px;
+    border-bottom: none;
+  }
+  .schedule .content .schedrow .button-wrap .def-button,
+  .event-list .content .schedrow .button-wrap .def-button {
+    float: none;
+    vertical-align: middle;
+  }
+  .about .discography .jp-audio .jp-controls-holder .jp-progress {
+    width: 70%;
+  }
+  .album-single-wrap .right .jp-audio .jp-controls-holder .jp-progress {
+    width: 70%;
+  }
+}
+@media (max-width: 480px) {
+  .banner .jp-audio .jp-type-single .container .jp-controls {
+    width: 25%;
+  }
+  .banner .jp-audio .jp-type-single .container .jp-time-holder {
+    left: 25%;
+    width: 70%;
+  }
+  .banner .jp-audio .jp-type-single .container .jp-details .jp-title {
+    padding-left: 25%;
+  }
+  .banner .jp-audio .jp-type-single .container .jp-progress {
+    left: 25%;
+    width: 70%;
+  }
+  .banner .jp-audio .jp-type-single .container .jp-volume-controls {
+    display: none;
+  }
+  .latest-album .album-card-wrap .album-card {
+    width: 75%;
+  }
+  .about .discography .jp-audio .jp-controls-holder .jp-progress {
+    width: 55%;
+  }
+  .album-single-wrap .right .jp-audio .jp-controls-holder .jp-progress {
+    width: 55%;
+  }
+  .album-list-wrap .album-card {
+    width: 75%;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+  .blog-wrap .post-section .post-content {
+    padding-left: 80px;
+  }
+  .blog-wrap .post-section .post-content.masonry {
+    padding-left: 15px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+  .blog-wrap .post-section .post-content .post-meta .date {
+    width: 40px;
+    height: 40px;
+  }
+  .blog-wrap .post-section .post-content .post-meta .date span {
+    font-size: 12px;
+    line-height: 14px;
+    margin: 5px 10px;
+  }
+  .blog-wrap .post-section .post-content .post-meta .date span .bold {
+    font-size: 16px;
+  }
+  .blog-wrap .post-section .post-single {
+    padding-left: 0px;
+  }
+  .blog-wrap .post-section .post-single .post-meta {
+    display: none;
+  }
+  .blog-wrap .post-section .post-single .share .socmed-wrap a {
+    margin-bottom: 20px;
+  }
+  .blog-wrap .post-section .post-single .comment {
+    margin-top: 10px;
+  }
+  .blog-wrap .post-section .post-single .comment .comment-list .comment-container .avatar {
+    width: 50px;
+    height: 50px;
+    float: left;
+    margin-right: 20px;
+  }
+  .blog-wrap .post-section .post-single .comment .comment-list .comment-container .name {
+    margin-left: 0px;
+    margin-top: 5px;
+    float: left;
+  }
+  .blog-wrap .post-section .post-single .comment .comment-list .comment-container .name span {
+    float: left;
+    margin-top: 5px;
+    width: 100%;
+  }
+  .blog-wrap .post-section .post-single .comment .comment-list .comment-container .text {
+    margin-left: 0px;
+    margin-top: 10px;
+    float: left;
+    width: 100%;
+  }
+  .blog-wrap .post-section .post-single .comment .comment-list .comment-container .reply {
+    margin-left: 0px;
+    float: left;
+    width: 100%;
+  }
+  .blog-wrap .post-section .pagination-wrap .pagination li a {
+    margin-bottom: 20px;
+  }
+  .blog-wrap .post-section.right .post-content {
+    padding-right: 80px;
+  }
+  .pagination-wrap .pagination li a {
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 350px) {
+  .banner .jp-audio .jp-type-single .container .jp-controls {
+    width: 20%;
+  }
+  .banner .jp-audio .jp-type-single .container .jp-controls .jp-play {
+    padding-left: 0px;
+  }
+  .banner .jp-audio .jp-type-single .container .jp-controls .jp-stop {
+    display: none;
+  }
+  .banner .jp-audio .jp-type-single .container .jp-time-holder {
+    left: 20%;
+    width: 70%;
+  }
+  .banner .jp-audio .jp-type-single .container .jp-details .jp-title {
+    padding-left: 20%;
+  }
+  .banner .jp-audio .jp-type-single .container .jp-progress {
+    left: 20%;
+    width: 70%;
+  }
+  .banner .jp-audio .jp-type-single .container .jp-volume-controls {
+    display: none;
+  }
+  .about .discography .jp-audio .jp-controls-holder .jp-progress {
+    width: 45%;
+  }
+  .album-single-wrap .right .jp-audio .jp-controls-holder .jp-progress {
+    width: 45%;
+  }
+}
+@media (max-width: 320px) {
+  .latest-album .album-card-wrap .album-card {
+    width: 75%;
+  }
+}

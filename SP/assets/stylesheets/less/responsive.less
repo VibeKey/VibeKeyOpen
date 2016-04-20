@@ -1,0 +1,876 @@
+// Import Less Mixins
+@import "mixins.less";
+
+@media (min-width: 1300px) {
+	.about {
+		.discography {
+			.jp-audio {
+				.jp-controls-holder {
+					.jp-progress {
+						width: 44%;
+					}
+				}
+			}
+		}
+	}
+
+	.album-single-wrap {
+		.right {
+			.jp-audio {
+				.jp-controls-holder {
+					.jp-progress {
+						width: 55%;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 991px) {
+	.banner {
+		.jp-audio {
+			.jp-type-single {
+				.container {
+					.jp-controls {
+						width: 15%;
+					}
+
+					.jp-time-holder {
+						left: 14%;
+						width: 68%;
+					}
+
+					.jp-progress {
+						left: 14%;
+						width: 68%;
+					}
+
+					.jp-volume-controls {
+						width: 18%;
+					}
+					
+					.jp-details {
+						.jp-title {
+							padding-left: 14%;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.latest-album {
+		.intro-wrap {
+			width: 100%;
+			text-align: center;
+			margin-bottom: 20px;
+
+			.intro {
+				p {
+					text-align: center;
+				}
+			}
+		}
+
+		.album-card-wrap {
+			width: 33.333%;
+			float: left;
+
+			.album-card{
+				float: none;
+				width: 100%;
+				padding-top: 20px;
+
+				.image {
+					overflow: hidden;
+					width: 100%;
+				}
+			}
+		}
+	}
+	
+	.schedule, .event-list {
+		.content {
+			.schedrow {
+				display: table;
+
+				.event, .location, .ticket, {
+					height: 100%;
+					float: none;
+					display: table-cell;
+					vertical-align: middle;
+					padding: 15px;
+				}
+
+				.event {					
+					width: 25%;
+				}
+
+				.location {
+					width: 35%;
+				}
+
+				.ticket {					
+					width: 25%;
+				}
+				
+				.button-wrap {
+					width: 15%;
+					display: table-cell;
+					float: none;
+					vertical-align: middle;
+				}
+			}
+		}
+	}
+
+	.about {
+		.discography {
+			.jp-audio {
+				.jp-controls {
+					padding: 20px 10px 0 10px;
+					width: 120px;
+
+					.jp-stop {
+						display: none;
+					}
+				}
+
+				.jp-controls-holder {
+					.jp-progress {
+						width: 25%;
+					}
+				}
+			}
+		}
+	}
+
+	.album-single-wrap {
+		.right {
+			.jp-audio {
+				.jp-controls {
+					padding: 20px 10px 0 10px;
+					width: 120px;
+
+					.jp-stop {
+						display: none;
+					}
+				}
+
+				.jp-controls-holder {
+					.jp-progress {
+						width: 63%;
+					}
+				}
+			}
+		}
+	}
+
+	.gallery {
+		.content {
+			.diamond-grid {
+
+				.diamond-wrap {
+			    margin-left: auto;
+			    margin-top: auto;
+			    display: inline-block;
+			    width: 100%;
+
+			    &:first-child {
+			    	margin-left: auto;
+			    }
+
+			    &:nth-child(9n+6) {
+			    	margin-left: auto;
+			    	margin-top: auto;
+					}
+
+					&:nth-child(5) {
+			    	margin-left: auto;
+					}
+
+					&:nth-child(n+5) {
+			    	margin-top: auto;
+					}
+
+					.shape {
+						margin: 0 auto;
+						margin-bottom: 60px;
+
+						&:first-child, &:last-child {
+							margin-top: 40px;
+						}
+					}
+				}
+			}
+
+			.bottom-text {
+				padding-top: 0px;
+			}
+		}
+	}
+
+
+	.event-single-wrap {
+		.right {
+			padding-left: 15px;
+			margin-top: 30px;
+		}
+	}
+}
+
+@media (min-width: 768px){
+	.navbar-nav {
+		.dropdown {
+			&:hover {
+				.dropdown-menu {
+					display: block;	
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.banner {
+		.carousel {
+			.carousel-inner {
+				.item {
+					.content {
+
+						.title {
+							h1 {
+								font-size: 24px;
+								line-height: 26px;
+							}
+						}
+
+						.subtitle {
+							h2 {
+								font-size: 18px;
+								line-height: 20px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.navbar {
+		height: auto;
+
+		&.small-navbar {
+			height: auto;
+
+			.navbar-nav {
+				li {
+					a {
+						padding: 15px;
+					}
+				}
+			}
+		}
+
+		.navbar-header {
+			.navbar-brand {
+				display: block;
+				padding: 13px 25px;
+			}
+		}
+
+		.navbar-nav {
+			li {
+				float: none;
+				display: block;
+				text-align: left;
+				
+				a.brand{
+					display: none;
+				}
+
+				a {
+					padding: 15px;
+				}
+			}
+
+			.dropdown {
+
+				.dropdown-menu {
+					background: rgba(0,0,0,0.5);
+					border-bottom: 1px solid @orange;
+
+					li {
+
+						a {
+							padding: 10px;
+							padding-left: 15px;
+
+							&:hover {
+								background: @darker;
+								color: @white;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.navbar-inverse {
+		.navbar-collapse {
+			border-width: 1px;
+			padding: 0px;
+		}
+	}
+	
+
+	.banner-title {
+		.content {
+			padding: 120px 0px 60px;
+		}
+
+		.overlay {
+			.content {
+				.main-title {
+					text-align: center;
+				}
+
+				.page-breadcrumb {
+					float: none;
+	        text-align: center;
+	        margin: 20px 0px;
+				}
+			}
+		}
+	}
+
+	
+	.banner {
+		.jp-audio {
+			.jp-type-single {
+				.container {
+					.jp-controls {
+						width: 15%;
+					}
+
+					.jp-time-holder {
+						left: 15%;
+						width: 80%;
+					}
+
+					.jp-details {
+						.jp-title {
+							padding-left: 15%;
+						}
+					}
+
+					.jp-progress {
+						left: 15%;
+						width: 80%;	
+					}
+
+					.jp-volume-controls {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+
+	.schedule, .event-list  {
+		.content {
+			.schedrow {
+				font-size: 12px;
+				padding: 10px;
+
+				.button-wrap {
+					.def-button {
+						padding: 7px 10px;
+						font-size: 12px;
+
+						&.soldout {
+							padding: 7px 10px;
+							font-size: 12px;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.about {
+		.personnel {
+			.title {
+				text-align: center;
+			}
+			
+			padding-bottom: 20px;
+		}
+
+		.discography {
+			.title {
+				text-align: center;
+			}
+
+			.jp-audio {
+				.jp-controls-holder {
+					.jp-progress {
+						width: 75%;
+						float: right;
+						right: 5%;
+					}
+				}
+
+				.jp-volume-controls {
+					display: none;
+				}
+			}
+		}
+	}
+
+	.album-single-wrap {
+		.right {
+			.jp-audio {
+				.jp-controls-holder {
+					.jp-stop {
+						display: none;
+					}
+
+					.jp-progress {
+						width: 75%;
+						float: right;
+						right: 5%;
+					}
+				}
+
+				.jp-volume-controls {
+					display: none;
+				}
+			}
+		}
+	}
+
+	.news {
+		.newsrow {
+			padding-bottom: 25px;
+		}
+	}
+
+	.footer {
+		.footer-row {
+			padding-bottom: 25px;
+			float: left;
+			width: 100%;
+		}
+	}
+
+	.about-wrap {
+		.personnel-wrap {
+			.personnel {
+				.description {
+					text-align: center;
+					margin-top: 20px;
+				}
+			}
+		}
+	}
+
+	.album-list-wrap {
+		.album-card-wrap {
+			width: 100%;
+		}
+
+		.album-card {
+			width: 50%;
+			display: block;
+			margin: 0 auto;
+			margin-bottom: 20px;
+		}
+	}
+
+	.about-wrap {
+		.personnel-wrap {
+			.personnel {
+				.description {
+					padding-left: 15px;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 640px) {
+	.banner {
+		.carousel {
+			.carousel-inner {
+				.item {
+					.content {
+						margin-top: 30%;
+					}
+				}
+			}
+		}
+
+		.jp-audio {
+			.jp-type-single {
+				.container {
+					.jp-controls {
+						width: 20%;
+					}
+
+					.jp-time-holder {
+						left: 20%;
+						width: 75%;
+					}
+
+					.jp-details {
+						.jp-title {
+							padding-left: 20%;
+						}
+					}
+
+					.jp-progress {
+						left: 20%;
+						width: 75%;	
+					}
+
+					.jp-volume-controls {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+
+	.latest-album {
+		.album-card-wrap {
+			width: 100%;
+			float: left;
+			text-align: center;
+
+			.album-card{
+				float: none;
+				width: 50%;
+				margin: 0 auto;
+				margin-top: 20px;
+			}
+		}
+	}
+
+	.schedule, .event-list {
+		.content {
+			.schedrow {
+				.event, .location, .ticket, .button-wrap {
+					width: 100%;
+					display: block;
+					border-right: 0px;
+					border-bottom: 1px solid #888;
+					padding: 10px;
+				}
+
+				.button-wrap {
+					text-align: center;	
+					padding: 20px 0px 10px;
+					border-bottom: none;
+
+					.def-button {
+						float: none;
+						vertical-align: middle;
+					}
+				}
+			}
+		}
+	}
+
+	.about {
+		.discography {
+			.jp-audio {
+				.jp-controls-holder {
+					.jp-progress {
+						width: 70%;
+					}
+				}
+			}
+		}
+	}
+
+	.album-single-wrap {
+		.right {
+			.jp-audio {
+				.jp-controls-holder {
+					.jp-progress {
+						width: 70%;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 480px) {
+	.banner {
+		.jp-audio {
+			.jp-type-single {
+				.container {
+					.jp-controls {
+						width: 25%;
+					}
+
+					.jp-time-holder {
+						left: 25%;
+						width: 70%;
+					}
+
+					.jp-details {
+						.jp-title {
+							padding-left: 25%;
+						}
+					}
+
+					.jp-progress {
+						left: 25%;
+						width: 70%;	
+					}
+
+					.jp-volume-controls {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+
+	.latest-album {
+		.album-card-wrap {
+			.album-card{
+				width: 75%;
+			}
+		}
+	}
+
+	.about {
+		.discography {
+			.jp-audio {
+				.jp-controls-holder {
+					.jp-progress {
+						width: 55%;
+					}
+				}
+			}
+		}
+	}
+
+	.album-single-wrap {
+		.right {
+			.jp-audio {
+				.jp-controls-holder {
+					.jp-progress {
+						width: 55%;
+					}
+				}
+			}
+		}
+	}
+
+	.album-list-wrap {
+		.album-card {
+			width: 75%;
+			display: block;
+			margin: 0 auto;
+			margin-bottom: 20px;
+		}
+	}
+
+	.blog-wrap {
+		.post-section {
+			.post-content {
+				padding-left: 80px;
+
+				&.masonry {
+					padding-left: 15px;
+					margin: 0 auto;
+					margin-bottom: 20px;
+				}
+
+				.post-meta {
+					.date {
+						width: 40px;
+						height: 40px;
+
+						span {
+							font-size: 12px;
+							line-height: 14px;
+							margin: 5px 10px;
+
+							.bold {
+								font-size: 16px;
+							}
+						}
+					}
+				}
+			}
+
+			.post-single {
+				padding-left: 0px;
+				
+				.post-meta {
+					display: none;
+				}
+
+				.share {
+					.socmed-wrap {
+						a {
+							margin-bottom: 20px;
+						}
+					}
+				}
+
+				.comment {
+					margin-top: 10px;
+				}
+
+				.comment {
+					.comment-list {
+						.comment-container {
+							.avatar {
+								width: 50px;
+	              height: 50px;
+	              float: left;
+	              margin-right: 20px;
+							}
+
+							.name {
+								margin-left: 0px;          
+	              margin-top: 5px;          
+	              float: left;
+
+	              span {
+	              	float: left;
+	                margin-top: 5px;
+	              	width: 100%;
+	              }
+							}
+
+							.text {
+								margin-left: 0px;
+	              margin-top: 10px;
+	              float: left;
+	              width: 100%;
+							}
+
+							.reply {
+								margin-left: 0px;
+	              float: left;
+	              width: 100%;
+							}
+						}
+					}
+				}
+			}
+
+			.pagination-wrap {
+				.pagination {
+					li { 
+						a {
+							margin-bottom: 20px;
+						}
+					}
+				}
+			}
+
+			&.right {
+	      .post-content {
+	        padding-right: 80px;
+	      }
+	    }
+		}
+	}
+
+	.pagination-wrap {
+		.pagination {
+			li { 
+				a {
+					margin-bottom: 20px;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 350px){
+	.banner {
+		.jp-audio {
+			.jp-type-single {
+				.container {
+					.jp-controls {
+						width: 20%;
+
+						.jp-play {
+							padding-left: 0px;
+						}
+
+						.jp-stop {
+							display: none;
+						}
+					}
+
+					.jp-time-holder {
+						left: 20%;
+						width: 70%;
+					}
+
+					.jp-details {
+						.jp-title {
+							padding-left: 20%;
+						}
+					}
+
+					.jp-progress {
+						left: 20%;
+						width: 70%;	
+					}
+
+					.jp-volume-controls {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+
+	.about {
+		.discography {
+			.jp-audio {
+				.jp-controls-holder {
+					.jp-progress {
+						width: 45%;
+					}
+				}
+			}
+		}
+	}
+
+	.album-single-wrap {
+		.right {
+			.jp-audio {
+				.jp-controls-holder {
+					.jp-progress {
+						width: 45%;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 320px) {
+	.latest-album {
+		.album-card-wrap {
+			.album-card{
+				width: 75%;
+			}
+		}
+	}
+}

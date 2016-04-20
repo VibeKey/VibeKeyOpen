@@ -1,0 +1,218 @@
+/* Preload */
+#jSplash {
+  display: none;
+}
+
+#jpreOverlay {
+  width: 100%;
+  height: 100%;
+  background: #121212;
+}
+#jpreOverlay #jpreSlide {
+  width: 100%;
+}
+#jSplash #loader .shape-wrap {
+  width: 100%;
+  text-align: center;
+  top: 40%;
+}
+#jSplash #loader .shape-wrap .shape {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  border: 1px solid #800000;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-animation-name: drop;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-delay: 0s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-play-state: running;
+  animation-name: drop;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+}
+#jSplash #loader .shape-wrap .shape h2 {
+  margin: 0px;
+  padding: 30px 8px;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  font-size: 18px;
+  text-transform: uppercase;
+  color: #800000;
+}
+#jSplash #loader #fadingBarsG {
+  margin: 0 auto;
+  position: relative;
+  width: 125px;
+  height: 30px;
+  margin-top: 40px;
+}
+#jSplash #loader .fadingBarsG {
+  position: absolute;
+  top: 0;
+  background-color: #800000;
+  width: 15px;
+  height: 15px;
+  -moz-animation-name: bounce_fadingBarsG;
+  -moz-animation-duration: 1.3s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-direction: linear;
+  -moz-transform: scale(0.3);
+  -webkit-animation-name: bounce_fadingBarsG;
+  -webkit-animation-duration: 1.3s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: linear;
+  -webkit-transform: scale(0.3);
+  -ms-animation-name: bounce_fadingBarsG;
+  -ms-animation-duration: 1.3s;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-direction: linear;
+  -ms-transform: scale(0.3);
+  -o-animation-name: bounce_fadingBarsG;
+  -o-animation-duration: 1.3s;
+  -o-animation-iteration-count: infinite;
+  -o-animation-direction: linear;
+  -o-transform: scale(0.3);
+  animation-name: bounce_fadingBarsG;
+  animation-duration: 1.3s;
+  animation-iteration-count: infinite;
+  animation-direction: linear;
+  transform: scale(0.3);
+}
+#jSplash #loader #fadingBarsG_1 {
+  left: 0;
+  -moz-animation-delay: 0.52s;
+  -webkit-animation-delay: 0.52s;
+  -ms-animation-delay: 0.52s;
+  -o-animation-delay: 0.52s;
+  animation-delay: 0.52s;
+}
+#jSplash #loader #fadingBarsG_2 {
+  left: 16px;
+  -moz-animation-delay: 0.65s;
+  -webkit-animation-delay: 0.65s;
+  -ms-animation-delay: 0.65s;
+  -o-animation-delay: 0.65s;
+  animation-delay: 0.65s;
+}
+#jSplash #loader #fadingBarsG_3 {
+  left: 31px;
+  -moz-animation-delay: 0.78s;
+  -webkit-animation-delay: 0.78s;
+  -ms-animation-delay: 0.78s;
+  -o-animation-delay: 0.78s;
+  animation-delay: 0.78s;
+}
+#jSplash #loader #fadingBarsG_4 {
+  left: 47px;
+  -moz-animation-delay: 0.91s;
+  -webkit-animation-delay: 0.91s;
+  -ms-animation-delay: 0.91s;
+  -o-animation-delay: 0.91s;
+  animation-delay: 0.91s;
+}
+#jSplash #loader #fadingBarsG_5 {
+  left: 62px;
+  -moz-animation-delay: 1.04s;
+  -webkit-animation-delay: 1.04s;
+  -ms-animation-delay: 1.04s;
+  -o-animation-delay: 1.04s;
+  animation-delay: 1.04s;
+}
+#jSplash #loader #fadingBarsG_6 {
+  left: 78px;
+  -moz-animation-delay: 1.17s;
+  -webkit-animation-delay: 1.17s;
+  -ms-animation-delay: 1.17s;
+  -o-animation-delay: 1.17s;
+  animation-delay: 1.17s;
+}
+#jSplash #loader #fadingBarsG_7 {
+  left: 93px;
+  -moz-animation-delay: 1.3s;
+  -webkit-animation-delay: 1.3s;
+  -ms-animation-delay: 1.3s;
+  -o-animation-delay: 1.3s;
+  animation-delay: 1.3s;
+}
+#jSplash #loader #fadingBarsG_8 {
+  left: 109px;
+  -moz-animation-delay: 1.43s;
+  -webkit-animation-delay: 1.43s;
+  -ms-animation-delay: 1.43s;
+  -o-animation-delay: 1.43s;
+  animation-delay: 1.43s;
+}
+@-moz-keyframes bounce_fadingBarsG {
+  0% {
+    -moz-transform: scale(1);
+    background-color: #800000;
+  }
+  100% {
+    -moz-transform: scale(0.3);
+    background-color: #800000;
+  }
+}
+@-webkit-keyframes bounce_fadingBarsG {
+  0% {
+    -webkit-transform: scale(1);
+    background-color: #800000;
+  }
+  100% {
+    -webkit-transform: scale(0.3);
+    background-color: #800000;
+  }
+}
+@-ms-keyframes bounce_fadingBarsG {
+  0% {
+    -ms-transform: scale(1);
+    background-color: #800000;
+  }
+  100% {
+    -ms-transform: scale(0.3);
+    background-color: #800000;
+  }
+}
+@-o-keyframes bounce_fadingBarsG {
+  0% {
+    -o-transform: scale(1);
+    background-color: #800000;
+  }
+  100% {
+    -o-transform: scale(0.3);
+    background-color: #800000;
+  }
+}
+@keyframes bounce_fadingBarsG {
+  0% {
+    transform: scale(1);
+    background-color: #800000;
+  }
+  100% {
+    transform: scale(0.3);
+    background-color: #800000;
+  }
+}
+#jpreOverlay #jpreLoader {
+  text-align: center;
+  width: 100%;
+  top: 35% !important;
+  margin-top: 160px;
+}
+#jpreOverlay #jpreLoader #jprePercentage {
+  font-family: "Oswald", helvetica, sans-serif;
+  font-size: 30px;
+}
+#jpreOverlay #jpreLoader #jpreButton {
+  width: 100%;
+  margin-top: 10px;
+}

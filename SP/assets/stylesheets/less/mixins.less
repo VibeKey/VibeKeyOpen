@@ -1,0 +1,50 @@
+// Less Mixins
+
+.border-radius(@val) {
+	border-radius: @val;
+	-webkit-border-radius: @val;
+	-moz-border-radius: @val;
+}
+
+.transition(@val){
+	-webkit-transition: @val;
+	-moz-transition: @val;
+	-ms-transition: @val;
+	-o-transition: @val;
+}
+
+.transform (@val) {
+	-webkit-transform: @val;
+	-moz-transform: @val;
+	-ms-transform: @val;
+	transform: @val;
+}
+
+.opacity(@val){
+	opacity: @val;
+  -webkit-opacity: @val;
+  -moz-opacity: @val;
+}
+
+.box-shadow(@val){
+	-o-box-shadow: @val;
+	-moz-box-shadow: @val;
+	-webkit-box-shadow: @val;
+	box-shadow: @val;
+}
+
+/* Color Schemes */
+
+@orange: #fa4c29;
+@darkorange: #e62701;
+@white: #fff;
+@black: #000;
+@textcolor: #ccc;
+@headingcolor: #fff;
+@darker: #121212;
+@lighter: #222;
+@lightest: #333;
+
+.orange {
+	color: @orange;
+}
