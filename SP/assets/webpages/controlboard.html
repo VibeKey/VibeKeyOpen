@@ -8,8 +8,6 @@
     
     <title>WMHD - Radio - Control</title>
     <!--style sheets -->
-    <!-- Bootstrap -->
-    <link href="assets/stylesheets/css/bootstrap.min.css" rel="stylesheet">
   </head>
 
   <body>
@@ -17,14 +15,9 @@
       <fieldset>
         <legend>Stream Control</legend>
           <div>
-            <button type="button">Next Song</button>
+            <button type="button" onclick="nextSong()">Next Song</button>
           </div>
           <br></br>
-          <div>
-            <button type="button" class="amplitude-volume-up">+</button>
-            <input type="range" class="amplitude-volume-slider"/>
-            <button type="button" class="amplitude-volume-down">-</button>
-          </div>
       </fieldset>  
     </div>
     <br></br>
@@ -107,10 +100,10 @@
         <legend>Schedule Control</legend>
           <div class="scheduleOp">
             <fieldset>
-                <legend>Schedule Genre</legend>
-                  Seclect a genre:
-                  <select class="genresList" id="genresList" onchange="scheduleGenre(this)">
-                    <option value="none">No genre selected</option>
+              <legend>Schedule a Song</legend>
+                  Seclect a song (All songs):
+                  <select class="allSongsList" id="allSongsList" onchange="scheduleSong()">
+                    <option value="none">No song selected</option>
                 </select>
                 <br></br>
             </fieldset>
@@ -118,17 +111,17 @@
             <fieldset>
               <legend>Schedule a Playlist</legend>
                   Seclect a playlist:
-                  <select class="playsList" id="playsList" onchange="scheduleList(this)">
+                  <select class="playslistList" id="playslistList" onchange="scheduleList()">
                     <option value="none">No list selected</option>
                 </select>
                 <br></br>
             </fieldset>
             <br></br>
             <fieldset>
-              <legend>Schedule a Song</legend>
-                  Seclect a song (All songs):
-                  <select class="allSongsList" id="allSongsList" onchange="scheduleSong(this)">
-                    <option value="none">No song selected</option>
+                <legend>Schedule a Genre</legend>
+                  Seclect a genre:
+                  <select class="genresList" id="genresList" onchange="scheduleGenre()">
+                    <option value="none">No genre selected</option>
                 </select>
                 <br></br>
             </fieldset>
@@ -165,12 +158,12 @@
                     <option value="DJ3">DJ3</option>
                 </select>
                 <br></br>
-                Select a Genre OR
+                Select a Genre
                 <select class="scheduleGenresList" id="scheduleGenresList">
                     <option value="none">No genre selected</option>
                 </select>
                 <br></br>
-                Select a playlist
+                OR Select a playlist
                 <select class="schedulePLList" id="schedulePLList">
                     <option value="none">No playlist selected</option>
                 </select>
@@ -183,7 +176,16 @@
     <br></br>
 
 
-  	<!-- Javascript Plugins -->
-    <script src="assets/javascripts/bootstrap.min.js"></script>
+  	<!-- Javascript Plugins -->    
+    <script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
+    <script src="assets/javascripts/constants.js"></script>
+    <script src="assets/javascripts/jquery.min.js"></script>
+    <script src="assets/javascripts/createCommand.js"></script>
+    <script src="assets/javascripts/stream_control.js"></script>
+    <script src="assets/javascripts/event_control.js"></script>
+    <script src="assets/javascripts/schedule_control.js"></script>    
+
+    <!-- preloads -->
+    <script src="assets/javascripts/custom.js"></script>
   </body>
 </html>

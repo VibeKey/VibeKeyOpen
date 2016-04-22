@@ -253,4 +253,5 @@ $(window).load(function(){
 
       streamMusic();
       updateNowPlaying();
+      populateNews();
 });
