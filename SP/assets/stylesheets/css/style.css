@@ -715,6 +715,7 @@ body p {
 .banner .def-button {
   margin-top: 20px;
 }
+
 /* schedule */
 .schedule {
   width: 100%;
@@ -797,6 +798,8 @@ body p {
   padding: 10px 20px;
   text-decoration: none;
 }
+
+
 /* about */
 .about {
   padding: 80px 0px 100px;
@@ -978,6 +981,8 @@ body p {
 .about .discography .jp-audio .jp-playlist li a {
   color: #ffffff;
 }
+
+
 .footer {
   background: #121212;
   padding: 40px 0px;
@@ -1365,7 +1370,6 @@ a.btn_red {
 }
 .chat .title {
   font-size: 18px;
-  text-align: center;
 }
 .chat .title h3 {
   font-family: "Oswald", helvetica, sans-serif;
