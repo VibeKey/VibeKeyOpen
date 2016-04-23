@@ -5,7 +5,11 @@ $(window).load(function(){
         var uid = auth.uid;
         console.log(uid);
     }
+    //Event Control
 	populateDeleteEventList();
+    //Playlist Control
+
+    //Schedule Control
     populateGenreList();
     populatePlaylistList();
 });

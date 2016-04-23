@@ -62,36 +62,26 @@
         <fieldset>
           <legend>Song search</legend>
             Search by key word:<br>
-            <input type="text" class="playlistTitle" id="playlistTitle">
+            <input type="text" class="search_key" id="search_key">
             </br>
             <br></br>
-            Search by artist:<br>
-            <select class="songselect" id="songselect">
-            </select>
-            </br>
-            <br></br>
-            Search by genre:<br>
-            <select class="songselect" id="songselect">
-            </select>
-            </br>
-            <br></br>
-            <button type="button">Refine</button>
+            <button type="button" onclick="search()">Search</button>
             <hr></hr>
             Search Result:<br>
-            <select class="songselect" id="songselect">
+            <select class="search_result" id="search_result">
             </select>
             <br></br>
-            <button type="button">Add to Playlist</button>
+            <button type="button" onclick="addToPlaylist()">Add to Playlist</button>
         <br></br>
         </fieldset>
         <br></br>
         <fieldset>
           <legend>Playlist</legend>
-             <ol class=playlist>
+             <ol class='playlist' id='playlist'>
             </ol>
         </fieldset>
         <br></br>
-        <button type="button">Create Playlist</button>
+        <button type="button" onclick="createPlaylist()">Create Playlist</button>
       </fieldset>  
     </div>
     <br></br>
@@ -183,6 +173,8 @@
     <script src="assets/javascripts/createCommand.js"></script>
     <script src="assets/javascripts/stream_control.js"></script>
     <script src="assets/javascripts/event_control.js"></script>
+    <script src="assets/javascripts/playlist_control.js"></script>
+    <script src="assets/javascripts/search.js"></script>
     <script src="assets/javascripts/schedule_control.js"></script>    
 
     <!-- preloads -->

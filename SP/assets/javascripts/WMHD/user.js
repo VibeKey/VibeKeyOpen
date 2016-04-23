@@ -32,6 +32,23 @@ function logout() {
 	changeToUserView();
 }
 
+function register() {
+	var email = $("#email").val();
+	var password = $("#password").val();
+	var ref = new Firebase("https://vibekey-open.firebaseio.com/");
+	ref.createUser({
+  		email    : email,
+	  	password : password
+	}, function(error, userData) {
+	  if (error) {
+	    window.alert("Error creating user.");
+	  } else {
+	  	$(".modal_close").click();
+	    window.alert("Successfully created user account.");
+	  }
+	});
+}
+
 function changeToDjView() {
 	$(".jp-control-board").show();
 }
