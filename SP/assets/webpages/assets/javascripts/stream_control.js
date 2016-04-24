@@ -38,7 +38,7 @@ function playSong(){
 }
 
 function populateGenreList() {
-  var genresList = document.getElementById("genresList");
+  var genresList = document.getElementById("streamgenresList");
   var genresListRef = new Firebase(FIREBASE_REF).child("songs/genreList");
   genresListRef.on("value", function(snapshot) {
     genresList.innerHTML = "";
@@ -54,7 +54,7 @@ function populateGenreList() {
 }
 
 function playGenre(){
-  var genresList = document.getElementById("genresList");
+  var genresList = document.getElementById("streamgenresList");
   var selectedGenre = genresList.value;
   var controls = new Firebase(FIREBASE_REF).child("controls/command");
   var command = createCommand(true, "setGenre", {"genre" : selectedGenre});
@@ -62,7 +62,7 @@ function playGenre(){
 }
 
 function populatePlaylistList() {
-  var playslistList = document.getElementById("playslistList");
+  var playslistList = document.getElementById("streamplayslistList");
   var playslistRef = new Firebase(FIREBASE_REF).child("playlists");
   playslistRef.on("value", function(snapshot) {
     playslistList.innerHTML = "";
@@ -79,7 +79,7 @@ function populatePlaylistList() {
 }
 
 function playPlaylist() {
-  var playslistList = document.getElementById("playslistList");
+  var playslistList = document.getElementById("streamplayslistList");
   var selectedPlaylist = playslistList.value;
   var controls = new Firebase(FIREBASE_REF).child("controls/command");
   var command = createCommand(true, "setGenre", {"genre" : selectedPlaylist});

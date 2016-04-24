@@ -1,18 +1,3 @@
-function schedule() {
-  var controls = new Firebase(FIREBASE_REF).child("controls").child("command");
-  var playMode = document.getElementById('playModeList').value;
-  var repeatMode = document.getElementById('repeatModeList').value;
-  var startTime = document.getElementById('startTime').value;
-  var endTime = document.getElementById('endTime').value;
-  var DJName = document.getElementById('djNameList').value;
-  var genre = document.getElementById('scheduleGenresList').value;
-  var playlist = document.getElementById('schedulePLList').value;
-
-  var command = createCommand(false, "addToSchedule", {"playMode":playMode, "repeatMode":repeatMode, 
-    "startTime":startTime, "endTime":endTime, "DJName":DJName, "genre":genre, "playlist":playlist});
-  controls.push(command);
-}
-
 function populateScheduleGenreList() {
   var genresList = document.getElementById("scheduleGenresList");
   var genresListRef = new Firebase(FIREBASE_REF).child("songs/genreList");
@@ -44,4 +29,19 @@ function populateSchedulePlaylistList() {
           playslistList.appendChild(option);
       });
   });
+}
+
+function schedule() {
+  var controls = new Firebase(FIREBASE_REF).child("controls").child("command");
+  var playMode = document.getElementById('playModeList').value;
+  var repeatMode = document.getElementById('repeatModeList').value;
+  var startTime = document.getElementById('startTime').value;
+  var endTime = document.getElementById('endTime').value;
+  var DJName = document.getElementById('djNameList').value;
+  var genre = document.getElementById('scheduleGenresList').value;
+  var playlist = document.getElementById('schedulePLList').value;
+
+  var command = createCommand(false, "addToSchedule", {"playMode":playMode, "repeatMode":repeatMode, 
+    "startTime":startTime, "endTime":endTime, "DJName":DJName, "genre":genre, "playlist":playlist});
+  controls.push(command);
 }

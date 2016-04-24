@@ -1,10 +1,14 @@
 $(document).ready(function() {
   //  -------------- select2 --------------
+    //stream
     $(".songList1").select2();
-    $(".playslistList").select2();
-    $(".genresList").select2();
+    $(".streamplayslistList").select2();
+    $(".streamgenresList").select2();
+    //event
     $(".deleteeventList").select2();
+    //playlist
     $(".songList2").select2();
+    //schedule
     $(".playModeList").select2();
     $(".repeatModeList").select2();
     $(".djNameList").select2();
