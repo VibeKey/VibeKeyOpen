@@ -17,7 +17,48 @@
           <div>
             <button type="button" onclick="nextSong()">Next Song</button>
           </div>
-          <br></br>
+          <hr></hr>
+          <fieldset>
+              <legend>Play a Song</legend>
+                  <fieldset>
+                  <legend>Song search</legend>
+                    Search by key word:<br>
+                    <input type="text" class="search_key_stream" id="search_key_stream">
+                    </br>
+                    <br></br>
+                    <button type="button" onclick="search_for_stream()">Search</button>
+                    <hr></hr>
+                    Search Result:<br>
+                    <select class="search_result_stream" id="search_result_stream">
+                    </select>
+                    <br></br>
+                    <button type="button" onclick="playSong()">Play song now</button>
+                  <br></br>
+                  </fieldset>
+            </fieldset>
+            <br></br>
+            <fieldset>
+              <legend>Play a Playlist</legend>
+                Seclect a playlist:
+                <select class="playslistList" id="playslistList">
+                  <option value="none">No list selected</option>
+                </select>
+                <br></br>
+                <button type="button" onclick="playPlaylist()">Play playlist now</button>
+                <br></br>
+            </fieldset>
+            <br></br>
+            <fieldset>
+                <legend>Play a Genre</legend>
+                Seclect a genre:
+                <select class="genresList" id="genresList">
+                  <option value="none">No genre selected</option>
+                </select>
+                <br></br>
+                <button type="button" onclick="playGenre()">Play genre now</button>
+                <br></br>
+            </fieldset>
+            <br></br>
       </fieldset>  
     </div>
     <br></br>
@@ -65,7 +106,7 @@
             <input type="text" class="search_key" id="search_key">
             </br>
             <br></br>
-            <button type="button" onclick="search()">Search</button>
+            <button type="button" onclick="search_for_playlist()">Search</button>
             <hr></hr>
             Search Result:<br>
             <select class="search_result" id="search_result">
@@ -89,33 +130,6 @@
       <fieldset>
         <legend>Schedule Control</legend>
           <div class="scheduleOp">
-            <fieldset>
-              <legend>Schedule a Song</legend>
-                  Seclect a song (All songs):
-                  <select class="allSongsList" id="allSongsList" onchange="scheduleSong()">
-                    <option value="none">No song selected</option>
-                </select>
-                <br></br>
-            </fieldset>
-            <br></br>
-            <fieldset>
-              <legend>Schedule a Playlist</legend>
-                  Seclect a playlist:
-                  <select class="playslistList" id="playslistList" onchange="scheduleList()">
-                    <option value="none">No list selected</option>
-                </select>
-                <br></br>
-            </fieldset>
-            <br></br>
-            <fieldset>
-                <legend>Schedule a Genre</legend>
-                  Seclect a genre:
-                  <select class="genresList" id="genresList" onchange="scheduleGenre()">
-                    <option value="none">No genre selected</option>
-                </select>
-                <br></br>
-            </fieldset>
-            <br></br>
             <fieldset>
               <legend>Schedule</legend>
                   Seclect a play mode:
