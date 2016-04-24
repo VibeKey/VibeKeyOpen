@@ -1362,11 +1362,7 @@ a.btn_red {
 /*             05 - Chat
 /*==========================================*/
 .chat {
-  padding: 80px 0px 40px;
-  float: left;
-  width: 100%;
-  /* Frame */
-  /* Controls */
+  padding: 80px 0px;
 }
 .chat .title {
   font-size: 18px;
@@ -1382,124 +1378,25 @@ a.btn_red {
   text-transform: uppercase;
   font-size: 22px;
 }
-.chat .frame {
+
+.chat .chat_area {
+  display: block;
   width: 100%;
-  height: 500px;
-  overflow: hidden;
-  margin-top: 20px;
-  background: #222222;
-  border: 1px solid #333333;
-  -o-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  height: 300px;
+  background-color: #F8ECC2;
 }
-.chat .frame .items {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+
+.chat .chat_area .message_list {
+  padding: none;
+}
+
+.chat .chat_bottom {
+  display: block;
   width: 100%;
+  height: 80px;
 }
-.chat .frame .items .content {
-  float: left;
-  width: 100%;
-  border-bottom: 1px solid #333333;
-  padding: 10px 10px;
-}
-.chat .frame .items .content .chat-title {
-  padding: 10px 0px 0px;
-}
-.chat .frame .items .content .chat-title h4 {
-  font-family: "Oswald", helvetica, sans-serif;
-  font-size: 20px;
-  line-height: 24px;
-  text-transform: uppercase;
-  font-weight: normal;
-  margin: 0px;
-  color: #fa4c29;
-}
-.chat .frame .items .content .time {
-  padding: 0px 0px 10px;
-}
-.chat .frame .items .content .image {
-  padding: 0px 0px 10px;
-}
-.chat .frame .items .content .image img {
-  width: 100%;
-}
-.chat .frame .items .content .avatar {
-  width: 48px;
-  height: 48px;
-  overflow: hidden;
-  float: left;
-}
-.chat .frame .items .content .avatar img {
-  width: 100%;
-}
-.chat .frame .items .content .text {
-  font-family: "Lato", helvetica, sans-serif;
-  font-size: 13px;
-  padding: 0px 0px 5px;
-  font-weight: 400;
-  color: #cccccc;
-  line-height: 18px;
-}
-.chat .frame .items .content .text a {
-  color: #fa4c29;
-}
-.chat .frame .items .content .text.tweet {
-  padding-left: 60px;
-}
-.chat .frame .items .content .name {
-  font-style: italic;
-  text-align: right;
-}
-.chat .frame .items .content .tweet-time a {
-  color: #cccccc;
-  float: right;
-  font-style: italic;
-  text-align: right;
-  font-size: 12px;
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  -ms-transition: 0.3s;
-  -o-transition: 0.3s;
-}
-.chat .frame .items .content .tweet-time a:hover {
-  color: #fa4c29;
-}
-.chat .frame .items .content.active {
-  background: #333333;
-  border-bottom: 2px solid #fa4c29;
-}
-.chat .frame .items .content.active .chat-title h4 {
-  color: #ffffff;
-}
-.chat .frame .items .content.active .time,
-.chat .frame .items .content.active .text {
-  color: #ffffff;
-}
-.chat .controls {
-  margin: 40px 0 25px;
-  text-align: center;
-}
-.chat .controls .btn {
-  width: 30px;
-  height: 30px;
-  background: #fa4c29;
-  color: #ffffff;
-  padding: 0px;
-  border-radius: 0px;
-  margin-right: 5px;
-  margin-left: 10px;
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-.chat .controls .btn i {
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+
+.chat .chat_bottom .messageInput {
+  display: block;
+
 }

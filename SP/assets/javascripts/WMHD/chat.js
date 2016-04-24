@@ -10,7 +10,7 @@ function chat() {
   messagesRef.onAuth(function(authData) {
     if (authData) {
       var username = authData.password.email;
-      var messageField = document.getElementsByClassName('messageInput')[1];
+      var messageField = document.getElementById('messageInput');
       var message = messageField.value;
       
       //ADD TO FIREBASE DATA
@@ -26,7 +26,7 @@ function chat() {
 
 function syncChat() {
   var messagesRef = new Firebase(FIREBASE_REF).child("chatMessage");
-  var messageList = document.getElementsByClassName('message_list')[1];
+  var messageList = document.getElementById('message_list');
 
   messagesRef.limitToLast(10).on('child_added', function(snapshot) {
       //GET DATA
@@ -53,6 +53,6 @@ function syncChat() {
 }
 
 function clearChat() {
-  var messageList = document.getElementsByClassName('message_list')[1];
+  var messageList = document.getElementById('message_list');
   messageList.innerHTML = "";
 }

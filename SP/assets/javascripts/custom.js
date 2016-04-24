@@ -248,7 +248,6 @@ $(window).load(function(){
           var uid = auth.uid;
           var dj_ref = ref.child("prod/user_access/djs");
           dj_ref.on('value', function(snapshot) {
-            console.log(snapshot.child(uid).exists());
             if(snapshot.child(uid).exists()) {
               showCB();
             }
@@ -258,4 +257,5 @@ $(window).load(function(){
       streamMusic();
       updateNowPlaying();
       populateNews();
+      syncChat();
 });
