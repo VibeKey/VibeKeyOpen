@@ -16,7 +16,14 @@ function login() {
 	    $(".loginPop").hide();
 	    $(".logoutPop").show();
 	    $(".modal_close").click();
-	    changeToDjView();
+	    var uid = authData.uid;
+	    var dj_ref = ref.child("prod/user_access/djs");
+	    dj_ref.on('value', function(snapshot) {
+            console.log(snapshot.child(uid).exists());
+            if(snapshot.child(uid).exists()) {
+              showCB();
+            }
+        });
 	  }
 	});
 }
@@ -29,7 +36,7 @@ function logout() {
 	$(".logoutPop").hide();
 	$(".loginPop").show();
 	$(".modal_close").click();
-	changeToUserView();
+	hideCB();
 }
 
 function register() {
@@ -49,11 +56,11 @@ function register() {
 	});
 }
 
-function changeToDjView() {
+function showCB() {
 	$(".jp-control-board").show();
 }
 
-function changeToUserView() {
+function hideCB() {
 	$(".jp-control-board").hide();
 }
 

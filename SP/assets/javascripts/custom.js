@@ -106,7 +106,7 @@ $(document).ready(function(){
 		pagination: true,
 		autoPlay : false
 	});
-	
+
 });
 
 $(window).load(function(){
@@ -235,9 +235,6 @@ $(window).load(function(){
             closeButton: ".modal_close"
   })
 
-  //  -------------- Event Binding --------------
-
-
   //  -------------- WMHD --------------
   var ref = new Firebase("https://vibekey-open.firebaseio.com/");
       var auth = ref.getAuth();
@@ -248,7 +245,14 @@ $(window).load(function(){
           $(".user-shape").css({'border': '1px solid #800000'});
           $(".loginPop").hide();
           $(".logoutPop").show();
-          changeToDjView();
+          var uid = auth.uid;
+          var dj_ref = ref.child("prod/user_access/djs");
+          dj_ref.on('value', function(snapshot) {
+            console.log(snapshot.child(uid).exists());
+            if(snapshot.child(uid).exists()) {
+              showCB();
+            }
+          });
       }
 
       streamMusic();

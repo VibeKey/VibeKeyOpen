@@ -8,6 +8,8 @@
     
     <title>WMHD - Radio - Control</title>
     <!--style sheets -->
+    <link href="assets/stylesheets/style.css" rel="stylesheet" />
+    <link href="assets/select2/dist/css/select2.min.css" rel="stylesheet" />
   </head>
 
   <body>
@@ -19,22 +21,13 @@
           </div>
           <hr></hr>
           <fieldset>
-              <legend>Play a Song</legend>
-                  <fieldset>
-                  <legend>Song search</legend>
-                    Search by key word:<br>
-                    <input type="text" class="search_key_stream" id="search_key_stream">
-                    </br>
-                    <br></br>
-                    <button type="button" onclick="search_for_stream()">Search</button>
-                    <hr></hr>
-                    Search Result:<br>
-                    <select class="search_result_stream" id="search_result_stream">
-                    </select>
-                    <br></br>
-                    <button type="button" onclick="playSong()">Play song now</button>
-                  <br></br>
-                  </fieldset>
+              Seclect a song:
+                <select class="songList1" id="songList1">
+                  <option value="none">No song selected</option>
+                </select>
+                <br></br>
+                <button type="button" onclick="playSong()">Play song now</button>
+                <br></br>
             </fieldset>
             <br></br>
             <fieldset>
@@ -102,18 +95,13 @@
         <br></br>
         <fieldset>
           <legend>Song search</legend>
-            Search by key word:<br>
-            <input type="text" class="search_key" id="search_key">
-            </br>
-            <br></br>
-            <button type="button" onclick="search_for_playlist()">Search</button>
-            <hr></hr>
-            Search Result:<br>
-            <select class="search_result" id="search_result">
-            </select>
-            <br></br>
+            Seclect a song:
+                <select class="songList2" id="songList2">
+                  <option value="none">No song selected</option>
+                </select>
+                <br></br>
             <button type="button" onclick="addToPlaylist()">Add to Playlist</button>
-        <br></br>
+            <br></br>
         </fieldset>
         <br></br>
         <fieldset>
@@ -180,15 +168,15 @@
     <br></br>
 
 
-  	<!-- Javascript Plugins -->    
+  	<!-- Javascript Plugins -->
+    <script src="assets/javascripts/jquery.min.js"></script>
+    <script src="assets/select2/dist/js/select2.min.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
     <script src="assets/javascripts/constants.js"></script>
-    <script src="assets/javascripts/jquery.min.js"></script>
     <script src="assets/javascripts/createCommand.js"></script>
     <script src="assets/javascripts/stream_control.js"></script>
     <script src="assets/javascripts/event_control.js"></script>
     <script src="assets/javascripts/playlist_control.js"></script>
-    <script src="assets/javascripts/search.js"></script>
     <script src="assets/javascripts/schedule_control.js"></script>    
 
     <!-- preloads -->
