@@ -46,7 +46,6 @@ function addToPlaylist() {
 	var search_result = document.getElementById('songList2');
 	var name = search_result.options[search_result.selectedIndex].value;
 	var path = search_result.options[search_result.selectedIndex].id;
-
 	var playlist = document.getElementById('playlist');
 	var item = document.createElement('li');
 	item.id = path;

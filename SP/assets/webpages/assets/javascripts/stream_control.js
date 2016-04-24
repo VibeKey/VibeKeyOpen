@@ -30,7 +30,7 @@ function populateSongList1() {
 }
 
 function playSong(){
-  var allSongsList = document.getElementById("allSongsList");
+  var allSongsList = document.getElementById("songList1");
   var selectedSong = allSongsList.value;
   var controls = new Firebase(FIREBASE_REF).child("controls/command");
   var command = createCommand(true, "setGenre", {"genre" : selectedSong});
