@@ -1383,7 +1383,7 @@ a.btn_red {
   display: block;
   width: 100%;
   height: 300px;
-  background-color: #F8ECC2;
+  background-color: #7b7b7b;
 }
 
 .chat .chat_area .message_list {
@@ -1403,7 +1403,14 @@ a.btn_red {
   height: 80px;
 }
 
+.chat .chat_bottom input:focus {
+  outline: none;
+}
+
 .chat .chat_bottom .messageInput {
   width: 100%;
   height: 100%;
+  background-color: #5b5b5b;
+  padding: 10px;
+  border: 0;
 }
