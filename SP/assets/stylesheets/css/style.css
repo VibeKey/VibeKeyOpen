@@ -1387,7 +1387,14 @@ a.btn_red {
 }
 
 .chat .chat_area .message_list {
-  padding: none;
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden; 
+  padding: 10px;
+}
+
+.chat .chat_area li {
+  color: #800000;
 }
 
 .chat .chat_bottom {
@@ -1397,6 +1404,6 @@ a.btn_red {
 }
 
 .chat .chat_bottom .messageInput {
-  display: block;
-
+  width: 100%;
+  height: 100%;
 }

@@ -26,7 +26,7 @@ function chat() {
 
 function syncChat() {
   var messagesRef = new Firebase(FIREBASE_REF).child("chatMessage");
-  var messageList = document.getElementById('message_list');
+  var messageList = $('#message_list');
 
   messagesRef.limitToLast(10).on('child_added', function(snapshot) {
       //GET DATA
@@ -38,15 +38,16 @@ function syncChat() {
       var messageElement = $("<li>");
       var nameElement = $("<strong class='chat-username'></strong>")
       nameElement.text(username);
-      messageElement.text(message).prepend(nameElement);
+      messageElement.text(" : " + message).prepend(nameElement);
 
       //ADD MESSAGE
-      var option = document.createElement('option');
-      option.id = option.value = "message";
-      option.text =  username + " : " + message;
-      messageList.appendChild(option);
+      //var option = document.createElement('option');
+      //option.id = option.value = "message";
+      //option.text =  username + " : " + message;
+      messageList.append(messageElement);
 
       //SCROLL TO BOTTOM OF MESSAGE LIST
+      messageList[0].scrollTop = messageList[0].scrollHeight;
   });
 
   clearChat();
