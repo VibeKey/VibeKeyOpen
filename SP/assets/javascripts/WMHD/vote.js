@@ -4,7 +4,8 @@ function upVote() {
 	var peopleVoteRef = npRef.child("peopleVote");
 	var controls = new Firebase(FIREBASE_REF).child("controls").child("command");
 
-	peopleVoteRef.onAuth(function(authData) {
+	var authData = peopleVoteRef.getAuth();
+
 		if (authData) {
 			if(!containUser(authData.uid)){
 				// add to peopleLike list
@@ -24,7 +25,6 @@ function upVote() {
 		} else {
 		  alert("You must login to vote.")
 		}
-	});
 }
 
 function downVote() {
@@ -33,7 +33,8 @@ function downVote() {
 	var peopleVoteRef = npRef.child("peopleVote");
 	var controls = new Firebase(FIREBASE_REF).child("controls").child("command");
 
-	peopleVoteRef.onAuth(function(authData) {
+	var authData = peopleVoteRef.getAuth();
+
 		if (authData) {
 			if(!containUser(authData.uid)){
 				// add to peopleLike list
@@ -53,7 +54,6 @@ function downVote() {
 		} else {
 		  alert("You must login to vote.")
 		}
-	});
 }
 
 function containUser(uid) {

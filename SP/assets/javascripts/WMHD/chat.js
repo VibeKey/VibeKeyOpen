@@ -7,21 +7,21 @@ function ifEnterChat(e) {
 function chat() {
   var messagesRef = new Firebase(FIREBASE_REF).child("chatMessage");
 
-  messagesRef.onAuth(function(authData) {
-    if (authData) {
-      var username = authData.password.email;
-      var messageField = document.getElementById('messageInput');
-      var message = messageField.value;
-      
-      //ADD TO FIREBASE DATA
-      messagesRef.push({name:username, text:message});
+  var messageField = document.getElementById('messageInput');
+  var message = messageField.value;
 
-      //CLEAR TEXTBOX
-      messageField.value = "";
-    } else {
-      alert("You must login to chat.")
-    }
-  });  
+  var authData = messagesRef.getAuth();
+  if (authData) {
+    var username = authData.password.email;    
+      
+    //ADD TO FIREBASE DATA
+    messagesRef.push({name:username, text:message});    
+  } else {
+     alert("You must login to chat.")
+  }
+
+  //CLEAR TEXTBOX
+  messageField.value = "";
 }
 
 function syncChat() {

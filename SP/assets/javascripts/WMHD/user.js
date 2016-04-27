@@ -19,7 +19,6 @@ function login() {
 	    var uid = authData.uid;
 	    var dj_ref = ref.child("prod/user_access/djs");
 	    dj_ref.on('value', function(snapshot) {
-            console.log(snapshot.child(uid).exists());
             if(snapshot.child(uid).exists()) {
               showCB();
             }
