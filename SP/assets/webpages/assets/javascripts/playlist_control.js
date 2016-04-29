@@ -34,7 +34,7 @@ function populateSongList2() {
         
         var option = document.createElement('option');
         option.id = songPath;
-        option.text = songName + ' by ' + songBand;
+        option.text = songName + ' by ' + songBand + " (" + songGenre + ")" + "(votes: "+ votes + ")";
         songList.appendChild(option);
     });
   }, function (errorObject) {
