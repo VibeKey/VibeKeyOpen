@@ -669,26 +669,25 @@ body p {
   position: absolute;
   top: 40%;
   left: 90%;
-  width: 12.5%;
-  padding-right: 15px;
+  width: 15%;
+  
 }
 .banner .jp-audio .jp-type-single .container .jp-vote-controls button {
   background: none;
   border: none;
   position: relative;
-  float: right;
-}
-.banner .jp-audio .jp-type-single .container .jp-vote-controls .jp-control-board {
-  width: 30px;
-  height: 30px;
-  right: 0px;
 }
 .banner .jp-audio .jp-type-single .container .jp-vote-controls .jp-upvote {
   width: 30px;
   height: 30px;
-  right: 15px;
+  left: 0px;
 }
 .banner .jp-audio .jp-type-single .container .jp-vote-controls .jp-downvote {
+  width: 30px;
+  height: 30px;
+  left: auto;
+}
+.banner .jp-audio .jp-type-single .container .jp-vote-controls .jp-control-board {
   width: 30px;
   height: 30px;
   left: auto;
@@ -1394,6 +1393,7 @@ a.btn_red {
 }
 
 .chat .chat_area li {
+  font-size: 13px;
   color: #800000;
 }
 
