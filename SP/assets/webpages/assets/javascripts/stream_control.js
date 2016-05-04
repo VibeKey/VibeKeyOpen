@@ -30,10 +30,10 @@ function populateSongList1() {
 }
 
 function playSong(){
-  var allSongsList = document.getElementById("songList1");
-  var selectedSong = allSongsList.value;
+  var search_result = document.getElementById('songList1');
+  var selectedSongPath = search_result.options[search_result.selectedIndex].id;
   var controls = new Firebase(FIREBASE_REF).child("controls/command");
-  var command = createCommand(true, "setGenre", {"genre" : selectedSong});
+  var command = createCommand(true, "addToFrontOfQueue", {"path" : selectedSongPath});
   controls.push(command);
 }
 
