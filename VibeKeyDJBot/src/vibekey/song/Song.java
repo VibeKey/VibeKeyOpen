@@ -15,7 +15,7 @@ import com.mpatric.mp3agic.UnsupportedTagException;
 
 import vibekey.firebase.FirebaseCommunicator;
 
-public class Song extends CompositeSong {
+public class Song extends Playable {
 	File songFile;
 	Mp3File songMetaDataFile;
 	ID3v2 metadatav2;
@@ -76,39 +76,43 @@ public class Song extends CompositeSong {
 	}
 	
 	public String getGenre(){
+		String ret = "";
 		if(hasv2Data){
-			return metadatav2.getGenreDescription();
+			ret = metadatav2.getGenreDescription();
 		}else if(hasv1Data){
-			return metadatav1.getGenreDescription();
+			ret = metadatav1.getGenreDescription();
 		}
-		return "";
+		return ret != null ? ret : "";
 	}
 	
 	public String getTitle(){
+		String ret = "";
 		if(hasv2Data){
-			return metadatav2.getTitle();
+			ret = metadatav2.getTitle();
 		}else if(hasv1Data){
-			return metadatav1.getTitle();
+			ret = metadatav1.getTitle();
 		}
-		return "";
+		return ret != null ? ret : this.getPath();
 	}
 	
 	public String getArtist(){
+		String ret = "";
 		if(hasv2Data){
-			return metadatav2.getArtist();
+			ret = metadatav2.getArtist();
 		}else if(hasv1Data){
-			return metadatav1.getArtist();
+			ret = metadatav1.getArtist();
 		}
-		return "";
+		return ret != null ? ret : "";
 	}
 	
 	public String getAlbum(){
+		String ret = "";
 		if(hasv2Data){
-			return metadatav2.getAlbum();
+			ret = metadatav2.getAlbum();
 		}else if(hasv1Data){
-			return metadatav1.getAlbum();
+			ret = metadatav1.getAlbum();
 		}
-		return "";
+		return ret != null ? ret : "";
 	}
 	
 
@@ -162,5 +166,10 @@ public class Song extends CompositeSong {
 	
 	public void stop(){
 		this.playing = false;
+	}
+
+	@Override
+	public Song getSong() {
+		return this;
 	}
 }

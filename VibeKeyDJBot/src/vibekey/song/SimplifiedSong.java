@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * @author kneislsj
  *
  */
-public class SimplifiedSong {
+public class SimplifiedSong extends Playable {
 	private String title;
 	private String artist;
 	private String album;
@@ -41,23 +41,23 @@ public class SimplifiedSong {
 	*/
 	
 	public String getTitle(){
-		return title;
+		return title != null ? title : "";
 	}
 	
 	public String getArtist(){
-		return artist;
+		return artist != null ? artist : "";
 	}
 	
 	public String getAlbum(){
-		return album;
+		return album != null ? album : "";
 	}
 	
 	public String getGenre(){
-		return genre;
+		return genre != null ? genre : "";
 	}
 	
 	public String getPath(){
-		return path;
+		return path != null ? path : "";
 	}
 	
 
@@ -79,5 +79,74 @@ public class SimplifiedSong {
 			}
 		}
 		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((album == null) ? 0 : album.hashCode());
+		result = prime * result + ((artist == null) ? 0 : artist.hashCode());
+		result = prime * result + ((genre == null) ? 0 : genre.hashCode());
+		result = prime * result + (int) (length ^ (length >>> 32));
+		result = prime * result + netVotes;
+		result = prime * result + ((path == null) ? 0 : path.hashCode());
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + totalVotes;
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof SimplifiedSong))
+			return false;
+		SimplifiedSong other = (SimplifiedSong) obj;
+		if (album == null) {
+			if (other.album != null)
+				return false;
+		} else if (!album.equals(other.album))
+			return false;
+		if (artist == null) {
+			if (other.artist != null)
+				return false;
+		} else if (!artist.equals(other.artist))
+			return false;
+		if (genre == null) {
+			if (other.genre != null)
+				return false;
+		} else if (!genre.equals(other.genre))
+			return false;
+		if (length != other.length)
+			return false;
+		if (netVotes != other.netVotes)
+			return false;
+		if (path == null) {
+			if (other.path != null)
+				return false;
+		} else if (!path.equals(other.path))
+			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
+		if (totalVotes != other.totalVotes)
+			return false;
+		return true;
+	}
+
+	@Override
+	public Song getSong() {
+		return this.getSong();
 	}
 }

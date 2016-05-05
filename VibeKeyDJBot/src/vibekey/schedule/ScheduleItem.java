@@ -1,9 +1,11 @@
 package vibekey.schedule;
 import java.util.Date;
 
-import vibekey.song.SongList;
+import vibekey.prioritizer.SongPrioritizer;
+import vibekey.song.Playable;
+import vibekey.song.Song;
 
-public class ScheduleItem extends SongList{
+public class ScheduleItem implements Playable {
 	
 	
 	public static final int PLAYMODE_NONE = 0;
@@ -130,6 +132,14 @@ public class ScheduleItem extends SongList{
 
 	public void setPlaylist(String playlist) {
 		this.playlist = playlist;
+	}
+	
+	private ArrayList<Song> getScheduledPlayableList(){
+		
+	}
+
+	public Song getSong(SongPrioritizer prioritizer) {
+		return prioritizer.getSong()
 	}
 	
 }
