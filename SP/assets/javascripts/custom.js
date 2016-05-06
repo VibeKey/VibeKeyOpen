@@ -71,6 +71,13 @@ $(document).ready(function(){
     }, 1000);
   });
 
+  $(".navbar-nav li a[href^='#']").on('click', function(e) {
+    e.preventDefault();
+    $('html, body').animate({
+        scrollTop: $(this.hash).offset().top-0
+    }, 1000);
+  });
+
 	// -------------- Fancybox -------------- 
 
   $('.fancybox').fancybox({
