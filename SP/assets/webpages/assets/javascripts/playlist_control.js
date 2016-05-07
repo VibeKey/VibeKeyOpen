@@ -1,6 +1,6 @@
 function createPlaylist(){
 	var name = document.getElementById('playlistTitle').value;
-	if (name != null) {
+	if (name != "") {
 		var controls = new Firebase(FIREBASE_REF).child("controls").child("command");
 		var songs = document.getElementById("playlist").getElementsByClassName("pl_song");
 		var songPath;
@@ -12,9 +12,9 @@ function createPlaylist(){
 		var command = createCommand(true, "addPlaylist", {"name" : name, "songs" : thesongs});
 		controls.push(command);
 		window.alert("Playlist " + name + " created.");
-    } else {
+  } else {
     	window.alert("Please enter playlist name.");
-    }
+   }
 }
 
 function populateSongList2() {

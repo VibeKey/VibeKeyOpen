@@ -33,7 +33,7 @@ function playSong(){
   var search_result = document.getElementById('songList1');
   var selectedSongPath = search_result.options[search_result.selectedIndex].id;
   var controls = new Firebase(FIREBASE_REF).child("controls/command");
-  var command = createCommand(true, "addToFrontOfQueue", {"path" : selectedSongPath});
+  var command = createCommand(true, "addToFrontOfQueue", {"songPath" : selectedSongPath});
   controls.push(command);
 }
 

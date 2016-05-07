@@ -41,7 +41,7 @@ function schedule() {
   var genre = document.getElementById('scheduleGenresList').value;
   var playlist = document.getElementById('schedulePLList').value;
 
-  var command = createCommand(false, "addToSchedule", {"playMode":playMode, "repeatMode":repeatMode, 
+  var command = createCommand(true, "addToSchedule", {"playMode":playMode, "repeatMode":repeatMode, 
     "startTime":startTime, "endTime":endTime, "DJName":DJName, "genre":genre, "playlist":playlist});
   controls.push(command);
 }
