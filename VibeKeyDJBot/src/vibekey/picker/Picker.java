@@ -5,5 +5,5 @@ import java.util.ArrayList;
 import vibekey.song.Song;
 
 public abstract class Picker {
-	public abstract Song getSong(ArrayList<Song> availableSongs);
+	public abstract Song getSong(ArrayList<Song> availableSongs)  throws NoPickException ;
 }
