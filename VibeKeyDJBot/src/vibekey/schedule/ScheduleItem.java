@@ -1,17 +1,18 @@
 package vibekey.schedule;
+import java.util.ArrayList;
 import java.util.Date;
 
+import vibekey.filter.Filter;
+import vibekey.picker.NoPickException;
 import vibekey.picker.Picker;
-import vibekey.song.Playable;
 import vibekey.song.Song;
 
 public class ScheduleItem{
 	
 	
 	public static final int PLAYMODE_NONE = 0;
-	public static final int PLAYMODE_GENRE = 1;
-	public static final int PLAYMODE_PLAYLIST = 2;
-	public static final int PLAYMODE_LIVEDJ = 3;
+	public static final int PLAYMODE_STRICT = 1;
+	public static final int PLAYMODE_LIVEDJ = 2;
 	private int playMode;
 	
 	
@@ -26,22 +27,23 @@ public class ScheduleItem{
 	private String DJName;
 	private String eventName;
 	private String description;
-	private String genre; //ignored if not in genre play mode
-	private String playlist; //ignored if not in playlist play mode
+	
+	private Filter filter;
+	private Picker picker;
 	
 	public ScheduleItem(){
 		
 	}
 
-	public ScheduleItem(int playMode, int repeatMode, Date startTime, Date endTime, String DJName, String genre, String playlist) {
+	public ScheduleItem(int playMode, int repeatMode, Date startTime, Date endTime, String DJName, Filter filter, Picker picker) {
 		super();
 		this.playMode = playMode;
 		this.repeatMode = repeatMode;
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.DJName = DJName;
-		this.genre = genre;
-		this.playlist = playlist;
+		this.filter=filter;
+		this.picker=picker;
 	}
 	
 	/* with eventName and description for further development
@@ -117,21 +119,25 @@ public class ScheduleItem{
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-	public String getGenre() {
-		return genre;
-	}
-
-	public void setGenre(String genre) {
-		this.genre = genre;
-	}
-
-	public String getPlaylist() {
-		return playlist;
-	}
-
-	public void setPlaylist(String playlist) {
-		this.playlist = playlist;
+	
+	public Filter getFilter(){
+		return filter;
 	}
 	
+	public void setFilter(Filter f){
+		this.filter = f;
+	}
+	
+	public Picker getPicker(){
+		return picker;
+	}
+	
+	public void setPicker(Picker p){
+		this.picker = p;
+	}
+	
+	public Song getSong(ArrayList<Song> allSongs) throws NoPickException{
+		ArrayList<Song> filteredSongs = this.filter.filter(allSongs);
+		return this.picker.getSong(filteredSongs);
+	}
 }
