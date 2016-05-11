@@ -27,6 +27,15 @@ public class PlaylistController {
 		updateFirebase();
 	}
 	
+	public Playlist search(String name) throws InvalidPlaylistException {
+		for(Playlist p : allPlaylists){
+			if(p.getName().equals(name)){
+				return p;
+			}
+		}
+		throw new InvalidPlaylistException();
+	}
+	
 	public void updateFirebase(){
 		FirebaseCommunicator.setPlaylists(allPlaylists);
 	}

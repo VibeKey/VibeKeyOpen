@@ -29,13 +29,12 @@ public class ScheduleItem{
 	private String description;
 	
 	private Filter filter;
-	private Picker picker;
 	
 	public ScheduleItem(){
 		
 	}
 
-	public ScheduleItem(int playMode, int repeatMode, Date startTime, Date endTime, String DJName, Filter filter, Picker picker) {
+	public ScheduleItem(int playMode, int repeatMode, Date startTime, Date endTime, String DJName, Filter filter) {
 		super();
 		this.playMode = playMode;
 		this.repeatMode = repeatMode;
@@ -43,7 +42,6 @@ public class ScheduleItem{
 		this.endTime = endTime;
 		this.DJName = DJName;
 		this.filter=filter;
-		this.picker=picker;
 	}
 	
 	/* with eventName and description for further development
@@ -65,6 +63,11 @@ public class ScheduleItem{
 
 	public int getPlayMode() {
 		return playMode;
+	}
+	
+	public boolean isActive() {
+		Date now = new Date(System.currentTimeMillis());
+		return now.before(endTime) && now.after(startTime);
 	}
 
 	public void setPlayMode(int playMode) {
@@ -128,16 +131,8 @@ public class ScheduleItem{
 		this.filter = f;
 	}
 	
-	public Picker getPicker(){
-		return picker;
-	}
-	
-	public void setPicker(Picker p){
-		this.picker = p;
-	}
-	
-	public Song getSong(ArrayList<Song> allSongs) throws NoPickException{
+	public Song getSong(ArrayList<Song> allSongs, Picker picker) throws NoPickException {
 		ArrayList<Song> filteredSongs = this.filter.filter(allSongs);
-		return this.picker.getSong(filteredSongs);
+		return picker.getSong(filteredSongs);
 	}
 }

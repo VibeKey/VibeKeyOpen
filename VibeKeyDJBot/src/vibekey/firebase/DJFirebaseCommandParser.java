@@ -4,6 +4,11 @@ import java.util.Date;
 
 import com.firebase.client.DataSnapshot;
 
+import vibekey.filter.Filter;
+import vibekey.filter.GenreFilter;
+import vibekey.filter.NoFilter;
+import vibekey.filter.PlaylistFilter;
+import vibekey.playlist.InvalidPlaylistException;
 import vibekey.playlist.Playlist;
 import vibekey.schedule.ScheduleItem;
 import vibekey.song.Song;
@@ -46,7 +51,15 @@ public class DJFirebaseCommandParser extends FirebaseCommandParser {
 		String DJName = params.child("DJName").getValue(String.class);
 		String genre = params.child("genre").getValue(String.class);
 		String playlist = params.child("playlist").getValue(String.class);
-		ScheduleItem newScheduleItem = new ScheduleItem(playMode, repeatMode, startTime, endTime, DJName, genre, playlist);
+		Filter filter = new NoFilter();
+		if(genre != null && !genre.equals("")){
+			filter = new GenreFilter(genre);
+		}else if(playlist != null && !playlist.equals("")){
+			try {
+				filter = new PlaylistFilter(streamController.playlistController.search(playlist));
+			} catch (InvalidPlaylistException e) {}
+		}
+		ScheduleItem newScheduleItem = new ScheduleItem(playMode, repeatMode, startTime, endTime, DJName, filter);
 		streamController.playSchedule.addToSchedule(newScheduleItem);
 	}
 	
