@@ -1,11 +1,11 @@
-package vibekey.prioritizer;
+package vibekey.picker;
 
 import java.util.ArrayList;
 
 import vibekey.song.Song;
 import vibekey.util.RandomWrapper;
 
-public class VotesSongPrioritizer extends SongPrioritizer {
+public class VotePicker extends Picker {
 	public Song getSong(ArrayList<Song> availableSongs){
 		int netVotes = 0;
 		int maxNetVotes = Integer.MIN_VALUE;
@@ -34,6 +34,8 @@ public class VotesSongPrioritizer extends SongPrioritizer {
 				return song;
 			}
 		}
+		
+		//TODO: Replace this with proper error handling
 		System.out.println("ERROR when trying to use votes to influence song selection");
 		return null;
 	}

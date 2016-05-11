@@ -1,11 +1,11 @@
-package vibekey.prioritizer;
+package vibekey.picker;
 
 import java.util.ArrayList;
 
 import vibekey.song.Song;
 import vibekey.util.RandomWrapper;
 
-public class RandomSongPrioritizer extends SongPrioritizer {
+public class RandomPicker extends Picker {
 	public Song getSong(ArrayList<Song> availableSongs){
 		int songNum = RandomWrapper.nextInt(availableSongs.size());
 		return availableSongs.get(songNum);

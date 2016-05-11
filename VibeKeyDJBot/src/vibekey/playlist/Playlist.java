@@ -5,7 +5,7 @@ import vibekey.song.Playable;
 import vibekey.song.Song;
 import vibekey.util.RandomWrapper;
 
-public class Playlist implements Playable {
+public class Playlist {
 	private String name;
 	private ArrayList<Song> songs = new ArrayList<Song>();
 	
@@ -47,10 +47,6 @@ public class Playlist implements Playable {
 	public Song getRandomSong(){
 		return songs.get(RandomWrapper.nextInt(songs.size()));
 	}
-
-	@Override
-	public Song getSong() {
-		return this.getRandomSong();
-	}
+	
 	
 }

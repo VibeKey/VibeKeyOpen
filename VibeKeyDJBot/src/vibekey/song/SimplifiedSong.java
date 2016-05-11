@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * @author kneislsj
  *
  */
-public class SimplifiedSong extends Playable {
+public class SimplifiedSong{
 	private String title;
 	private String artist;
 	private String album;
@@ -143,10 +143,5 @@ public class SimplifiedSong extends Playable {
 		if (totalVotes != other.totalVotes)
 			return false;
 		return true;
-	}
-
-	@Override
-	public Song getSong() {
-		return this.getSong();
 	}
 }

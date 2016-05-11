@@ -15,7 +15,7 @@ import com.mpatric.mp3agic.Mp3File;
 import com.mpatric.mp3agic.UnsupportedTagException;
 
 import vibekey.firebase.FirebaseCommunicator;
-import vibekey.prioritizer.SongPrioritizer;
+import vibekey.picker.Picker;
 
 public class Song {
 	File songFile;

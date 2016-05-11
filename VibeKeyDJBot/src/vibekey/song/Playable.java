@@ -1,7 +1,7 @@
 package vibekey.song;
 
-import vibekey.prioritizer.SongPrioritizer;
+import vibekey.picker.Picker;
 
 public interface Playable {
-	public Playable getPlayable(SongPrioritizer prioritizer);
+	public Playable getPlayable(Picker prioritizer);
 }
