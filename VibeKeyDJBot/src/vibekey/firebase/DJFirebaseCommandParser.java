@@ -19,12 +19,6 @@ import vibekey.stream.StreamController;
 public class DJFirebaseCommandParser extends FirebaseCommandParser {
 	public DJFirebaseCommandParser(StreamController streamController) {
 		super(streamController, "djs");
-		// TODO Auto-generated constructor stub
-	}
-
-	private void setPlayMode(DataSnapshot params) {
-		streamController.playMode = params.child("playMode").getValue(String.class);
-		streamController.refillQueue();
 	}
 
 	private void nextSong(DataSnapshot params) {

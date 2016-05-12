@@ -6,6 +6,7 @@ import vibekey.firebase.CompoundCommandParser;
 import vibekey.firebase.DJFirebaseCommandParser;
 import vibekey.firebase.FirebaseCommunicator;
 import vibekey.firebase.UserFirebaseCommandParser;
+import vibekey.picker.NoPickException;
 import vibekey.song.SongDatabase;
 import vibekey.stream.StreamController;
 
@@ -34,7 +35,12 @@ public class DJBot {
 	
 	
 	public void play(){
-		streamController.play();
+		try {
+			streamController.play();
+		} catch (NoPickException e) {
+			System.out.println("DJBot detected no pick, even after default fallback!");
+			e.printStackTrace();
+		}
 	}
 	
 	public void close(){

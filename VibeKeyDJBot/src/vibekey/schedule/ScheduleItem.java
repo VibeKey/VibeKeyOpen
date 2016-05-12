@@ -65,9 +65,13 @@ public class ScheduleItem{
 		return playMode;
 	}
 	
-	public boolean isActive() {
+	public boolean isActiveNow() {
 		Date now = new Date(System.currentTimeMillis());
 		return now.before(endTime) && now.after(startTime);
+	}
+	
+	public boolean isActiveAtTime(Date time) {
+		return time.before(endTime) && time.after(startTime);
 	}
 
 	public void setPlayMode(int playMode) {

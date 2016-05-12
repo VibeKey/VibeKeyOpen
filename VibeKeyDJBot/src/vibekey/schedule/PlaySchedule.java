@@ -1,5 +1,6 @@
 package vibekey.schedule;
 import java.util.ArrayList;
+import java.util.Date;
 
 import vibekey.firebase.FirebaseCommunicator;
 import vibekey.picker.NoPickException;
@@ -36,9 +37,20 @@ public class PlaySchedule{
 		this.scheduleItems.clear();
 	}
 	
-	public Song getSong(ArrayList<Song> allSongs) throws NoPickException{
+	public Song getSongNow(ArrayList<Song> allSongs) throws NoPickException{
 		for(ScheduleItem scheduleItem : scheduleItems){
-			if(scheduleItem.isActive()){
+			if(scheduleItem.isActiveNow()){
+				try {
+					return scheduleItem.getSong(allSongs, curPicker);
+				} catch (NoPickException e) {}
+			}
+		}
+		
+		return getDefaultScheduleItem().getSong(allSongs, curPicker);
+	}
+	public Song getSongAtTime(ArrayList<Song> allSongs, Date time) throws NoPickException{
+		for(ScheduleItem scheduleItem : scheduleItems){
+			if(scheduleItem.isActiveAtTime(time)){
 				try {
 					return scheduleItem.getSong(allSongs, curPicker);
 				} catch (NoPickException e) {}

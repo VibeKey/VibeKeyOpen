@@ -1,19 +1,16 @@
 package vibekey.stream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.Date;
 
 import com.gmail.kunicins.olegs.libshout.Libshout;
 
 import vibekey.firebase.FirebaseCommunicator;
-import vibekey.playlist.Playlist;
+import vibekey.picker.NoPickException;
 import vibekey.playlist.PlaylistController;
 import vibekey.schedule.PlaySchedule;
-import vibekey.schedule.ScheduleItem;
 import vibekey.song.Song;
 import vibekey.song.SongDatabase;
 import vibekey.song.SongQueue;
-import vibekey.util.RandomWrapper;
 
 public class StreamController {
 	public String playMode;
@@ -31,64 +28,27 @@ public class StreamController {
 		this.playSchedule = new PlaySchedule();
 	}
 	
-	public void refillQueue(){
+	public void refillQueue() throws NoPickException{
 		queue.emptyQueue();
 		this.fillQueue();
 	}
 	
-	public void fillQueue(){
+	public void fillQueue() throws NoPickException{
 		while(queue.size() < SongQueue.FILL_SIZE){
-			Calendar calendar = Calendar.getInstance();
-			calendar.add(Calendar.SECOND, queue.getTotalTime());
-			ScheduleItem curSched = playSchedule.getScheduleItemAtTime(calendar.getTime());
-			if(curSched != null){
-				if(curSched.getPlayMode() == ScheduleItem.PLAYMODE_GENRE && curSched.getGenre() != null && !curSched.getGenre().equals("")){
-					ArrayList<Song> genreSongList = SongDatabase.getSongsInGenre(curSched.getGenre());
-					if(genreSongList != null){
-						Song song = RandomWrapper.nextSongWeighted(genreSongList);
-						queue.addToQueue(song);
-						continue;
-					}
-				} else if(curSched.getPlayMode() == ScheduleItem.PLAYMODE_PLAYLIST && curSched.getPlaylist() != null && !curSched.getPlaylist().equals("")){
-					boolean foundSong = false;
-					for(Playlist playlist : playlistController.allPlaylists){
-						if(playlist.getName().equals(curSched.getPlaylist())){
-							if(playlist.getSongs().size() > 0){
-								Song song = RandomWrapper.nextSongWeighted(playlist.getSongs());
-								foundSong=true;
-								queue.addToQueue(song);
-								break;
-							}
-						}
-					}
-					if(foundSong){
-						continue;
-					}
-				}
-			}
-			/*
-			int totalNetVotes = 0;
-			
-			for(Song song : SongDatabase.songs){
-				totalNet+=song.netVotes;
-			}
-			for(Song song : SongDatabase.songs){
-				if(RandomWrapper.nextDouble() < ((Double) song.netVotes)
-			}
-			*/	
-			Song song = RandomWrapper.nextSongWeighted(SongDatabase.songs); //TODO: add more than random songs
+			long startTime = queue.getTotalTime()*1000 + System.currentTimeMillis();
+			Song song = playSchedule.getSongAtTime(SongDatabase.songs, new Date(startTime));
 			queue.addToQueue(song);
 		}
 	}
 	
-	public Song getNextSong(){
+	public Song getNextSong() throws NoPickException{
 		fillQueue();
 		Song song = queue.popFromQueue();
 		fillQueue();
 		return song;
 	}
 	
-	public void play(){
+	public void play() throws NoPickException{
 		while(!this.stopServer){
 			Song song = getNextSong();
 			
