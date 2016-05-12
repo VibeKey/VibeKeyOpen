@@ -20,10 +20,11 @@ public class VotePicker extends Picker {
 		}
 		
 		//Offset for each song's delegates
-		int songVoteOffset = maxNetVotes - minNetVotes;
+		int songVoteOffset = maxNetVotes - minNetVotes+1;
 
 		//Using "delegates" as a term for how many "votes" each song gets in the final selection
 		int totalVoteDelegates = netVotes + songCount*songVoteOffset;
+		
 		
 		int winner = RandomWrapper.nextInt(totalVoteDelegates);
 		
