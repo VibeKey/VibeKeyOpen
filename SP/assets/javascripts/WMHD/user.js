@@ -10,7 +10,7 @@ function login() {
 	    alert("Login Failed!", error);
 	  } else {
 	    var username = authData.password.email;
-	    $(".logout_info").text("Login as " + username +". Are you sure you want to log out?" );
+	    $(".logout_info").html("Login as<br />" + username +"<br />Are you sure you want to log out?" );
 	    $(".fa-user").css({'color':'#800000', 'animation-iteration-count': '0'});
 	    $(".user-shape").css({'border': '1px solid #800000'});
 	    $(".loginPop").hide();
