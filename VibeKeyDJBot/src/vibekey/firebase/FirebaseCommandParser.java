@@ -17,7 +17,7 @@ import vibekey.song.SongDatabase;
 import vibekey.stream.StreamController;
 
 @SuppressWarnings("unused")
-public class FirebaseCommandParser {
+public abstract class FirebaseCommandParser {
 	StreamController streamController;
 	String commandAccess;
 	
@@ -36,7 +36,6 @@ public class FirebaseCommandParser {
 				Class[] classes = new Class[1];
 				classes[0]=DataSnapshot.class;
 				
-				System.out.println(classes[0].getName());
 				Method method = this.getClass().getDeclaredMethod(cmdString, classes);
 				return method.invoke(this, params);
 			} catch (NoSuchMethodException e) {
@@ -75,6 +74,7 @@ public class FirebaseCommandParser {
 			    	  Object ret = parseCommand(snapshot);
 			    	  snapshot.getRef().child("doCmd").setValue(false);
 			    	  snapshot.getRef().child("return").setValue(ret);
+			    	  //snapshot.getRef().removeValue();
 		    	  }
 		      }
 		      @Override
@@ -88,6 +88,7 @@ public class FirebaseCommandParser {
 			    	  Object ret = parseCommand(snapshot);
 			    	  snapshot.getRef().child("doCmd").setValue(false);
 			    	  snapshot.getRef().child("return").setValue(ret);
+			    	  //snapshot.getRef().removeValue();
 		    	  }
 				
 			}
