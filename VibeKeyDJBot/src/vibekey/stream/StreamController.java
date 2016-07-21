@@ -6,6 +6,7 @@ import com.gmail.kunicins.olegs.libshout.Libshout;
 
 import vibekey.firebase.FirebaseCommunicator;
 import vibekey.picker.NoPickException;
+import vibekey.picker.VotePicker;
 import vibekey.playlist.PlaylistController;
 import vibekey.schedule.PlaySchedule;
 import vibekey.song.Song;
@@ -23,14 +24,15 @@ public class StreamController {
 	
 	public StreamController(){
 		icecast = initializeIcecast();
-		this.queue = new SongQueue();
-		this.playlistController = new PlaylistController();
-		this.playSchedule = new PlaySchedule();
+		this.queue = new SongQueue(FirebaseCommunicator.rootRef);
+		this.playlistController = new PlaylistController(FirebaseCommunicator.rootRef);
+		this.playSchedule = new PlaySchedule(FirebaseCommunicator.rootRef,new VotePicker());
 	}
 	
 	public void refillQueue() throws NoPickException{
 		queue.emptyQueue();
 		this.fillQueue();
+		queue.setChanged(true);
 	}
 	
 	public void fillQueue() throws NoPickException{
@@ -39,12 +41,14 @@ public class StreamController {
 			Song song = playSchedule.getSongAtTime(SongDatabase.songs, new Date(startTime));
 			queue.addToQueue(song);
 		}
+		queue.setChanged(true);
 	}
 	
 	public Song getNextSong() throws NoPickException{
 		fillQueue();
 		Song song = queue.popFromQueue();
 		fillQueue();
+		queue.setChanged(true);
 		return song;
 	}
 	

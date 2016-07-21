@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 
 import com.gmail.kunicins.olegs.libshout.Libshout;
 import com.mpatric.mp3agic.ID3v1;
@@ -15,7 +14,6 @@ import com.mpatric.mp3agic.Mp3File;
 import com.mpatric.mp3agic.UnsupportedTagException;
 
 import vibekey.firebase.FirebaseCommunicator;
-import vibekey.picker.Picker;
 
 public class Song {
 	File songFile;

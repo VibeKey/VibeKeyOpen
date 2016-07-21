@@ -1,17 +1,20 @@
 package vibekey.playlist;
 import java.util.ArrayList;
 
-import vibekey.firebase.FirebaseCommunicator;
+import com.firebase.client.Firebase;
+
 import vibekey.song.Song;
 import vibekey.song.SongDatabase;
+import vibekey.syncable.SyncableContainer;
 import vibekey.util.RandomWrapper;
 
-public class PlaylistController {
+public class PlaylistController extends SyncableContainer{
 	public ArrayList<Playlist> allPlaylists = new ArrayList<Playlist>();
 	
 	
 	
-	public PlaylistController(){
+	public PlaylistController(Firebase ref){
+		super(ref.child("playlists"));
 		for(int i=0;i<3;i++){ //temporary adding of random playlists for testing
 			ArrayList<Song> playlistSongs = new ArrayList<Song>();
 			for(int j=0;j<5;j++){
@@ -24,7 +27,7 @@ public class PlaylistController {
 			newPlaylist.setSongs(playlistSongs);
 			allPlaylists.add(newPlaylist);
 		}
-		updateFirebase();
+		this.hasChanged();
 	}
 	
 	public Playlist search(String name) throws InvalidPlaylistException {
@@ -34,9 +37,5 @@ public class PlaylistController {
 			}
 		}
 		throw new InvalidPlaylistException();
-	}
-	
-	public void updateFirebase(){
-		FirebaseCommunicator.setPlaylists(allPlaylists);
 	}
 }

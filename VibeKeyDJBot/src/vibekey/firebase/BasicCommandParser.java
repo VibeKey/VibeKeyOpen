@@ -17,7 +17,6 @@ import vibekey.song.Song;
 import vibekey.song.SongDatabase;
 import vibekey.stream.StreamController;
 
-@SuppressWarnings("unused")
 public class BasicCommandParser extends FirebaseCommandParser {
 	public BasicCommandParser(StreamController streamController) {
 		super(streamController, "command");

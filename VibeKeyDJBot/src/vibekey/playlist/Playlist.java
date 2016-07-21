@@ -1,11 +1,11 @@
 package vibekey.playlist;
 import java.util.ArrayList;
 
-import vibekey.song.Playable;
 import vibekey.song.Song;
+import vibekey.syncable.Syncable;
 import vibekey.util.RandomWrapper;
 
-public class Playlist {
+public class Playlist extends Syncable {
 	private String name;
 	private ArrayList<Song> songs = new ArrayList<Song>();
 	

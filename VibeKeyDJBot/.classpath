@@ -5,5 +5,8 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Libshout"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MP3agic"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Firebase"/>
+	<classpathentry kind="lib" path="mp3agic-0.8.4.jar"/>
+	<classpathentry kind="lib" path="libshout-java-2.2.2.jar"/>
+	<classpathentry kind="lib" path="firebase-client-2.4.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

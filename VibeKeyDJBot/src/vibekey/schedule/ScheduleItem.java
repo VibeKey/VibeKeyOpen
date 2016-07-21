@@ -6,8 +6,9 @@ import vibekey.filter.Filter;
 import vibekey.picker.NoPickException;
 import vibekey.picker.Picker;
 import vibekey.song.Song;
+import vibekey.syncable.Syncable;
 
-public class ScheduleItem{
+public class ScheduleItem extends Syncable{
 	
 	
 	public static final int PLAYMODE_NONE = 0;

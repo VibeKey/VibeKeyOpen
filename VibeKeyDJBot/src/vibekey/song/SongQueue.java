@@ -1,20 +1,18 @@
 package vibekey.song;
 import java.util.LinkedList;
 
-import vibekey.firebase.FirebaseCommunicator;
+import com.firebase.client.Firebase;
 
-public class SongQueue {
+import vibekey.syncable.SyncableContainer;
+
+public class SongQueue extends SyncableContainer {
 	
 	static final public int FILL_SIZE = 5;
 	
 	LinkedList<Song> queue = new LinkedList<Song>();
 	
-	public SongQueue(){
-	}
-	
-	
-	public void pushToFirebase(){
-		FirebaseCommunicator.updateQueue(queue);
+	public SongQueue(Firebase ref){
+		super(ref.child("queue"));
 	}
 	
 	public int getTotalTime(){
@@ -27,7 +25,7 @@ public class SongQueue {
 	
 	public void addToQueue(Song song){
 		queue.offer(song);
-		pushToFirebase();
+		this.setChanged(true);
 	}
 	
 	public int size(){
@@ -36,22 +34,22 @@ public class SongQueue {
 	
 	public Song popFromQueue(){
 		Song nextSong = queue.poll();
-		pushToFirebase();
+		this.setChanged(true);
 		return nextSong;
 	}
 	
 	public void emptyQueue(){
 		queue.clear();
-		pushToFirebase();
+		this.setChanged(true);
 	}
 	
 	public void removeFromQueueAt(int index){
 		queue.remove(index);
-		pushToFirebase();
+		this.setChanged(true);
 	}
 	
 	public void addToQueueAt(int index, Song song){
 		queue.add(index, song);
-		pushToFirebase();
+		this.setChanged(true);
 	}
 }

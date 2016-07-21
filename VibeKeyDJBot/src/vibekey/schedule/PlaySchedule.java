@@ -2,20 +2,23 @@ package vibekey.schedule;
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.firebase.client.Firebase;
+
 import vibekey.firebase.FirebaseCommunicator;
 import vibekey.picker.NoPickException;
 import vibekey.picker.Picker;
 import vibekey.picker.VotePicker;
 import vibekey.song.Song;
+import vibekey.syncable.SyncableContainer;
 
-public class PlaySchedule{
+public class PlaySchedule extends SyncableContainer{
 	public ArrayList<ScheduleItem> scheduleItems = new ArrayList<ScheduleItem>();
 	
 	Picker curPicker;
 	
-	public PlaySchedule(){
+	public PlaySchedule(Firebase ref, Picker picker){
+		super(ref.child("schedule"));
 		FirebaseCommunicator.loadSchedule(scheduleItems);
-		curPicker = new VotePicker();
 	}
 	
 	
@@ -30,11 +33,12 @@ public class PlaySchedule{
 			}
 		}
 		scheduleItems.add(newScheduleItem);
-		this.pushToFirebase();
+		this.setChanged(true);
 	}
 	
 	public void clearSchedule(){
 		this.scheduleItems.clear();
+		this.setChanged(true);
 	}
 	
 	public Song getSongNow(ArrayList<Song> allSongs) throws NoPickException{
@@ -62,10 +66,6 @@ public class PlaySchedule{
 	
 	public ScheduleItem getDefaultScheduleItem(){
 		 return new DefaultScheduleItem();//TODO: Add real code
-	}
-	
-	public void pushToFirebase(){
-		FirebaseCommunicator.syncScheduleWithFirebase(this);
 	}
 
 

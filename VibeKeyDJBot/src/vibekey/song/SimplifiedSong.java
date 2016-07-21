@@ -1,12 +1,14 @@
 package vibekey.song;
 import java.util.ArrayList;
 
+import vibekey.syncable.Syncable;
+
 /**
  * Class used to represent a Song class in a simplified manner for Firebase
  * @author kneislsj
  *
  */
-public class SimplifiedSong{
+public class SimplifiedSong extends Syncable {
 	private String title;
 	private String artist;
 	private String album;

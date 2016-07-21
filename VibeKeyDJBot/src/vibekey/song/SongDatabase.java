@@ -3,27 +3,34 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import vibekey.firebase.FirebaseCommunicator;
+import com.firebase.client.Firebase;
 
-public class SongDatabase {
+import vibekey.firebase.FirebaseCommunicator;
+import vibekey.syncable.SyncableContainer;
+
+public class SongDatabase extends SyncableContainer{
+	
 	public static ArrayList<Song> songs = new ArrayList<Song>();
 	public static String musicPath;
 	public static ArrayList<String> genres;
 	public static HashMap<String, Song> pathToSongMap;
-	
+
+	public SongDatabase(Firebase ref) {
+		super(ref.child("songs"));
+	}
 	
 	static public void loadDatabase(){
 		songs.clear();
 		loadAllSongs(musicPath ,songs);
 		genres = getGenres();
 		pathToSongMap = buildPathToSongMap();
-		pushToFirebase();
+		SongDatabase.setChanged(true);
 	}
 	
-	static public void pushToFirebase(){
-		FirebaseCommunicator.syncSongsWithFirebase(songs, pathToSongMap);
-		FirebaseCommunicator.addGenresToFirebase(genres);
-	}
+//	static public void pushToFirebase(){
+//		FirebaseCommunicator.syncSongsWithFirebase(songs, pathToSongMap);
+//		FirebaseCommunicator.addGenresToFirebase(genres);
+//	}
 
 	static private void loadAllSongs(String directoryName, ArrayList<Song> songs) {
 	    File directory = new File(directoryName);
@@ -82,8 +89,6 @@ public class SongDatabase {
 		
 		return genreSongs;
 	}
-	
-	
 	
 	static public Song getSongFromPath(String path){
 		return pathToSongMap.get(path);
