@@ -3,3 +3,4 @@
 .recommenders/*
 /GenreExclusion/.classpath
 *.class
+/VibeKeyWeb.new/.idea/*

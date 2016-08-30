@@ -5,34 +5,35 @@ import java.util.HashMap;
 
 import com.firebase.client.Firebase;
 
-import vibekey.firebase.FirebaseCommunicator;
 import vibekey.syncable.SyncableContainer;
 
 public class SongDatabase extends SyncableContainer{
 	
-	public static ArrayList<Song> songs = new ArrayList<Song>();
-	public static String musicPath;
-	public static ArrayList<String> genres;
-	public static HashMap<String, Song> pathToSongMap;
+	public ArrayList<Song> songs = new ArrayList<Song>();
+	public String musicPath;
+	public ArrayList<String> genres;
+	public HashMap<String, Song> pathToSongMap;
 
-	public SongDatabase(Firebase ref) {
+	public SongDatabase(String musicPath, Firebase ref) {
 		super(ref.child("songs"));
+		this.musicPath = musicPath;
+		loadDatabase();
 	}
 	
-	static public void loadDatabase(){
+	private void loadDatabase(){
 		songs.clear();
 		loadAllSongs(musicPath ,songs);
 		genres = getGenres();
 		pathToSongMap = buildPathToSongMap();
-		SongDatabase.setChanged(true);
+		this.setChanged(true);
 	}
 	
-//	static public void pushToFirebase(){
+//	public void pushToFirebase(){
 //		FirebaseCommunicator.syncSongsWithFirebase(songs, pathToSongMap);
 //		FirebaseCommunicator.addGenresToFirebase(genres);
 //	}
 
-	static private void loadAllSongs(String directoryName, ArrayList<Song> songs) {
+	private void loadAllSongs(String directoryName, ArrayList<Song> songs) {
 	    File directory = new File(directoryName);
 
 	    // get all the files from a directory
@@ -46,7 +47,7 @@ public class SongDatabase extends SyncableContainer{
 	    }
 	}
 	
-	static private HashMap<String, Song> buildPathToSongMap(){
+	private HashMap<String, Song> buildPathToSongMap(){
 		HashMap<String, Song> ret = new HashMap<String, Song>();
 		
 		for(Song song : songs){
@@ -56,7 +57,7 @@ public class SongDatabase extends SyncableContainer{
 		return ret;
 	}
 	
-	static private String getFileExtension(File file) {
+	private String getFileExtension(File file) {
 	    String name = file.getName();
 	    try {
 	        return name.substring(name.lastIndexOf(".") + 1);
@@ -65,7 +66,7 @@ public class SongDatabase extends SyncableContainer{
 	    }
 	}
 	
-	static private ArrayList<String> getGenres(){
+	private ArrayList<String> getGenres(){
 		ArrayList<String> genres = new ArrayList<String>();
 		
 		for(Song song : songs){
@@ -77,7 +78,7 @@ public class SongDatabase extends SyncableContainer{
 		return genres;
 	}
 	
-	static public ArrayList<Song> getSongsInGenre(String genreFilter){
+	public ArrayList<Song> getSongsInGenre(String genreFilter){
 		ArrayList<Song> genreSongs = new ArrayList<Song>();
 		
 		for(Song song : songs){
@@ -90,7 +91,7 @@ public class SongDatabase extends SyncableContainer{
 		return genreSongs;
 	}
 	
-	static public Song getSongFromPath(String path){
+	public Song getSongFromPath(String path){
 		return pathToSongMap.get(path);
 	}
 }

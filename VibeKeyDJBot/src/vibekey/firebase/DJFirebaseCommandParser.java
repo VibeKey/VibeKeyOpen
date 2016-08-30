@@ -27,13 +27,13 @@ public class DJFirebaseCommandParser extends FirebaseCommandParser {
 
 	private void addToFrontOfQueue(DataSnapshot params) {
 		String path = params.child("songPath").getValue(String.class);
-		Song song = SongDatabase.getSongFromPath(path);
+		Song song = streamController.songDatabase.getSongFromPath(path);
 		streamController.queue.addToQueueAt(0, song);
 	}
 
 	private void addToQueue(DataSnapshot params) {
 		String path = params.child("songPath").getValue(String.class);
-		Song song = SongDatabase.getSongFromPath(path);
+		Song song = streamController.songDatabase.getSongFromPath(path);
 		streamController.queue.addToQueue(song);
 	}
 	
@@ -62,9 +62,9 @@ public class DJFirebaseCommandParser extends FirebaseCommandParser {
 		newPlaylist.setName(params.child("name").getValue(String.class));
 		for(DataSnapshot songSnapshot : params.child("songs").getChildren()){
 			String songPath = songSnapshot.getValue(String.class);
-		    newPlaylist.addSong(SongDatabase.getSongFromPath(songPath));
+		    newPlaylist.addSong(streamController.songDatabase.getSongFromPath(songPath));
 		}
 		streamController.playlistController.allPlaylists.add(newPlaylist);
-		streamController.playlistController.updateFirebase();
+		//streamController.playlistController.updateFirebase();
 	}
 }

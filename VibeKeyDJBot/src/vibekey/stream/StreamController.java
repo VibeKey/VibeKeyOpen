@@ -15,6 +15,7 @@ import vibekey.song.SongQueue;
 
 public class StreamController {
 	public String playMode;
+	public SongDatabase songDatabase;
 	public Song curPlaying;
 	public Libshout icecast;
 	public SongQueue queue;
@@ -22,10 +23,11 @@ public class StreamController {
 	public PlaySchedule playSchedule;
 	public Boolean stopServer = false; //easy way to stop the server, turn it to true
 	
-	public StreamController(){
+	public StreamController(SongDatabase songDatabase){
+		this.songDatabase = songDatabase;
 		icecast = initializeIcecast();
 		this.queue = new SongQueue(FirebaseCommunicator.rootRef);
-		this.playlistController = new PlaylistController(FirebaseCommunicator.rootRef);
+		this.playlistController = new PlaylistController(songDatabase, FirebaseCommunicator.rootRef);
 		this.playSchedule = new PlaySchedule(FirebaseCommunicator.rootRef,new VotePicker());
 	}
 	
@@ -38,7 +40,7 @@ public class StreamController {
 	public void fillQueue() throws NoPickException{
 		while(queue.size() < SongQueue.FILL_SIZE){
 			long startTime = queue.getTotalTime()*1000 + System.currentTimeMillis();
-			Song song = playSchedule.getSongAtTime(SongDatabase.songs, new Date(startTime));
+			Song song = playSchedule.getSongAtTime(songDatabase.songs, new Date(startTime));
 			queue.addToQueue(song);
 		}
 		queue.setChanged(true);
@@ -78,8 +80,8 @@ public class StreamController {
 			icecast.setHost("localhost");
 			icecast.setPort(8000);
 			icecast.setProtocol(Libshout.PROTOCOL_HTTP);
-			icecast.setPassword("ImASource!");
-			icecast.setMount("/djbot");
+			icecast.setPassword("1i2b3sdhf89");
+			icecast.setMount("/");
 			icecast.setFormat(Libshout.FORMAT_MP3);
 			icecast.open();
 			return icecast;

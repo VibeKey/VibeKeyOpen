@@ -32,13 +32,13 @@ public class BasicCommandParser extends FirebaseCommandParser {
 
 	public void addToFrontOfQueue(DataSnapshot params) {
 		String path = params.child("songPath").getValue(String.class);
-		Song song = SongDatabase.getSongFromPath(path);
+		Song song = streamController.songDatabase.getSongFromPath(path);
 		streamController.queue.addToQueueAt(0, song);
 	}
 
 	public void addToQueue(DataSnapshot params) {
 		String path = params.child("songPath").getValue(String.class);
-		Song song = SongDatabase.getSongFromPath(path);
+		Song song = streamController.songDatabase.getSongFromPath(path);
 		streamController.queue.addToQueue(song);
 	}
 	
@@ -67,26 +67,26 @@ public class BasicCommandParser extends FirebaseCommandParser {
 		newPlaylist.setName(params.child("name").getValue(String.class));
 		for(DataSnapshot songSnapshot : params.child("songs").getChildren()){
 			String songPath = songSnapshot.getValue(String.class);
-		    newPlaylist.addSong(SongDatabase.getSongFromPath(songPath));
+		    newPlaylist.addSong(streamController.songDatabase.getSongFromPath(songPath));
 		}
 		streamController.playlistController.allPlaylists.add(newPlaylist);
-		streamController.playlistController.updateFirebase();
+		//streamController.playlistController.updateFirebase();
 	}
 	public void requestSong(DataSnapshot params){
 		String songPath = params.child("songPath").getValue(String.class);
-		Song song = SongDatabase.getSongFromPath(songPath);
+		Song song = streamController.songDatabase.getSongFromPath(songPath);
 		streamController.queue.addToQueue(song); //TODO: add limits for user requests
 	}
 	
 	public void upvoteSong(DataSnapshot params){
 		String songPath = params.child("songPath").getValue(String.class);
-		Song song = SongDatabase.getSongFromPath(songPath);
+		Song song = streamController.songDatabase.getSongFromPath(songPath);
 		song.upvote();
 	}
 		
 	public void downvoteSong(DataSnapshot params){
 		String songPath = params.child("songPath").getValue(String.class);
-		Song song = SongDatabase.getSongFromPath(songPath);
+		Song song = streamController.songDatabase.getSongFromPath(songPath);
 		song.downvote();
 	}
 	
@@ -96,7 +96,7 @@ public class BasicCommandParser extends FirebaseCommandParser {
 		ArrayList<SimplifiedSong> returnSongs = new ArrayList<SimplifiedSong>();
 		String[] searchStringWords = searchString.split(" ");
 		
-		for(Song song : SongDatabase.songs){
+		for(Song song : streamController.songDatabase.songs){
 			if(searchMaxItems != null && searchMaxItems > 0 && returnSongs.size() >= searchMaxItems){
 				break;
 			}

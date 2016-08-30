@@ -13,12 +13,12 @@ public class PlaylistController extends SyncableContainer{
 	
 	
 	
-	public PlaylistController(Firebase ref){
+	public PlaylistController(SongDatabase songDatabase, Firebase ref){
 		super(ref.child("playlists"));
 		for(int i=0;i<3;i++){ //temporary adding of random playlists for testing
 			ArrayList<Song> playlistSongs = new ArrayList<Song>();
 			for(int j=0;j<5;j++){
-				playlistSongs.add(SongDatabase.songs.get(RandomWrapper.nextInt(SongDatabase.songs.size())));
+				playlistSongs.add(songDatabase.songs.get(RandomWrapper.nextInt(songDatabase.songs.size())));
 			}
 			Playlist newPlaylist = new Playlist();
 			

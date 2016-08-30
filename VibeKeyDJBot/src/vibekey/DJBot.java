@@ -11,6 +11,7 @@ import vibekey.stream.StreamController;
 public class DJBot {
 	StreamController streamController;
 	FirebaseCommandParser fbCommandParser;
+	SongDatabase songDatabase;
 	
 	static final String FIREBASE_SECRET = "1a67VqyArJO54DIBBDe1T4W3V7Rhb7XrXLylVTAE";
 	static final String FIREBASE_ROOT_URL = "https://vibekey-open.firebaseio.com/prod/";
@@ -18,9 +19,8 @@ public class DJBot {
 	
 	public DJBot() {
 		FirebaseCommunicator.rootRef = new Firebase(FIREBASE_ROOT_URL);
-		SongDatabase.musicPath = MUSIC_PATH;
-		SongDatabase.loadDatabase();
-		streamController = new StreamController();
+		songDatabase = new SongDatabase(MUSIC_PATH, FirebaseCommunicator.rootRef);
+		streamController = new StreamController(songDatabase);
 
 		/*fbCommandParser = new CompoundCommandParser(streamController);
 		fbCommandParser.addParser(new UserFirebaseCommandParser(streamController));

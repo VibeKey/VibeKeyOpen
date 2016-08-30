@@ -18,19 +18,19 @@ public class UserFirebaseCommandParser extends FirebaseCommandParser {
 	
 	private void requestSong(DataSnapshot params){
 		String songPath = params.child("songPath").getValue(String.class);
-		Song song = SongDatabase.getSongFromPath(songPath);
+		Song song = streamController.songDatabase.getSongFromPath(songPath);
 		streamController.queue.addToQueue(song); //TODO: add limits for user requests
 	}
 	
 	private void upvoteSong(DataSnapshot params){
 		String songPath = params.child("songPath").getValue(String.class);
-		Song song = SongDatabase.getSongFromPath(songPath);
+		Song song = streamController.songDatabase.getSongFromPath(songPath);
 		song.upvote();
 	}
 		
 	private void downvoteSong(DataSnapshot params){
 		String songPath = params.child("songPath").getValue(String.class);
-		Song song = SongDatabase.getSongFromPath(songPath);
+		Song song = streamController.songDatabase.getSongFromPath(songPath);
 		song.downvote();
 	}
 	
@@ -40,7 +40,7 @@ public class UserFirebaseCommandParser extends FirebaseCommandParser {
 		ArrayList<SimplifiedSong> returnSongs = new ArrayList<SimplifiedSong>();
 		String[] searchStringWords = searchString.split(" ");
 		
-		for(Song song : SongDatabase.songs){
+		for(Song song : streamController.songDatabase.songs){
 			if(searchMaxItems != null && searchMaxItems > 0 && returnSongs.size() >= searchMaxItems){
 				break;
 			}
