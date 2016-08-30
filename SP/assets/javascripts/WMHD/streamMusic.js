@@ -5,7 +5,7 @@ function streamMusic() {
                 "call_sign": "WHMD",
                 "station_name": "WHMD Online Radio",
                 "location": "Terre Haute, IN",
-                "url": "http://vps77662.vps.ovh.ca:8000/wmhd",
+                "url": "http://149.56.18.84:2000/wmhd",
                 "live": true
         }
     ],
