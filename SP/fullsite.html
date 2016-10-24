@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="assets/images/favicon.png">
+    
+    <title>WMHD - Radio</title>
+
+    <!-- Bootstrap -->
+    <link href="assets/stylesheets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Stylesheets -->
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+    <!-- JQuery -->
+    <script src="assets/javascripts/jquery.min.js"></script>
+    <!-- jpreloader -->
+    <link href="assets/javascripts/jpreloader/jpreloader.css" rel="stylesheet">
+    <script src="assets/javascripts/jpreloader/jpreloader.min.js"></script>
+    <!-- font-awesome.css -->
+    <link href="assets/stylesheets/css/fontawesome/font-awesome.css" rel="stylesheet">
+    <!-- animate.css -->
+    <link href="assets/stylesheets/css/animate.css" rel="stylesheet">
+    <!-- Jplayer -->
+    <link href="assets/javascripts/jplayer/skin/jukebox/css/jplayer.jukebox.css" rel="stylesheet" type="text/css" />
+    <!-- Fancybox -->
+    <link href="assets/javascripts/fancybox/jquery.fancybox.css" rel="stylesheet" type="text/css" />
+    <!-- Owl Carousel -->
+    <link href="assets/javascripts/owl.carousel/owl.carousel.css" rel="stylesheet" type="text/css" />
+    <link href="assets/javascripts/owl.carousel/owl.theme.css" rel="stylesheet" type="text/css" />
+    <!-- User Defined Style -->
+    <link href="assets/stylesheets/css/style.css" rel="stylesheet">
+    <link href="assets/stylesheets/css/responsive.css" rel="stylesheet">
+    
+  </head>
+  <body>
+    <!-- Splash Screen Begin -->
+    <div id="jSplash" class="preloader">
+      <div id="loader">
+        <div class="shape-wrap">
+          <div class="shape">
+            <h2>Loading</h2>
+          </div>
+        </div>
+        <div id="fadingBarsG">
+          <div id="fadingBarsG_1" class="fadingBarsG">
+          </div>
+          <div id="fadingBarsG_2" class="fadingBarsG">
+          </div>
+          <div id="fadingBarsG_3" class="fadingBarsG">
+          </div>
+          <div id="fadingBarsG_4" class="fadingBarsG">
+          </div>
+          <div id="fadingBarsG_5" class="fadingBarsG">
+          </div>
+          <div id="fadingBarsG_6" class="fadingBarsG">
+          </div>
+          <div id="fadingBarsG_7" class="fadingBarsG">
+          </div>
+          <div id="fadingBarsG_8" class="fadingBarsG">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Splash Screen End -->
+
+    <!-- Login Begin -->
+    <div id="modal" class="popupContainer" style="display:none;">
+            <div class="loginPop">
+                  <header class="popupHeader">
+                          <span class="header_title">Login</span>
+                          <span class="modal_close"><i class="fa fa-times"></i></span>
+                  </header>
+                  <section class="popupBody">
+                          <!-- Username & Password Login form -->
+                          <div class="user_login">
+                                  <form>
+                                          <label>Email</label>
+                                          <input id="email" type="text" />
+                                          <br />
+
+                                          <label>Password</label>
+                                          <input id="password" type="password" />
+                                          <br />
+
+                                          <div class="action_btns">
+                                                  <div class="one_half"><a onclick="login()" class="btn btn_red">Login</a></div>
+                                                  <div class="one_half last"><a onclick="register()" class="btn">Register</a></div>
+                                          </div>
+                                  </form>
+                          </div>
+                  </section>
+          </div>
+          <div class="logoutPop" style="display:none;">
+            <header class="popupHeader">
+                          <span class="header_title">Logout</span>
+                          <span class="modal_close"><i class="fa fa-times"></i></span>
+              </header>
+              <section class="popupBody">
+              <div class="user_logout">
+                <form>
+                  <p class="logout_info"></p>
+                  <div class="action_btns">
+                      <div class="one_half"><a onclick="logout()" class="btn btn_red">Logout</a></div>
+                      <div class="one_half last"><a class="btn modal_close">Cancel</a></div>
+                  </div>
+                </form>
+              </div>
+            </section>
+          </div>
+    </div>
+    <!-- Login End -->
+
+    <!-- Banner Begin -->
+    <section class="banner" id="banner">
+      <div id="banner-carousel" class="carousel slide" data-ride="carousel">
+        <!-- User -->
+        <div class="user">
+          <a id="modal_trigger" href="#modal">
+            <div class="shape user-shape">
+              <i class="fa fa-user"></i>
+            </div>
+          </a> 
+        </div> 
+        <!-- Main -->
+        <div class="carousel-inner">
+          <div class="item active" style="background-image: url(assets/images/banner.jpg); background-size:cover;">
+            <div class="overlay"></div>
+            <div class="container">
+              <div class="content-wrap">
+                <div class="content">
+                  <div class="textwrap">
+                    <div class="subtitle top animated fadeIn wow" data-wow-delay="0.5s">
+                      <h2>Introducing</h2>
+                    </div>
+                    <div class="title animated fadeIn wow" data-wow-delay="1s">
+                      <h1>WMHD <span class="light">The Monkey</span></h1>
+                    </div>
+                    <div class="subtitle animated fadeIn wow" data-wow-delay="1.5s">
+                      <h2>Rose-Hulman Institute of Technology Online Radio</h2>
+                    </div>
+                  </div><!--/.textwrap -->
+                </div><!--/.content -->
+              </div><!--/.content-wrap -->
+            </div><!--/.container -->
+          </div><!--/.item -->
+        </div><!--/.carousel-inner -->
+        <!-- Controls -->
+        <div class="scroll-info">
+          <a href="#home-nav">
+            <div class="shape">
+              <i class="fa fa-angle-down"></i>
+            </div>
+          </a>
+        </div><!--/.scroll-info -->
+      </div><!--/.bacnner-carousel -->
+
+      <!-- Jplayer Single Layout Begin -->
+      <div id="jquery_jplayer_1" class="jp-jplayer"></div>
+      <div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
+        <div class="jp-type-single">
+          <div class="jp-gui jp-interface">
+            <div class="container">
+              <div class="jp-controls">
+                <button class="jp-play amplitude-play" role="button">play</button>
+                <button class="jp-stop amplitude-pause" role="button">stop</button>
+              </div>
+              <div class="jp-details">
+                <div class="jp-title" id="jp-title" aria-label="title"></div>
+              </div>
+              <div class="jp-vote-controls">
+                <button class="jp-upvote" role="button" onclick="upVote()" title="Upvote"><i class="fa fa-heart"></i></button>
+                <button class="jp-downvote" role="button" onclick="downVote()" title="Downvote"><i class="fa fa-trash"></i></button>
+                <button class="jp-control-board" role="button" onclick="openControlBoard()" style="display:none;" title="Control Board"><i class="fa fa-desktop"></i></button>
+              </div>
+            </div>
+          </div><!-- /.jp-gui -->
+          <div class="jp-no-solution">
+            <span>Update Required</span>
+            To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+          </div>
+        </div><!-- /.jp-type-single -->
+      </div><!-- /.jp-audio -->
+      <!-- Jplayer Single Layout End -->
+    </section><!-- /.banner -->
+    <!-- Banner End -->
+    
+    <!-- Navbar Begin -->
+          <nav class="navbar fixonscroll solidnavbar navbar-inverse" role="navigation" id="home-nav">
+            <div class="container">
+              <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                  <li><a href="#schedule">Schedule</a></li>
+                  <li><a href="#archive">Archive</a></li>
+                  <li>
+                    <a href="#banner" class="brand"><img src="assets/images/logo.png" alt="WMHD Logo"></a>
+                  </li>
+                  <li><a href="#journalism">Journalism</a></li>
+                  <li><a href="#about">More</a></li>
+                </ul><!-- /.nav -->
+              </div><!--/.nav-collapse -->
+            </div><!--/.container -->
+          </nav><!--/.navbar -->
+    <!-- Navbar End -->
+    
+    <!-- Chat Begin -->
+<!--
+		<section class="chat" id="chat">
+			<div class="container">
+				<div class="col-md-12">
+					<div class="wow animated fadeIn animated" style="visibility: visible; animation: fadeIn 0.2s; -webkit-animation: fadeIn 0.1s;" data-wow-delay="0.1s">
+						<div class="title" id="chat_title">
+							<h3>
+								Chat
+								<br />
+								<span class="bold rose-red">Real-time Chatting</span>
+							</h3>
+						</div>				
+					</div>
+          <div class="chat_area" id="chat_area">
+            <ul class="message_list" id='message_list'></ul>
+          </div>
+          <div class="chat_bottom" id="chat_bottom">
+            <input type="text" class='messageInput' id='messageInput' onkeypress="ifEnterChat(event)">
+          </div>  
+				</div>
+			</div>
+		</section>
+-->
+	<!-- Chat End -->
+
+    <!-- Schedule Begin -->
+    <section class="schedule" id="schedule">
+      <div class="overlay"></div>
+      <div class="container content">
+        <div class="col-md-12 title wow animated fadeIn" data-wow-delay="0.3s"><h2>Schedule</h2></div>
+        <div class="col-md-12" id="newsList">
+        </div><!-- /.col-md-12 -->
+      </div><!-- /.container -->
+    </section><!-- /.schedule -->
+    <!-- Schedule End -->
+
+    <!-- Archive Begin-->
+    <section class="about" id="archive">
+      <div class="container content">
+        <div class="col-md-12 title wow animated fadeIn" data-wow-delay="0.4s"><h2>Archive</h2></div>
+      </div> <!--/.container-->
+    </section><!--/.archive-->
+    <!-- Archive End-->
+
+    <!-- Journalism Begin-->
+    <section class="schedule" id="journalism">
+      <div class="overlay"></div>
+      <div class="container content">
+        <div class="col-md-12 title wow animated fadeIn" data-wow-delay="0.5s"><h2>Journalism</h2></div>
+	<!-- Embed WordPress blog link that also previews most recent 3-5 articles -->
+      </div> <!--/.container-->
+    </section><!--/.journalism-->
+    <!-- Journalism End-->
+
+    <!-- About Begin -->
+    <section class="about" id="about">
+      <div class="container">
+        <div class="col-md-6 col-sm-6">
+          <div class="personnel wow animated fadeIn" data-wow-delay="0.2s">
+            <div class="title">
+              <h3>About</h3>
+            </div>
+            <div class="personnel-list">
+              <div class="shape photo item" style="background: url(assets/images/personnel1.jpg);">
+                <a href="about.html" class="overlay">
+                  <div class="name">
+                    About Us
+                  </div>
+                </a>
+              </div><!-- /.photo -->
+              <div class="shape photo item" style="background: url(assets/images/personnel2.jpg);">
+                <a href="about.html" class="overlay">
+                  <div class="name">
+                    Campus Services
+                  </div>
+                </a>
+              </div><!-- /.photo -->
+              <div class="shape photo item" style="background: url(assets/images/personnel3.jpg);">
+                <a href="about.html" class="overlay">
+                  <div class="name">
+                    Music Logs
+                  </div>
+                </a>
+              </div><!-- /.photo -->
+            </div><!-- /.personnel-list -->
+            <div class="text">
+              <p>General Manager: Val Grafton<br>
+                 Personnel Director: Alyssa Mihok<br>
+                 Promotions Director: Alex Pieragowski<br>
+                 Treasurer: Jacob Guttman<br>
+                 Equipment Manager: Andrew Mueller<br>
+                 Coding Manager: Walt Panfil</p>
+              <p>WMHD is a student run radio that offers online music, equipment rentals & DJ services for Rose-Hulman Institute of Technology community.</p>
+            </div>
+          </div><!-- /.personnel -->
+        </div><!-- /.col-md-6 -->
+      </div><!-- /.container -->
+    </section><!-- /.schedule -->
+    <!-- About End -->
+    
+    <!-- Footer Begin-->
+    <footer class="footer" id="footer">
+      <div class="container">        
+        <div class="col-md-4 col-sm-4 footer-row">
+          <div class="title"><h4>Contact our club</h4></div>
+		  <p>Email the Current Officers</p>
+          <div class="content">
+            <div class=socmed-wrap>
+				<a href="mailto:wmhdradioonline@gmail.com?Subject=Radio" 
+				target="_top"><i class="fa fa-envelope"></i></a>
+			</div><!-- /.socmed-wrap -->
+          </div><!-- /.content -->
+        </div><!-- /.footer-row -->
+
+        <div class="col-md-4 col-sm-4 footer-row">
+          <div class="title"><h4>Keep Connected</h4></div>
+          <p>Connect with our Social Media</p>
+          <div class="content">
+            <div class="socmed-wrap">
+              <a href="https://www.facebook.com/Rose-Hulman-WMHD-Radio-193165454132809/" 
+			  target="_blank"><i class="fa fa-facebook"></i></a>
+              <a href="#"
+              target="_blank"><i class="fa fa-twitter"></i></a>
+              <a href="#"
+              target="_blank"><i class="fa fa-youtube"></i></a>
+            </div><!-- /.socmed-wrap -->
+          </div><!-- /.content -->
+        </div><!-- /.footer-row -->
+      </div><!-- /.container -->
+
+    </footer><!-- /.footer -->
+    <!-- Footer End-->
+
+    <section class="copyright">
+      <div class="container">
+        <p>&copy; WMHD - Radio 2016. All Right Reserved</p>
+      </div>
+    </section>
+    
+    <!-- Javascript Plugins -->
+    <script src="assets/javascripts/bootstrap.min.js"></script>
+    <script src="assets/javascripts/jplayer/jquery.jplayer.min.js"></script>
+    <script src="assets/javascripts/jplayer/add-on/jplayer.playlist.min.js"></script>
+    <script src="assets/javascripts/wow/wow.min.js"></script>
+    <script src="assets/javascripts/modernizr.js"></script>
+    <script src="assets/javascripts/jquery.hoverdir.js"></script>
+    <script src="assets/javascripts/jquery.easing.js"></script>
+    <script src="assets/javascripts/jquery.leanModal.min.js"></script>
+    <script src="assets/javascripts/sly.min.js"></script>
+    <script src="assets/javascripts/jquery.parallax-1.1.3.js"></script>
+    <script src="assets/javascripts/owl.carousel/owl.carousel.min.js"></script>
+    <script src="assets/javascripts/fancybox/jquery.fancybox.pack.js"></script>
+    <script src="assets/javascripts/isotope.pkgd.min.js"></script>
+    <script src="assets/javascripts/masonry.pkgd.min.js"></script>
+    <!-- WMHD -->
+    <script src="assets/javascripts/WMHD/constants.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
+    <script src="assets/javascripts/WMHD/amplitude.js"></script>
+    <script src="assets/javascripts/WMHD/streamMusic.js"></script>
+    <script src="assets/javascripts/WMHD/createCommand.js"></script>
+    <script src="assets/javascripts/WMHD/user.js"></script>
+    <script src="assets/javascripts/WMHD/vote.js"></script>
+    <script src="assets/javascripts/WMHD/news.js"></script>
+    <script src="assets/javascripts/WMHD/chat.js"></script>
+    <!-- preloads -->
+    <script src="assets/javascripts/custom.js"></script>
+  </body>
+</html>
