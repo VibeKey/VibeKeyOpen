@@ -48,6 +48,7 @@ body h5 {
   font-family: "Oswald", helvetica, sans-serif;
   font-weight: 600;
   color: #ffffff;
+  text-transform: uppercase;
 }
 body p {
   font-size: 13px;
@@ -209,6 +210,10 @@ body p {
   color: #ffffff;
 }
 /* banner title */
+.banner {
+  z-index: 3;
+}
+
 .banner-title {
   position: relative;
   width: 100%;
@@ -333,7 +338,7 @@ body p {
   width: 100%;
   background-size: cover;
   position: relative;
-  z-index: 1;
+  z-index: 3;
 }
 .banner .carousel {
   height: 100%;
@@ -737,8 +742,6 @@ body p {
   padding-bottom: 40px;
 }
 .schedule .content .title h2 {
-  color: #ffffff;
-  text-transform: uppercase;
   font-size: 24px;
   margin: 0px;
 }
@@ -798,6 +801,42 @@ body p {
   text-decoration: none;
 }
 
+/* archive */
+.archive {
+  position: relative;
+  padding: 80px 0px 100px;
+}
+
+.archive .content .title h2 {
+  font-size: 24px;
+  margin: 0px;
+}
+
+/* journalism */
+.journalism {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+.journalism .content .title h2 {
+  font-size: 24px;
+  margin: 0px;
+}
+.journalism .content {
+  position: relative;
+  z-index: 3;
+  padding: 80px 0px;
+}
+.journalism .content .title {
+  padding-bottom: 40px;
+}
+.journalism .overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent url("../../images/noise1.png");
+  z-index: 2;
+}
 
 /* about */
 .about {
@@ -809,15 +848,10 @@ body p {
 }
 .about .personnel .title h3,
 .about .discography .title h3 {
-  font-family: "Oswald", helvetica, sans-serif;
-  font-weight: 400;
-  text-transform: uppercase;
   line-height: 30px;
 }
 .about .personnel .title .bold,
 .about .discography .title .bold {
-  font-family: "Oswald", helvetica, sans-serif;
-  text-transform: uppercase;
   font-size: 22px;
 }
 .about .personnel .personnel-list {
@@ -1361,7 +1395,10 @@ a.btn_red {
 /*             05 - Chat
 /*==========================================*/
 .chat {
-  padding: 80px 0px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
 }
 .chat .title {
   font-size: 18px;
@@ -1372,21 +1409,16 @@ a.btn_red {
   text-transform: uppercase;
   line-height: 30px;
 }
-.chat .title .bold {
-  font-family: "Oswald", helvetica, sans-serif;
-  text-transform: uppercase;
-  font-size: 22px;
-}
 
 .chat .chat_area {
   display: block;
-  width: 100%;
-  height: 300px;
-  background-color: #7b7b7b;
+  width: 25%;
+  height: 100%;
+  background-color: #5b5b5b;
 }
 
 .chat .chat_area .message_list {
-  max-height: 300px;
+  max-height: 100%;
   overflow-y: auto;
   overflow-x: hidden; 
   padding: 10px;
@@ -1412,7 +1444,7 @@ a.btn_red {
 
 .chat .chat_bottom {
   display: block;
-  width: 100%;
+  width: 25%;
   height: 80px;
 }
 
@@ -1423,7 +1455,7 @@ a.btn_red {
 .chat .chat_bottom .messageInput {
   width: 100%;
   height: 100%;
-  background-color: #5b5b5b;
+  background-color: #000000;
   padding: 10px;
   border: 0;
 }
