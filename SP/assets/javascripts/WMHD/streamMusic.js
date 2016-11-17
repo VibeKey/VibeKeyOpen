@@ -13,6 +13,27 @@ function streamMusic() {
   });
 }
 
+$(document).ready(function() {
+
+    $("#jquery_jplayer_1").jPlayer({
+        ready: function(event) {
+            $(this).jPlayer("setMedia", {
+				title: "WMHD",
+				oga: "http://airtime-test.reshall.rose-hulman.edu:8000/wmhd"
+            });
+        },
+        swfPath: "http://jplayer.org/latest/dist/jplayer",
+        supplied: "oga",
+		wmode: "window",
+		useStateClassSkin: true,
+		autoBlur: false,
+		smoothPlayBar: true,
+		keyEnabled: true,
+		remainingDuration: true,
+		toggleDuration: true
+    });
+});  
+
 function updateNowPlaying() {
   var npRef = new Firebase(FIREBASE_REF).child("nowPlaying");
   npRef.on("value", function(snapshot) {
@@ -23,25 +44,4 @@ function updateNowPlaying() {
   });
 }
 
-function pressPlayerButton(){
-  var playButton = document.getElementById("playButton");
-  var pauseButton = document.getElementById("pauseButton");
-  var playImage = document.getElementById("playImage");
-  var pauseImage = document.getElementById("pauseImage");
 
-  if (playButton.style["display"] != "none"){
-    // Removes the play button and adds the pause button.
-    playButton.style["display"] = "none";
-    pauseButton.style["display"] = null;
-
-    playImage.style["display"] = null;
-    pauseImage.style["display"] = "none";
-  } else {
-    // Removes the play button and adds the pause button.
-    pauseButton.style["display"] = "none";
-    playButton.style["display"] = null;
-
-    pauseImage.style["display"] = null;
-    playImage.style["display"] = "none";
-  }
-}
