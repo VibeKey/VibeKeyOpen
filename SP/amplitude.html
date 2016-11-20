@@ -159,14 +159,14 @@
       <!-- Jplayer Single Layout Begin -->
       <div id="jquery_jplayer_1" class="jp-jplayer"></div>
       <div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
-        <div class="jp-type-single">
-          <div class="jp-gui jp-interface">
+        <div id="player-container" class="jp-type-single">
+          <div id="player" class="jp-gui jp-interface">
             <div class="container">
               <div class="jp-controls">
-                <button class="jp-play" role="button">play</button>
+                <button id="amplitude-play-pause" class="jp-play" role="button">play</button>
               </div>
               <div class="jp-details">
-                <div class="jp-title" id="jp-title" aria-label="title"></div>
+                <div class="jp-title" id="title" aria-label="title"></div>
               </div>
 <!--
               <div class="jp-vote-controls">
@@ -341,8 +341,6 @@
     
     <!-- Javascript Plugins -->
     <script src="assets/javascripts/bootstrap.min.js"></script>
-    <script src="assets/javascripts/jplayer/jquery.jplayer.min.js"></script>
-    <script src="assets/javascripts/jplayer/add-on/jplayer.playlist.min.js"></script>
     <script src="assets/javascripts/wow/wow.min.js"></script>
     <script src="assets/javascripts/modernizr.js"></script>
     <script src="assets/javascripts/jquery.hoverdir.js"></script>
