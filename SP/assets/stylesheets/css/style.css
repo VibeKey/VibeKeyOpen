@@ -637,65 +637,38 @@ body p {
   position: absolute;
   bottom: 0;
 }
-.banner .jp-audio .jp-type-single .container {
+.banner .jp-audio .container {
   position: relative;
   padding: 0px 0px;
 }
-.banner .jp-audio .jp-type-single .container .jp-details {
+.banner .jp-audio .container .jp-details {
   background: none;
   position: absolute;
   z-index: 5;
   left: 10%;
   width: 70%;
 }
-.banner .jp-audio .jp-type-single .container .jp-details .jp-title {
+.banner .jp-audio .container .jp-details .jp-title {
   color: #ffffff;
   text-align: left;
   font-family: "Lato", helvetica, sans-serif;
   font-size: 12;
   font-weight: 200;
 }
-.banner .jp-audio .jp-type-single .container .jp-controls {
+.banner .jp-audio .container .jp-controls {
   width: 10%;
   padding: 20px 0px 0px 15px;
 }
-.banner .jp-audio .jp-type-single .container .jp-controls .jp-stop {
+.banner .jp-audio .container .jp-controls .jp-stop {
   margin-left: 0px;
 }
-.banner .jp-audio .jp-type-single .container .jp-progress {
+.banner .jp-audio .container .jp-progress {
   width: 76%;
   left: 10%;
 }
-.banner .jp-audio .jp-type-single .container .jp-time-holder {
+.banner .jp-audio .container .jp-time-holder {
   left: 10%;
   width: 76%;
-}
-.banner .jp-audio .jp-type-single .container .jp-vote-controls {
-  position: absolute;
-  top: 40%;
-  left: 90%;
-  width: 15%;
-  
-}
-.banner .jp-audio .jp-type-single .container .jp-vote-controls button {
-  background: none;
-  border: none;
-  position: relative;
-}
-.banner .jp-audio .jp-type-single .container .jp-vote-controls .jp-upvote {
-  width: 30px;
-  height: 30px;
-  left: 0px;
-}
-.banner .jp-audio .jp-type-single .container .jp-vote-controls .jp-downvote {
-  width: 30px;
-  height: 30px;
-  left: auto;
-}
-.banner .jp-audio .jp-type-single .container .jp-vote-controls .jp-control-board {
-  width: 30px;
-  height: 30px;
-  left: auto;
 }
 .banner .text {
   position: relative;

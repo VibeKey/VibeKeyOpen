@@ -156,33 +156,24 @@
         </div><!--/.scroll-info -->
       </div><!--/.banner-carousel -->
 
+
       <!-- Jplayer Single Layout Begin -->
-      <div id="jquery_jplayer_1" class="jp-jplayer"></div>
-      <div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
-        <div id="player-container" class="jp-type-single">
-          <div id="player" class="jp-gui jp-interface">
-            <div class="container">
-              <div class="jp-controls">
-                <button id="amplitude-play-pause" class="jp-play" role="button">play</button>
-              </div>
-              <div class="jp-details">
-                <div class="jp-title" id="title" aria-label="title"></div>
-              </div>
-<!--
-              <div class="jp-vote-controls">
-                <button class="jp-upvote" role="button" onclick="upVote()" title="Upvote"><i class="fa fa-heart"></i></button>
-                <button class="jp-downvote" role="button" onclick="downVote()" title="Downvote"><i class="fa fa-trash"></i></button>
-                <button class="jp-control-board" role="button" onclick="openControlBoard()" style="display:none;" title="Control Board"><i class="fa fa-desktop"></i></button>
-              </div>
--->
+      <div class="jp-audio" role="application" aria-label="media player">
+        <div class="jp-gui jp-interface">
+          <div class="container">
+            <div class="jp-controls">
+              <button class="jp-play amplitude-play-pause amplitude-playing" role="button">play</button>
             </div>
-          </div><!-- /.jp-gui -->
-          <div class="jp-no-solution">
-            <span>Update Required</span>
-            To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+            <div class="jp-details">
+              <div class = "song-info" aria-label="title"></div>
+            </div>
           </div>
-        </div><!-- /.jp-type-single -->
-      </div><!-- /.jp-audio -->
+        </div><!-- /.jp-gui -->
+        <div class="jp-no-solution">
+          <span>Update Required</span>
+          To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+        </div>
+      </div><!-- /.audio-player -->
       <!-- Jplayer Single Layout End -->
     </section><!-- /.banner -->
     <!-- Banner End -->
@@ -341,6 +332,8 @@
     
     <!-- Javascript Plugins -->
     <script src="assets/javascripts/bootstrap.min.js"></script>
+    <script src="assets/javascripts/jplayer/jquery.jplayer.min.js"></script>
+    <script src="assets/javascripts/jplayer/add-on/jplayer.playlist.min.js"></script>
     <script src="assets/javascripts/wow/wow.min.js"></script>
     <script src="assets/javascripts/modernizr.js"></script>
     <script src="assets/javascripts/jquery.hoverdir.js"></script>

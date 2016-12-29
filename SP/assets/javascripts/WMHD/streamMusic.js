@@ -1,47 +1,26 @@
-function streamMusic() {
+$(document).ready(function() {
   Amplitude.init({
     "songs": [
         {
                 "call_sign": "WHMD",
-                "station_name": "WHMD Online Radio",
+                "station_name": "The Monkey",
                 "location": "Terre Haute, IN",
-                "url": "http://airtime-test.reshall.rose-hulman.edu:8000/wmhd",
+                "url": "http://icecast.wmhdradio.org:8000/wmhd",
                 "live": true
         }
     ],
     "autoplay": true
   });
-}
-
-$(document).ready(function() {
-
-    $("#jquery_jplayer_1").jPlayer({
-        ready: function(event) {
-            $(this).jPlayer("setMedia", {
-				title: "WMHD",
-				oga: "http://airtime-test.reshall.rose-hulman.edu:8000/wmhd"
-            });
-        },
-        swfPath: "http://jplayer.org/latest/dist/jplayer",
-        supplied: "oga",
-		wmode: "window",
-		useStateClassSkin: true,
-		autoBlur: false,
-		smoothPlayBar: true,
-		keyEnabled: true,
-		remainingDuration: true,
-		toggleDuration: true
-    });
 });  
 
-function updateNowPlaying() {
-  var npRef = new Firebase(FIREBASE_REF).child("nowPlaying");
-  npRef.on("value", function(snapshot) {
-    var main = snapshot.val();
-    document.getElementById("title").innerHTML = main.title + " by " + main.artist;
-  }, function (errorObject) {
-    console.log("The read failed: " + errorObject.code);
-  });
-}
+//function updateNowPlaying() {
+//  var npRef = new Firebase(FIREBASE_REF).child("nowPlaying");
+//  npRef.on("value", function(snapshot) {
+//    var main = snapshot.val();
+//    document.getElementById("title").innerHTML = main.title + " by " + main.artist;
+//  }, function (errorObject) {
+//    console.log("The read failed: " + errorObject.code);
+//  });
+//}
 
 
