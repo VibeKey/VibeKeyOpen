@@ -624,6 +624,49 @@ body p {
 .banner .scroll-info .shape:hover i {
   color: #ffffff;
 }
+
+.amplitude-play-pause{
+  width: 40px;
+  height: 40px; }
+
+.amplitude-paused {
+  background: url("../../images/jukebox.png") 0 0 no-repeat; }
+
+.amplitude-paused:focus {
+  background: url("../../images/jukebox.png") -41px 0 no-repeat; }
+
+.amplitude-playing {
+  background: url("../../images/jukebox.png") 0 -42px no-repeat; }
+
+.amplitude-playing:focus {
+  background: url("../../images/jukebox.png") -41px -42px no-repeat; }
+
+.amplitude-volume-slider {
+  position: absolute;
+  overflow: hidden;
+  background: url("../../images/jukebox.png") 0 -250px repeat-x;
+  top: 5px;
+  left: 22px;
+  width: 46px;
+  height: 5px;
+  cursor: pointer; }
+
+.amplitude-volume-slider::-webkit-progress-value{
+  background: url("../../images/jukebox.png") 0 -256px repeat-x;
+  width: 0px;
+  height: 5px; }
+
+.amplitude-volume-slider::-moz-range-progress{
+  background: url("../../images/jukebox.png") 0 -256px repeat-x;
+  width: 0px;
+  height: 5px; }
+
+.amplitude-volume-slider::-ms-fill-lower{
+  background: url("../../images/jukebox.png") 0 -256px repeat-x;
+  width: 0px;
+  height: 5px; }
+
+
 .banner .jp-audio {
   z-index: 3;
   position: absolute;
@@ -641,6 +684,10 @@ body p {
   position: relative;
   padding: 0px 0px;
 }
+.banner .jp-audio .container .jp-controls {
+  width: 10%;
+  padding: 20px 0px 0px 15px;
+}
 .banner .jp-audio .container .jp-details {
   background: none;
   position: absolute;
@@ -655,20 +702,16 @@ body p {
   font-size: 12;
   font-weight: 200;
 }
-.banner .jp-audio .container .jp-controls {
-  width: 10%;
-  padding: 20px 0px 0px 15px;
+.banner .jp-audio .container .volume-controls {
+  position: absolute;
+  left: 80%;
+  bottom: 25%;
+  width: 20%;
 }
-.banner .jp-audio .container .jp-controls .jp-stop {
-  margin-left: 0px;
-}
-.banner .jp-audio .container .jp-progress {
-  width: 76%;
-  left: 10%;
-}
-.banner .jp-audio .container .jp-time-holder {
-  left: 10%;
-  width: 76%;
+.banner .jp-audio .container .volume-controls .volume-icon{
+  width: 18px;
+  height: 15px;
+  background: url("../../images/jukebox.png") -19px -186px no-repeat;
 }
 .banner .text {
   position: relative;
