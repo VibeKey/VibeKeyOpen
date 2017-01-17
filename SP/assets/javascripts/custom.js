@@ -243,26 +243,27 @@ $(window).load(function(){
   })
 
   //  -------------- WMHD --------------
-  var ref = new Firebase("https://vibekey-open.firebaseio.com/");
-      var auth = ref.getAuth();
-      if(auth) {
-        var username = auth.password.email;
-          $(".logout_info").text("Login as " + username +". Are you sure you want to log out?" );
-          $(".fa-user").css({'color':'#800000', 'animation-iteration-count': '0'});
-          $(".user-shape").css({'border': '1px solid #800000'});
-          $(".loginPop").hide();
-          $(".logoutPop").show();
-          var uid = auth.uid;
-          var dj_ref = ref.child("prod/user_access/djs");
-          dj_ref.on('value', function(snapshot) {
-            if(snapshot.child(uid).exists()) {
-              showCB();
-            }
-          });
-      }
+  // Firebase stuff for logging in, left for reference if we want to do something
+  // similar later
+  //var ref = new Firebase("https://vibekey-open.firebaseio.com/");
+  //    var auth = ref.getAuth();
+  //    if(auth) {
+  //      var username = auth.password.email;
+  //        $(".logout_info").text("Login as " + username +". Are you sure you want to log out?" );
+  //        $(".fa-user").css({'color':'#800000', 'animation-iteration-count': '0'});
+  //        $(".user-shape").css({'border': '1px solid #800000'});
+  //        $(".loginPop").hide();
+  //        $(".logoutPop").show();
+  //        var uid = auth.uid;
+  //        var dj_ref = ref.child("prod/user_access/djs");
+  //        dj_ref.on('value', function(snapshot) {
+  //          if(snapshot.child(uid).exists()) {
+  //            showCB();
+  //          }
+  //        });
+  //    }
 
       streamMusic();
       updateNowPlaying();
       populateNews();
-      syncChat();
 });
