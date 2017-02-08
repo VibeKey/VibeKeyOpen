@@ -15,8 +15,10 @@ function streamMusic() {
 
 function updateNowPlaying() {
   console.log("NowPlaying Updated");
-  $.get("http://dj.wmhdradio.org/api/live-info", function(data) {
-    document.getElementById("song-title").innerHTML = data.previous.name;
+  $.get("https://dj.wmhdradio.org/api/live-info/", function(data) {
+    document.getElementById("song-title").innerHTML = data.current.name;
+    var timeTilNext = Date.parse(data.next.starts) - (new Date()) - 18000000;
+    setTimeout(updateNowPlaying, timeTilNext);
   })
   .done(function() {
       console.log("request made");
@@ -25,11 +27,3 @@ function updateNowPlaying() {
       console.log("request failed");
   });
 }
-
-//var npRef = new Firebase(FIREBASE_REF).child("nowPlaying");
-//npRef.on("value", function(snapshot) {
-//  var main = snapshot.val();
-//  document.getElementById("title").innerHTML = main.title + " by " + main.artist;
-//}, function (errorObject) {
-//  console.log("The read failed: " + errorObject.code);
-//});
