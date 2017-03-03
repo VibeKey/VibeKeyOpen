@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    $("#weekSchedule").airtimeWeekSchedule({
+    $("#scheduleTabs").airtimeWeekSchedule({
         sourceDomain:"https://dj.wmhdradio.org/",
         dowText:{ sunday:"Sunday",
                 monday:"Monday",
@@ -14,7 +14,7 @@ $(document).ready(function() {
     });
 
     var d = new Date().getDay();
-    $('#weekSchedule').tabs({selected: d === 0 ? 6 : d-1,
+    $('#scheduleTabs').tabs({selected: d === 0 ? 6 : d-1,
                             fx: {opacity: 'toggle'}});
 
 });
