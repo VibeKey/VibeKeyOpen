@@ -238,7 +238,7 @@
     var defaults = {
         sourceDomain: "http://localhost/", //where to get show status from
         updatePeriod: 600,
-        dowText:{monday:"Monday", tuesday:"Tuesday", wednesday:"Wednesday",thursday:"Thursday", friday:"Friday", saturday:"Saturday",sunday:"Sunday", nextmonday:"Next Monday", nexttuesday:"Next Tuesday",nextwednesday:"Next Wednesday", nextthursday:"Next Thursday",nextfriday:"Next Friday", nextsaturday:"Next Saturday", nextsunday:"NextSunday"},
+        dowText:{monday:"Monday", tuesday:"Tuesday", wednesday:"Wednesday",thursday:"Thursday", friday:"Friday", saturday:"Saturday",sunday:"Sunday"},
         miscText: {time:"Time", programName:"Program Name", details:"Details", readMore:"Read More"}
     };
     options = $.extend(true, defaults, options);
@@ -250,7 +250,7 @@
 
         obj.attr("class", "ui-tabs");
 
-				var dow = ["monday", "tuesday", "wednesday", "thursday", "friday","saturday", "sunday", "nextmonday", "nexttuesday", "nextwednesday","nextthursday", "nextfriday", "nextsaturday", "nextsunday"];
+				var dow = ["monday", "tuesday", "wednesday", "thursday", "friday","saturday", "sunday"];
 
         var date = new Date();
         //subtract 1 because javascript date function returns
@@ -259,7 +259,7 @@
         if (todayInt < 0)
             todayInt += 7;
 
-        var html = '<ul>';
+        var html = '<ul style="display: table">';
         for (var i=0; i<dow.length; i++){
             html += '<li'+ (i==todayInt?' class="ui-tabs-selected ui-state-active"':'')+'><a href="#'+dow[i]+'">'+options.dowText[dow[i]]+'</a></li>';
         }
