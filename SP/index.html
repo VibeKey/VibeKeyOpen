@@ -32,6 +32,8 @@
     <!-- User Defined Style -->
     <link href="assets/stylesheets/css/style.css" rel="stylesheet">
     <link href="assets/stylesheets/css/responsive.css" rel="stylesheet">
+    <!-- Schedul Widget Style -->
+    <link href="assets/stylesheets/css/widgets/airtime-widgets.css" rel="stylesheet">
     
   </head>
   <body>
@@ -68,6 +70,14 @@
     <!-- Banner Begin -->
     <section class="banner" id="banner">
       <div id="banner-carousel" class="carousel slide" data-ride="carousel">
+        <!-- User -->
+        <div class="user">
+          <a id="modal_trigger" href="#modal">
+            <div class="shape user-shape">
+              <i class="fa fa-user"></i>
+            </div>
+          </a> 
+        </div> 
         <!-- Main -->
         <div class="carousel-inner">
           <div class="item active" style="background-image: url(assets/images/banner.jpg); background-size:cover;">
@@ -77,42 +87,151 @@
                 <div class="content">
                   <div class="textwrap">
                     <div class="subtitle top animated fadeIn wow" data-wow-delay="0.5s">
-                      <h2>Coming Soon...</h2>
+                      <h2>Introducing</h2>
                     </div>
                     <div class="title animated fadeIn wow" data-wow-delay="1s">
                       <h1>WMHD <span class="light">The Monkey</span></h1>
                     </div>
                     <div class="subtitle animated fadeIn wow" data-wow-delay="1.5s">
-                      <h2>Rose-Hulman Online Radio</h2>
+                      <h2>Rose-Hulman Institute of Technology Online Radio</h2>
                     </div>
-		    <div id="clockdiv" class="title animated fadeIn wow" data-wow-delay="2.0s">
-			  <div>
-			    <span class="days"></span>
-			    <div class="smalltext">Days</div>
-			  </div>
-			  <div>
-			    <span class="hours"></span>
-			    <div class="smalltext">Hours</div>
-			  </div>
-			  <div>
-			    <span class="minutes"></span>
-			    <div class="smalltext">Minutes</div>
-			  </div>
-			  <div>
-			    <span class="seconds"></span>
-			    <div class="smalltext">Seconds</div>
-			  </div>
-			</div>
-    			<script src="assets/javascripts/WMHD/countdown.js"></script>
                   </div><!--/.textwrap -->
                 </div><!--/.content -->
               </div><!--/.content-wrap -->
             </div><!--/.container -->
           </div><!--/.item -->
         </div><!--/.carousel-inner -->
-      </div><!--/.bacnner-carousel -->
+        <!-- Controls -->
+        <div class="scroll-info">
+          <a href="#home-nav">
+            <div class="shape">
+              <i class="fa fa-angle-down"></i>
+            </div>
+          </a>
+        </div><!--/.scroll-info -->
+      </div><!--/.banner-carousel -->
 
+
+      <!-- Jplayer Single Layout Begin -->
+      <div class="jp-audio" role="application" aria-label="media player">
+        <div class="jp-interface">
+          <div class="container">
+            <div class="jp-controls">
+              <button class="amplitude-play-pause amplitude-paused" amplitude-main-play-pause="true" role="button">play</button>
+            </div>
+            <div class="jp-details">
+              <div id = "song-title" class = "song-info" aria-label="title"></div>
+            </div>
+            <div class = "volume-controls">
+              <div class="volume-icon"></div>
+              <input type="range" class = "amplitude-volume-slider" value="0"/>
+            </div>
+          </div>
+        </div><!-- /.jp-gui -->
+      </div><!-- /.audio-player -->
+      <!-- Jplayer Single Layout End -->
+    </section><!-- /.banner -->
     <!-- Banner End -->
+    
+    <!-- Navbar Begin -->
+          <nav class="navbar fixonscroll solidnavbar navbar-inverse" role="navigation" id="home-nav">
+            <div class="container">
+              <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                  <li><a href="#schedule">Schedule</a></li>
+                  <li><a href="#archive"></a></li>
+                  <li>
+                    <a href="#banner" class="brand"><img src="assets/images/logo.png" alt="WMHD Logo"></a>
+                  </li>
+                  <li><a href="https://therosethorn.com">Journalism</a></li>
+                  <li><a href="#about">More</a></li>
+                </ul><!-- /.nav -->
+              </div><!--/.nav-collapse -->
+            </div><!--/.container -->
+          </nav><!--/.navbar -->
+    <!-- Navbar End -->
+    
+    <!-- Chat Begin 
+    <section class="chat" id="chat">
+       <div class="container">
+         <div class="col-md-12">
+           <div class="wow animated fadeIn animated" style="visibility: visible; animation: fadeIn 0.2s; -webkit-animation: fadeIn 0.1s;" data-wow-delay="0.1s">
+             <div class="title" id="chat_title">
+               <h3>Chat</h3>
+             </div>				
+           </div>
+           <div class="chat_area" id="chat_area">
+             <ul class="message_list" id='message_list'></ul>
+           </div>
+           <div class="chat_bottom" id="chat_bottom">
+             <input type="text" class='messageInput' id='messageInput' onkeypress="ifEnterChat(event)">
+           </div>  
+         </div>
+       </div>
+    </section>
+	Chat End -->
+
+    <!-- Schedule Begin -->
+    <section class="schedule" id="schedule">
+      <div class="overlay"></div>
+      <div class="container content">
+        <div class="col-md-12 title wow animated fadeIn" data-wow-delay="0.3s"><h2>Schedule</h2></div>
+        <div id="scheduleTabs"></div>
+      </div><!-- /.container -->
+    </section><!-- /.schedule -->
+    <!-- Schedule End -->
+
+    <!-- Shows Begin
+    <section class="archive" id="archive">
+      <div class="container content">
+        <div class="col-md-12 title wow animated fadeIn" data-wow-delay="0.4s"><h2>Shows</h2></div>
+      </div> 
+    </section>
+    Shows End-->
+
+    <!-- Journalism Begin-->
+    <section class="journalism" id="journalism">
+      <div class="overlay"></div>
+      <div class="container content">
+        <div class="col-md-12 title wow animated fadeIn" data-wow-delay="0.5s"><h2>Journalism</h2></div>
+        <h4 style="text-transform: none">Partnering with <a href="https://therosethorn.com">The Rose Thorn!</a></h4>
+      </div> <!--/.container-->
+    </section><!--/.journalism-->
+    <!-- Journalism End-->
+
+    <!-- About Begin -->
+    <section class="about" id="about">
+      <div class="container">
+        <div class="col-md-6 col-sm-6">
+          <div class="personnel wow animated fadeIn" data-wow-delay="0.2s">
+            <div class="title">
+              <h3>About</h3>
+            </div>
+            <div class="personnel-list">
+              <div class="shape photo item" style="background: url(assets/images/personnel1.jpg);">
+                <a href="aboutus.html" class="overlay">
+                  <div class="name">
+                    About Us
+                  </div>
+                </a>
+              </div><!-- /.photo -->
+              <div class="shape photo item" style="background: url(assets/images/personnel2.jpg);">
+                <a href="campusservices.html" class="overlay">
+                  <div class="name">
+                    Campus Services
+                  </div>
+                </a>
+              </div><!-- /.photo -->
+            </div><!-- /.personnel-list -->
+            <div class="text">
+              <p>WMHD is a student run radio that offers online music, equipment rentals & DJ services for Rose-Hulman Institute of Technology community.
+              Our office is located in the basement of BSB hall, room 032.</p>
+            </div>
+          </div><!-- /.personnel -->
+        </div><!-- /.col-md-6 -->
+      </div><!-- /.container -->
+    </section><!-- /.schedule -->
+    <!-- About End -->
     
     <!-- Footer Begin-->
     <footer class="footer" id="footer">
@@ -135,9 +254,9 @@
             <div class="socmed-wrap">
               <a href="https://www.facebook.com/Rose-Hulman-WMHD-Radio-193165454132809/" 
 			  target="_blank"><i class="fa fa-facebook"></i></a>
-              <a href="#"
+              <a href="https://twitter.com/WMHDOnRad"
               target="_blank"><i class="fa fa-twitter"></i></a>
-              <a href="#"
+              <a href="https://www.youtube.com/channel/UCc80ucuahHW0nnYFEUgB3gA"
               target="_blank"><i class="fa fa-youtube"></i></a>
             </div><!-- /.socmed-wrap -->
           </div><!-- /.content -->
@@ -149,7 +268,7 @@
 
     <section class="copyright">
       <div class="container">
-        <p>&copy; WMHD - Radio 2016. All Right Reserved</p>
+        <p>&copy; WMHD - Radio 2017. All Right Reserved</p>
       </div>
     </section>
     
@@ -168,16 +287,18 @@
     <script src="assets/javascripts/fancybox/jquery.fancybox.pack.js"></script>
     <script src="assets/javascripts/isotope.pkgd.min.js"></script>
     <script src="assets/javascripts/masonry.pkgd.min.js"></script>
+    <script src="assets/javascripts/amplitude.min.js"></script>
+    <script src="assets/javascripts/widgets/jquery.showinfo.js"></script>
+    <script src="assets/javascripts/widgets/jquery-ui-1.8.10.custom.min.js"></script>
     <!-- WMHD -->
     <script src="assets/javascripts/WMHD/constants.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
-    <script src="assets/javascripts/WMHD/amplitude.js"></script>
     <script src="assets/javascripts/WMHD/streamMusic.js"></script>
     <script src="assets/javascripts/WMHD/createCommand.js"></script>
     <script src="assets/javascripts/WMHD/user.js"></script>
     <script src="assets/javascripts/WMHD/vote.js"></script>
-    <script src="assets/javascripts/WMHD/news.js"></script>
     <script src="assets/javascripts/WMHD/chat.js"></script>
+    <script src="assets/javascripts/WMHD/schedule.js"></script>
     <!-- preloads -->
     <script src="assets/javascripts/custom.js"></script>
   </body>
